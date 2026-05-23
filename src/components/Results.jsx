@@ -10,7 +10,7 @@ const cases = [
     metrics: [
       { val: '+247%', label: 'Increase in Qualified Leads', sub: 'vs. 90-day pre-campaign baseline' },
       { val: '2.8×', label: 'Lower Cost Per Lead', sub: 'Paid social CPL reduced significantly' },
-      { val: '41%', label: 'Lead-to-Appointment Conversion', sub: 'Via WhatsApp & direct inquiry CTAs' },
+      { val: '+180%', label: 'Instagram Profile Reach', sub: 'Organic growth via content strategy' },
     ],
     tags: ['Instagram', 'Meta Ads', 'Content'],
   },
@@ -33,7 +33,7 @@ const cases = [
     badge: 'Automotive',
     metrics: [
       { val: '3.2×', label: 'More Qualified Social Leads', sub: 'Month-on-month by end of campaign' },
-      { val: '61%', label: 'Reduction in Cost Per Lead', sub: 'Through audience refinement & creative testing' },
+      { val: '61%', label: 'Reduction in Cost Per Lead', sub: 'Audience refinement & creative testing' },
       { val: '44%', label: 'Test-Drive Booking Uplift', sub: 'Via retargeting & WhatsApp CTAs' },
     ],
     tags: ['Google Ads', 'Meta Ads', 'SEO'],
@@ -45,10 +45,10 @@ const cases = [
     badge: 'E-Commerce',
     metrics: [
       { val: '3.9×', label: 'Return on Ad Spend (ROAS)', sub: 'Up from 1.4× at campaign start' },
-      { val: '57%', label: 'Lower CPL on Meta Acquisition', sub: 'Through creative iteration & targeting' },
-      { val: '2.6×', label: 'Returning Customer Purchase Rate', sub: 'Via retargeting & email flows' },
+      { val: '57%', label: 'Lower CPL on Meta Acquisition', sub: 'Creative iteration & targeting' },
+      { val: '+220%', label: 'Instagram Engagement Rate', sub: 'Content-led organic growth' },
     ],
-    tags: ['TikTok Ads', 'Meta Ads', 'Funnels'],
+    tags: ['TikTok Ads', 'Meta Ads', 'Instagram'],
   },
 ]
 
@@ -200,7 +200,7 @@ export default function Results() {
           { val: '2–5×', label: 'Avg. Return on Ad Spend' },
           { val: '60%+', label: 'Avg. CPL Reduction' },
           { val: '25+', label: 'Active Client Campaigns' },
-          { val: '4.9 / 5', label: 'Client Satisfaction' },
+          { val: '4.6 / 5', label: 'Client Satisfaction' },
         ].map((s) => (
           <div key={s.label}>
             <div
