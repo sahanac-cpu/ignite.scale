@@ -7,8 +7,8 @@ const services = [
     title: 'Social Media\nManagement',
     desc: 'We take over your social presence end-to-end. Content, scheduling, community management, analytics — every platform engineered for your specific Dubai audience.',
     tags: ['Instagram', 'TikTok', 'LinkedIn', 'X', 'Facebook'],
-    metric: '300–1,000%',
-    metricLabel: 'Average Follower Growth',
+    metric: '+200–300%',
+    metricLabel: 'Avg. Increase in Qualified Leads',
     icon: (
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
         <circle cx="13" cy="13" r="4.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3"/>
@@ -21,7 +21,7 @@ const services = [
     title: 'Paid Advertising\n& Performance',
     desc: 'Meta, TikTok, Google, Snapchat — we build campaigns that generate qualified leads and real sales. Every dirham tracked, justified, and scaled.',
     tags: ['Meta Ads', 'TikTok Ads', 'Google Ads', 'Snapchat'],
-    metric: '4.2–8.7×',
+    metric: '2–5×',
     metricLabel: 'Average Return on Ad Spend',
     icon: (
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -35,8 +35,8 @@ const services = [
     title: 'Content\nProduction',
     desc: 'Cinematic reels, luxury photography direction, viral short-form, branded graphics — content that makes Dubai audiences stop scrolling.',
     tags: ['Video Reels', 'Photography', 'Copywriting', 'AI Visuals'],
-    metric: '10×',
-    metricLabel: 'Higher Organic Reach',
+    metric: '3–5×',
+    metricLabel: 'Higher Content Engagement Rate',
     icon: (
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
         <rect x="3" y="7" width="16" height="12" rx="1.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3"/>

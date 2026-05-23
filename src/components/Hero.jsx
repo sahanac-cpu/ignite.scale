@@ -81,13 +81,13 @@ function FrostedCard({ card, mouseX, mouseY, delay, index }) {
   )
 }
 
-/* ─── Card data ─── */
+/* ─── Card data — performance-focused, no vanity metrics ─── */
 const cards = [
   {
-    label: 'Growth',
+    label: 'Leads',
     category: 'Social Media',
-    value: '+1,863%',
-    sub: 'Avg. follower growth',
+    value: '+247%',
+    sub: 'Qualified leads per 90 days',
     rotation: -9,
     zIndex: 1,
     icon: (
@@ -104,10 +104,10 @@ const cards = [
     ),
   },
   {
-    label: 'Revenue',
+    label: 'ROAS',
     category: 'Paid Advertising',
-    value: 'AED 50M+',
-    sub: 'Client revenue generated',
+    value: '2–5×',
+    sub: 'Avg. return on ad spend',
     rotation: 0,
     zIndex: 3,
     icon: (
@@ -124,10 +124,10 @@ const cards = [
     ),
   },
   {
-    label: 'Scale',
-    category: 'Web & Funnels',
-    value: '8.45×',
-    sub: 'Avg. return on ad spend',
+    label: 'CPL',
+    category: 'Cost Per Lead',
+    value: '2–5×',
+    sub: 'Lower cost per qualified lead',
     rotation: 9,
     zIndex: 1,
     icon: (

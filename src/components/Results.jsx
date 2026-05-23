@@ -8,9 +8,9 @@ const cases = [
     duration: '90 Days',
     badge: 'Real Estate',
     metrics: [
-      { val: '+1,863%', label: 'Instagram Follower Growth', sub: '2,400 → 47,200 followers' },
-      { val: '340%', label: 'More Qualified Leads', sub: 'vs. pre-campaign baseline' },
-      { val: 'AED 12.4M', label: 'Revenue Attributed to Social', sub: 'Tracked via CRM integration' },
+      { val: '+247%', label: 'Increase in Qualified Leads', sub: 'vs. 90-day pre-campaign baseline' },
+      { val: '2.8×', label: 'Lower Cost Per Lead', sub: 'Paid social CPL reduced significantly' },
+      { val: '41%', label: 'Lead-to-Appointment Conversion', sub: 'Via WhatsApp & direct inquiry CTAs' },
     ],
     tags: ['Instagram', 'Meta Ads', 'Content'],
   },
@@ -20,9 +20,9 @@ const cases = [
     duration: '6 Months',
     badge: 'Hospitality',
     metrics: [
-      { val: '+950%', label: 'Engagement Rate', sub: '0.8% → 8.4%' },
-      { val: '280%', label: 'Increase in Reservations', sub: '38 → 144 bookings/week' },
-      { val: 'AED 2.1M', label: 'Additional Revenue', sub: 'Attributed to social media' },
+      { val: '185%', label: 'More Direct Booking Inquiries', sub: 'Via social channels vs. prior period' },
+      { val: '4.2×', label: 'Lower Cost Per Reservation', sub: 'From paid social campaigns' },
+      { val: '67%', label: 'Reduction in Paid CPL', sub: 'Across Meta reservation campaigns' },
     ],
     tags: ['TikTok', 'Instagram Reels', 'Content'],
   },
@@ -32,9 +32,9 @@ const cases = [
     duration: '4 Months',
     badge: 'Automotive',
     metrics: [
-      { val: '+1,125%', label: 'Monthly Social Leads', sub: '12 → 147 leads per month' },
-      { val: '68%', label: 'Reduction in Cost Per Lead', sub: 'AED 820 → AED 262' },
-      { val: '340%', label: 'More Showroom Visits', sub: 'Tracked via booking links' },
+      { val: '3.2×', label: 'More Qualified Social Leads', sub: 'Month-on-month by end of campaign' },
+      { val: '61%', label: 'Reduction in Cost Per Lead', sub: 'Through audience refinement & creative testing' },
+      { val: '44%', label: 'Test-Drive Booking Uplift', sub: 'Via retargeting & WhatsApp CTAs' },
     ],
     tags: ['Google Ads', 'Meta Ads', 'SEO'],
   },
@@ -44,9 +44,9 @@ const cases = [
     duration: '5 Months',
     badge: 'E-Commerce',
     metrics: [
-      { val: '8.45×', label: 'Return on Ad Spend', sub: 'Up from 1.2×' },
-      { val: '677%', label: 'Revenue Growth', sub: 'AED 180K → AED 1.4M/month' },
-      { val: '367%', label: 'Click-Through Rate Lift', sub: '0.9% → 4.2% CTR' },
+      { val: '3.9×', label: 'Return on Ad Spend (ROAS)', sub: 'Up from 1.4× at campaign start' },
+      { val: '57%', label: 'Lower CPL on Meta Acquisition', sub: 'Through creative iteration & targeting' },
+      { val: '2.6×', label: 'Returning Customer Purchase Rate', sub: 'Via retargeting & email flows' },
     ],
     tags: ['TikTok Ads', 'Meta Ads', 'Funnels'],
   },
@@ -197,9 +197,9 @@ export default function Results() {
         className="mt-8 glass gradient-border p-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
       >
         {[
-          { val: 'AED 50M+', label: 'Total Client Revenue' },
-          { val: '180+', label: 'Campaigns Launched' },
-          { val: '2.4B+', label: 'Total Impressions' },
+          { val: '2–5×', label: 'Avg. Return on Ad Spend' },
+          { val: '60%+', label: 'Avg. CPL Reduction' },
+          { val: '25+', label: 'Active Client Campaigns' },
           { val: '4.9 / 5', label: 'Client Satisfaction' },
         ].map((s) => (
           <div key={s.label}>
