@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion'
+import AuroraLayer from './AuroraLayer'
 
 const cases = [
   {
@@ -166,6 +167,47 @@ function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay }) {
   )
 }
 
+/* ── Count-up hook ───────────────────────────────────────── */
+function useCountUp(target, inView, duration = 1600) {
+  const [val, setVal] = useState(0)
+  useEffect(() => {
+    if (!inView) return
+    const start = performance.now()
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - t, 3)
+      setVal(Math.round(eased * target))
+      if (t < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [inView, target, duration])
+  return val
+}
+
+/* ── Stat with optional count-up ────────────────────────── */
+function AnimStat({ rawDisplay, target, suffix, label }) {
+  const ref    = useRef(null)
+  const inView = useInView(ref, { once: true })
+  const count  = useCountUp(target ?? 0, inView)
+  const shown  = target != null ? count + suffix : rawDisplay
+
+  return (
+    <div ref={ref}>
+      <div style={{
+        fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
+        fontSize: 'clamp(22px, 3vw, 36px)', lineHeight: 1, marginBottom: 6,
+        background: 'linear-gradient(135deg, #FF6030 0%, #FFAA60 100%)',
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+      }}>{shown}</div>
+      <div style={{
+        fontFamily: '"DM Sans", sans-serif', fontSize: 10,
+        letterSpacing: '0.2em', textTransform: 'uppercase',
+        color: 'rgba(240,200,165,0.35)',
+      }}>{label}</div>
+    </div>
+  )
+}
+
 /* ── Section ─────────────────────────────────────────────── */
 export default function Results() {
   const headRef = useRef(null)
@@ -188,13 +230,7 @@ export default function Results() {
         position: 'relative', overflow: 'hidden',
       }}
     >
-      {/* Ambient */}
-      <div style={{
-        position: 'absolute', top: '5%', right: '-8%',
-        width: '48%', height: '70%',
-        background: 'radial-gradient(ellipse at center, rgba(18,38,180,0.10) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <AuroraLayer variant="results" />
 
       {/* Header */}
       <motion.div
@@ -284,26 +320,10 @@ export default function Results() {
           gap: 28, textAlign: 'center',
         }}
       >
-        {[
-          { val: '2–5×',  label: 'Avg. ROAS' },
-          { val: '60%+',  label: 'Avg. CPL Reduction' },
-          { val: '25+',   label: 'Active Campaigns' },
-          { val: '4.6/5', label: 'Client Rating' },
-        ].map(s => (
-          <div key={s.label}>
-            <div style={{
-              fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
-              fontSize: 'clamp(22px, 3vw, 36px)', lineHeight: 1, marginBottom: 6,
-              background: 'linear-gradient(135deg, #FF6030 0%, #FFAA60 100%)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>{s.val}</div>
-            <div style={{
-              fontFamily: '"DM Sans", sans-serif', fontSize: 10,
-              letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: 'rgba(240,200,165,0.35)',
-            }}>{s.label}</div>
-          </div>
-        ))}
+        <AnimStat rawDisplay="2–5×"  label="Avg. ROAS" />
+        <AnimStat target={60} suffix="%+" label="Avg. CPL Reduction" />
+        <AnimStat target={25} suffix="+"  label="Active Campaigns" />
+        <AnimStat rawDisplay="4.6/5" label="Client Rating" />
       </motion.div>
     </section>
   )

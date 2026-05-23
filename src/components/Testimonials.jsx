@@ -1,34 +1,38 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import AuroraLayer from './AuroraLayer'
 
 const reviews = [
   {
     quote: "ignite.scale transformed our brand's online presence. We went from 3–4 leads a month to consistently 40+ qualified inquiries. The ROI is undeniable — this is the only agency I'll recommend in Dubai.",
     role: 'CEO · Luxury Real Estate · Dubai Marina',
     initials: 'A.R.',
-    rating: 5,
     niche: 'Real Estate',
+    metric: '40+',
+    metricLabel: 'Leads / month',
   },
   {
     quote: "Our reservations increased 280% in six months. The content they produce is world-class and perfectly captures the fine dining experience we offer. Our TikTok grew from nothing to 180K followers.",
     role: 'F&B Director · Fine Dining · DIFC',
     initials: 'S.M.',
-    rating: 5,
     niche: 'Hospitality',
+    metric: '280%',
+    metricLabel: 'More Reservations',
   },
   {
     quote: "We were spending AED 50K per month on ads with minimal return. ignite.scale restructured our entire paid strategy from scratch. Now we're generating 8× returns. Game-changing.",
     role: 'Founder · Fashion E-Commerce · UAE',
     initials: 'M.C.',
-    rating: 5,
     niche: 'E-Commerce',
+    metric: '8×',
+    metricLabel: 'Return on Ad Spend',
   },
 ]
 
 const Stars = () => (
-  <div className="flex gap-1">
+  <div style={{ display: 'flex', gap: 4 }}>
     {Array.from({ length: 5 }).map((_, i) => (
-      <svg key={i} width="11" height="11" viewBox="0 0 11 11" fill="#FF3300">
+      <svg key={i} width="12" height="12" viewBox="0 0 11 11" fill="#FF5020">
         <path d="M5.5 1l1.3 2.6 2.9.4-2.1 2.1.5 2.9-2.6-1.4-2.6 1.4.5-2.9L1.3 4l2.9-.4L5.5 1z"/>
       </svg>
     ))}
@@ -36,91 +40,232 @@ const Stars = () => (
 )
 
 export default function Testimonials() {
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
   const headRef = useRef(null)
-  const inView = useInView(headRef, { once: true, margin: '-60px' })
+  const inView  = useInView(headRef, { once: true, margin: '-60px' })
+
+  /* Auto-advance */
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(() => setActive(a => (a + 1) % reviews.length), 6000)
+    return () => clearInterval(id)
+  }, [paused])
+
+  const r = reviews[active]
 
   return (
-    <section className="section-pad max-w-7xl mx-auto">
-      <motion.div
-        ref={headRef}
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-        className="mb-16 text-center"
-      >
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <span className="w-8 h-px bg-accent" />
-          <span className="label-sm text-accent/70">Client Voices</span>
-          <span className="w-8 h-px bg-accent" />
-        </div>
-        <h2
-          className="text-white font-body font-semibold leading-[0.95] tracking-tight"
-          style={{ fontSize: 'clamp(40px, 6.5vw, 82px)' }}
+    <section id="testimonials" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
+      <AuroraLayer variant="testimonials" />
+
+      <div className="section-pad max-w-7xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
+
+        {/* Header */}
+        <motion.div
+          ref={headRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: 'clamp(40px, 7vh, 72px)', textAlign: 'center' }}
         >
-          What Dubai's&nbsp;
-          <em
-            style={{
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 20 }}>
+            <span style={{ width: 32, height: 1, background: 'rgba(232,69,0,0.6)' }} />
+            <span style={{
+              fontFamily: '"DM Sans", sans-serif', fontSize: 10,
+              letterSpacing: '0.4em', textTransform: 'uppercase',
+              color: 'rgba(240,190,140,0.55)',
+            }}>Client Voices</span>
+            <span style={{ width: 32, height: 1, background: 'rgba(232,69,0,0.6)' }} />
+          </div>
+          <h2 style={{
+            fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
+            fontSize: 'clamp(32px, 5.5vw, 72px)',
+            color: 'rgba(245,230,210,0.92)',
+            letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
+          }}>
+            What Dubai's{' '}
+            <em style={{
               fontFamily: '"Cormorant Garamond", Georgia, serif',
-              fontStyle: 'italic',
-              fontWeight: 300,
-              background: 'linear-gradient(135deg, #FF3300, #FF6B35)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Elite Say.
-          </em>
-        </h2>
-      </motion.div>
+              fontStyle: 'italic', fontWeight: 300,
+              background: 'linear-gradient(135deg, #E83000, #FF8040)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            }}>Elite Say.</em>
+          </h2>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {reviews.map((r, i) => (
-          <motion.div
-            key={r.initials}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
-            whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            className="glass gradient-border p-8 flex flex-col gap-6"
-          >
-            <div className="flex items-center justify-between">
-              <Stars />
-              <span className="label-sm text-accent/50 border border-accent/15 px-2 py-1">
-                {r.niche}
-              </span>
-            </div>
-
-            <blockquote
-              className="flex-1 leading-relaxed text-white/50 text-sm font-body font-light"
-              style={{ fontStyle: 'normal' }}
+        {/* Hero quote panel */}
+        <div
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          style={{ position: 'relative' }}
+        >
+          {/* Background metric watermark */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`metric-${active}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{
+                position: 'absolute',
+                right: '-2%', top: '50%',
+                transform: 'translateY(-50%)',
+                fontFamily: '"DM Sans", sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(80px, 16vw, 200px)',
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+                background: 'linear-gradient(135deg, rgba(232,69,0,0.07) 0%, rgba(255,130,60,0.04) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                pointerEvents: 'none',
+                userSelect: 'none',
+                zIndex: 0,
+              }}
             >
-              <span
-                className="font-display"
-                style={{
+              {r.metric}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Glass quote card */}
+          <div style={{
+            background: 'rgba(255,255,255,0.042)',
+            backdropFilter: 'blur(32px) saturate(200%)',
+            WebkitBackdropFilter: 'blur(32px) saturate(200%)',
+            border: '1px solid rgba(200,220,255,0.13)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.11), 0 24px 80px rgba(0,0,0,0.35)',
+            borderRadius: 24,
+            padding: 'clamp(32px, 5vw, 64px)',
+            position: 'relative',
+            zIndex: 1,
+            minHeight: 'clamp(240px, 30vh, 340px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* Opening mark */}
+                <div style={{
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontStyle: 'italic',
-                  fontWeight: 300,
-                  fontSize: 48,
-                  lineHeight: 0.5,
+                  fontSize: 'clamp(60px, 10vw, 100px)',
+                  lineHeight: 0.6,
+                  marginBottom: 'clamp(12px, 2vw, 20px)',
+                  color: 'rgba(232,80,0,0.35)',
                   display: 'block',
-                  marginBottom: 12,
-                  color: 'rgba(255,51,0,0.3)',
+                }}>"</div>
+
+                {/* Quote text */}
+                <blockquote style={{
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  fontSize: 'clamp(19px, 2.6vw, 32px)',
+                  lineHeight: 1.55,
+                  color: 'rgba(245,230,210,0.85)',
+                  margin: '0 0 clamp(24px, 4vw, 40px)',
+                  maxWidth: '88%',
+                }}>
+                  {r.quote}
+                </blockquote>
+
+                {/* Author row */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    {/* Avatar */}
+                    <div style={{
+                      width: 44, height: 44, borderRadius: '50%',
+                      border: '1px solid rgba(232,80,0,0.30)',
+                      background: 'radial-gradient(circle at 40% 40%, rgba(232,80,0,0.15), rgba(232,80,0,0.04))',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: '"DM Sans", sans-serif',
+                      fontSize: 12, fontWeight: 600,
+                      color: 'rgba(255,140,70,0.85)',
+                      letterSpacing: '0.05em',
+                      flexShrink: 0,
+                    }}>
+                      {r.initials}
+                    </div>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                        <Stars />
+                        <span style={{
+                          fontFamily: '"DM Sans", sans-serif', fontSize: 9,
+                          letterSpacing: '0.25em', textTransform: 'uppercase',
+                          color: 'rgba(255,160,80,0.5)',
+                          border: '1px solid rgba(255,120,50,0.15)',
+                          borderRadius: 4, padding: '2px 8px',
+                        }}>{r.niche}</span>
+                      </div>
+                      <div style={{
+                        fontFamily: '"DM Sans", sans-serif', fontSize: 11,
+                        color: 'rgba(230,205,175,0.45)',
+                        letterSpacing: '0.05em',
+                      }}>{r.role}</div>
+                    </div>
+                  </div>
+
+                  {/* Metric badge */}
+                  <div style={{
+                    textAlign: 'right',
+                    borderLeft: '1px solid rgba(232,80,0,0.14)',
+                    paddingLeft: 20,
+                  }}>
+                    <div style={{
+                      fontFamily: '"DM Sans", sans-serif', fontWeight: 800,
+                      fontSize: 'clamp(22px, 3.5vw, 38px)', lineHeight: 1,
+                      background: 'linear-gradient(135deg, #E83000, #FF8040)',
+                      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                    }}>{r.metric}</div>
+                    <div style={{
+                      fontFamily: '"DM Sans", sans-serif', fontSize: 9,
+                      letterSpacing: '0.2em', textTransform: 'uppercase',
+                      color: 'rgba(240,190,140,0.35)', marginTop: 2,
+                    }}>{r.metricLabel}</div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Progress + dot selector */}
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            gap: 12, marginTop: 28,
+          }}>
+            {reviews.map((rev, i) => (
+              <button
+                key={rev.initials}
+                data-cursor="hover"
+                onClick={() => { setActive(i); setPaused(true); setTimeout(() => setPaused(false), 8000) }}
+                style={{
+                  background: 'none', border: 'none', padding: 6,
+                  display: 'flex', alignItems: 'center',
                 }}
               >
-                "
-              </span>
-              {r.quote}
-            </blockquote>
+                <motion.div
+                  animate={{
+                    width: i === active ? 28 : 7,
+                    background: i === active
+                      ? 'linear-gradient(90deg, #E83000, #FF8040)'
+                      : 'rgba(255,255,255,0.15)',
+                  }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ height: 3, borderRadius: 999 }}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
 
-            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.05]">
-              <div className="w-9 h-9 rounded-full border border-accent/20 bg-accent/[0.06] flex items-center justify-center text-accent text-[11px] font-medium tracking-wider">
-                {r.initials}
-              </div>
-              <div className="label-sm leading-relaxed">{r.role}</div>
-            </div>
-          </motion.div>
-        ))}
       </div>
     </section>
   )

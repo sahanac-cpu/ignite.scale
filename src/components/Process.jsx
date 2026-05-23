@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import AuroraLayer from './AuroraLayer'
 
 const steps = [
   {
@@ -54,10 +55,14 @@ const steps = [
 
 export default function Process() {
   const headRef = useRef(null)
-  const inView = useInView(headRef, { once: true, margin: '-60px' })
+  const inView  = useInView(headRef, { once: true, margin: '-60px' })
+  const lineRef = useRef(null)
+  const lineInView = useInView(lineRef, { once: true, margin: '-80px' })
 
   return (
-    <section id="process" className="section-pad max-w-7xl mx-auto">
+    <section id="process" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
+      <AuroraLayer variant="process" />
+      <div className="section-pad max-w-7xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
       <motion.div
         ref={headRef}
         initial={{ opacity: 0, y: 30 }}
@@ -80,9 +85,18 @@ export default function Process() {
       </motion.div>
 
       {/* Steps */}
-      <div className="relative">
-        {/* Connecting line */}
-        <div className="absolute left-[23px] top-8 bottom-8 w-px bg-gradient-to-b from-accent via-accent/20 to-transparent hidden md:block" />
+      <div className="relative" ref={lineRef}>
+        {/* Animated connecting line */}
+        <motion.div
+          className="absolute left-[23px] top-8 bottom-8 w-px hidden md:block"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(232,69,0,0.7) 0%, rgba(232,69,0,0.2) 70%, transparent 100%)',
+            transformOrigin: 'top',
+          }}
+          initial={{ scaleY: 0 }}
+          animate={lineInView ? { scaleY: 1 } : {}}
+          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+        />
 
         <div className="space-y-6">
           {steps.map((s, i) => (
@@ -136,6 +150,7 @@ export default function Process() {
           Start Your Strategy Call — It's Free
         </a>
       </motion.div>
+      </div>
     </section>
   )
 }
