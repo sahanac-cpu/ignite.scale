@@ -98,43 +98,50 @@ export default function Hero() {
       onMouseLeave={onMouseLeave}
       style={{
         position: 'relative', overflow: 'hidden',
-        minHeight: '100vh', background: '#080304',
+        minHeight: '100vh', background: '#03050F',
         display: 'flex', flexDirection: 'column',
       }}
     >
       {/* Canvas */}
       <ParticleCanvas />
 
-      {/* Aurora mesh */}
+      {/* Aurora mesh — cool space + warm brand */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none' }}>
-        <motion.div style={{
-          position: 'absolute', inset: 0,
-          background: `
-            radial-gradient(ellipse 65% 50% at 15% 55%, rgba(155,18,0,0.28) 0%, transparent 60%),
-            radial-gradient(ellipse 45% 40% at 85% 25%, rgba(190,45,0,0.18) 0%, transparent 58%),
-            radial-gradient(ellipse 50% 45% at 50% 90%, rgba(80,8,0,0.22) 0%, transparent 60%)
-          `,
-        }}
-          animate={{ opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Layer 1: primary glow */}
+        <motion.div style={{ position: 'absolute', inset: 0, background: `
+          radial-gradient(ellipse 80% 65% at 8%  60%, rgba(160,18,0,0.45)   0%, transparent 60%),
+          radial-gradient(ellipse 70% 60% at 92% 15%, rgba(20,50,220,0.48)   0%, transparent 56%),
+          radial-gradient(ellipse 60% 55% at 50% 98%, rgba(80,0,160,0.36)    0%, transparent 58%)
+        ` }}
+          animate={{ opacity: [0.72, 1, 0.72] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Layer 2: mid glow drift */}
+        <motion.div style={{ position: 'absolute', inset: 0, background: `
+          radial-gradient(ellipse 55% 50% at 72% 68%, rgba(15,70,230,0.30)   0%, transparent 52%),
+          radial-gradient(ellipse 48% 42% at 25% 18%, rgba(100,0,200,0.26)   0%, transparent 50%),
+          radial-gradient(ellipse 42% 38% at 50% 45%, rgba(8,30,160,0.18)    0%, transparent 55%)
+        ` }}
+          animate={{ opacity: [0.55, 1, 0.55], x: [0, 18, 0], y: [0, -10, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
-      {/* Back-plates */}
+      {/* Back-plates — slightly cool-tinted glass */}
       <motion.div style={{
         x: px1, y: py1,
         position: 'absolute', left: '2%', top: '10%',
         width: 'clamp(140px, 14vw, 260px)', height: 'clamp(220px, 36vh, 460px)',
-        background: 'rgba(255,80,15,0.035)', border: '1px solid rgba(255,100,40,0.07)',
+        background: 'rgba(30,45,120,0.04)', border: '1px solid rgba(100,140,255,0.09)',
         backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)',
         borderRadius: 18, rotate: '-6deg', zIndex: 3,
-        boxShadow: 'inset 0 1px 0 rgba(255,150,70,0.05)',
+        boxShadow: 'inset 0 1px 0 rgba(120,160,255,0.06)',
       }} />
       <motion.div style={{
         x: px2, y: py2,
         position: 'absolute', right: '4%', top: '18%',
         width: 'clamp(110px, 12vw, 220px)', height: 'clamp(180px, 30vh, 380px)',
-        background: 'rgba(255,55,8,0.03)', border: '1px solid rgba(255,85,25,0.06)',
+        background: 'rgba(20,35,110,0.035)', border: '1px solid rgba(80,120,255,0.07)',
         backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)',
         borderRadius: 16, rotate: '8deg', zIndex: 3,
       }} />
