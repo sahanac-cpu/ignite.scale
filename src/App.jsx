@@ -14,7 +14,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen" style={{ background: '#080304' }}>
       <Cursor />
       <Navbar />
 
