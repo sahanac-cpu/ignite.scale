@@ -184,7 +184,7 @@ export default function Results() {
       id="results"
       style={{
         padding: 'clamp(80px, 11vh, 130px) 0',
-        background: '#080304',
+        background: '#03050F',
         position: 'relative', overflow: 'hidden',
       }}
     >
@@ -192,7 +192,7 @@ export default function Results() {
       <div style={{
         position: 'absolute', top: '5%', right: '-8%',
         width: '48%', height: '70%',
-        background: 'radial-gradient(ellipse at center, rgba(130,18,0,0.09) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse at center, rgba(18,38,180,0.10) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
 

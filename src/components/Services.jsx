@@ -206,7 +206,7 @@ export default function Services() {
       id="services"
       style={{
         padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)',
-        background: '#080304',
+        background: '#03050F',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -218,7 +218,7 @@ export default function Services() {
         left: '-10%',
         width: '55%',
         height: '60%',
-        background: 'radial-gradient(ellipse at center, rgba(140,20,0,0.10) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse at center, rgba(20,40,180,0.12) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
 

@@ -19,7 +19,7 @@ export default function App() {
       {/* Preloader overlays everything — slides off after ~1.6s */}
       <Preloader />
 
-      <div className="min-h-screen" style={{ background: '#080304' }}>
+      <div className="min-h-screen" style={{ background: '#03050F' }}>
         <Cursor />
         <Navbar />
 
