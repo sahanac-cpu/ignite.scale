@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import AuroraLayer from './AuroraLayer'
 
 const faqs = [
   {
@@ -87,7 +88,9 @@ export default function FAQ() {
   const inView = useInView(headRef, { once: true, margin: '-60px' })
 
   return (
-    <section id="faq" className="section-pad max-w-7xl mx-auto">
+    <section id="faq" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
+      <AuroraLayer variant="faq" />
+      <div className="section-pad max-w-7xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
       <motion.div
         ref={headRef}
         initial={{ opacity: 0, y: 30 }}
@@ -140,6 +143,7 @@ export default function FAQ() {
           </a>
         </div>
       </motion.div>
+      </div>
     </section>
   )
 }

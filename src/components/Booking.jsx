@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import emailjs from '@emailjs/browser'
+import AuroraLayer from './AuroraLayer'
 
 const INDUSTRIES = [
   'Luxury Real Estate', 'Hospitality & Hotels', 'Restaurants & F&B',
@@ -99,7 +100,9 @@ export default function Booking() {
   }
 
   return (
-    <section id="booking" className="section-pad max-w-7xl mx-auto">
+    <section id="booking" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
+      <AuroraLayer variant="booking" />
+      <div className="section-pad max-w-7xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
       <motion.div
         ref={headRef}
         initial={{ opacity: 0, y: 30 }}
@@ -407,6 +410,7 @@ export default function Booking() {
             )}
           </AnimatePresence>
         </motion.div>
+      </div>
       </div>
     </section>
   )

@@ -1,42 +1,42 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Marquee from './components/Marquee'
-import Services from './components/Services'
-import Results from './components/Results'
-import Process from './components/Process'
-import Testimonials from './components/Testimonials'
-import Booking from './components/Booking'
-import FAQ from './components/FAQ'
 import Chatbot from './components/Chatbot'
-import Footer from './components/Footer'
+
+import HomePage    from './pages/HomePage'
+import ServicesPage from './pages/ServicesPage'
+import ResultsPage  from './pages/ResultsPage'
+import ProcessPage  from './pages/ProcessPage'
+import BookingPage  from './pages/BookingPage'
+import FAQPage      from './pages/FAQPage'
 
 export default function App() {
   return (
-    <>
-      {/* Preloader overlays everything — slides off after ~1.6s */}
+    <BrowserRouter>
+      {/* Preloader + global UI always mounted */}
       <Preloader />
+      <Cursor />
 
       <div className="min-h-screen" style={{ background: '#03050F' }}>
-        <Cursor />
-        <Navbar />
+        {/* Navbar on homepage; individual pages render their own Navbar */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <HomePage />
+            </>
+          } />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/results"  element={<ResultsPage />} />
+          <Route path="/process"  element={<ProcessPage />} />
+          <Route path="/book"     element={<BookingPage />} />
+          <Route path="/faq"      element={<FAQPage />} />
+        </Routes>
 
-        <main>
-          <Hero />
-          <Marquee />
-          <Services />
-          <Results />
-          <Process />
-          <Testimonials />
-          <Booking />
-          <FAQ />
-        </main>
-
-        <Footer />
         <Chatbot />
       </div>
-    </>
+    </BrowserRouter>
   )
 }

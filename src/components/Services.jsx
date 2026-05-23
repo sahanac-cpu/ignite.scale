@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import AuroraLayer from './AuroraLayer'
 
 const services = [
   {
@@ -211,18 +212,9 @@ export default function Services() {
         overflow: 'hidden',
       }}
     >
-      {/* Ambient glow */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '-10%',
-        width: '55%',
-        height: '60%',
-        background: 'radial-gradient(ellipse at center, rgba(20,40,180,0.12) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <AuroraLayer variant="services" />
 
-      <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1040, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Section header */}
         <motion.div
           ref={headRef}
