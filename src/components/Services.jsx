@@ -1,173 +1,276 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 const services = [
   {
     num: '01',
-    title: 'Social Media\nManagement',
-    desc: 'We take over your social presence end-to-end. Content, scheduling, community management, analytics — every platform engineered for your specific Dubai audience.',
-    tags: ['Instagram', 'TikTok', 'LinkedIn', 'X', 'Facebook'],
-    metric: '+200–300%',
-    metricLabel: 'Avg. Increase in Qualified Leads',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="4.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3"/>
-        <path d="M13 3.5v2.5M13 20v2.5M3.5 13H6M20 13h2.5M6.3 6.3l1.8 1.8M18 18l1.7 1.7M6.3 19.7l1.8-1.7M18 8l1.7-1.7" stroke="rgba(255,51,0,0.4)" strokeWidth="1.3" strokeLinecap="round"/>
-      </svg>
-    ),
+    title: 'Paid Social & Performance Ads',
+    tagline: 'Meta · TikTok · Snapchat · Google',
+    body: 'Full-funnel paid campaigns engineered around your CPL and ROAS targets. We architect the audience, the creative, and the bidding strategy — then optimise daily until every dirham works harder.',
+    metric: '2–5× avg ROAS',
+    tags: ['Meta Ads', 'TikTok Ads', 'A/B Testing', 'Retargeting'],
   },
   {
     num: '02',
-    title: 'Paid Advertising\n& Performance',
-    desc: 'Meta, TikTok, Google, Snapchat — we build campaigns that generate qualified leads and real sales. Every dirham tracked, justified, and scaled.',
-    tags: ['Meta Ads', 'TikTok Ads', 'Google Ads', 'Snapchat'],
-    metric: '2–5×',
-    metricLabel: 'Average Return on Ad Spend',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <path d="M4 19l5.5-7.5 4.5 3.5 4-5.5 5 9.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="21" cy="6" r="2.5" stroke="rgba(255,107,53,0.5)" strokeWidth="1.3"/>
-      </svg>
-    ),
+    title: 'Content Creation & Creative Strategy',
+    tagline: 'Video · Photography · Copy',
+    body: "Scroll-stopping content built for Dubai's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
+    metric: '3–5× engagement lift',
+    tags: ['UGC Video', 'Reels', 'Ad Creatives', 'Copywriting'],
   },
   {
     num: '03',
-    title: 'Content\nProduction',
-    desc: 'Cinematic reels, luxury photography direction, viral short-form, branded graphics — content that makes Dubai audiences stop scrolling.',
-    tags: ['Video Reels', 'Photography', 'Copywriting', 'AI Visuals'],
-    metric: '3–5×',
-    metricLabel: 'Higher Content Engagement Rate',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="3" y="7" width="16" height="12" rx="1.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3"/>
-        <path d="M19 11l4-3v10l-4-3" stroke="rgba(255,51,0,0.4)" strokeWidth="1.3" strokeLinejoin="round"/>
-      </svg>
-    ),
+    title: 'Community Growth & Management',
+    tagline: 'Instagram · LinkedIn · TikTok',
+    body: "Daily channel management, proactive community building, and influencer co-ordination. We turn your brand's social presence into a trust-building engine that warms leads before they ever reach your inbox.",
+    metric: '+180% qualified reach',
+    tags: ['Channel Management', 'Influencer Outreach', 'Posting Strategy'],
   },
   {
     num: '04',
-    title: 'Website Design\n& Funnels',
-    desc: 'High-converting landing pages, full brand websites, e-commerce stores — built to dominate Dubai search results and turn visitors into clients.',
-    tags: ['Landing Pages', 'E-commerce', 'SEO Dubai', 'Funnels'],
-    metric: '68%',
-    metricLabel: 'Average Reduction in Cost per Lead',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="3" y="5" width="20" height="16" rx="1.5" stroke="rgba(255,51,0,0.6)" strokeWidth="1.3"/>
-        <path d="M3 10h20M7.5 5v5" stroke="rgba(255,51,0,0.4)" strokeWidth="1.3" strokeLinecap="round"/>
-        <path d="M9 16h8M9 19h5" stroke="rgba(255,107,53,0.4)" strokeWidth="1.3" strokeLinecap="round"/>
-      </svg>
-    ),
+    title: 'Funnel Design & Landing Pages',
+    tagline: 'Conversion-Optimised Web Experiences',
+    body: "High-converting landing pages and lead funnels designed for Dubai's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
+    metric: '60%+ CPL reduction',
+    tags: ['Landing Pages', 'CRO', 'Lead Funnels', 'Analytics'],
   },
 ]
 
-function ServiceCard({ s, index }) {
+function AccordionRow({ svc, index, isOpen, onToggle }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-      className="glass gradient-border p-8 flex flex-col gap-6 group"
+      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: index * 0.1 }}
+      style={{
+        borderBottom: '1px solid rgba(255,110,40,0.08)',
+      }}
     >
-      <div className="flex items-start justify-between">
-        <div className="w-11 h-11 flex items-center justify-center border border-white/[0.07] bg-white/[0.02] group-hover:border-accent/20 group-hover:bg-accent/[0.04] transition-all duration-300">
-          {s.icon}
-        </div>
-        <span
-          className="font-display italic font-light text-white/[0.05] group-hover:text-white/[0.08] transition-colors"
-          style={{ fontSize: 52 }}
-        >
-          {s.num}
+      {/* Row header */}
+      <button
+        onClick={onToggle}
+        data-cursor="hover"
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 24,
+          padding: '28px 0',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+      >
+        {/* Number */}
+        <span style={{
+          fontSize: 11,
+          letterSpacing: '0.2em',
+          color: isOpen ? 'rgba(255,130,60,0.8)' : 'rgba(255,130,60,0.3)',
+          fontFamily: '"DM Sans", sans-serif',
+          fontWeight: 500,
+          minWidth: 32,
+          transition: 'color 0.3s',
+        }}>
+          {svc.num}
         </span>
-      </div>
 
-      <div>
-        <h3
-          className="text-white font-body font-semibold leading-tight whitespace-pre-line mb-3"
-          style={{ fontSize: 19 }}
+        {/* Title */}
+        <span style={{
+          flex: 1,
+          fontSize: 'clamp(18px, 2.2vw, 26px)',
+          fontWeight: 600,
+          fontFamily: '"DM Sans", sans-serif',
+          color: isOpen ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.55)',
+          letterSpacing: '-0.01em',
+          transition: 'color 0.3s',
+        }}>
+          {svc.title}
+        </span>
+
+        {/* Metric pill */}
+        <span style={{
+          fontSize: 11,
+          letterSpacing: '0.15em',
+          color: 'rgba(255,160,80,0.6)',
+          fontFamily: '"DM Sans", sans-serif',
+          border: '1px solid rgba(255,130,50,0.15)',
+          borderRadius: 999,
+          padding: '5px 14px',
+          display: 'none',
+          whiteSpace: 'nowrap',
+        }}
+          className="hidden sm:inline-block"
         >
-          {s.title}
-        </h3>
-        <p className="text-white/35 text-[13px] leading-relaxed font-body font-light">{s.desc}</p>
-      </div>
+          {svc.metric}
+        </span>
 
-      <div className="flex flex-wrap gap-1.5">
-        {s.tags.map((t) => (
-          <span key={t} className="label-sm border border-white/[0.06] px-2.5 py-1">
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-auto pt-5 border-t border-white/[0.05]">
-        <div
-          className="font-display italic font-light leading-none"
+        {/* Expand icon */}
+        <motion.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.3, ease: [0.76, 0, 0.24, 1] }}
           style={{
-            fontSize: 32,
-            background: 'linear-gradient(135deg, #FF3300, #FF6B35)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            border: `1px solid ${isOpen ? 'rgba(255,120,50,0.4)' : 'rgba(255,255,255,0.1)'}`,
+            color: isOpen ? 'rgba(255,120,50,0.9)' : 'rgba(255,255,255,0.35)',
+            fontSize: 18,
+            lineHeight: 1,
+            fontWeight: 300,
+            flexShrink: 0,
+            transition: 'border-color 0.3s, color 0.3s',
           }}
         >
-          {s.metric}
-        </div>
-        <div className="label-sm mt-1.5">{s.metricLabel}</div>
-      </div>
+          +
+        </motion.span>
+      </button>
+
+      {/* Expanded body */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div style={{
+              paddingLeft: 'clamp(0px, 3.5vw, 56px)',
+              paddingBottom: 32,
+              display: 'flex',
+              gap: 48,
+              flexWrap: 'wrap',
+            }}>
+              <div style={{ flex: 1, minWidth: 240 }}>
+                <p style={{
+                  fontSize: 15,
+                  lineHeight: 1.8,
+                  color: 'rgba(255,200,170,0.5)',
+                  fontFamily: '"DM Sans", sans-serif',
+                  marginBottom: 16,
+                }}>
+                  {svc.body}
+                </p>
+                <span style={{
+                  fontSize: 11,
+                  color: 'rgba(255,170,110,0.5)',
+                  fontFamily: '"DM Sans", sans-serif',
+                  letterSpacing: '0.1em',
+                }}>
+                  {svc.tagline}
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignContent: 'flex-start', paddingTop: 2 }}>
+                {svc.tags.map(tag => (
+                  <span key={tag} style={{
+                    fontSize: 11,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,160,90,0.55)',
+                    border: '1px solid rgba(255,130,50,0.12)',
+                    borderRadius: 6,
+                    padding: '6px 12px',
+                    fontFamily: '"DM Sans", sans-serif',
+                    background: 'rgba(255,80,20,0.04)',
+                    backdropFilter: 'blur(8px)',
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
 
 export default function Services() {
+  const [open, setOpen] = useState(0)
   const headRef = useRef(null)
-  const inView = useInView(headRef, { once: true, margin: '-60px' })
+  const headInView = useInView(headRef, { once: true, margin: '-80px' })
 
   return (
-    <section id="services" className="section-pad max-w-7xl mx-auto">
-      <motion.div
-        ref={headRef}
-        initial={{ opacity: 0, y: 30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7 }}
-        className="mb-16"
-      >
-        <div className="flex items-center gap-4 mb-6">
-          <span className="w-8 h-px bg-accent" />
-          <span className="label-sm text-accent/70">What We Do</span>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <h2
-            className="text-white font-body font-semibold leading-[0.95] tracking-tight"
-            style={{ fontSize: 'clamp(40px, 6.5vw, 82px)' }}
-          >
-            Services That{' '}
-            <em
-              style={{
-                fontFamily: '"Cormorant Garamond", Georgia, serif',
-                fontStyle: 'italic',
-                fontWeight: 300,
-                background: 'linear-gradient(135deg, #FF3300, #FF6B35)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Actually Scale.
-            </em>
-          </h2>
-          <p className="text-white/30 text-sm leading-relaxed max-w-sm md:text-right font-body font-light">
-            Every service is engineered for one outcome — measurable growth for your Dubai business.
-          </p>
-        </div>
-      </motion.div>
+    <section
+      id="services"
+      style={{
+        padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)',
+        background: '#080304',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Ambient glow */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        left: '-10%',
+        width: '55%',
+        height: '60%',
+        background: 'radial-gradient(ellipse at center, rgba(140,20,0,0.10) 0%, transparent 65%)',
+        pointerEvents: 'none',
+      }} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {services.map((s, i) => (
-          <ServiceCard key={s.num} s={s} index={i} />
-        ))}
+      <div style={{ maxWidth: 1040, margin: '0 auto' }}>
+        {/* Section header */}
+        <motion.div
+          ref={headRef}
+          initial={{ opacity: 0, y: 28 }}
+          animate={headInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ marginBottom: 64 }}
+        >
+          <div style={{
+            fontSize: 11,
+            letterSpacing: '0.4em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,140,70,0.5)',
+            fontFamily: '"DM Sans", sans-serif',
+            marginBottom: 16,
+          }}>
+            What We Do
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(32px, 5vw, 58px)',
+            fontWeight: 700,
+            fontFamily: '"DM Sans", sans-serif',
+            color: 'rgba(255,255,255,0.88)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.1,
+            margin: 0,
+          }}>
+            Services built for<br />
+            <span style={{
+              background: 'linear-gradient(135deg, #E83000 0%, #FF8040 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>measurable growth</span>
+          </h2>
+        </motion.div>
+
+        {/* Accordion */}
+        <div style={{ borderTop: '1px solid rgba(255,110,40,0.08)' }}>
+          {services.map((svc, i) => (
+            <AccordionRow
+              key={svc.num}
+              svc={svc}
+              index={i}
+              isOpen={open === i}
+              onToggle={() => setOpen(open === i ? -1 : i)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

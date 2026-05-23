@@ -1,4 +1,5 @@
 import './index.css'
+import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -14,23 +15,28 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen" style={{ background: '#080304' }}>
-      <Cursor />
-      <Navbar />
+    <>
+      {/* Preloader overlays everything — slides off after ~1.6s */}
+      <Preloader />
 
-      <main>
-        <Hero />
-        <Marquee />
-        <Services />
-        <Results />
-        <Process />
-        <Testimonials />
-        <Booking />
-        <FAQ />
-      </main>
+      <div className="min-h-screen" style={{ background: '#080304' }}>
+        <Cursor />
+        <Navbar />
 
-      <Footer />
-      <Chatbot />
-    </div>
+        <main>
+          <Hero />
+          <Marquee />
+          <Services />
+          <Results />
+          <Process />
+          <Testimonials />
+          <Booking />
+          <FAQ />
+        </main>
+
+        <Footer />
+        <Chatbot />
+      </div>
+    </>
   )
 }
