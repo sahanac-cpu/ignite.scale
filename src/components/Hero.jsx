@@ -1,439 +1,383 @@
-import { useRef } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion'
+import ParticleCanvas from './ParticleCanvas'
 
-/* ─────────────────────────────────────────────
-   ATMOSPHERIC BACKGROUND
-   Layered aurora mesh — warm ember/burgundy
-───────────────────────────────────────────── */
-function AuroraBG() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-      {/* Base aurora gradient — CSS only, no JS */}
-      <div className="absolute inset-0 aurora-bg" />
-
-      {/* Animated slow-drifting warm sweep — TRNSPR inspired */}
-      <motion.div
-        className="absolute inset-0"
-        animate={{
-          background: [
-            'radial-gradient(ellipse 70% 50% at 15% 30%, rgba(160,30,0,0.20) 0%, transparent 60%)',
-            'radial-gradient(ellipse 70% 50% at 85% 65%, rgba(160,30,0,0.18) 0%, transparent 60%)',
-            'radial-gradient(ellipse 70% 50% at 45% 15%, rgba(160,30,0,0.22) 0%, transparent 60%)',
-            'radial-gradient(ellipse 70% 50% at 15% 30%, rgba(160,30,0,0.20) 0%, transparent 60%)',
-          ],
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      {/* Dot grid — subtle depth */}
-      <div className="absolute inset-0 dot-grid opacity-40" />
-
-      {/* Grain texture */}
-      <div className="absolute inset-0 grain" />
-
-      {/* Two dashed circles — TRNSPR/design-depth element */}
-      <div
-        className="absolute rounded-full border border-dashed pointer-events-none"
-        style={{
-          width: 680, height: 680,
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -52%)',
-          borderColor: 'rgba(255,140,70,0.05)',
-        }}
-      />
-      <div
-        className="absolute rounded-full border border-dashed pointer-events-none"
-        style={{
-          width: 420, height: 420,
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -54%)',
-          borderColor: 'rgba(255,140,70,0.04)',
-        }}
-      />
-
-      {/* Thin horizontal rule — editorial detail */}
-      <div
-        className="absolute left-0 right-0 pointer-events-none"
-        style={{
-          top: '62%',
-          height: 1,
-          background: 'linear-gradient(90deg, transparent 0%, rgba(255,120,50,0.06) 30%, rgba(255,120,50,0.06) 70%, transparent 100%)',
-        }}
-      />
-    </div>
-  )
-}
-
-/* ─────────────────────────────────────────────
-   LARGE FROSTED PLATES (behind headline text)
-   Purely atmospheric — no content, just depth
-───────────────────────────────────────────── */
-function BackPlate({ style, initial, animate, transition, mouseX, mouseY, parallaxFactor = 1 }) {
-  const px = useSpring(
-    useTransform(mouseX, [-1, 1], [-10 * parallaxFactor, 10 * parallaxFactor]),
-    { stiffness: 50, damping: 18 }
-  )
-  const py = useSpring(
-    useTransform(mouseY, [-1, 1], [-6 * parallaxFactor, 6 * parallaxFactor]),
-    { stiffness: 50, damping: 18 }
-  )
-
-  return (
-    <motion.div
-      className="absolute glass-plate grain"
-      initial={initial}
-      animate={animate}
-      transition={transition}
-      style={{ ...style, x: px, y: py }}
-    >
-      {/* Inner highlight streak */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'linear-gradient(135deg, rgba(255,120,50,0.06) 0%, transparent 40%, transparent 60%, rgba(255,80,20,0.03) 100%)',
-          borderRadius: 'inherit',
-        }}
-      />
-      {/* Subtle inner grid */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,140,60,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,140,60,0.08) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          borderRadius: 'inherit',
-        }}
-      />
-    </motion.div>
-  )
-}
-
-/* ─────────────────────────────────────────────
-   VOYAGER2-STYLE 3D DATA CARDS (bottom row)
-───────────────────────────────────────────── */
-const dataCards = [
-  {
-    label: 'Leads',
-    value: '+247%',
-    sub: 'Qualified leads / 90 days',
-    rotateY: -16,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M4 22l7-9 4.5 3.5 4.5-7 6 12.5" stroke="url(#dc1)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="25" cy="6" r="3" stroke="rgba(255,140,70,0.5)" strokeWidth="1.2"/>
-        <defs>
-          <linearGradient id="dc1" x1="4" y1="22" x2="25" y2="6" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#E83000" stopOpacity="0.7"/>
-            <stop offset="1" stopColor="#FF8C35" stopOpacity="0.4"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
-  },
-  {
-    label: 'ROAS',
-    value: '2 – 5×',
-    sub: 'Return on ad spend',
-    rotateY: 0,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M14 4v20M8 10l6-6 6 6" stroke="url(#dc2)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M6 19h16" stroke="rgba(255,140,70,0.35)" strokeWidth="1.2" strokeLinecap="round"/>
-        <defs>
-          <linearGradient id="dc2" x1="8" y1="24" x2="20" y2="4" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FF6B35" stopOpacity="0.5"/>
-            <stop offset="1" stopColor="#E83000" stopOpacity="0.8"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    ),
-  },
-  {
-    label: 'CPL',
-    value: '2 – 5×',
-    sub: 'Lower cost per lead',
-    rotateY: 16,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="12" width="8" height="12" rx="1" stroke="rgba(220,70,20,0.6)" strokeWidth="1.2"/>
-        <rect x="16" y="5" width="8" height="19" rx="1" stroke="rgba(255,140,70,0.65)" strokeWidth="1.2"/>
-        <path d="M12 17h4" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-]
-
-function DataCard({ card, delay, mouseX, mouseY }) {
-  const px = useSpring(
-    useTransform(mouseX, [-1, 1], [-6, 6]),
-    { stiffness: 80, damping: 20 }
-  )
-  const py = useSpring(
-    useTransform(mouseY, [-1, 1], [-4, 4]),
-    { stiffness: 80, damping: 20 }
-  )
-
-  const isCenter = card.rotateY === 0
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, rotateY: card.rotateY * 2 }}
-      animate={{ opacity: 1, y: 0, rotateY: card.rotateY }}
-      transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay }}
-      style={{ x: px, y: py, transformPerspective: 900, zIndex: isCenter ? 3 : 1 }}
-      whileHover={{
-        rotateY: card.rotateY * 0.4,
-        scale: 1.05,
-        zIndex: 10,
-        transition: { duration: 0.35 },
-      }}
-    >
-      <div
-        className="glass-warm gradient-border grain"
-        style={{
-          width: isCenter ? 210 : 190,
-          height: isCenter ? 270 : 245,
-          borderRadius: 3,
-          padding: '24px 20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          boxShadow: isCenter
-            ? '0 30px 80px rgba(0,0,0,0.55), 0 0 50px rgba(200,50,0,0.07)'
-            : '0 20px 60px rgba(0,0,0,0.45)',
-        }}
-      >
-        {/* Top */}
-        <div className="flex items-center justify-between">
-          <span className="label-sm">{card.label}</span>
-          <span
-            style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: 'rgba(220,80,0,0.7)',
-              boxShadow: '0 0 8px rgba(220,80,0,0.9)',
-            }}
-          />
-        </div>
-
-        {/* Icon */}
-        <div style={{ display: 'flex', justifyContent: 'center' }}>{card.icon}</div>
-
-        {/* Value */}
-        <div>
-          <div
-            className="serif-display gradient-text-warm"
-            style={{ fontSize: isCenter ? 36 : 32 }}
-          >
-            {card.value}
-          </div>
-          <div className="label-sm mt-1.5 leading-snug">{card.sub}</div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ─────────────────────────────────────────────
-   HERO — MAIN
-───────────────────────────────────────────── */
-export default function Hero() {
+/* ── Magnetic button ─────────────────────────────────────── */
+function MagneticBtn({ children, className, style, onClick, href }) {
   const ref = useRef(null)
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const x  = useSpring(mx, { stiffness: 280, damping: 22 })
+  const y  = useSpring(my, { stiffness: 280, damping: 22 })
+
+  const handleMove = (e) => {
+    const r = ref.current.getBoundingClientRect()
+    mx.set((e.clientX - r.left - r.width  / 2) * 0.38)
+    my.set((e.clientY - r.top  - r.height / 2) * 0.38)
+  }
+  const handleLeave = () => { mx.set(0); my.set(0) }
+
+  const Tag = href ? 'a' : 'button'
+  return (
+    <motion.div ref={ref} style={{ x, y, display: 'inline-block' }}
+      onMouseMove={handleMove} onMouseLeave={handleLeave}>
+      <Tag
+        href={href}
+        onClick={onClick}
+        className={className}
+        style={style}
+        data-cursor="hover"
+      >
+        {children}
+      </Tag>
+    </motion.div>
+  )
+}
+
+/* ── Clip-path text reveal ───────────────────────────────── */
+const wipe = (delay = 0) => ({
+  initial: { clipPath: 'inset(0 100% 0 0)' },
+  animate: { clipPath: 'inset(0 0% 0 0)' },
+  transition: { duration: 1.1, ease: [0.76, 0, 0.24, 1], delay },
+})
+
+/* ── Parallax helper ─────────────────────────────────────── */
+function useParallax(rawX, rawY, factorX = 1, factorY = 1) {
+  const px = useTransform(rawX, v => v * factorX)
+  const py = useTransform(rawY, v => v * factorY)
+  const sx  = useSpring(px, { stiffness: 60, damping: 18 })
+  const sy  = useSpring(py, { stiffness: 60, damping: 18 })
+  return { x: sx, y: sy }
+}
+
+/* ── Data card ───────────────────────────────────────────── */
+function DataCard({ label, value, sub, delay = 0 }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const rx = useSpring(useTransform(my, [-1, 1], [ 6, -6]), { stiffness: 200, damping: 20 })
+  const ry = useSpring(useTransform(mx, [-1, 1], [-8,  8]), { stiffness: 200, damping: 20 })
+
+  const handleMove = (e) => {
+    const r = e.currentTarget.getBoundingClientRect()
+    mx.set(((e.clientX - r.left) / r.width  - 0.5) * 2)
+    my.set(((e.clientY - r.top ) / r.height - 0.5) * 2)
+  }
+  const handleLeave = () => { mx.set(0); my.set(0) }
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay }}
+      style={{ perspective: 600 }}
+    >
+      <motion.div
+        onMouseMove={handleMove}
+        onMouseLeave={handleLeave}
+        style={{
+          rotateX: rx, rotateY: ry,
+          transformStyle: 'preserve-3d',
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,130,60,0.12)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
+          borderRadius: 16,
+          padding: '22px 28px',
+          cursor: 'default',
+          boxShadow: '0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,160,80,0.06)',
+          minWidth: 150,
+        }}
+        data-cursor="hover"
+      >
+        <div style={{
+          fontSize: 11,
+          letterSpacing: '0.3em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,160,100,0.5)',
+          fontFamily: '"DM Sans", sans-serif',
+          marginBottom: 8,
+        }}>{label}</div>
+        <div style={{
+          fontSize: 'clamp(22px, 3vw, 34px)',
+          fontWeight: 700,
+          fontFamily: '"DM Sans", sans-serif',
+          background: 'linear-gradient(135deg, #FF7040 0%, #FFAA70 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          lineHeight: 1,
+          marginBottom: 6,
+        }}>{value}</div>
+        <div style={{
+          fontSize: 11,
+          color: 'rgba(255,200,160,0.35)',
+          fontFamily: '"DM Sans", sans-serif',
+        }}>{sub}</div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+/* ── Main Hero ───────────────────────────────────────────── */
+export default function Hero() {
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
+  const [ready, setReady] = useState(false)
+  const heroRef = useRef(null)
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 120)
+    return () => clearTimeout(t)
+  }, [])
 
   const handleMouseMove = (e) => {
-    if (!ref.current) return
-    const { left, top, width, height } = ref.current.getBoundingClientRect()
-    rawX.set(((e.clientX - left) / width - 0.5) * 2)
-    rawY.set(((e.clientY - top) / height - 0.5) * 2)
+    const r = heroRef.current?.getBoundingClientRect()
+    if (!r) return
+    rawX.set((e.clientX - r.left - r.width  / 2) / r.width)
+    rawY.set((e.clientY - r.top  - r.height / 2) / r.height)
   }
+  const handleMouseLeave = () => { rawX.set(0); rawY.set(0) }
 
-  const lines = [
-    { text: 'Turn Dubai\'s', serif: false, size: 'clamp(44px, 7vw, 96px)', weight: 300, color: 'rgba(255,240,230,0.45)', italic: false, delay: 0.25 },
-    { text: 'Attention',    serif: true,  size: 'clamp(68px, 11.5vw, 158px)', weight: 300, color: 'rgba(255,240,230,0.92)', italic: true,  delay: 0.35 },
-    { text: 'Into Revenue.',serif: true,  size: 'clamp(44px, 7vw, 96px)', weight: 300, gradient: true, italic: true,  delay: 0.45 },
-  ]
+  const plate1   = useParallax(rawX, rawY, -18, -12)
+  const plate2   = useParallax(rawX, rawY,  22,  16)
+  const plate3   = useParallax(rawX, rawY, -10,  24)
+  const headlineP = useParallax(rawX, rawY,   6,   4)
 
   return (
     <section
-      ref={ref}
+      ref={heroRef}
+      id="hero"
       onMouseMove={handleMouseMove}
-      id="home"
-      className="relative min-h-screen flex flex-col overflow-hidden"
+      onMouseLeave={handleMouseLeave}
+      className="relative overflow-hidden flex flex-col items-center justify-center"
+      style={{ minHeight: '100vh', background: '#080304' }}
     >
-      {/* ── Layer 0: Atmospheric background ── */}
-      <AuroraBG />
+      {/* Canvas particles */}
+      <ParticleCanvas />
 
-      {/* ── Layer 1: Large back-plates (behind headline) ── */}
-      {/* Left plate */}
-      <BackPlate
-        mouseX={rawX} mouseY={rawY} parallaxFactor={1.2}
-        initial={{ opacity: 0, x: -60, rotate: -8, scale: 0.92 }}
-        animate={{ opacity: 1, x: 0,   rotate: -8, scale: 1 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-        style={{
-          top: '10%', left: '-4%',
-          width: 340, height: 520,
-          borderRadius: 4,
-          zIndex: 2,
-        }}
-      />
-      {/* Right plate */}
-      <BackPlate
-        mouseX={rawX} mouseY={rawY} parallaxFactor={0.8}
-        initial={{ opacity: 0, x: 60, rotate: 10, scale: 0.92 }}
-        animate={{ opacity: 1, x: 0,  rotate: 10, scale: 1 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
-        style={{
-          top: '8%', right: '-3%',
-          width: 280, height: 430,
-          borderRadius: 4,
-          zIndex: 2,
-        }}
-      />
-      {/* Small accent plate — lower right */}
-      <BackPlate
-        mouseX={rawX} mouseY={rawY} parallaxFactor={1.5}
-        initial={{ opacity: 0, y: 40, rotate: -4 }}
-        animate={{ opacity: 0.6, y: 0, rotate: -4 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.28 }}
-        style={{
-          bottom: '22%', right: '8%',
-          width: 160, height: 200,
-          borderRadius: 4,
-          zIndex: 2,
-        }}
-      />
-
-      {/* Scroll whisker */}
-      <motion.div
-        className="absolute right-9 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.4, duration: 1 }}
-      >
+      {/* Aurora mesh */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
         <motion.div
-          className="w-px"
-          style={{ background: 'linear-gradient(to bottom, rgba(200,70,0,0.5), transparent)', height: 0 }}
-          animate={{ height: 80 }}
-          transition={{ delay: 2.6, duration: 1.4 }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: `
+              radial-gradient(ellipse 70% 55% at 18% 62%, rgba(155,18,0,0.25) 0%, transparent 65%),
+              radial-gradient(ellipse 50% 40% at 82% 32%, rgba(200,48,0,0.16) 0%, transparent 60%),
+              radial-gradient(ellipse 55% 45% at 50% 85%, rgba(90,8,0,0.20) 0%, transparent 60%)
+            `,
+          }}
+          animate={{ opacity: [0.75, 1, 0.75] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <span
-          className="label-sm"
-          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', letterSpacing: '0.4em' }}
-        >
-          Scroll
-        </span>
-      </motion.div>
+      </div>
 
-      {/* ── Layer 3: Headline (IN FRONT of plates) ── */}
-      <div
-        className="relative flex flex-col flex-1 px-6 md:px-12 lg:px-24 pt-36 pb-0"
-        style={{ zIndex: 10 }}
+      {/* Back-plate left */}
+      <motion.div
+        style={{
+          x: plate1.x, y: plate1.y,
+          position: 'absolute',
+          left: '4%',
+          top: '15%',
+          width: 'clamp(160px, 18vw, 300px)',
+          height: 'clamp(280px, 42vh, 500px)',
+          background: 'rgba(255,90,20,0.04)',
+          border: '1px solid rgba(255,110,40,0.07)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          borderRadius: 20,
+          rotate: '-7deg',
+          zIndex: 3,
+          boxShadow: 'inset 0 1px 0 rgba(255,160,80,0.05)',
+        }}
+      />
+      {/* Back-plate right */}
+      <motion.div
+        style={{
+          x: plate2.x, y: plate2.y,
+          position: 'absolute',
+          right: '6%',
+          top: '22%',
+          width: 'clamp(120px, 14vw, 240px)',
+          height: 'clamp(200px, 34vh, 400px)',
+          background: 'rgba(255,60,10,0.03)',
+          border: '1px solid rgba(255,90,30,0.06)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: 18,
+          rotate: '9deg',
+          zIndex: 3,
+        }}
+      />
+      {/* Accent plate */}
+      <motion.div
+        style={{
+          x: plate3.x, y: plate3.y,
+          position: 'absolute',
+          right: '20%',
+          bottom: '20%',
+          width: 'clamp(80px, 9vw, 150px)',
+          height: 'clamp(80px, 9vw, 150px)',
+          background: 'rgba(255,80,20,0.05)',
+          border: '1px solid rgba(255,120,50,0.08)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderRadius: 14,
+          rotate: '22deg',
+          zIndex: 3,
+        }}
+      />
+
+      {/* Main content */}
+      <motion.div
+        style={{ x: headlineP.x, y: headlineP.y, position: 'relative', zIndex: 10, width: '100%' }}
+        className="flex flex-col items-center text-center px-6"
       >
-        <div className="max-w-7xl mx-auto w-full flex flex-col flex-1">
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}
+        >
+          <span style={{
+            display: 'inline-block', width: 32, height: 1,
+            background: 'linear-gradient(90deg, transparent, rgba(255,100,40,0.7))',
+          }} />
+          <span style={{
+            fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase',
+            color: 'rgba(255,150,90,0.6)', fontFamily: '"DM Sans", sans-serif',
+          }}>
+            Dubai's Premier Growth Agency
+          </span>
+          <span style={{
+            display: 'inline-block', width: 32, height: 1,
+            background: 'linear-gradient(90deg, rgba(255,100,40,0.7), transparent)',
+          }} />
+        </motion.div>
 
-          {/* Eyebrow */}
-          <motion.div
-            className="flex items-center gap-4 mb-10"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <motion.span
-              className="block h-px bg-gradient-to-r from-transparent via-orange-600 to-transparent"
-              style={{ width: 0 }}
-              animate={{ width: 40 }}
-              transition={{ duration: 0.9, delay: 0.1 }}
-            />
-            <span className="label-sm" style={{ color: 'rgba(255,160,80,0.65)' }}>
-              Dubai · Social Media Marketing Agency
+        {/* Giant display type */}
+        <div style={{
+          fontFamily: '"DM Sans", system-ui, sans-serif',
+          fontSize: 'clamp(68px, 15vw, 210px)',
+          lineHeight: 0.88,
+          fontWeight: 800,
+          userSelect: 'none',
+          letterSpacing: '-0.03em',
+        }}>
+          {/* IGNITE — outlined */}
+          <motion.div {...wipe(0.3)} style={{ display: 'block', overflow: 'hidden' }}>
+            <span style={{
+              WebkitTextStroke: '1.5px rgba(255,255,255,0.72)',
+              WebkitTextFillColor: 'transparent',
+              color: 'transparent',
+              display: 'block',
+            }}>
+              IGNITE
             </span>
           </motion.div>
 
-          {/* Headline — three lines, each animated up */}
-          <div style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>
-            {lines.map(({ text, serif, size, weight, color, italic, delay, gradient }) => (
-              <div key={text} style={{ overflow: 'hidden' }}>
-                <motion.div
-                  initial={{ y: '115%', skewY: 1.5 }}
-                  animate={{ y: 0, skewY: 0 }}
-                  transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay }}
-                >
-                  <span
-                    style={{
-                      display: 'block',
-                      fontFamily: serif ? '"Cormorant Garamond", Georgia, serif' : '"DM Sans", system-ui, sans-serif',
-                      fontStyle: italic ? 'italic' : 'normal',
-                      fontWeight: weight,
-                      fontSize: size,
-                      lineHeight: 0.91,
-                      letterSpacing: '-0.02em',
-                      color: gradient ? undefined : color,
-                      background: gradient ? 'linear-gradient(135deg, #E83000 0%, #FF6B35 60%, #FF9550 100%)' : undefined,
-                      WebkitBackgroundClip: gradient ? 'text' : undefined,
-                      WebkitTextFillColor: gradient ? 'transparent' : undefined,
-                      backgroundClip: gradient ? 'text' : undefined,
-                    }}
-                  >
-                    {text}
-                  </span>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-
-          {/* Tagline + CTAs */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.85 }}
-          >
-            <p style={{ color: 'rgba(255,210,180,0.3)', fontSize: 13, lineHeight: 1.75, maxWidth: 300, fontWeight: 300 }}>
-              We build social ecosystems that generate real, measurable results for Dubai's most ambitious brands.
-            </p>
-            <div className="flex items-center gap-6 shrink-0">
-              <a href="#booking" className="btn-primary">Free Strategy Call</a>
-              <a href="#results" className="btn-ghost">
-                Our Work
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
+          {/* .SCALE — solid ember gradient */}
+          <motion.div {...wipe(0.62)} style={{ display: 'block', overflow: 'hidden' }}>
+            <span style={{
+              background: 'linear-gradient(135deg, #E83000 0%, #FF6820 48%, #FFAA60 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              display: 'block',
+            }}>
+              .SCALE
+            </span>
           </motion.div>
-
-          {/* ── Layer 2: Voyager2-style 3D data cards (bottom, perspective row) ── */}
-          <div className="mt-auto pt-14 pb-0 flex justify-center" style={{ zIndex: 8, perspective: 1000 }}>
-            <div className="flex items-end justify-center" style={{ gap: 0 }}>
-              {dataCards.map((card, i) => (
-                <div
-                  key={card.label}
-                  style={{
-                    marginLeft: i === 0 ? 0 : -28,
-                    zIndex: card.rotateY === 0 ? 3 : 1,
-                    marginBottom: card.rotateY === 0 ? 0 : -18,
-                  }}
-                >
-                  <DataCard
-                    card={card}
-                    mouseX={rawX}
-                    mouseY={rawY}
-                    delay={0.65 + i * 0.1}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      {/* Bottom fade into next section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-44 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #080304 0%, transparent 100%)', zIndex: 12 }}
-      />
+        {/* Sub-headline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.9, delay: 1.0 }}
+          style={{
+            marginTop: 32, maxWidth: 480,
+            fontSize: 'clamp(15px, 1.5vw, 17px)',
+            lineHeight: 1.8,
+            color: 'rgba(255,200,170,0.45)',
+            fontFamily: '"DM Sans", sans-serif',
+            fontWeight: 400,
+          }}
+        >
+          Performance-led social media for Dubai's most ambitious brands.
+          We turn scroll into revenue.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={ready ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.9, delay: 1.25 }}
+          style={{ display: 'flex', gap: 16, marginTop: 44, flexWrap: 'wrap', justifyContent: 'center' }}
+        >
+          <MagneticBtn
+            href="#booking"
+            className="btn-primary"
+            style={{ fontSize: 13, letterSpacing: '0.15em', padding: '14px 36px' }}
+          >
+            Book a Strategy Call
+          </MagneticBtn>
+
+          <MagneticBtn
+            href="#results"
+            style={{
+              fontSize: 13, letterSpacing: '0.15em', padding: '14px 36px',
+              borderRadius: 999,
+              border: '1px solid rgba(255,120,60,0.22)',
+              color: 'rgba(255,180,130,0.7)',
+              fontFamily: '"DM Sans", sans-serif', fontWeight: 500,
+              background: 'rgba(255,60,10,0.04)',
+              cursor: 'pointer',
+              backdropFilter: 'blur(8px)',
+              textDecoration: 'none',
+              display: 'inline-block',
+            }}
+          >
+            See Our Results →
+          </MagneticBtn>
+        </motion.div>
+
+        {/* Stat cards */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={ready ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 1.5 }}
+          style={{ display: 'flex', gap: 14, marginTop: 64, flexWrap: 'wrap', justifyContent: 'center' }}
+        >
+          <DataCard label="Average ROAS"     value="2–5×"  sub="Across all active campaigns"  delay={1.6}  />
+          <DataCard label="CPL Reduction"    value="60%+"  sub="vs. client's previous agency" delay={1.75} />
+          <DataCard label="Active Campaigns" value="25+"   sub="Running across UAE & GCC"     delay={1.9}  />
+          <DataCard label="Client Rating"    value="4.6/5" sub="Based on client feedback"     delay={2.05} />
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={ready ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 2.3 }}
+        style={{
+          position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
+          zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+        }}
+      >
+        <span style={{
+          fontSize: 9, letterSpacing: '0.35em', textTransform: 'uppercase',
+          color: 'rgba(255,150,90,0.3)', fontFamily: '"DM Sans", sans-serif',
+        }}>Scroll</span>
+        <motion.div
+          style={{ width: 1, background: 'rgba(255,100,40,0.3)', originY: 0 }}
+          animate={{ height: [0, 34, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </motion.div>
     </section>
   )
 }
