@@ -211,7 +211,7 @@ export default function Hero() {
 
           {/* Right: description + CTA (desktop only) */}
           <div style={{
-            display: 'flex', flexDirection: 'column', gap: 28,
+            flexDirection: 'column', gap: 28,
             paddingBottom: 'clamp(6px, 1.5vw, 18px)',
             minWidth: 'clamp(220px, 24vw, 380px)',
           }}
