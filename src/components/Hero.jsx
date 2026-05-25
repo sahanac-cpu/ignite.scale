@@ -172,7 +172,7 @@ export default function Hero() {
           }}
         >
 
-          {/* Left: giant type */}
+          {/* Left: type + mobile-only description */}
           <div>
             {/* Eyebrow */}
             <motion.div {...fadeUp(0.1)} style={{
@@ -197,7 +197,6 @@ export default function Hero() {
               fontSize: 'clamp(52px, 14.5vw, 200px)',
               userSelect: 'none',
             }}>
-              {/* IGNITE — outlined */}
               <motion.div {...wipe(0.25)} style={{ display: 'block', overflow: 'hidden' }}>
                 <span style={{
                   WebkitTextStroke: '1.5px rgba(245,235,220,0.7)',
@@ -205,8 +204,6 @@ export default function Hero() {
                   display: 'block',
                 }}>IGNITE</span>
               </motion.div>
-
-              {/* .SCALE — filled ember */}
               <motion.div {...wipe(0.55)} style={{ display: 'block', overflow: 'hidden', marginLeft: 'clamp(12px, 2vw, 36px)' }}>
                 <span style={{
                   background: 'linear-gradient(135deg, #E83000 0%, #FF6820 45%, #FFAA60 100%)',
@@ -215,45 +212,69 @@ export default function Hero() {
                 }}>.SCALE</span>
               </motion.div>
             </div>
+
+            {/* Mobile-only: description + CTA shown below headline */}
+            {!isDesktop && (
+              <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <motion.p {...fadeUp(0.8)} style={{
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: 14, lineHeight: 1.75,
+                  color: 'rgba(240,210,180,0.62)', fontWeight: 400,
+                }}>
+                  We engineer paid social, content and funnels for Dubai's most competitive niches — turning every dirham of ad spend into qualified pipeline.
+                </motion.p>
+                <motion.div {...fadeUp(1.0)}>
+                  <MagneticBtn
+                    href="#booking"
+                    className="btn-primary"
+                    style={{ fontSize: 12, padding: '12px 28px' }}
+                  >
+                    Book a Call
+                  </MagneticBtn>
+                </motion.div>
+              </div>
+            )}
           </div>
 
           {/* Right: description + CTA (desktop only) */}
-          {isDesktop && <div style={{
-            display: 'flex', flexDirection: 'column', gap: 28,
-            paddingBottom: 'clamp(6px, 1.5vw, 18px)',
-            minWidth: 'clamp(220px, 24vw, 380px)',
-          }}>
-            <motion.p {...fadeUp(0.8)} style={{
-              fontFamily: '"DM Sans", sans-serif',
-              fontSize: 'clamp(14px, 1.4vw, 16px)', lineHeight: 1.75,
-              color: 'rgba(240,210,180,0.62)', maxWidth: 340, fontWeight: 400,
+          {isDesktop && (
+            <div style={{
+              display: 'flex', flexDirection: 'column', gap: 28,
+              paddingBottom: 'clamp(6px, 1.5vw, 18px)',
+              minWidth: 'clamp(220px, 24vw, 380px)',
             }}>
-              We engineer paid social, content and funnels for Dubai's most competitive niches — turning
-              every dirham of ad spend into qualified pipeline.
-            </motion.p>
-            <motion.div {...fadeUp(1.0)} style={{ display: 'flex', gap: 12 }}>
-              <MagneticBtn
-                href="#booking"
-                className="btn-primary"
-                style={{ fontSize: 12, padding: '12px 28px' }}
-              >
-                Book a Call
-              </MagneticBtn>
-              <MagneticBtn
-                href="#results"
-                style={{
-                  fontSize: 12, letterSpacing: '0.15em', padding: '12px 24px',
-                  borderRadius: 999, border: '1px solid rgba(255,130,60,0.22)',
-                  color: 'rgba(240,200,155,0.7)', fontFamily: '"DM Sans", sans-serif',
-                  fontWeight: 500, background: 'rgba(255,60,10,0.04)',
-                  textDecoration: 'none', display: 'inline-block',
-                  backdropFilter: 'blur(8px)',
-                }}
-              >
-                Our Work →
-              </MagneticBtn>
-            </motion.div>
-          </div>}
+              <motion.p {...fadeUp(0.8)} style={{
+                fontFamily: '"DM Sans", sans-serif',
+                fontSize: 'clamp(14px, 1.4vw, 16px)', lineHeight: 1.75,
+                color: 'rgba(240,210,180,0.62)', maxWidth: 340, fontWeight: 400,
+              }}>
+                We engineer paid social, content and funnels for Dubai's most competitive niches — turning
+                every dirham of ad spend into qualified pipeline.
+              </motion.p>
+              <motion.div {...fadeUp(1.0)} style={{ display: 'flex', gap: 12 }}>
+                <MagneticBtn
+                  href="#booking"
+                  className="btn-primary"
+                  style={{ fontSize: 12, padding: '12px 28px' }}
+                >
+                  Book a Call
+                </MagneticBtn>
+                <MagneticBtn
+                  href="#results"
+                  style={{
+                    fontSize: 12, letterSpacing: '0.15em', padding: '12px 24px',
+                    borderRadius: 999, border: '1px solid rgba(255,130,60,0.22)',
+                    color: 'rgba(240,200,155,0.7)', fontFamily: '"DM Sans", sans-serif',
+                    fontWeight: 500, background: 'rgba(255,60,10,0.04)',
+                    textDecoration: 'none', display: 'inline-block',
+                    backdropFilter: 'blur(8px)',
+                  }}
+                >
+                  Our Work →
+                </MagneticBtn>
+              </motion.div>
+            </div>
+          )}
         </div>
 
         {/* ── Bottom strip: thin rule + stats ── */}
