@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import ParticleCanvas from './ParticleCanvas'
 
@@ -68,7 +68,14 @@ function StatPill({ val, label }) {
 /* ── Main ────────────────────────────────────────────────── */
 export default function Hero() {
   const [ready, setReady] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(() => window.innerWidth >= 768)
   const heroRef = useRef(null)
+
+  useEffect(() => {
+    const fn = () => setIsDesktop(window.innerWidth >= 768)
+    window.addEventListener('resize', fn, { passive: true })
+    return () => window.removeEventListener('resize', fn)
+  }, [])
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
 
@@ -211,13 +218,11 @@ export default function Hero() {
           </div>
 
           {/* Right: description + CTA (desktop only) */}
-          <div style={{
-            flexDirection: 'column', gap: 28,
+          {isDesktop && <div style={{
+            display: 'flex', flexDirection: 'column', gap: 28,
             paddingBottom: 'clamp(6px, 1.5vw, 18px)',
             minWidth: 'clamp(220px, 24vw, 380px)',
-          }}
-            className="hidden md:flex"
-          >
+          }}>
             <motion.p {...fadeUp(0.8)} style={{
               fontFamily: '"DM Sans", sans-serif',
               fontSize: 'clamp(14px, 1.4vw, 16px)', lineHeight: 1.75,
@@ -248,7 +253,7 @@ export default function Hero() {
                 Our Work →
               </MagneticBtn>
             </motion.div>
-          </div>
+          </div>}
         </div>
 
         {/* ── Bottom strip: thin rule + stats ── */}
