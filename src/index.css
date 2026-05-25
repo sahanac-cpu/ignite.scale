@@ -172,4 +172,19 @@
     @apply text-[10px] font-medium tracking-[0.4em] uppercase;
     color: rgba(200, 210, 255, 0.35);
   }
+
+  /* ─── Hero responsive layout (explicit media query, no framework ambiguity) ─── */
+  .hero-layout      { display: block; }
+  .hero-desc-mobile { display: flex; flex-direction: column; }
+  .hero-desc-pc     { display: none; }
+
+  @media (min-width: 1024px) {
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+    .hero-desc-mobile { display: none; }
+    .hero-desc-pc     { display: flex; }
+  }
 }
