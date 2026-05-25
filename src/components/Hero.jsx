@@ -156,13 +156,14 @@ export default function Hero() {
         className="flex flex-col justify-center"
       >
         {/* ── Wide editorial layout ── */}
-        <div style={{
-          padding: 'clamp(60px, 12vh, 130px) clamp(20px, 7vw, 100px) 0',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: 'clamp(20px, 4vw, 60px)',
-          alignItems: 'flex-end',
-        }}>
+        <div
+          className="md:grid md:items-end"
+          style={{
+            padding: 'clamp(60px, 12vh, 130px) clamp(20px, 7vw, 100px) 0',
+            gridTemplateColumns: '1fr auto',
+            gap: 'clamp(20px, 4vw, 60px)',
+          }}
+        >
 
           {/* Left: giant type */}
           <div>
