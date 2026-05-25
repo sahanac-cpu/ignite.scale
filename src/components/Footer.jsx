@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 const footerLinks = {
   Services: ['Social Media', 'Paid Advertising', 'Content Production', 'Website Design'],
   Company: ['About Us', 'Case Studies', 'Process', 'Careers'],
