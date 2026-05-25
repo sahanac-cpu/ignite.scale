@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
@@ -37,6 +38,7 @@ export default function App() {
 
         <Chatbot />
       </div>
+      <Analytics />
     </BrowserRouter>
   )
 }
