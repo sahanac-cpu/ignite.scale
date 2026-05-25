@@ -156,9 +156,9 @@ export default function Testimonials() {
                 <div style={{
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontStyle: 'italic',
-                  fontSize: 'clamp(60px, 10vw, 100px)',
+                  fontSize: 'clamp(48px, 10vw, 100px)',
                   lineHeight: 0.6,
-                  marginBottom: 'clamp(12px, 2vw, 20px)',
+                  marginBottom: 'clamp(10px, 2vw, 20px)',
                   color: 'rgba(232,80,0,0.35)',
                   display: 'block',
                 }}>"</div>
@@ -178,7 +178,7 @@ export default function Testimonials() {
                 </blockquote>
 
                 {/* Author row */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                     {/* Avatar */}
                     <div style={{
@@ -216,8 +216,9 @@ export default function Testimonials() {
                   {/* Metric badge */}
                   <div style={{
                     textAlign: 'right',
-                    borderLeft: '1px solid rgba(232,80,0,0.14)',
-                    paddingLeft: 20,
+                    borderLeft: '1px solid rgba(232,80,0,0.18)',
+                    paddingLeft: 16,
+                    flexShrink: 0,
                   }}>
                     <div style={{
                       fontFamily: '"DM Sans", sans-serif', fontWeight: 800,

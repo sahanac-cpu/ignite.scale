@@ -127,24 +127,28 @@ export default function Hero() {
         />
       </div>
 
-      {/* Back-plates — slightly cool-tinted glass */}
-      <motion.div style={{
-        x: px1, y: py1,
-        position: 'absolute', left: '2%', top: '10%',
-        width: 'clamp(140px, 14vw, 260px)', height: 'clamp(220px, 36vh, 460px)',
-        background: 'rgba(30,45,120,0.04)', border: '1px solid rgba(100,140,255,0.09)',
-        backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)',
-        borderRadius: 18, rotate: '-6deg', zIndex: 3,
-        boxShadow: 'inset 0 1px 0 rgba(120,160,255,0.06)',
-      }} />
-      <motion.div style={{
-        x: px2, y: py2,
-        position: 'absolute', right: '4%', top: '18%',
-        width: 'clamp(110px, 12vw, 220px)', height: 'clamp(180px, 30vh, 380px)',
-        background: 'rgba(20,35,110,0.035)', border: '1px solid rgba(80,120,255,0.07)',
-        backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)',
-        borderRadius: 16, rotate: '8deg', zIndex: 3,
-      }} />
+      {/* Back-plates — hidden on mobile, decorative on desktop */}
+      <motion.div
+        className="hidden md:block"
+        style={{
+          x: px1, y: py1,
+          position: 'absolute', left: '2%', top: '10%',
+          width: 'clamp(140px, 14vw, 260px)', height: 'clamp(220px, 36vh, 460px)',
+          background: 'rgba(30,45,120,0.04)', border: '1px solid rgba(100,140,255,0.09)',
+          backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)',
+          borderRadius: 18, rotate: '-6deg', zIndex: 3,
+          boxShadow: 'inset 0 1px 0 rgba(120,160,255,0.06)',
+        }} />
+      <motion.div
+        className="hidden md:block"
+        style={{
+          x: px2, y: py2,
+          position: 'absolute', right: '4%', top: '18%',
+          width: 'clamp(110px, 12vw, 220px)', height: 'clamp(180px, 30vh, 380px)',
+          background: 'rgba(20,35,110,0.035)', border: '1px solid rgba(80,120,255,0.07)',
+          backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)',
+          borderRadius: 16, rotate: '8deg', zIndex: 3,
+        }} />
 
       {/* ── Main content ── */}
       <motion.div
@@ -153,7 +157,7 @@ export default function Hero() {
       >
         {/* ── Wide editorial layout ── */}
         <div style={{
-          padding: 'clamp(80px, 12vh, 130px) clamp(24px, 7vw, 100px) 0',
+          padding: 'clamp(60px, 12vh, 130px) clamp(20px, 7vw, 100px) 0',
           display: 'grid',
           gridTemplateColumns: '1fr auto',
           gap: 'clamp(20px, 4vw, 60px)',
@@ -182,7 +186,7 @@ export default function Hero() {
               fontFamily: '"DM Sans", system-ui, sans-serif',
               fontWeight: 800, lineHeight: 0.86,
               letterSpacing: '-0.03em',
-              fontSize: 'clamp(76px, 14.5vw, 200px)',
+              fontSize: 'clamp(52px, 14.5vw, 200px)',
               userSelect: 'none',
             }}>
               {/* IGNITE — outlined */}

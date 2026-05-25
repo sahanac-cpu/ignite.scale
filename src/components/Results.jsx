@@ -55,8 +55,19 @@ const cases = [
   },
 ]
 
+/* ── Mobile breakpoint hook ──────────────────────────────── */
+function useIsMobile(bp = 768) {
+  const [m, setM] = useState(() => window.innerWidth < bp)
+  useEffect(() => {
+    const fn = () => setM(window.innerWidth < bp)
+    window.addEventListener('resize', fn, { passive: true })
+    return () => window.removeEventListener('resize', fn)
+  }, [bp])
+  return m
+}
+
 /* ── Single Voyager card ─────────────────────────────────── */
-function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay }) {
+function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay, isMobile }) {
   const ref    = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const mx = useMotionValue(0)
@@ -74,13 +85,15 @@ function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: isMobile ? 24 : 60 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay }}
       style={{
         perspective: 900,
         position: 'relative',
         zIndex,
+        scrollSnapAlign: isMobile ? 'start' : undefined,
+        flexShrink: 0,
       }}
     >
       <motion.div
@@ -88,11 +101,11 @@ function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay }) {
         onMouseLeave={onLeave}
         style={{
           rotateX: isCenter ? rx : 0,
-          rotateY: isCenter ? ry : rotateY,
-          scale,
+          rotateY: isMobile ? 0 : (isCenter ? ry : rotateY),
+          scale: isMobile ? 1 : scale,
           transformStyle: 'preserve-3d',
-          width:        'clamp(200px, 18vw, 280px)',
-          height:       'clamp(300px, 40vh, 460px)',
+          width:        isMobile ? '240px' : 'clamp(200px, 18vw, 280px)',
+          height:       isMobile ? '320px' : 'clamp(300px, 40vh, 460px)',
           borderRadius: 20,
           background:   c.gradient,
           overflow:     'hidden',
@@ -103,7 +116,7 @@ function VoyagerCard({ c, rotateY, scale, zIndex, isCenter, delay }) {
             : '0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)',
           flexShrink: 0,
         }}
-        whileHover={isCenter ? {} : { rotateY: rotateY * 0.55, scale: scale + 0.04 }}
+        whileHover={isMobile ? { scale: 1.02 } : (isCenter ? {} : { rotateY: rotateY * 0.55, scale: scale + 0.04 })}
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         data-cursor="hover"
       >
@@ -212,6 +225,7 @@ function AnimStat({ rawDisplay, target, suffix, label }) {
 export default function Results() {
   const headRef = useRef(null)
   const inView  = useInView(headRef, { once: true, margin: '-60px' })
+  const isMobile = useIsMobile()
 
   const fanConfig = [
     { rotateY:  32, scale: 0.82, zIndex: 1, delay: 0.3 },
@@ -280,15 +294,20 @@ export default function Results() {
       {/* Fan of cards */}
       <div style={{
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        gap: 'clamp(-20px, -1.5vw, -8px)',
-        padding: '0 clamp(12px, 4vw, 60px)',
-        perspective: 1200,
-        perspectiveOrigin: '50% 80%',
+        justifyContent: isMobile ? 'flex-start' : 'center',
+        alignItems: isMobile ? 'flex-start' : 'flex-end',
+        gap: isMobile ? 12 : 'clamp(-20px, -1.5vw, -8px)',
+        padding: isMobile ? '0 20px 40px' : '0 clamp(12px, 4vw, 60px)',
+        paddingBottom: isMobile ? 40 : 32,
+        perspective: isMobile ? undefined : 1200,
+        perspectiveOrigin: isMobile ? undefined : '50% 80%',
         overflowX: 'auto',
-        overflowY: 'visible',
-        paddingBottom: 32,
+        overflowY: isMobile ? 'hidden' : 'visible',
+        scrollSnapType: isMobile ? 'x mandatory' : undefined,
+        scrollPaddingLeft: isMobile ? '20px' : undefined,
+        WebkitOverflowScrolling: 'touch',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
       }}>
         {cases.map((c, i) => (
           <VoyagerCard
@@ -299,9 +318,23 @@ export default function Results() {
             zIndex={fanConfig[i].zIndex}
             isCenter={!!fanConfig[i].isCenter}
             delay={fanConfig[i].delay}
+            isMobile={isMobile}
           />
         ))}
       </div>
+      {/* Mobile swipe hint */}
+      {isMobile && (
+        <div style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 6,
+          marginTop: -16, marginBottom: 8,
+          fontFamily: '"DM Sans", sans-serif', fontSize: 9,
+          letterSpacing: '0.3em', textTransform: 'uppercase',
+          color: 'rgba(240,200,165,0.28)',
+        }}>
+          <span>Swipe to explore</span>
+          <span style={{ color: 'rgba(232,80,0,0.4)', fontSize: 11 }}>→</span>
+        </div>
+      )}
 
       {/* Aggregate strip */}
       <motion.div
