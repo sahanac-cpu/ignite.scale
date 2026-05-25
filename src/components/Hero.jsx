@@ -157,10 +157,9 @@ export default function Hero() {
       >
         {/* ── Wide editorial layout ── */}
         <div
-          className="lg:grid lg:items-end"
+          className="hero-layout"
           style={{
             padding: 'clamp(60px, 12vh, 130px) clamp(20px, 7vw, 100px) 0',
-            gridTemplateColumns: '1fr auto',
             gap: 'clamp(20px, 4vw, 60px)',
           }}
         >
@@ -207,7 +206,7 @@ export default function Hero() {
             </div>
 
             {/* Description shown BELOW headline on all screens < lg */}
-            <div className="flex flex-col lg:hidden" style={{ marginTop: 32, gap: 20 }}>
+            <div className="hero-desc-mobile" style={{ marginTop: 32, gap: 20 }}>
               <motion.p {...fadeUp(0.8)} style={{
                 fontFamily: '"DM Sans", sans-serif',
                 fontSize: 15, lineHeight: 1.8,
@@ -229,7 +228,7 @@ export default function Hero() {
           </div>
 
           {/* Right column — only visible on large screens (lg+) */}
-          <div className="hidden lg:flex" style={{
+          <div className="hero-desc-pc" style={{
             flexDirection: 'column', gap: 28,
             paddingBottom: 'clamp(6px, 1.5vw, 18px)',
             minWidth: 'clamp(220px, 24vw, 380px)',
