@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ignite.scale — cinematic atmospheric design system
+   Palette : cold deep-petrol base + warm peach/amber glow
+   Type    : Bricolage Grotesque (display) + Hanken Grotesk (text)
+   Mood    : a bioluminescent night meadow lit by warm lantern light
+   ============================================================ */
+
+:root {
+  /* ── Surfaces — cold petrol, near-black with teal undertone ── */
+  --bg-0:        #06110E;   /* page */
+  --bg-1:        #0B1A16;   /* elevated surface */
+  --bg-2:        #122A23;   /* raised plate / hover */
+  --bg-glass:    rgba(18, 42, 35, 0.42);
+
+  /* ── Ink — cool off-white ── */
+  --ink:         #ECEFEA;
+  --ink-dim:     rgba(236, 239, 234, 0.66);
+  --ink-mute:    rgba(236, 239, 234, 0.44);
+  --ink-faint:   rgba(236, 239, 234, 0.16);
+
+  /* ── Hairlines ── */
+  --line:        rgba(236, 239, 234, 0.10);
+  --line-strong: rgba(236, 239, 234, 0.20);
+
+  /* ── Accent — warm peach / amber (the glow) ── */
+  --accent:      #EBA877;   /* primary interactive */
+  --accent-soft: #F4CBA3;   /* light glow */
+  --accent-deep: #C97A40;   /* pressed / deep */
+  --accent-glow: rgba(235, 168, 119, 0.30);
+
+  /* ── Decorative cool bioluminescence (sparingly) ── */
+  --mint:        #9DE9C9;
+  --mint-glow:   rgba(157, 233, 201, 0.22);
+
+  /* ── z-index scale ── */
+  --z-nav: 100;
+  --z-overlay: 150;
+  --z-cursor: 200;
+  --z-grain: 300;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-0);
+    color: var(--ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection { background: var(--accent); color: var(--bg-0); }
+
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: var(--bg-0); }
+  ::-webkit-scrollbar-thumb { background: var(--bg-2); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #1c3b32; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+
+  /* ── Layout shell ── */
+  .shell { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 64px); }
+  .section { padding-block: clamp(72px, 11vw, 160px); }
+
+  /* ── Eyebrow / label (used as a deliberate brand element, not on every section) ── */
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ── Display emphasis: italic concept word (Bricolage italic, no serif cliché) ── */
+  .accent-word {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-soft);
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #1a0f06;
+  }
+  .btn-primary:hover { background: var(--accent-soft); }
+
+  .btn-ghost {
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    background: rgba(236, 239, 234, 0.015);
+  }
+  .btn-ghost:hover { border-color: var(--ink-dim); background: rgba(236, 239, 234, 0.05); }
+
+  /* ── Glass pill (used purposefully — echoes the reference's floating pills) ── */
+  .glass-pill {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  /* ── Hairline rule ── */
+  .rule { height: 1px; width: 100%; background: var(--line); border: 0; }
+
+  /* ── Link with animated underline ── */
+  .ulink { position: relative; }
+  .ulink::after {
+    content: '';
+    position: absolute; left: 0; bottom: -3px;
+    height: 1px; width: 100%;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .ulink:hover::after, .ulink[data-active="true"]::after { transform: scaleX(1); }
+
+  /* ── Marquee track ── */
+  .marquee-track { display: inline-flex; white-space: nowrap; will-change: transform; animation: marquee 38s linear infinite; }
+  .marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+
+  /* ── Horizontal snap rail ── */
+  .snap-rail { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .snap-rail::-webkit-scrollbar { display: none; }
+  .snap-item { scroll-snap-align: start; }
+
+  /* ── Field ── */
+  .field {
+    width: 100%;
+    background: rgba(236, 239, 234, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    padding: 0.9rem 1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .field::placeholder { color: var(--ink-mute); }
+  .field:focus { outline: none; border-color: var(--accent); background: rgba(236, 239, 234, 0.04); }
+  .field option { background: var(--bg-1); color: var(--ink); }
+}
+
+/* ── Film grain overlay ── */
+.grain-overlay {
+  position: fixed; inset: 0; pointer-events: none;
+  z-index: var(--z-grain);
+  opacity: 0.04; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track { animation: none; }
+}
