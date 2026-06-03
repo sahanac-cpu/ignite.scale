@@ -21,9 +21,8 @@ export default function Hero() {
     <section ref={ref} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       {/* Atmospheric layers */}
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: `
-        radial-gradient(120% 90% at 80% 12%, rgba(150,30,36,0.34) 0%, transparent 46%),
-        radial-gradient(90% 80% at 6% 102%, rgba(203,164,90,0.12) 0%, transparent 52%),
-        radial-gradient(140% 120% at 50% 0%, #2A1418 0%, var(--bg-0) 60%)
+        radial-gradient(100% 80% at 50% 100%, rgba(10,5,6,0.55) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(10,5,6,0.35) 0%, transparent 30%)
       ` }} />
       {/* Aura — wine core wrapped in a gold halo */}
       <motion.div aria-hidden="true"
@@ -55,10 +54,8 @@ export default function Hero() {
       {/* Content */}
       <motion.div className="shell" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: 120, paddingBottom: 48, y: contentY, opacity: contentOpacity }}>
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.15 }}
-          style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 'clamp(28px, 5vh, 52px)' }}>
-          <span className="kicker">Growth studio</span>
-          <span style={{ width: 28, height: 1, background: 'var(--line-strong)' }} />
-          <span className="meta">Dubai · UAE</span>
+          style={{ marginBottom: 'clamp(28px, 5vh, 52px)' }}>
+          <span className="pill">Growth studio · Dubai, UAE</span>
         </motion.div>
 
         <h1 style={{ fontSize: 'clamp(42px, 8vw, 96px)', maxWidth: '15ch', letterSpacing: '-0.01em', lineHeight: 1.04 }}>
@@ -84,8 +81,12 @@ export default function Hero() {
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.85 }}
           style={{ marginTop: 'clamp(32px, 5vh, 48px)', display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-          <MagneticButton href="/contact" className="btn btn-primary">Book a strategy call →</MagneticButton>
-          <MagneticButton href="/work" className="btn btn-ghost">See the work</MagneticButton>
+          <MagneticButton href="/contact" className="btn btn-primary">
+            <span className="btn-label">Book a strategy call</span><span className="btn-ico" aria-hidden="true">→</span>
+          </MagneticButton>
+          <MagneticButton href="/work" className="btn btn-ghost">
+            <span className="btn-label">See the work</span><span className="btn-ico" aria-hidden="true">→</span>
+          </MagneticButton>
         </motion.div>
       </motion.div>
 

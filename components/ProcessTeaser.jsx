@@ -1,33 +1,53 @@
 import Link from 'next/link'
 import { process } from '@/lib/content'
-import SectionHead from './SectionHead'
 import Reveal from './Reveal'
 
 export default function ProcessTeaser() {
   return (
     <section className="section shell" id="process">
-      <SectionHead
-        kicker="How we work"
-        title="A four-step loop that gets cheaper as it scales."
-        link={<Link href="/process" className="ulink" data-cursor="hover" style={{ color: 'var(--accent)', fontWeight: 500, width: 'fit-content' }}>See the full process →</Link>}
-      />
-      <ol className="proc-grid">
+      <div className="proc-head">
+        <div>
+          <Reveal as="span" className="pill" style={{ marginBottom: 20, display: 'inline-flex' }}>How we work</Reveal>
+          <Reveal as="h2" delay={0.05} style={{ fontSize: 'clamp(32px, 4.6vw, 60px)', maxWidth: '14ch' }}>
+            A loop that <span className="accent-word">compounds</span>.
+          </Reveal>
+        </div>
+        <Reveal delay={0.1} style={{ maxWidth: '40ch', alignSelf: 'end' }}>
+          <p style={{ color: 'var(--ink-dim)', fontSize: 16, lineHeight: 1.7, marginBottom: 18 }}>
+            Four steps, run on repeat. Each cycle teaches the next, so your cost per result falls as spend rises.
+          </p>
+          <Link href="/process" className="ulink" data-cursor="hover" style={{ color: 'var(--accent)', fontWeight: 500 }}>See the full process →</Link>
+        </Reveal>
+      </div>
+
+      <div className="proc-grid">
         {process.map((p, i) => (
-          <Reveal as="li" key={p.n} delay={i * 0.06} className="proc-step">
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 600, color: 'var(--accent)', lineHeight: 1 }}>{p.n}</span>
-            <h3 style={{ fontSize: 21, marginBlock: '16px 10px' }}>{p.title}</h3>
-            <p style={{ color: 'var(--ink-dim)', fontSize: 14.5, lineHeight: 1.65 }}>{p.body}</p>
+          <Reveal key={p.n} delay={i * 0.08}>
+            <div className="bezel proc-card">
+              <div className="bezel-core" style={{ padding: 'clamp(22px, 2vw, 30px)', display: 'flex', flexDirection: 'column', gap: 16, height: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 26, color: 'var(--accent)' }}>{p.n}</span>
+                  <span className="proc-dot" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 style={{ fontSize: 22, marginBottom: 10 }}>{p.title}</h3>
+                  <p style={{ color: 'var(--ink-dim)', fontSize: 14.5, lineHeight: 1.6 }}>{p.body}</p>
+                </div>
+              </div>
+            </div>
           </Reveal>
         ))}
-      </ol>
+      </div>
+
       <style>{`
-        .proc-grid { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
-        .proc-step { padding: clamp(26px, 3vw, 40px) 0; border-bottom: 1px solid var(--line); }
-        @media (min-width: 720px) {
-          .proc-grid { grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
-          .proc-step { padding: clamp(28px,3vw,44px) clamp(20px,2vw,28px) clamp(28px,3vw,44px) 0; border-bottom: none; border-right: 1px solid var(--line); }
-          .proc-step:last-child { border-right: none; }
-        }
+        .proc-head { display: grid; gap: 28px; margin-bottom: clamp(40px, 5vw, 64px); }
+        @media (min-width: 880px) { .proc-head { grid-template-columns: 1fr 1fr; align-items: end; gap: 56px; } }
+        .proc-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 560px) { .proc-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 1000px) { .proc-grid { grid-template-columns: repeat(4, 1fr); } }
+        .proc-card { height: 100%; transition: transform .6s var(--ease-drawer); }
+        .proc-card:hover { transform: translateY(-4px); }
+        .proc-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
       `}</style>
     </section>
   )

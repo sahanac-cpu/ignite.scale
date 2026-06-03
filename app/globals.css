@@ -11,10 +11,10 @@
 
 :root {
   /* ── Surfaces — deep wine-tinted black ── */
-  --bg-0:        #130A0C;   /* page */
-  --bg-1:        #1B0F12;   /* elevated surface */
-  --bg-2:        #271619;   /* raised plate / hover */
-  --bg-glass:    rgba(39, 22, 25, 0.52);
+  --bg-0:        #0A0506;   /* page — near-OLED wine-black */
+  --bg-1:        #150C0E;   /* elevated surface */
+  --bg-2:        #211418;   /* raised plate / hover */
+  --bg-glass:    rgba(33, 20, 24, 0.55);
 
   /* ── Ink — warm cream ── */
   --ink:         #F1EADF;
@@ -41,7 +41,13 @@
   --mint:        #E7CE92;
   --mint-glow:   rgba(203, 164, 90, 0.26);
 
+  /* ── Easing (strong custom curves — never the weak CSS defaults) ── */
+  --ease-out:   cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-io:    cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:cubic-bezier(0.32, 0.72, 0, 1);
+
   /* ── z-index scale ── */
+  --z-bg: 0;
   --z-nav: 100;
   --z-overlay: 150;
   --z-cursor: 200;
@@ -57,8 +63,10 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  html { background-color: var(--bg-0); }
+
   body {
-    background-color: var(--bg-0);
+    background-color: transparent;
     color: var(--ink);
     font-family: var(--font-sans), system-ui, sans-serif;
     font-size: 16px;
@@ -141,22 +149,68 @@
                 background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     will-change: transform;
   }
+  .btn:active { transform: scale(0.97); }
+  .btn:has(.btn-ico) { padding-right: 0.5rem; }
+  .btn-label { padding-left: 0.6rem; }
+  /* Button-in-button trailing icon */
+  .btn-ico {
+    width: 30px; height: 30px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+    transition: transform 0.5s var(--ease-drawer), background-color 0.3s var(--ease-out);
+  }
+
   .btn-primary {
     background: linear-gradient(135deg, #B98E3F 0%, var(--accent) 52%, #E7CE92 100%);
     color: #1A0B0D;
     box-shadow: 0 6px 22px rgba(0,0,0,0.45), 0 0 0 1px rgba(231,206,146,0.18);
   }
+  .btn-primary .btn-ico { background: rgba(26,11,13,0.16); }
   .btn-primary:hover {
     background: linear-gradient(135deg, var(--accent) 0%, #E7CE92 100%);
     box-shadow: 0 8px 30px rgba(0,0,0,0.55), 0 0 36px var(--accent-glow);
   }
+  .btn-primary:hover .btn-ico { transform: translate(3px, -3px); background: rgba(26,11,13,0.26); }
 
   .btn-ghost {
     color: var(--ink);
     border: 1px solid var(--line-strong);
-    background: rgba(236, 239, 234, 0.015);
+    background: rgba(241, 234, 223, 0.02);
   }
-  .btn-ghost:hover { border-color: var(--ink-dim); background: rgba(236, 239, 234, 0.05); }
+  .btn-ghost .btn-ico { background: rgba(241,234,223,0.08); }
+  .btn-ghost:hover { border-color: var(--accent); background: rgba(241, 234, 223, 0.05); }
+  .btn-ghost:hover .btn-ico { transform: translate(3px, -3px); color: var(--accent); }
+
+  /* ── Double-bezel: a glass plate sitting in a machined tray ── */
+  .bezel {
+    padding: 7px;
+    border-radius: 26px;
+    background: rgba(241, 234, 223, 0.035);
+    border: 1px solid rgba(241, 234, 223, 0.07);
+    box-shadow: inset 0 1px 0 rgba(241,234,223,0.06), 0 30px 60px -30px rgba(0,0,0,0.8);
+  }
+  .bezel-core {
+    border-radius: 19px;
+    background: var(--bg-1);
+    box-shadow: inset 0 1px 1px rgba(241,234,223,0.06);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+
+  /* ── Eyebrow pill badge ── */
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 14px; border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(203,164,90,0.06);
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--accent-soft);
+  }
+  .pill::before {
+    content: ''; width: 5px; height: 5px; border-radius: 999px;
+    background: var(--accent); box-shadow: 0 0 10px var(--accent);
+  }
 
   /* ── Glass pill (used purposefully — echoes the reference's floating pills) ── */
   .glass-pill {
@@ -221,6 +275,37 @@
   to   { transform: translateX(-50%); }
 }
 
+/* ── Aurora mesh: slow drifting blobs (transform/opacity only) ── */
+@keyframes drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(8vw, 6vh, 0) scale(1.18); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); }
+  50%      { transform: translate3d(-7vw, -5vh, 0) scale(0.92); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.95); }
+  50%      { transform: translate3d(5vw, -8vh, 0) scale(1.2); }
+}
+.aurora {
+  position: fixed; inset: 0; z-index: var(--z-bg);
+  pointer-events: none; overflow: hidden;
+}
+.aurora span {
+  position: absolute; border-radius: 50%;
+  filter: blur(70px); opacity: 0.5; will-change: transform;
+}
+.aurora .a1 { width: 60vw; height: 60vw; left: 48%; top: -18%;
+  background: radial-gradient(circle, rgba(150,30,36,0.55), transparent 66%);
+  animation: drift-a 26s var(--ease-io) infinite; }
+.aurora .a2 { width: 48vw; height: 48vw; left: -12%; top: 38%;
+  background: radial-gradient(circle, rgba(203,164,90,0.30), transparent 64%);
+  animation: drift-b 32s var(--ease-io) infinite; }
+.aurora .a3 { width: 40vw; height: 40vw; left: 58%; top: 64%;
+  background: radial-gradient(circle, rgba(110,18,24,0.5), transparent 66%);
+  animation: drift-c 30s var(--ease-io) infinite; }
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -230,4 +315,5 @@
     scroll-behavior: auto !important;
   }
   .marquee-track { animation: none; }
+  .aurora span { animation: none !important; }
 }
