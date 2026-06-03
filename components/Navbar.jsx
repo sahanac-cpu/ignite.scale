@@ -27,11 +27,12 @@ export default function Navbar() {
     <header
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 'var(--z-nav)',
-        transition: 'background-color .4s ease, border-color .4s ease, backdrop-filter .4s ease',
-        backgroundColor: scrolled ? 'rgba(6,17,14,0.72)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(140%)' : 'none',
-        borderBottom: `1px solid ${scrolled ? 'var(--line)' : 'transparent'}`,
+        transition: 'background-color .4s ease, border-color .4s ease, backdrop-filter .4s ease, box-shadow .4s ease',
+        backgroundColor: scrolled ? 'rgba(27,15,18,0.86)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+        borderBottom: `1px solid ${scrolled ? 'var(--line-strong)' : 'transparent'}`,
+        boxShadow: scrolled ? '0 10px 40px rgba(0,0,0,0.45)' : 'none',
       }}
     >
       <div

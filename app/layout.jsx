@@ -1,5 +1,5 @@
 import './globals.css'
-import { Bricolage_Grotesque, Hanken_Grotesk } from 'next/font/google'
+import { Bodoni_Moda, Hanken_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { site } from '@/lib/site'
 import Navbar from '@/components/Navbar'
@@ -7,11 +7,12 @@ import Footer from '@/components/Footer'
 import Cursor from '@/components/Cursor'
 import PageTransition from '@/components/PageTransition'
 
-const display = Bricolage_Grotesque({
+const display = Bodoni_Moda({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 })
 
 const sans = Hanken_Grotesk({
@@ -46,6 +47,7 @@ export const metadata = {
   twitter: { card: 'summary_large_image', title: 'Ignite Scale', description: site.description },
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
+  icons: { icon: '/favicon.svg' },
 }
 
 export const viewport = {

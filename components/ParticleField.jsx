@@ -20,8 +20,8 @@ export default function ParticleField({ density = 0.00009 }) {
     let raf = null
     let running = true
 
-    const COOL = [240, 180, 140]   // warm ember
-    const WARM = [212, 69, 69]     // crimson spark
+    const COOL = [231, 206, 146]   // champagne gold
+    const WARM = [192, 69, 76]     // wine spark
 
     const build = () => {
       const rect = canvas.getBoundingClientRect()

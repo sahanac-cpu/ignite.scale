@@ -24,12 +24,12 @@ export default function Statement() {
         position: 'absolute', left: '50%', top: '50%', x: '-50%', y: glowY, scale: glowScale,
         width: 'clamp(420px, 70vw, 1100px)', height: 'clamp(420px, 70vw, 1100px)',
         borderRadius: '50%', filter: 'blur(40px)', pointerEvents: 'none',
-        background: 'radial-gradient(circle, rgba(185,20,20,0.34) 0%, rgba(122,24,24,0.12) 38%, transparent 66%)',
+        background: 'radial-gradient(circle, rgba(150,30,36,0.36) 0%, rgba(203,164,90,0.12) 36%, transparent 66%)',
       }} />
 
       <div className="shell" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
         <p className="kicker" style={{ marginBottom: 28 }}>Why we exist</p>
-        <h2 style={{ fontSize: 'clamp(34px, 7vw, 88px)', lineHeight: 1.06, letterSpacing: '-0.03em', maxWidth: '16ch', marginInline: 'auto' }}>
+        <h2 style={{ fontSize: 'clamp(34px, 7vw, 88px)', lineHeight: 1.1, letterSpacing: '-0.005em', maxWidth: '16ch', marginInline: 'auto' }}>
           {words.map((w, i) => {
             const isAccent = w === 'compounds.'
             return (

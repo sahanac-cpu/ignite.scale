@@ -10,31 +10,36 @@
    ============================================================ */
 
 :root {
-  /* ── Surfaces — warm sepia-tinted charcoal ── */
-  --bg-0:        #161114;   /* page */
-  --bg-1:        #1D181B;   /* elevated surface */
-  --bg-2:        #251F22;   /* raised plate / hover */
-  --bg-glass:    rgba(37, 31, 34, 0.50);
+  /* ── Surfaces — deep wine-tinted black ── */
+  --bg-0:        #130A0C;   /* page */
+  --bg-1:        #1B0F12;   /* elevated surface */
+  --bg-2:        #271619;   /* raised plate / hover */
+  --bg-glass:    rgba(39, 22, 25, 0.52);
 
   /* ── Ink — warm cream ── */
-  --ink:         #EDE6DC;
-  --ink-dim:     rgba(237, 230, 220, 0.64);
-  --ink-mute:    rgba(237, 230, 220, 0.40);
-  --ink-faint:   rgba(237, 230, 220, 0.14);
+  --ink:         #F1EADF;
+  --ink-dim:     rgba(241, 234, 223, 0.66);
+  --ink-mute:    rgba(241, 234, 223, 0.44);
+  --ink-faint:   rgba(241, 234, 223, 0.15);
 
-  /* ── Hairlines ── */
-  --line:        rgba(237, 230, 220, 0.10);
-  --line-strong: rgba(237, 230, 220, 0.20);
+  /* ── Hairlines (gold-tinted for luxury) ── */
+  --line:        rgba(241, 234, 223, 0.10);
+  --line-strong: rgba(203, 164, 90, 0.30);
 
-  /* ── Accent — deep crimson ── */
-  --accent:      #D44545;   /* primary interactive / text accent on dark */
-  --accent-soft: #E87171;   /* light highlight */
-  --accent-deep: #B91414;   /* button base / deep */
-  --accent-glow: rgba(185, 20, 20, 0.32);
+  /* ── Accent — champagne gold ── */
+  --accent:      #CBA45A;   /* primary interactive / kickers / lines */
+  --accent-soft: #E7CE92;   /* light highlight / accent words */
+  --accent-deep: #9C7A3A;   /* deep / pressed */
+  --accent-glow: rgba(203, 164, 90, 0.30);
 
-  /* ── Ember tints for the particle field ── */
-  --mint:        #F0B48C;
-  --mint-glow:   rgba(212, 69, 69, 0.24);
+  /* ── Wine — deep crimson for atmospheric glows ── */
+  --wine:        #8E1B22;
+  --wine-soft:   #C0454C;
+  --wine-glow:   rgba(150, 30, 36, 0.34);
+
+  /* ── Ember tints for the particle field (gold + wine) ── */
+  --mint:        #E7CE92;
+  --mint-glow:   rgba(203, 164, 90, 0.26);
 
   /* ── z-index scale ── */
   --z-nav: 100;
@@ -65,10 +70,10 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-display), system-ui, sans-serif;
+    font-family: var(--font-display), Georgia, serif;
     font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.02;
+    letter-spacing: -0.01em;
+    line-height: 1.06;
     text-wrap: balance;
   }
 
@@ -137,13 +142,13 @@
     will-change: transform;
   }
   .btn-primary {
-    background: linear-gradient(135deg, #8E1010 0%, var(--accent-deep) 100%);
-    color: #FFF1ED;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    background: linear-gradient(135deg, #B98E3F 0%, var(--accent) 52%, #E7CE92 100%);
+    color: #1A0B0D;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.45), 0 0 0 1px rgba(231,206,146,0.18);
   }
   .btn-primary:hover {
-    background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 34px var(--accent-glow);
+    background: linear-gradient(135deg, var(--accent) 0%, #E7CE92 100%);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.55), 0 0 36px var(--accent-glow);
   }
 
   .btn-ghost {

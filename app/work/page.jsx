@@ -17,7 +17,7 @@ export default function WorkPage() {
       <PageHero
         kicker="Selected work"
         title="Growth you can measure, not just admire."
-        intro="A selection of brands we’ve scaled across the Emirates. Every number here was reported monthly and tied to real pipeline, not platform vanity metrics."
+        intro="Anonymised engagements across the Emirates. Client names are held under NDA, so these are presented by sector. The focus is the system and the outcome it’s built to reach."
       />
 
       <section className="shell" style={{ paddingBottom: 'clamp(72px, 11vw, 160px)', display: 'grid', gap: 'clamp(32px, 5vw, 64px)' }}>

@@ -15,26 +15,39 @@ export default function Hero() {
   const orbScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 120])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+  const goldY = useTransform(scrollYProgress, [0, 1], [0, -120])
 
   return (
     <section ref={ref} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       {/* Atmospheric layers */}
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: `
-        radial-gradient(120% 90% at 80% 14%, rgba(185,20,20,0.30) 0%, transparent 44%),
-        radial-gradient(90% 80% at 8% 100%, rgba(212,69,69,0.14) 0%, transparent 52%),
-        radial-gradient(140% 120% at 50% 0%, #241319 0%, var(--bg-0) 58%)
+        radial-gradient(120% 90% at 80% 12%, rgba(150,30,36,0.34) 0%, transparent 46%),
+        radial-gradient(90% 80% at 6% 102%, rgba(203,164,90,0.12) 0%, transparent 52%),
+        radial-gradient(140% 120% at 50% 0%, #2A1418 0%, var(--bg-0) 60%)
       ` }} />
-      {/* Crimson orb — the molten core */}
+      {/* Aura — wine core wrapped in a gold halo */}
       <motion.div aria-hidden="true"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease, delay: 0.2 }}
         style={{
-          position: 'absolute', top: '4%', right: '2%',
-          width: 'clamp(280px, 42vw, 580px)', height: 'clamp(280px, 42vw, 580px)',
-          borderRadius: '50%', filter: 'blur(22px)',
-          background: 'radial-gradient(circle at 38% 34%, rgba(232,113,113,0.85) 0%, rgba(185,20,20,0.55) 24%, rgba(122,24,24,0.20) 50%, transparent 70%)',
+          position: 'absolute', top: '2%', right: '0%',
+          width: 'clamp(300px, 46vw, 640px)', height: 'clamp(300px, 46vw, 640px)',
+          borderRadius: '50%', filter: 'blur(26px)',
+          background: 'radial-gradient(circle at 40% 36%, rgba(231,206,146,0.55) 0%, rgba(192,69,76,0.42) 22%, rgba(150,30,36,0.30) 42%, transparent 68%)',
           pointerEvents: 'none', y: orbY, scale: orbScale,
+        }}
+      />
+      {/* Soft gold aura, lower-left, slow counter-drift */}
+      <motion.div aria-hidden="true"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ duration: 2.4, ease, delay: 0.5 }}
+        style={{
+          position: 'absolute', bottom: '-8%', left: '-6%',
+          width: 'clamp(240px, 36vw, 460px)', height: 'clamp(240px, 36vw, 460px)',
+          borderRadius: '50%', filter: 'blur(34px)',
+          background: 'radial-gradient(circle, rgba(203,164,90,0.26) 0%, rgba(156,122,58,0.10) 40%, transparent 70%)',
+          pointerEvents: 'none', y: goldY,
         }}
       />
       <ParticleField />
@@ -48,7 +61,7 @@ export default function Hero() {
           <span className="meta">Dubai · UAE</span>
         </motion.div>
 
-        <h1 style={{ fontSize: 'clamp(40px, 8.2vw, 92px)', maxWidth: '15ch', letterSpacing: '-0.03em' }}>
+        <h1 style={{ fontSize: 'clamp(42px, 8vw, 96px)', maxWidth: '15ch', letterSpacing: '-0.01em', lineHeight: 1.04 }}>
           {['We turn', 'attention', 'into revenue'].map((line, i) => (
             <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
               <motion.span

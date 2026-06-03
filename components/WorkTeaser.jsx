@@ -10,8 +10,8 @@ export default function WorkTeaser() {
       <div className="shell">
         <SectionHead
           kicker="Selected work"
-          title="Numbers our clients can take to the board."
-          intro="A few of the brands we’ve scaled across the Emirates. Real budgets, real pipeline, measured month over month."
+          title="The kind of growth we build."
+          intro="Anonymised engagements across the Emirates. Client names are held under NDA; these reflect the outcomes our systems are built to reach."
           link={<Link href="/work" className="ulink" data-cursor="hover" style={{ color: 'var(--accent)', fontWeight: 500, width: 'fit-content' }}>All case studies →</Link>}
         />
       </div>

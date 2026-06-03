@@ -1,6 +1,6 @@
-/* Ignite Scale mark: an upward spark built from three rising strokes,
-   paired with the wordmark. Scales cleanly from 16px to hero size. */
-export default function Logo({ size = 22, withWordmark = true }) {
+/* Ignite Scale mark: a four-point spark (a struck ember / luxury sparkle),
+   not a tree. Gold on dark. Scales cleanly from 16px to hero size. */
+export default function Logo({ size = 20, withWordmark = true }) {
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 11 }}>
       <svg
@@ -11,23 +11,24 @@ export default function Logo({ size = 22, withWordmark = true }) {
         aria-hidden="true"
         style={{ display: 'block', flexShrink: 0 }}
       >
+        {/* four-point spark: concave diamond */}
         <path
-          d="M12 1.5 L19 9 L15.2 9 L20.5 16.2 L12.8 16.2 L12.8 22.5 L11.2 22.5 L11.2 16.2 L3.5 16.2 L8.8 9 L5 9 Z"
+          d="M12 0 C12.9 6.6 17.4 11.1 24 12 C17.4 12.9 12.9 17.4 12 24 C11.1 17.4 6.6 12.9 0 12 C6.6 11.1 11.1 6.6 12 0 Z"
           fill="var(--accent)"
         />
       </svg>
       {withWordmark && (
         <span
           style={{
-            fontFamily: 'var(--font-sans)',
-            fontWeight: 600,
-            fontSize: 16,
-            letterSpacing: '-0.01em',
+            fontFamily: 'var(--font-display)',
+            fontWeight: 500,
+            fontSize: 19,
+            letterSpacing: '0.01em',
             color: 'var(--ink)',
             lineHeight: 1,
           }}
         >
-          ignite<span style={{ color: 'var(--accent)' }}>.</span>scale
+          Ignite<span style={{ color: 'var(--accent)' }}>·</span>Scale
         </span>
       )}
     </span>
