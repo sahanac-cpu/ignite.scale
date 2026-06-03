@@ -19,15 +19,13 @@ export default function WorkTeaser() {
       <div className="snap-rail work-rail">
         {work.map((w, i) => (
           <Reveal key={w.slug} delay={i * 0.06} className="snap-item work-card">
-            <Link href="/work" data-cursor="hover" style={{ display: 'block' }}>
-              <div className="work-img">
-                <Image src={w.image} alt={w.alt} fill sizes="(max-width: 720px) 80vw, 380px" style={{ objectFit: 'cover' }} />
-                <span className="work-result glass-pill">{w.result}</span>
-              </div>
-              <div style={{ marginTop: 18 }}>
+            <Link href="/work" data-cursor="hover" className="work-tile">
+              <Image src={w.image} alt={w.alt} fill sizes="(max-width: 720px) 86vw, 460px" style={{ objectFit: 'cover' }} />
+              <span className="work-result glass-pill">{w.result}</span>
+              <div className="work-overlay">
                 <span className="meta">{w.sector}</span>
-                <h3 style={{ fontSize: 24, marginBlock: '8px 8px' }}>{w.client}</h3>
-                <p style={{ color: 'var(--ink-dim)', fontSize: 14.5, lineHeight: 1.6 }}>{w.blurb}</p>
+                <h3 style={{ fontSize: 'clamp(26px, 3vw, 34px)', marginBlock: '6px 10px' }}>{w.client}</h3>
+                <p style={{ color: 'var(--ink-dim)', fontSize: 14.5, lineHeight: 1.6, maxWidth: '34ch' }}>{w.blurb}</p>
               </div>
             </Link>
           </Reveal>
@@ -36,13 +34,16 @@ export default function WorkTeaser() {
       </div>
 
       <style>{`
-        .work-rail { display: flex; gap: 20px; overflow-x: auto; padding-inline: clamp(20px, 5vw, 64px); padding-bottom: 8px; }
-        .work-card { flex: 0 0 78vw; max-width: 380px; }
+        .work-rail { display: flex; gap: 22px; overflow-x: auto; padding-inline: clamp(20px, 5vw, 64px); padding-bottom: 8px; }
+        .work-card { flex: 0 0 86vw; max-width: 460px; }
         .work-spacer { flex: 0 0 clamp(20px,5vw,64px); }
-        @media (min-width: 720px) { .work-card { flex-basis: 380px; } }
-        .work-img { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
-        .work-img::after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(6,17,14,0.55), transparent 55%); }
-        .work-result { position: absolute; left: 14px; bottom: 14px; z-index: 1; padding: 7px 14px; font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--ink); }
+        @media (min-width: 720px) { .work-card { flex-basis: 460px; } }
+        .work-tile { position: relative; display: block; width: 100%; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+        .work-tile :global(img) { transition: transform .8s cubic-bezier(0.16,1,0.3,1); }
+        .work-tile:hover :global(img) { transform: scale(1.06); }
+        .work-tile::after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(15,9,11,0.92) 0%, rgba(15,9,11,0.35) 42%, transparent 70%); z-index: 1; }
+        .work-result { position: absolute; left: 16px; top: 16px; z-index: 2; padding: 8px 15px; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); }
+        .work-overlay { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(20px, 2.6vw, 30px); }
       `}</style>
     </section>
   )

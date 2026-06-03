@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import ParticleField from './ParticleField'
 import MagneticButton from './MagneticButton'
 import { stats } from '@/lib/site'
@@ -8,31 +9,38 @@ import { stats } from '@/lib/site'
 const ease = [0.16, 1, 0.3, 1]
 
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const orbY = useTransform(scrollYProgress, [0, 1], [0, 220])
+  const orbScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 120])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+
   return (
-    <section style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <section ref={ref} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       {/* Atmospheric layers */}
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: `
-        radial-gradient(120% 90% at 78% 12%, rgba(244,203,163,0.16) 0%, transparent 42%),
-        radial-gradient(90% 80% at 12% 95%, rgba(157,233,201,0.10) 0%, transparent 50%),
-        radial-gradient(140% 120% at 50% 0%, #0a1a15 0%, var(--bg-0) 60%)
+        radial-gradient(120% 90% at 80% 14%, rgba(185,20,20,0.30) 0%, transparent 44%),
+        radial-gradient(90% 80% at 8% 100%, rgba(212,69,69,0.14) 0%, transparent 52%),
+        radial-gradient(140% 120% at 50% 0%, #241319 0%, var(--bg-0) 58%)
       ` }} />
-      {/* Warm orb — the lantern light from the reference */}
+      {/* Crimson orb — the molten core */}
       <motion.div aria-hidden="true"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease, delay: 0.2 }}
         style={{
-          position: 'absolute', top: '6%', right: '4%',
-          width: 'clamp(260px, 38vw, 520px)', height: 'clamp(260px, 38vw, 520px)',
-          borderRadius: '50%', filter: 'blur(20px)',
-          background: 'radial-gradient(circle at 38% 34%, rgba(244,203,163,0.9) 0%, rgba(235,168,119,0.5) 26%, rgba(201,122,64,0.12) 52%, transparent 70%)',
-          pointerEvents: 'none',
+          position: 'absolute', top: '4%', right: '2%',
+          width: 'clamp(280px, 42vw, 580px)', height: 'clamp(280px, 42vw, 580px)',
+          borderRadius: '50%', filter: 'blur(22px)',
+          background: 'radial-gradient(circle at 38% 34%, rgba(232,113,113,0.85) 0%, rgba(185,20,20,0.55) 24%, rgba(122,24,24,0.20) 50%, transparent 70%)',
+          pointerEvents: 'none', y: orbY, scale: orbScale,
         }}
       />
       <ParticleField />
 
       {/* Content */}
-      <div className="shell" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: 120, paddingBottom: 48 }}>
+      <motion.div className="shell" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: 120, paddingBottom: 48, y: contentY, opacity: contentOpacity }}>
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.15 }}
           style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 'clamp(28px, 5vh, 52px)' }}>
           <span className="kicker">Growth studio</span>
@@ -66,7 +74,7 @@ export default function Hero() {
           <MagneticButton href="/contact" className="btn btn-primary">Book a strategy call →</MagneticButton>
           <MagneticButton href="/work" className="btn btn-ghost">See the work</MagneticButton>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Stat strip — inline, restrained (not the big-number-card template) */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.1 }}

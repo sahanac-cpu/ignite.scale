@@ -5,8 +5,8 @@ export default function PageHero({ kicker, title, intro, children }) {
   return (
     <header style={{ position: 'relative', overflow: 'hidden', paddingTop: 'clamp(130px, 18vh, 200px)', paddingBottom: 'clamp(48px, 8vw, 96px)' }}>
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: `
-        radial-gradient(90% 70% at 85% 0%, rgba(244,203,163,0.12) 0%, transparent 45%),
-        radial-gradient(80% 60% at 0% 100%, rgba(157,233,201,0.07) 0%, transparent 55%)
+        radial-gradient(90% 70% at 85% 0%, rgba(185,20,20,0.22) 0%, transparent 46%),
+        radial-gradient(80% 60% at 0% 100%, rgba(212,69,69,0.08) 0%, transparent 55%)
       ` }} />
       <div className="shell" style={{ position: 'relative' }}>
         <Reveal as="span" className="kicker" style={{ display: 'block', marginBottom: 22 }}>{kicker}</Reveal>
