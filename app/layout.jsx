@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Cursor from '@/components/Cursor'
 import Aurora from '@/components/Aurora'
+import SmoothScroll from '@/components/SmoothScroll'
+import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
 
 const display = Bodoni_Moda({
@@ -76,8 +78,10 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <SmoothScroll />
         <Aurora />
         <Cursor />
+        <ScrollProgress />
         <Navbar />
         <PageTransition>
           <main>{children}</main>

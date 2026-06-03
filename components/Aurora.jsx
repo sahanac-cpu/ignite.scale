@@ -7,6 +7,7 @@ export default function Aurora() {
       <span className="a1" />
       <span className="a2" />
       <span className="a3" />
+      <span className="a4" />
     </div>
   )
 }
