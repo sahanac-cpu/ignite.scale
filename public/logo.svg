@@ -1,0 +1,16 @@
+<svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <rect width="900" height="900" fill="#000000"/>
+
+  <!-- i dot -->
+  <circle cx="230" cy="290" r="75" fill="#FFFAF0"/>
+
+  <!-- i stem -->
+  <rect x="155" y="395" width="150" height="400" fill="#FFFAF0"/>
+
+  <!-- s curve -->
+  <path d="M 350 400 Q 350 350, 450 350 Q 550 350, 550 450 Q 550 500, 450 520 Q 350 540, 350 600 Q 350 650, 450 650 Q 550 650, 550 600"
+        fill="none" stroke="#FFFAF0" stroke-width="140" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Orange dot -->
+  <circle cx="820" cy="700" r="85" fill="#FF6B35"/>
+</svg>

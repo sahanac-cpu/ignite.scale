@@ -8,6 +8,9 @@ import Chatbot from './components/Chatbot'
 
 import HomePage    from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
+import PaidSocialPage from './pages/PaidSocialPage'
+import ContentCreativePage from './pages/ContentCreativePage'
+import FunnelDesignPage from './pages/FunnelDesignPage'
 import ResultsPage  from './pages/ResultsPage'
 import ProcessPage  from './pages/ProcessPage'
 import BookingPage  from './pages/BookingPage'
@@ -30,6 +33,9 @@ export default function App() {
             </>
           } />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/paid-social" element={<PaidSocialPage />} />
+          <Route path="/services/creative" element={<ContentCreativePage />} />
+          <Route path="/services/funnels" element={<FunnelDesignPage />} />
           <Route path="/results"  element={<ResultsPage />} />
           <Route path="/process"  element={<ProcessPage />} />
           <Route path="/book"     element={<BookingPage />} />

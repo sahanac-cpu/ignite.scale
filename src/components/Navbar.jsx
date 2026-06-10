@@ -34,21 +34,19 @@ export default function Navbar() {
 
         {/* Logo */}
         <a
-          href="#"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-baseline gap-1 select-none"
+          href="/"
+          onClick={(e) => {
+            e.preventDefault()
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+          className="flex items-center select-none"
+          style={{ height: 50, width: 100 }}
         >
-          <span
-            className="text-white font-body font-light tracking-[0.12em] text-[15px] uppercase"
-          >
-            ignite
-          </span>
-          <span className="text-accent font-body font-light text-[15px]">.</span>
-          <span
-            className="text-white/60 font-body font-light tracking-[0.12em] text-[15px] uppercase"
-          >
-            scale
-          </span>
+          <img
+            src="/logo.svg"
+            alt="Ignite Scale"
+            style={{ height: '100%', width: '100%', objectFit: 'contain' }}
+          />
         </a>
 
         {/* Desktop nav */}
