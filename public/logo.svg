@@ -1,16 +1,26 @@
 <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
   <rect width="900" height="900" fill="#000000"/>
 
-  <!-- i dot -->
-  <circle cx="230" cy="290" r="75" fill="#FFFAF0"/>
+  <!-- i: circle dot -->
+  <circle cx="230" cy="280" r="70" fill="#FFFAF0"/>
 
-  <!-- i stem -->
-  <rect x="155" y="395" width="150" height="400" fill="#FFFAF0"/>
+  <!-- i: vertical rectangle -->
+  <rect x="155" y="400" width="150" height="380" rx="20" fill="#FFFAF0"/>
 
-  <!-- s curve -->
-  <path d="M 350 400 Q 350 350, 450 350 Q 550 350, 550 450 Q 550 500, 450 520 Q 350 540, 350 600 Q 350 650, 450 650 Q 550 650, 550 600"
-        fill="none" stroke="#FFFAF0" stroke-width="140" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- s: large S shape with cutout -->
+  <g>
+    <!-- Top part of S -->
+    <path d="M 350 420 Q 350 370, 480 370 Q 580 370, 580 440 Q 580 480, 480 500 Q 400 510, 400 550"
+          fill="#FFFAF0"/>
+
+    <!-- Bottom part of S -->
+    <path d="M 400 550 Q 400 590, 480 600 Q 580 620, 580 680 Q 580 750, 450 750 Q 350 750, 350 680"
+          fill="#FFFAF0"/>
+
+    <!-- Cutout hole in middle -->
+    <ellipse cx="490" cy="560" rx="70" ry="80" fill="#000000"/>
+  </g>
 
   <!-- Orange dot -->
-  <circle cx="820" cy="700" r="85" fill="#FF6B35"/>
+  <circle cx="800" cy="680" r="80" fill="#FF6B35"/>
 </svg>
