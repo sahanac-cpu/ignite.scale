@@ -14,6 +14,12 @@ import FunnelDesignPage from './pages/FunnelDesignPage'
 import DubaiMarketingAgencyPage from './pages/DubaiMarketingAgencyPage'
 import MetaAdsPage from './pages/MetaAdsPage'
 import TikTokAdsPage from './pages/TikTokAdsPage'
+import WebDesignPage from './pages/WebDesignPage'
+import BlogMetaAdsMistakesPage from './pages/BlogMetaAdsMistakesPage'
+import BlogTikTokVsInstagramPage from './pages/BlogTikTokVsInstagramPage'
+import BlogCPLReductionPage from './pages/BlogCPLReductionPage'
+import CaseStudyRealEstateDAEPage from './pages/CaseStudyRealEstateDAEPage'
+import CaseStudyCosmeticsPage from './pages/CaseStudyCosmeticsPage'
 import ResultsPage  from './pages/ResultsPage'
 import ProcessPage  from './pages/ProcessPage'
 import BookingPage  from './pages/BookingPage'
@@ -42,6 +48,12 @@ export default function App() {
           <Route path="/dubai-marketing-agency" element={<DubaiMarketingAgencyPage />} />
           <Route path="/meta-ads-dubai" element={<MetaAdsPage />} />
           <Route path="/tiktok-ads-dubai" element={<TikTokAdsPage />} />
+          <Route path="/web-design-dubai" element={<WebDesignPage />} />
+          <Route path="/blog/meta-ads-mistakes" element={<BlogMetaAdsMistakesPage />} />
+          <Route path="/blog/tiktok-vs-instagram-ads" element={<BlogTikTokVsInstagramPage />} />
+          <Route path="/blog/reduce-cost-per-lead" element={<BlogCPLReductionPage />} />
+          <Route path="/case-study/dubai-real-estate-4-8x-roas" element={<CaseStudyRealEstateDAEPage />} />
+          <Route path="/case-study/dubai-cosmetics-320-leads" element={<CaseStudyCosmeticsPage />} />
           <Route path="/results"  element={<ResultsPage />} />
           <Route path="/process"  element={<ProcessPage />} />
           <Route path="/book"     element={<BookingPage />} />
