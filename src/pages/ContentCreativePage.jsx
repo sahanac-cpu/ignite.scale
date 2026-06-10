@@ -47,10 +47,10 @@ export default function ContentCreativePage() {
   return (
     <>
       <SEOMeta
-        title="UGC Video Production & Creative Ads Agency Dubai | Ignite Scale"
-        description="Professional UGC video production, ad creatives, and copywriting for Dubai brands. In-house studio with experienced creators. Scroll-stopping content designed to convert."
+        title="UGC Video & Creative Ads Production Dubai | In-House Studio"
+        description="Professional UGC video, ad creatives & copywriting for Dubai brands. In-house production team. 48-hour turnaround. 3–5× engagement lift. Proven conversion-focused content. Book now."
         canonical="https://ignite-scale.com/services/creative"
-        keywords="UGC video production Dubai, ad creative services, video ads, Instagram Reels, TikTok content creator, copywriting services"
+        keywords="UGC video Dubai, ad creative agency, video production services, Instagram Reels, TikTok videos, ad copy writing, creative production"
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

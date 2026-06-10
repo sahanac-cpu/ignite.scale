@@ -12,6 +12,8 @@ import PaidSocialPage from './pages/PaidSocialPage'
 import ContentCreativePage from './pages/ContentCreativePage'
 import FunnelDesignPage from './pages/FunnelDesignPage'
 import DubaiMarketingAgencyPage from './pages/DubaiMarketingAgencyPage'
+import MetaAdsPage from './pages/MetaAdsPage'
+import TikTokAdsPage from './pages/TikTokAdsPage'
 import ResultsPage  from './pages/ResultsPage'
 import ProcessPage  from './pages/ProcessPage'
 import BookingPage  from './pages/BookingPage'
@@ -38,6 +40,8 @@ export default function App() {
           <Route path="/services/creative" element={<ContentCreativePage />} />
           <Route path="/services/funnels" element={<FunnelDesignPage />} />
           <Route path="/dubai-marketing-agency" element={<DubaiMarketingAgencyPage />} />
+          <Route path="/meta-ads-dubai" element={<MetaAdsPage />} />
+          <Route path="/tiktok-ads-dubai" element={<TikTokAdsPage />} />
           <Route path="/results"  element={<ResultsPage />} />
           <Route path="/process"  element={<ProcessPage />} />
           <Route path="/book"     element={<BookingPage />} />
