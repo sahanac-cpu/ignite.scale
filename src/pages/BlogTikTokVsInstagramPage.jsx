@@ -8,10 +8,11 @@ export default function BlogTikTokVsInstagramPage() {
   return (
     <>
       <SEOMeta
-        title="TikTok vs Instagram Ads 2026: Which Platform to Choose for Dubai"
-        description="Complete comparison: TikTok vs Instagram Ads. Cost, audience demographics, conversion rates, best industries. When to use each platform for Dubai businesses."
+        title="TikTok vs Instagram Ads 2026 | Dubai Comparison"
+        description="TikTok vs Instagram Ads 2026: cost, audience demographics, conversion rates and best industries for each. When to use which platform in Dubai."
         canonical="https://ignite-scale.com/blog/tiktok-vs-instagram-ads"
-        keywords="TikTok vs Instagram, ad platform comparison, Instagram Ads, TikTok advertising, Dubai marketing platform"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'TikTok vs Instagram', url: '/blog/tiktok-vs-instagram-ads' }]}
+        article={{ datePublished: '2026-05-04', headline: 'TikTok vs Instagram Ads 2026: Which Platform to Choose for Dubai' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

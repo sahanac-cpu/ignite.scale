@@ -8,10 +8,11 @@ export default function CaseStudyRealEstateDAEPage() {
   return (
     <>
       <SEOMeta
-        title="Real Estate Case Study: 4.8× ROAS in 90 Days | Dubai Property Developer"
-        description="How we increased a Dubai real estate company's ROAS from 1.2× to 4.8× in 90 days. CPL dropped 68%. Complete strategy breakdown."
+        title="Real Estate: 4.8× ROAS in 90 Days | Case Study"
+        description="How we lifted a Dubai property developer's ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown."
         canonical="https://ignite-scale.com/case-study/dubai-real-estate-4-8x-roas"
-        keywords="real estate marketing Dubai, case study, ROAS improvement, lead generation results, property marketing"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Real Estate', url: '/case-study/dubai-real-estate-4-8x-roas' }]}
+        article={{ datePublished: '2026-01-28', headline: 'Real Estate Case Study: 4.8× ROAS in 90 Days' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

@@ -158,7 +158,7 @@ export default function Booking() {
 
           <div className="glass gradient-border rounded-sm p-7">
             <div className="font-display text-4xl gradient-text tracking-wider">48hrs</div>
-            <div className="text-white/30 text-[11px] uppercase tracking-[0.25em] mt-1">Response Time Guaranteed</div>
+            <div className="text-white/30 text-[11px] uppercase tracking-[0.25em] mt-1">Typical Response Time</div>
             <p className="text-white/40 text-xs mt-4 leading-relaxed">
               We review every submission personally. Expect a confirmation within 48 hours with your confirmed time slot.
             </p>

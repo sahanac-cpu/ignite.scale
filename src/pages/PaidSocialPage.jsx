@@ -47,10 +47,10 @@ export default function PaidSocialPage() {
   return (
     <>
       <SEOMeta
-        title="Paid Social Ads Agency Dubai | Meta, TikTok & Google Ads Expert"
-        description="Top-rated paid social advertising agency in Dubai. We specialize in Meta Ads, TikTok, Snapchat & Google Ads. Proven 2–5× ROAS, 60%+ CPL reduction. Free campaign audit. DM now."
+        title="Paid Social Agency Dubai | Meta, TikTok & Google"
+        description="Paid social advertising in Dubai across Meta, TikTok, Snapchat and Google. Targeting 2–5× ROAS and meaningful CPL reduction. Free campaign audit."
         canonical="https://ignite-scale.com/services/paid-social"
-        keywords="paid social ads Dubai, Meta Ads Dubai, TikTok advertising, Facebook ads agency, Google Ads expert, performance advertising Dubai"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: 'Paid Social', url: '/services/paid-social' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

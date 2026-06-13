@@ -1,221 +1,167 @@
 import { useEffect } from 'react'
 
+const SITE = 'https://ignite-scale.com'
+const BRAND = 'Ignite Scale'
+const PHONE = '+971555116465'
+const EMAIL = 'admin@ignite-scale.com'
+
+function upsertMeta(selector, attrs) {
+  let el = document.head.querySelector(selector)
+  if (!el) {
+    el = document.createElement('meta')
+    for (const [k, v] of Object.entries(attrs.create)) el.setAttribute(k, v)
+    document.head.appendChild(el)
+  }
+  el.setAttribute(attrs.contentAttr || 'content', attrs.value)
+}
+
+function upsertLink(rel, href, extra = {}) {
+  let el = document.head.querySelector(`link[rel="${rel}"]${extra.hreflang ? `[hreflang="${extra.hreflang}"]` : ''}`)
+  if (!el) {
+    el = document.createElement('link')
+    el.setAttribute('rel', rel)
+    if (extra.hreflang) el.setAttribute('hreflang', extra.hreflang)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('href', href)
+}
+
+function upsertJsonLd(key, payload) {
+  let el = document.head.querySelector(`script[data-schema="${key}"]`)
+  if (!el) {
+    el = document.createElement('script')
+    el.setAttribute('type', 'application/ld+json')
+    el.setAttribute('data-schema', key)
+    document.head.appendChild(el)
+  }
+  el.textContent = JSON.stringify(payload)
+}
+
+function removeJsonLd(key) {
+  const el = document.head.querySelector(`script[data-schema="${key}"]`)
+  if (el) el.remove()
+}
+
 export default function SEOMeta({
   title,
   description,
   canonical,
-  ogImage = 'https://ignite-scale.com/og-image.jpg',
-  keywords,
-  author = 'Ignite Scale',
-  twitterHandle = '@ignitescale',
+  ogImage = `${SITE}/og-image.jpg`,
+  author = BRAND,
+  locale = 'en',
+  breadcrumbs,
+  article,
 }) {
   useEffect(() => {
-    // Title
+    const absCanonical = canonical || SITE
+    const arCanonical = absCanonical.includes('/ar/')
+      ? absCanonical
+      : absCanonical.replace(SITE, `${SITE}/ar`).replace(`${SITE}/ar/`, `${SITE}/ar/`)
+    const enCanonical = absCanonical.replace('/ar/', '/')
+
     document.title = title
 
-    // Meta: Description
-    let desc = document.querySelector('meta[name="description"]')
-    if (!desc) {
-      desc = document.createElement('meta')
-      desc.setAttribute('name', 'description')
-      document.head.appendChild(desc)
-    }
-    desc.setAttribute('content', description)
+    document.documentElement.setAttribute('lang', locale === 'ar' ? 'ar' : 'en')
+    document.documentElement.setAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr')
 
-    // Meta: Keywords
-    if (keywords) {
-      let meta = document.querySelector('meta[name="keywords"]')
-      if (!meta) {
-        meta = document.createElement('meta')
-        meta.setAttribute('name', 'keywords')
-        document.head.appendChild(meta)
-      }
-      meta.setAttribute('content', keywords)
-    }
+    upsertMeta('meta[name="description"]', { create: { name: 'description' }, value: description })
+    upsertMeta('meta[name="author"]', { create: { name: 'author' }, value: author })
+    upsertMeta('meta[name="robots"]', { create: { name: 'robots' }, value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' })
 
-    // Meta: Viewport (for mobile)
-    let viewport = document.querySelector('meta[name="viewport"]')
-    if (!viewport) {
-      viewport = document.createElement('meta')
-      viewport.setAttribute('name', 'viewport')
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0')
-      document.head.appendChild(viewport)
-    }
+    upsertLink('canonical', absCanonical)
+    upsertLink('alternate', enCanonical, { hreflang: 'en' })
+    upsertLink('alternate', enCanonical, { hreflang: 'en-AE' })
+    upsertLink('alternate', enCanonical, { hreflang: 'x-default' })
 
-    // Meta: Charset
-    let charset = document.querySelector('meta[charset]')
-    if (!charset) {
-      charset = document.createElement('meta')
-      charset.setAttribute('charset', 'UTF-8')
-      document.head.appendChild(charset)
-    }
+    upsertMeta('meta[property="og:type"]', { create: { property: 'og:type' }, value: article ? 'article' : 'website' })
+    upsertMeta('meta[property="og:site_name"]', { create: { property: 'og:site_name' }, value: BRAND })
+    upsertMeta('meta[property="og:title"]', { create: { property: 'og:title' }, value: title })
+    upsertMeta('meta[property="og:description"]', { create: { property: 'og:description' }, value: description })
+    upsertMeta('meta[property="og:url"]', { create: { property: 'og:url' }, value: absCanonical })
+    upsertMeta('meta[property="og:image"]', { create: { property: 'og:image' }, value: ogImage })
+    upsertMeta('meta[property="og:image:width"]', { create: { property: 'og:image:width' }, value: '1200' })
+    upsertMeta('meta[property="og:image:height"]', { create: { property: 'og:image:height' }, value: '630' })
+    upsertMeta('meta[property="og:locale"]', { create: { property: 'og:locale' }, value: locale === 'ar' ? 'ar_AE' : 'en_US' })
 
-    // Meta: Author
-    let authorMeta = document.querySelector('meta[name="author"]')
-    if (!authorMeta) {
-      authorMeta = document.createElement('meta')
-      authorMeta.setAttribute('name', 'author')
-      document.head.appendChild(authorMeta)
-    }
-    authorMeta.setAttribute('content', author)
+    upsertMeta('meta[name="twitter:card"]', { create: { name: 'twitter:card' }, value: 'summary_large_image' })
+    upsertMeta('meta[name="twitter:title"]', { create: { name: 'twitter:title' }, value: title })
+    upsertMeta('meta[name="twitter:description"]', { create: { name: 'twitter:description' }, value: description })
+    upsertMeta('meta[name="twitter:image"]', { create: { name: 'twitter:image' }, value: ogImage })
 
-    // Canonical
-    if (canonical) {
-      let link = document.querySelector('link[rel="canonical"]')
-      if (!link) {
-        link = document.createElement('link')
-        link.setAttribute('rel', 'canonical')
-        document.head.appendChild(link)
-      }
-      link.setAttribute('href', canonical)
-    }
-
-    // OG: Title
-    let ogTitle = document.querySelector('meta[property="og:title"]')
-    if (!ogTitle) {
-      ogTitle = document.createElement('meta')
-      ogTitle.setAttribute('property', 'og:title')
-      document.head.appendChild(ogTitle)
-    }
-    ogTitle.setAttribute('content', title)
-
-    // OG: Description
-    let ogDesc = document.querySelector('meta[property="og:description"]')
-    if (!ogDesc) {
-      ogDesc = document.createElement('meta')
-      ogDesc.setAttribute('property', 'og:description')
-      document.head.appendChild(ogDesc)
-    }
-    ogDesc.setAttribute('content', description)
-
-    // OG: URL
-    if (canonical) {
-      let ogUrl = document.querySelector('meta[property="og:url"]')
-      if (!ogUrl) {
-        ogUrl = document.createElement('meta')
-        ogUrl.setAttribute('property', 'og:url')
-        document.head.appendChild(ogUrl)
-      }
-      ogUrl.setAttribute('href', canonical)
-    }
-
-    // OG: Image
-    let ogImageMeta = document.querySelector('meta[property="og:image"]')
-    if (!ogImageMeta) {
-      ogImageMeta = document.createElement('meta')
-      ogImageMeta.setAttribute('property', 'og:image')
-      document.head.appendChild(ogImageMeta)
-    }
-    ogImageMeta.setAttribute('content', ogImage)
-
-    // OG: Type
-    let ogType = document.querySelector('meta[property="og:type"]')
-    if (!ogType) {
-      ogType = document.createElement('meta')
-      ogType.setAttribute('property', 'og:type')
-      document.head.appendChild(ogType)
-    }
-    ogType.setAttribute('content', 'website')
-
-    // Twitter Card
-    let twitterCard = document.querySelector('meta[name="twitter:card"]')
-    if (!twitterCard) {
-      twitterCard = document.createElement('meta')
-      twitterCard.setAttribute('name', 'twitter:card')
-      document.head.appendChild(twitterCard)
-    }
-    twitterCard.setAttribute('content', 'summary_large_image')
-
-    let twitterTitle = document.querySelector('meta[name="twitter:title"]')
-    if (!twitterTitle) {
-      twitterTitle = document.createElement('meta')
-      twitterTitle.setAttribute('name', 'twitter:title')
-      document.head.appendChild(twitterTitle)
-    }
-    twitterTitle.setAttribute('content', title)
-
-    let twitterDesc = document.querySelector('meta[name="twitter:description"]')
-    if (!twitterDesc) {
-      twitterDesc = document.createElement('meta')
-      twitterDesc.setAttribute('name', 'twitter:description')
-      document.head.appendChild(twitterDesc)
-    }
-    twitterDesc.setAttribute('content', description)
-
-    if (twitterHandle) {
-      let twitterHandle_ = document.querySelector('meta[name="twitter:creator"]')
-      if (!twitterHandle_) {
-        twitterHandle_ = document.createElement('meta')
-        twitterHandle_.setAttribute('name', 'twitter:creator')
-        document.head.appendChild(twitterHandle_)
-      }
-      twitterHandle_.setAttribute('content', twitterHandle)
-    }
-
-    // Robots meta
-    let robots = document.querySelector('meta[name="robots"]')
-    if (!robots) {
-      robots = document.createElement('meta')
-      robots.setAttribute('name', 'robots')
-      document.head.appendChild(robots)
-    }
-    robots.setAttribute('content', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')
-
-    // JSON-LD Schema: Organization
-    let organizationSchema = document.querySelector('script[type="application/ld+json"][data-schema="organization"]')
-    if (!organizationSchema) {
-      organizationSchema = document.createElement('script')
-      organizationSchema.setAttribute('type', 'application/ld+json')
-      organizationSchema.setAttribute('data-schema', 'organization')
-      document.head.appendChild(organizationSchema)
-    }
-    organizationSchema.innerHTML = JSON.stringify({
+    upsertJsonLd('organization', {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      name: 'Ignite Scale',
-      description: 'Dubai-based digital agency specializing in paid social, content creation, and lead generation',
-      url: 'https://ignite-scale.com',
-      telephone: '+971-XXXXXXXXX',
-      email: 'hello@ignite-scale.com',
+      '@id': `${SITE}#org`,
+      name: BRAND,
+      description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE.',
+      url: SITE,
+      logo: `${SITE}/logo.svg`,
+      image: `${SITE}/og-image.jpg`,
+      telephone: PHONE,
+      email: EMAIL,
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Dubai',
-        addressRegion: 'Dubai',
         addressCountry: 'AE',
       },
-      areaServed: ['AE', 'UAE'],
-      priceRange: 'High-ticket B2B',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.6',
-        ratingCount: '50',
-      },
+      areaServed: ['AE', 'SA', 'QA', 'KW', 'BH', 'OM'],
+      priceRange: '$$$',
+      openingHoursSpecification: [{
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '18:00',
+      }],
+      sameAs: [],
     })
 
-    // JSON-LD Schema: WebPage
-    let webpageSchema = document.querySelector('script[type="application/ld+json"][data-schema="webpage"]')
-    if (!webpageSchema) {
-      webpageSchema = document.createElement('script')
-      webpageSchema.setAttribute('type', 'application/ld+json')
-      webpageSchema.setAttribute('data-schema', 'webpage')
-      document.head.appendChild(webpageSchema)
-    }
-    webpageSchema.innerHTML = JSON.stringify({
+    upsertJsonLd('webpage', {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: title,
-      description: description,
-      url: canonical,
+      description,
+      url: absCanonical,
       image: ogImage,
-      datePublished: new Date().toISOString(),
-      inLanguage: 'en-US',
-      isPartOf: {
-        '@type': 'WebSite',
-        name: 'Ignite Scale',
-        url: 'https://ignite-scale.com',
-      },
+      inLanguage: locale === 'ar' ? 'ar-AE' : 'en-AE',
+      isPartOf: { '@type': 'WebSite', name: BRAND, url: SITE },
     })
-  }, [title, description, canonical, ogImage, keywords, author, twitterHandle])
+
+    if (breadcrumbs && breadcrumbs.length) {
+      upsertJsonLd('breadcrumb', {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((b, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: b.name,
+          item: b.url.startsWith('http') ? b.url : `${SITE}${b.url}`,
+        })),
+      })
+    } else {
+      removeJsonLd('breadcrumb')
+    }
+
+    if (article) {
+      upsertJsonLd('article', {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: article.headline || title,
+        description,
+        image: ogImage,
+        author: { '@type': 'Organization', name: BRAND, url: SITE },
+        publisher: {
+          '@type': 'Organization',
+          name: BRAND,
+          logo: { '@type': 'ImageObject', url: `${SITE}/logo.svg` },
+        },
+        datePublished: article.datePublished,
+        dateModified: article.dateModified || article.datePublished,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': absCanonical },
+      })
+    } else {
+      removeJsonLd('article')
+    }
+  }, [title, description, canonical, ogImage, author, locale, JSON.stringify(breadcrumbs), JSON.stringify(article)])
 
   return null
 }

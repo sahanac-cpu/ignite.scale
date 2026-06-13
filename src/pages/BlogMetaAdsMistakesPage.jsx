@@ -16,10 +16,11 @@ export default function BlogMetaAdsMistakesPage() {
   return (
     <>
       <SEOMeta
-        title="5 Meta Ads Mistakes Costing You Money (Dubai Guide)"
-        description="Discover the 5 biggest Meta Ads mistakes Dubai businesses make. Learn how to fix them and improve ROAS by 50-100%. Expert guide with actionable fixes."
+        title="5 Meta Ads Mistakes Costing You Money | Dubai Guide"
+        description="The 5 biggest Meta Ads mistakes Dubai businesses make, with actionable fixes that typically lift ROAS 50–100%."
         canonical="https://ignite-scale.com/blog/meta-ads-mistakes"
-        keywords="Meta Ads mistakes, Facebook Ads errors, ad optimization, ROAS improvement, Dubai marketing"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: '5 Meta Ads Mistakes', url: '/blog/meta-ads-mistakes' }]}
+        article={{ datePublished: '2026-03-20', headline: '5 Meta Ads Mistakes Costing You Money' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

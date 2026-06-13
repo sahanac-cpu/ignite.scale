@@ -47,10 +47,10 @@ export default function FunnelDesignPage() {
   return (
     <>
       <SEOMeta
-        title="Landing Pages & Lead Funnels Dubai | Conversion-Optimized Design"
-        description="High-converting landing pages & sales funnels for Dubai. Real estate, cosmetics, hospitality. 60%+ CPL reduction, 15%+ conversion rate. CRO built-in. Free funnel audit."
+        title="Landing Pages & Lead Funnels Dubai | Ignite Scale"
+        description="Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit."
         canonical="https://ignite-scale.com/services/funnels"
-        keywords="landing page design Dubai, lead funnel, conversion optimization, funnel builder, sales funnel design, CRO specialist, web design"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: 'Funnels', url: '/services/funnels' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

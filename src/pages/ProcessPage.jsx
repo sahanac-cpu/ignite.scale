@@ -8,9 +8,10 @@ export default function ProcessPage() {
   return (
     <>
       <SEOMeta
-        title="How We Work — Growth Process for Dubai Brands | ignite.scale"
-        description="Our 4-step growth process: strategy discovery, content and campaign build, launch and optimise, then scale. Transparent, data-driven, and engineered for Dubai's competitive market."
+        title="Our Growth Process for Dubai Brands | Ignite Scale"
+        description="Our 4-step growth process: strategy discovery, content and campaign build, launch and optimise, then scale. Transparent and data-driven."
         canonical="https://ignite-scale.com/process"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Process', url: '/process' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

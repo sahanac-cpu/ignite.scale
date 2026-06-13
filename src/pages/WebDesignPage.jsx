@@ -9,10 +9,10 @@ export default function WebDesignPage() {
   return (
     <>
       <SEOMeta
-        title="Web Design Dubai | Conversion-Optimized Websites for Real Estate, Cosmetics, B2B"
-        description="Professional website design in Dubai. High-converting landing pages built for conversions. Real estate, cosmetics, hospitality, B2B. Mobile-first, SEO, fast loading."
+        title="Web Design Dubai | Conversion-Optimised Websites"
+        description="Professional website design in Dubai. Conversion-optimised landing pages for real estate, cosmetics, hospitality and B2B. Mobile-first, fast-loading, SEO-ready."
         canonical="https://ignite-scale.com/web-design-dubai"
-        keywords="web design Dubai, website design, website builder Dubai, landing page design, conversion optimized website"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Web Design Dubai', url: '/web-design-dubai' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

@@ -33,10 +33,10 @@ export default function MetaAdsPage() {
   return (
     <>
       <SEOMeta
-        title="Meta Ads Agency Dubai | Facebook & Instagram Advertising Specialist"
-        description="Expert Meta Ads management in Dubai. We run profitable Facebook and Instagram ad campaigns with 2–5× ROAS. Free ad audit. Proven strategies for real estate, cosmetics, B2B."
+        title="Meta Ads Agency Dubai | Facebook & Instagram Experts"
+        description="Meta Ads management in Dubai. We run Facebook and Instagram campaigns targeting 2–5× ROAS for real estate, cosmetics and B2B. Free ad audit."
         canonical="https://ignite-scale.com/meta-ads-dubai"
-        keywords="Meta Ads Dubai, Facebook Ads Dubai, Instagram Ads, Meta advertising, Facebook advertising agency, ads management Dubai"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Meta Ads Dubai', url: '/meta-ads-dubai' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

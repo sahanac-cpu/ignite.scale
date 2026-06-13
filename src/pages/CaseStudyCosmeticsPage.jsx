@@ -7,10 +7,11 @@ export default function CaseStudyCosmeticsPage() {
   return (
     <>
       <SEOMeta
-        title="Cosmetic Clinic Case Study: 320 Qualified Leads in 60 Days"
-        description="How a Dubai cosmetic clinic went from 0 leads to 320 qualified leads in 60 days. Lead generation strategy, conversion optimization, ads management."
+        title="Cosmetic Clinic: 320 Leads in 60 Days | Case Study"
+        description="How a Dubai cosmetic clinic went from 0 to 320 qualified leads in 60 days. Lead generation strategy, conversion optimisation, ads management."
         canonical="https://ignite-scale.com/case-study/dubai-cosmetics-320-leads"
-        keywords="cosmetic clinic marketing, aesthetic clinic leads, medical spa marketing, Dubai beauty clinic"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Cosmetics', url: '/case-study/dubai-cosmetics-320-leads' }]}
+        article={{ datePublished: '2026-02-15', headline: 'Cosmetic Clinic Case Study: 320 Qualified Leads in 60 Days' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

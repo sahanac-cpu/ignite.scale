@@ -12,12 +12,10 @@ export default function HomePage() {
   return (
     <>
       <SEOMeta
-        title="Dubai Marketing Agency | Paid Social Ads, Web Design & Lead Generation"
-        description="Top digital marketing agency in Dubai. Expert in paid social advertising, website design, and lead generation for real estate, cosmetic clinics, and B2B. 2–5× ROAS guaranteed. Free consultation."
+        title="Ignite Scale | Dubai Paid Social, Web & Lead Funnels"
+        description="Dubai growth agency engineering paid social, content and funnels for luxury real estate, cosmetic clinics and B2B brands. Targeting 2–5× ROAS. Book a free strategy call."
         canonical="https://ignite-scale.com/"
-        keywords="digital marketing agency Dubai, paid social ads Dubai, website design Dubai, lead generation Dubai, Meta ads Dubai, marketing agency UAE, TikTok ads specialist, ads agency Dubai, Dubai website builder"
-        author="Ignite Scale"
-        ogImage="https://ignite-scale.com/og-home.jpg"
+        breadcrumbs={[{ name: 'Home', url: '/' }]}
       />
       <main>
         <Hero />

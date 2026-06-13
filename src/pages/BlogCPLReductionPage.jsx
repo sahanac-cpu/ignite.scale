@@ -7,10 +7,11 @@ export default function BlogCPLReductionPage() {
   return (
     <>
       <SEOMeta
-        title="How to Cut Your Ad Cost Per Lead by 60% (Proven Framework)"
-        description="Step-by-step guide to reducing CPL by 60-80%. Landing page optimization, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns."
+        title="How to Cut Ad Cost Per Lead by 60% | Ignite Scale"
+        description="Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns."
         canonical="https://ignite-scale.com/blog/reduce-cost-per-lead"
-        keywords="cost per lead reduction, CPL optimization, lower advertising costs, lead generation cost, funnel optimization"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Cut CPL by 60%', url: '/blog/reduce-cost-per-lead' }]}
+        article={{ datePublished: '2026-04-12', headline: 'How to Cut Your Ad Cost Per Lead by 60%' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

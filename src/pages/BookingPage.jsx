@@ -7,9 +7,10 @@ export default function BookingPage() {
   return (
     <>
       <SEOMeta
-        title="Book a Free Strategy Call | ignite.scale Dubai"
-        description="Book your free 45-minute strategy call with ignite.scale. We'll audit your social media presence, analyse competitors, and build a custom 90-day growth roadmap — no obligation."
+        title="Book a Free Strategy Call | Ignite Scale Dubai"
+        description="Book a free 45-minute strategy call with Ignite Scale. We audit your social presence, analyse competitors, and build a 90-day growth roadmap. No obligation."
         canonical="https://ignite-scale.com/book"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Book', url: '/book' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

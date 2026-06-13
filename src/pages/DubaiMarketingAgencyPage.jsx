@@ -47,10 +47,10 @@ export default function DubaiMarketingAgencyPage() {
   return (
     <>
       <SEOMeta
-        title="Best Marketing Agency in Dubai | Paid Ads & Web Design | Ignite Scale"
-        description="Looking for a digital marketing agency in Dubai? Ignite Scale specializes in paid social advertising, website design, and lead generation. 50+ clients. Free strategy session."
+        title="Best Marketing Agency in Dubai | Ignite Scale"
+        description="Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session."
         canonical="https://ignite-scale.com/dubai-marketing-agency"
-        keywords="marketing agency Dubai, best marketing agency Dubai, digital marketing Dubai, marketing company Dubai, advertising agency Dubai"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Dubai Marketing Agency', url: '/dubai-marketing-agency' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />
@@ -100,7 +100,7 @@ export default function DubaiMarketingAgencyPage() {
                   },
                   {
                     title: '2–5× Average ROAS',
-                    desc: 'Our clients see consistent 2-5x return on ad spend across all channels'
+                    desc: 'Targeting 2–5× return on ad spend, with most clients landing in this band across channels'
                   },
                   {
                     title: '60%+ CPL Reduction',

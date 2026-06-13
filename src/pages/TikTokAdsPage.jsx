@@ -9,10 +9,10 @@ export default function TikTokAdsPage() {
   return (
     <>
       <SEOMeta
-        title="TikTok Ads Agency Dubai | TikTok Advertising Specialists"
-        description="TikTok advertising agency in Dubai. We run high-performing TikTok campaigns targeting Gen Z and younger audiences. Fast-growing platform with lower CPM. Expert management."
+        title="TikTok Ads Agency Dubai | Ignite Scale"
+        description="TikTok advertising in Dubai. High-performing campaigns targeting Gen Z and millennial audiences with lower CPMs than Meta. Free audit available."
         canonical="https://ignite-scale.com/tiktok-ads-dubai"
-        keywords="TikTok Ads Dubai, TikTok advertising, TikTok marketing Dubai, TikTok agency"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'TikTok Ads Dubai', url: '/tiktok-ads-dubai' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

@@ -8,10 +8,10 @@ export default function ServicesPage() {
   return (
     <>
       <SEOMeta
-        title="Digital Marketing Services Dubai | Paid Ads, Web Design, Lead Generation"
-        description="Complete digital marketing services in Dubai. Paid social advertising (Meta, TikTok, Google), website design, lead generation, and creative production. Trusted by 50+ Dubai brands. Book free consultation."
+        title="Digital Marketing Services Dubai | Ignite Scale"
+        description="Paid social on Meta, TikTok and Google, conversion websites, lead generation and creative production for Dubai brands. Book a free consultation."
         canonical="https://ignite-scale.com/services"
-        keywords="digital marketing services Dubai, paid ads agency, website design services, lead generation services, social media marketing, Meta ads management, TikTok marketing Dubai"
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />

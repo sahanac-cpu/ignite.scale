@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/build-sitemap.mjs",
     "build": "vite build",
+    "postbuild": "node scripts/build-prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -16,7 +18,8 @@
     "lucide-react": "^1.16.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1"
+    "react-router-dom": "^7.15.1",
+    "sharp": "^0.35.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

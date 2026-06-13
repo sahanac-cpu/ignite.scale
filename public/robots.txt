@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow noise
+Disallow: /*.json$
+Disallow: /api/
+
+Sitemap: https://ignite-scale.com/sitemap.xml
