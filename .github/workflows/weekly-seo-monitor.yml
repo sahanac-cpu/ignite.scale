@@ -1,0 +1,42 @@
+name: Weekly SEO health monitor
+
+# Runs every Friday at 09:00 Dubai time (UTC+4 → 05:00 UTC).
+# Pulls live ignite-scale.com, audits every route for: HTTP status, unique
+# titles, JSON-LD validity, og:image presence. Writes report to reports/seo/.
+on:
+  schedule:
+    - cron: '0 5 * * 5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run health check
+        run: node scripts/agents/seo-health-check.mjs
+
+      - name: Commit + push report
+        run: |
+          git config user.name "sahanac-cpu"
+          git config user.email "sahanac@andrew.cmu.edu"
+          if [ -n "$(git status --porcelain reports/)" ]; then
+            git add reports/
+            git commit -m "SEO health snapshot: $(date +%Y-%m-%d)
+
+Automated by .github/workflows/weekly-seo-monitor.yml"
+            git push origin main
+          else
+            echo "No report changes to commit."
+          fi

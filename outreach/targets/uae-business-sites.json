@@ -1,0 +1,302 @@
+[
+  {
+    "site": "Arabian Business",
+    "url": "https://www.arabianbusiness.com",
+    "domainAuthority": 73,
+    "category": "Business news",
+    "audience": "C-level UAE executives, business owners",
+    "submissionUrl": "https://www.arabianbusiness.com/contact-us",
+    "pitchAngle": "Data-driven Dubai marketing trends piece with proprietary numbers from our campaigns",
+    "contactEmail": "editor@arabianbusiness.com"
+  },
+  {
+    "site": "Khaleej Times",
+    "url": "https://www.khaleejtimes.com",
+    "domainAuthority": 81,
+    "category": "UAE general news",
+    "audience": "Mass UAE readership",
+    "submissionUrl": "https://www.khaleejtimes.com/contact-us",
+    "pitchAngle": "Op-ed on how Dubai SMEs should approach marketing in 2026",
+    "contactEmail": "letters@khaleejtimes.com"
+  },
+  {
+    "site": "Gulf News",
+    "url": "https://gulfnews.com",
+    "domainAuthority": 84,
+    "category": "UAE/GCC general news",
+    "audience": "Mass UAE readership",
+    "submissionUrl": "https://gulfnews.com/contact-us",
+    "pitchAngle": "Industry expert quote on UAE digital advertising market growth",
+    "contactEmail": "readers@gulfnews.com"
+  },
+  {
+    "site": "AME Info",
+    "url": "https://www.ameinfo.com",
+    "domainAuthority": 71,
+    "category": "MENA business news",
+    "audience": "MENA business decision-makers",
+    "submissionUrl": "https://www.ameinfo.com/contact",
+    "pitchAngle": "Guest article on MENA performance marketing landscape",
+    "contactEmail": "editor@ameinfo.com"
+  },
+  {
+    "site": "Entrepreneur Middle East",
+    "url": "https://www.entrepreneur.com/en-ae",
+    "domainAuthority": 88,
+    "category": "Business / entrepreneurship",
+    "audience": "Founders, business owners",
+    "submissionUrl": "https://www.entrepreneur.com/contributors-program",
+    "pitchAngle": "Apply to be a contributor, then publish original Dubai marketing pieces",
+    "contactEmail": "editor.me@entrepreneur.com"
+  },
+  {
+    "site": "Gulf Business",
+    "url": "https://gulfbusiness.com",
+    "domainAuthority": 71,
+    "category": "Business / finance",
+    "audience": "Senior management, GCC",
+    "submissionUrl": "https://gulfbusiness.com/contact",
+    "pitchAngle": "Expert commentary piece on Dubai SME marketing spend",
+    "contactEmail": "editor@gulfbusiness.com"
+  },
+  {
+    "site": "TimeOut Dubai",
+    "url": "https://www.timeoutdubai.com",
+    "domainAuthority": 78,
+    "category": "Lifestyle / Dubai",
+    "audience": "Dubai residents",
+    "submissionUrl": "https://www.timeoutdubai.com/contact-us",
+    "pitchAngle": "Behind-the-scenes piece on what makes Dubai brands stand out",
+    "contactEmail": "editorial@timeoutdubai.com"
+  },
+  {
+    "site": "Time Out Bahrain / KSA partners",
+    "url": "https://www.timeoutdubai.com",
+    "domainAuthority": 78,
+    "category": "GCC lifestyle network",
+    "audience": "GCC residents",
+    "submissionUrl": "https://www.timeoutdubai.com/contact-us",
+    "pitchAngle": "Marketing trend syndication across GCC TimeOut editions",
+    "contactEmail": "editorial@timeoutdubai.com"
+  },
+  {
+    "site": "Esquire Middle East",
+    "url": "https://www.esquireme.com",
+    "domainAuthority": 66,
+    "category": "Men's lifestyle",
+    "audience": "Affluent UAE men",
+    "submissionUrl": "https://www.esquireme.com/contact",
+    "pitchAngle": "Founder-profile angle on building an agency in Dubai",
+    "contactEmail": "editor@esquireme.com"
+  },
+  {
+    "site": "Harper's Bazaar Arabia",
+    "url": "https://www.harpersbazaararabia.com",
+    "domainAuthority": 71,
+    "category": "Women's luxury lifestyle",
+    "audience": "High-income UAE women",
+    "submissionUrl": "https://www.harpersbazaararabia.com/contact",
+    "pitchAngle": "Beauty-and-cosmetics marketing in the UAE expertise piece",
+    "contactEmail": "info@harpersbazaararabia.com"
+  },
+  {
+    "site": "MarketingWeek MENA",
+    "url": "https://marketing-week.com",
+    "domainAuthority": 79,
+    "category": "Marketing industry trade",
+    "audience": "Marketing professionals globally + MENA",
+    "submissionUrl": "https://marketing-week.com/contact",
+    "pitchAngle": "Original research piece on MENA paid social benchmarks",
+    "contactEmail": "editor@marketing-week.com"
+  },
+  {
+    "site": "Campaign Middle East",
+    "url": "https://campaignme.com",
+    "domainAuthority": 65,
+    "category": "MENA marketing trade",
+    "audience": "MENA agency owners and marketers",
+    "submissionUrl": "https://campaignme.com/contact",
+    "pitchAngle": "Agency leader op-ed on Dubai market dynamics",
+    "contactEmail": "editor@campaignme.com"
+  },
+  {
+    "site": "Marketingmag UAE",
+    "url": "https://marketingmag.ae",
+    "domainAuthority": 39,
+    "category": "MENA marketing trade",
+    "audience": "UAE marketers",
+    "submissionUrl": "https://marketingmag.ae/contact",
+    "pitchAngle": "UAE-specific paid social benchmark report",
+    "contactEmail": "editor@marketingmag.ae"
+  },
+  {
+    "site": "MAGNA Global / MENA Comms",
+    "url": "https://magnaglobal.com",
+    "domainAuthority": 64,
+    "category": "Media buying research",
+    "audience": "Senior marketers",
+    "submissionUrl": "https://magnaglobal.com/contact",
+    "pitchAngle": "Co-authored research on Dubai digital ad inventory dynamics",
+    "contactEmail": "info@magnaglobal.com"
+  },
+  {
+    "site": "ROI Hunter blog",
+    "url": "https://roihunter.com",
+    "domainAuthority": 53,
+    "category": "E-commerce marketing tech",
+    "audience": "E-commerce marketers globally",
+    "submissionUrl": "https://roihunter.com/contact",
+    "pitchAngle": "Case study guest piece on Dubai e-commerce Meta strategy",
+    "contactEmail": "marketing@roihunter.com"
+  },
+  {
+    "site": "Search Engine Journal",
+    "url": "https://www.searchenginejournal.com",
+    "domainAuthority": 89,
+    "category": "Search / SEO trade",
+    "audience": "SEO professionals globally",
+    "submissionUrl": "https://www.searchenginejournal.com/contribute",
+    "pitchAngle": "Apply to contributor program with original Dubai SEO data piece",
+    "contactEmail": "contribute@searchenginejournal.com"
+  },
+  {
+    "site": "Search Engine Land",
+    "url": "https://searchengineland.com",
+    "domainAuthority": 88,
+    "category": "Search / SEO trade",
+    "audience": "Search marketers globally",
+    "submissionUrl": "https://searchengineland.com/contact",
+    "pitchAngle": "Original UAE/GCC search market data piece",
+    "contactEmail": "news@searchengineland.com"
+  },
+  {
+    "site": "Adweek MENA",
+    "url": "https://www.adweek.com",
+    "domainAuthority": 89,
+    "category": "Advertising trade",
+    "audience": "Advertising industry global",
+    "submissionUrl": "https://www.adweek.com/contact",
+    "pitchAngle": "Op-ed on MENA agency operating model",
+    "contactEmail": "tips@adweek.com"
+  },
+  {
+    "site": "Forbes Middle East",
+    "url": "https://www.forbesmiddleeast.com",
+    "domainAuthority": 84,
+    "category": "Business / finance",
+    "audience": "C-suite MENA",
+    "submissionUrl": "https://www.forbesmiddleeast.com/contact",
+    "pitchAngle": "Expert quote contributions; later Forbes Council application",
+    "contactEmail": "editor@forbesmiddleeast.com"
+  },
+  {
+    "site": "MIT Sloan Management Review Arabia",
+    "url": "https://sloanreview.mit.edu/arabic",
+    "domainAuthority": 88,
+    "category": "Management / strategy",
+    "audience": "Senior managers",
+    "submissionUrl": "https://sloanreview.mit.edu/contact",
+    "pitchAngle": "Marketing transformation case study from Dubai SME",
+    "contactEmail": "smreditor@mit.edu"
+  },
+  {
+    "site": "Clutch.co",
+    "url": "https://clutch.co",
+    "domainAuthority": 87,
+    "category": "Agency directory + reviews",
+    "audience": "Buyers researching agencies",
+    "submissionUrl": "https://clutch.co/get-listed",
+    "pitchAngle": "List agency, collect client reviews, rank for 'best Dubai agency'",
+    "contactEmail": "support@clutch.co"
+  },
+  {
+    "site": "GoodFirms",
+    "url": "https://www.goodfirms.co",
+    "domainAuthority": 79,
+    "category": "Agency directory",
+    "audience": "Agency buyers",
+    "submissionUrl": "https://www.goodfirms.co/register-your-company",
+    "pitchAngle": "Free agency listing, get on Dubai SMMA category page",
+    "contactEmail": "support@goodfirms.co"
+  },
+  {
+    "site": "DesignRush",
+    "url": "https://www.designrush.com",
+    "domainAuthority": 70,
+    "category": "Agency directory",
+    "audience": "Agency buyers",
+    "submissionUrl": "https://www.designrush.com/join",
+    "pitchAngle": "Agency listing in Dubai digital marketing category",
+    "contactEmail": "info@designrush.com"
+  },
+  {
+    "site": "Sortlist",
+    "url": "https://www.sortlist.com",
+    "domainAuthority": 68,
+    "category": "Agency marketplace",
+    "audience": "Agency buyers",
+    "submissionUrl": "https://www.sortlist.com/agency-signup",
+    "pitchAngle": "List, optimise profile, respond to RFPs",
+    "contactEmail": "hello@sortlist.com"
+  },
+  {
+    "site": "Agency Spotter",
+    "url": "https://www.agencyspotter.com",
+    "domainAuthority": 60,
+    "category": "Agency directory",
+    "audience": "Agency buyers",
+    "submissionUrl": "https://www.agencyspotter.com/add-your-agency",
+    "pitchAngle": "Free agency listing in Dubai SMMA category",
+    "contactEmail": "support@agencyspotter.com"
+  },
+  {
+    "site": "The National (UAE)",
+    "url": "https://www.thenationalnews.com",
+    "domainAuthority": 87,
+    "category": "UAE flagship news",
+    "audience": "UAE residents + diplomatic",
+    "submissionUrl": "https://www.thenationalnews.com/contact-us",
+    "pitchAngle": "Op-ed on UAE digital ad market or expert quote source",
+    "contactEmail": "letters@thenationalnews.com"
+  },
+  {
+    "site": "Wamda",
+    "url": "https://www.wamda.com",
+    "domainAuthority": 67,
+    "category": "MENA startup news",
+    "audience": "Founders, VCs, MENA startups",
+    "submissionUrl": "https://www.wamda.com/contact",
+    "pitchAngle": "Founder profile or original startup-marketing piece for MENA",
+    "contactEmail": "editor@wamda.com"
+  },
+  {
+    "site": "MENAbytes",
+    "url": "https://www.menabytes.com",
+    "domainAuthority": 53,
+    "category": "MENA tech / startup",
+    "audience": "MENA tech ecosystem",
+    "submissionUrl": "https://www.menabytes.com/contact",
+    "pitchAngle": "Guest piece on MENA digital marketing landscape",
+    "contactEmail": "tips@menabytes.com"
+  },
+  {
+    "site": "Hashtag UAE",
+    "url": "https://hashtag.ae",
+    "domainAuthority": 35,
+    "category": "UAE social media trade",
+    "audience": "UAE marketers + brands",
+    "submissionUrl": "https://hashtag.ae/contact",
+    "pitchAngle": "Tactical Dubai-specific social media tips piece",
+    "contactEmail": "editor@hashtag.ae"
+  },
+  {
+    "site": "Brandsync",
+    "url": "https://brandsync.com",
+    "domainAuthority": 47,
+    "category": "Marketing community",
+    "audience": "Brand managers",
+    "submissionUrl": "https://brandsync.com/contact",
+    "pitchAngle": "Original framework piece (e.g. our ROAS framework)",
+    "contactEmail": "editor@brandsync.com"
+  }
+]

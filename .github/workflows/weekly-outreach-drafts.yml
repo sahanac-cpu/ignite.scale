@@ -1,0 +1,47 @@
+name: Generate weekly outreach drafts
+
+# Runs every Wednesday at 09:00 Dubai time (UTC+4 → 05:00 UTC).
+# Picks 3 fresh UAE-business-site targets, generates personalised pitch drafts,
+# commits them to outreach/drafts/<date>/. User reviews + sends from their email.
+on:
+  schedule:
+    - cron: '0 5 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate drafts
+        id: draft
+        run: |
+          node scripts/agents/draft-outreach.mjs > /tmp/draft.log 2>&1
+          cat /tmp/draft.log
+          if grep -q "All targets have been drafted" /tmp/draft.log; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit + push
+        if: steps.draft.outputs.skip != 'true'
+        run: |
+          git config user.name "sahanac-cpu"
+          git config user.email "sahanac@andrew.cmu.edu"
+          git add outreach/
+          git commit -m "Weekly outreach drafts: $(date +%Y-%m-%d)
+
+Automated by .github/workflows/weekly-outreach-drafts.yml — review + send from admin@ignite-scale.com"
+          git push origin main

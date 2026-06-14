@@ -300,10 +300,54 @@ export const ROUTES = [
   },
 ]
 
+/* Auto-discover Markdown blog posts in content/blog/ — each one becomes a route at /blog/<slug>.
+   This means publishing a new post = drop a .md file in content/blog/. No code touching. */
+import { readdirSync, readFileSync, existsSync } from 'node:fs'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import matter from 'gray-matter'
+
+function findBlogPosts() {
+  const __dirname = dirname(fileURLToPath(import.meta.url))
+  const blogDir = resolve(__dirname, '..', 'content', 'blog')
+  if (!existsSync(blogDir)) return []
+  return readdirSync(blogDir)
+    .filter((f) => f.endsWith('.md'))
+    .map((file) => {
+      const raw = readFileSync(resolve(blogDir, file), 'utf8')
+      const { data } = matter(raw)
+      const slug = file.replace(/\.md$/, '')
+      return {
+        path: `/blog/${slug}`,
+        title: `${data.title} | ignite-scale`,
+        description: data.description,
+        title_ar: data.title_ar ? `${data.title_ar} | ignite-scale` : null,
+        description_ar: data.description_ar || null,
+        changefreq: 'monthly',
+        priority: 0.75,
+        breadcrumbs: [
+          { name: 'Home', name_ar: 'الرئيسية', url: '/' },
+          { name: 'Blog', name_ar: 'المدونة', url: '/blog' },
+          { name: data.title, name_ar: data.title_ar || data.title, url: `/blog/${slug}` },
+        ],
+        article: {
+          datePublished: data.publishedAt,
+          headline: data.title,
+          headline_ar: data.title_ar || data.title,
+        },
+      }
+    })
+}
+
+export function getAutoDiscoveredRoutes() {
+  return findBlogPosts()
+}
+
 /* Builds a routes-by-locale matrix for prerender + sitemap. */
 export function allLocaleRoutes() {
+  const all = [...ROUTES, ...findBlogPosts()]
   const out = []
-  for (const r of ROUTES) {
+  for (const r of all) {
     out.push({ ...r, locale: 'en', urlPath: r.path })
     out.push({
       ...r,

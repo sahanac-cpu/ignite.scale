@@ -23,6 +23,7 @@ const WebDesignPage             = lazy(() => import('./pages/WebDesignPage'))
 const BlogMetaAdsMistakesPage   = lazy(() => import('./pages/BlogMetaAdsMistakesPage'))
 const BlogTikTokVsInstagramPage = lazy(() => import('./pages/BlogTikTokVsInstagramPage'))
 const BlogCPLReductionPage      = lazy(() => import('./pages/BlogCPLReductionPage'))
+const BlogPostPage              = lazy(() => import('./pages/BlogPostPage'))
 const CaseStudyRealEstateDAEPage = lazy(() => import('./pages/CaseStudyRealEstateDAEPage'))
 const CaseStudyCosmeticsPage    = lazy(() => import('./pages/CaseStudyCosmeticsPage'))
 const ResultsPage               = lazy(() => import('./pages/ResultsPage'))
@@ -99,6 +100,11 @@ export default function App() {
             {ROUTE_DEFS.map(([path, Comp]) => (
               <Route key={`ar${path}`} path={`/ar${path}`} element={<Comp />} />
             ))}
+
+            {/* Dynamic markdown-driven blog posts: /blog/<slug> + /ar/blog/<slug>.
+                Posts live as MD files in content/blog/ — just drop a file in to publish. */}
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/ar/blog/:slug" element={<BlogPostPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

@@ -1,0 +1,54 @@
+name: Publish next blog post
+
+# Runs every Monday at 09:00 Dubai time (UTC+4 → 05:00 UTC).
+# Pops the oldest file from content/blog/queue/, moves it to content/blog/, commits, pushes.
+# Vercel auto-deploys on push.
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch: # allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Publish next queued post
+        id: publish
+        run: |
+          node scripts/agents/publish-next-post.mjs > /tmp/publish.log 2>&1
+          cat /tmp/publish.log
+          if grep -q "Queue is empty" /tmp/publish.log; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            slug=$(grep "Published:" /tmp/publish.log | awk '{print $3}')
+            echo "slug=$slug" >> $GITHUB_OUTPUT
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit + push
+        if: steps.publish.outputs.skip != 'true'
+        env:
+          SLUG: ${{ steps.publish.outputs.slug }}
+        run: |
+          git config user.name "sahanac-cpu"
+          git config user.email "sahanac@andrew.cmu.edu"
+          git add content/
+          git commit -m "Auto-publish blog post: $SLUG
+
+Automated by .github/workflows/weekly-blog-publish.yml"
+          git push origin main

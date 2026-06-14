@@ -1,12 +1,14 @@
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import { SITE, ROUTES } from './seo-routes.mjs'
+import { SITE, ROUTES, getAutoDiscoveredRoutes } from './seo-routes.mjs'
 
 const today = new Date().toISOString().slice(0, 10)
 
+const ALL = [...ROUTES, ...getAutoDiscoveredRoutes()]
+
 /* For each canonical route, output both EN and AR locs with paired hreflang annotations. */
 const entries = []
-for (const r of ROUTES) {
+for (const r of ALL) {
   const en = `${SITE}${r.path}`
   const ar = `${SITE}/ar${r.path === '/' ? '' : r.path}`
 
@@ -40,4 +42,4 @@ ${entries.join('\n')}
 const outPath = resolve('public/sitemap.xml')
 mkdirSync(dirname(outPath), { recursive: true })
 writeFileSync(outPath, xml)
-console.log(`✓ Wrote ${outPath} (${ROUTES.length * 2} URLs)`)
+console.log(`✓ Wrote ${outPath} (${ALL.length * 2} URLs)`)

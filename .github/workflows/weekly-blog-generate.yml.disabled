@@ -1,0 +1,51 @@
+name: Auto-generate blog post (Anthropic API)
+
+# DISABLED by default — rename to .yml and set ANTHROPIC_API_KEY in repo secrets to enable.
+#
+# Fires every Monday at 04:00 Dubai time (00:00 UTC), an hour before the publisher.
+# Calls Claude Sonnet 4.6 with a topic from content/blog/topics-backlog.json.
+# Generates a 1500-word post + frontmatter, drops into content/blog/queue/.
+# Publisher then picks it up at 05:00 UTC same morning.
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Generate next blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/agents/generate-blog-post.mjs
+
+      - name: Commit + push
+        run: |
+          git config user.name "sahanac-cpu"
+          git config user.email "sahanac@andrew.cmu.edu"
+          if [ -n "$(git status --porcelain content/blog/queue/)" ]; then
+            git add content/
+            git commit -m "Auto-generated blog post via Anthropic API ($(date +%Y-%m-%d))
+
+Automated by .github/workflows/weekly-blog-generate.yml — drafted by Claude, queued for publisher."
+            git push origin main
+          else
+            echo "No new post generated."
+          fi
