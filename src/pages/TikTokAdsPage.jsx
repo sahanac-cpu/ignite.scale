@@ -11,7 +11,7 @@ export default function TikTokAdsPage() {
   return (
     <>
       <SEOMeta
-        title={t('TikTok Ads Agency Dubai | Ignite Scale', 'وكالة إعلانات تيك توك في دبي | Ignite Scale')}
+        title={t('TikTok Ads Agency Dubai | ignite-scale', 'وكالة إعلانات تيك توك في دبي | ignite-scale')}
         description={t('TikTok advertising in Dubai. High-performing campaigns targeting Gen Z and millennial audiences with lower CPMs than Meta. Free audit available.', 'إعلانات تيك توك في دبي. حملات عالية الأداء تستهدف جيل Z والألفية بتكلفة عرض أقل من ميتا. مراجعة مجانية متاحة.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/tiktok-ads-dubai' : 'https://ignite-scale.com/tiktok-ads-dubai'}
         locale={locale}

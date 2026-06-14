@@ -49,7 +49,7 @@ export default function DubaiMarketingAgencyPage() {
   return (
     <>
       <SEOMeta
-        title={t('Best Marketing Agency in Dubai | Ignite Scale', 'أفضل وكالة تسويق في دبي | Ignite Scale')}
+        title={t('Best Marketing Agency in Dubai | ignite-scale', 'أفضل وكالة تسويق في دبي | ignite-scale')}
         description={t('Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في دبي؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات الإماراتية الطموحة. احجز جلسة استراتيجية مجانية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/dubai-marketing-agency' : 'https://ignite-scale.com/dubai-marketing-agency'}
         locale={locale}

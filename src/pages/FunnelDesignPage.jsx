@@ -49,7 +49,7 @@ export default function FunnelDesignPage() {
   return (
     <>
       <SEOMeta
-        title={t('Landing Pages & Lead Funnels Dubai | Ignite Scale', 'صفحات الهبوط وقمعات التحويل في دبي | Ignite Scale')}
+        title={t('Landing Pages & Lead Funnels Dubai | ignite-scale', 'صفحات الهبوط وقمعات التحويل في دبي | ignite-scale')}
         description={t('Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit.', 'صفحات هبوط وقمعات تحويل مُحسَّنة للعلامات في دبي. عقارات، تجميل، ضيافة. تحسين التحويل مدمج. مراجعة قمع مجانية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services/funnels' : 'https://ignite-scale.com/services/funnels'}
         locale={locale}

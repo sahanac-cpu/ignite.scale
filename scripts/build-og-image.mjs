@@ -107,9 +107,10 @@ async function buildOG() {
 }
 
 async function buildFavicons() {
-  const logoPath = resolve('public/logo.svg')
+  /* Rasterise from favicon.svg (clean small-size optimised) not logo.svg (large square wordmark). */
+  const logoPath = resolve('public/favicon.svg')
   if (!existsSync(logoPath)) {
-    console.warn('logo.svg missing — skipping favicons')
+    console.warn('favicon.svg missing — skipping favicons')
     return
   }
   const svg = readFileSync(logoPath)

@@ -10,7 +10,7 @@ export default function FAQPage() {
   return (
     <>
       <SEOMeta
-        title={t('Social Media Marketing FAQ | Ignite Scale Dubai', 'أسئلة شائعة حول التسويق على وسائل التواصل | Ignite Scale دبي')}
+        title={t('Social Media Marketing FAQ | ignite-scale Dubai', 'أسئلة شائعة حول التسويق على وسائل التواصل | ignite-scale دبي')}
         description={t('Answers to the most common questions Dubai businesses ask before working with Ignite Scale: timelines, platforms, budgets, content creation, Arabic content, ROI.', 'إجابات لأكثر الأسئلة التي تطرحها شركات دبي قبل التعاون مع Ignite Scale: الجداول الزمنية، المنصّات، الميزانيات، إنتاج المحتوى، المحتوى العربي، العائد على الاستثمار.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/faq' : 'https://ignite-scale.com/faq'}
         locale={locale}

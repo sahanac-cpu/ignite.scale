@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const SITE = 'https://ignite-scale.com'
-const BRAND = 'Ignite Scale'
+const BRAND = 'ignite-scale'
 const PHONE = '+971555116465'
 const EMAIL = 'admin@ignite-scale.com'
 

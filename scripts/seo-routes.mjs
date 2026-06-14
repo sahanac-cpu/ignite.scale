@@ -7,18 +7,18 @@ export const SITE = 'https://ignite-scale.com'
 export const ROUTES = [
   {
     path: '/',
-    title: 'Ignite Scale | Dubai Paid Social, Web & Lead Funnels',
+    title: 'ignite-scale | Dubai paid social, web & lead funnels',
     description: "Dubai growth agency engineering paid social, content and funnels for luxury real estate, cosmetic clinics and B2B brands. Targeting 2–5× ROAS. Book a free strategy call.",
-    title_ar: 'Ignite Scale | إعلانات ممولة ومواقع وقمعات في دبي',
+    title_ar: 'ignite-scale | إعلانات ممولة ومواقع وقمعات في دبي',
     description_ar: 'وكالة نموّ في دبي تهندس الإعلانات الممولة والمحتوى وقمعات التحويل للعقارات الفاخرة وعيادات التجميل والشركات. نستهدف عائداً ٢–٥× على الإنفاق الإعلاني. احجز مكالمة استراتيجية مجانية.',
     changefreq: 'weekly', priority: 1.0,
     breadcrumbs: [{ name: 'Home', name_ar: 'الرئيسية', url: '/' }],
   },
   {
     path: '/services',
-    title: 'Digital Marketing Services Dubai | Ignite Scale',
+    title: 'Digital Marketing Services Dubai | ignite-scale',
     description: 'Paid social on Meta, TikTok and Google, conversion websites, lead generation and creative production for Dubai brands. Book a free consultation.',
-    title_ar: 'خدمات التسويق الرقمي في دبي | Ignite Scale',
+    title_ar: 'خدمات التسويق الرقمي في دبي | ignite-scale',
     description_ar: 'إعلانات ممولة على ميتا وتيك توك وقوقل، مواقع تحويلية، توليد عملاء محتملين، وإنتاج إبداعي لعلامات دبي. احجز استشارة مجانية.',
     changefreq: 'monthly', priority: 0.9,
     breadcrumbs: [
@@ -47,9 +47,9 @@ export const ROUTES = [
   },
   {
     path: '/services/creative',
-    title: 'UGC Video & Creative Ads Dubai | Ignite Scale',
+    title: 'UGC Video & Creative Ads Dubai | ignite-scale',
     description: 'UGC video, ad creative and copywriting for Dubai brands. In-house production, 48-hour turnaround, conversion-focused. Typical 3–5× engagement lift.',
-    title_ar: 'فيديو المستخدم وإعلانات إبداعية في دبي | Ignite Scale',
+    title_ar: 'فيديو المستخدم وإعلانات إبداعية في دبي | ignite-scale',
     description_ar: 'فيديو المستخدم والمحتوى الإبداعي للإعلانات وكتابة النصوص لعلامات دبي. إنتاج داخلي، تسليم خلال ٤٨ ساعة، تركيز على التحويل. ارتفاع تفاعل ٣–٥× في المعتاد.',
     changefreq: 'monthly', priority: 0.85,
     breadcrumbs: [
@@ -66,9 +66,9 @@ export const ROUTES = [
   },
   {
     path: '/services/funnels',
-    title: 'Landing Pages & Lead Funnels Dubai | Ignite Scale',
+    title: 'Landing Pages & Lead Funnels Dubai | ignite-scale',
     description: 'Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit.',
-    title_ar: 'صفحات الهبوط وقمعات التحويل في دبي | Ignite Scale',
+    title_ar: 'صفحات الهبوط وقمعات التحويل في دبي | ignite-scale',
     description_ar: 'صفحات هبوط وقمعات تحويل مُحسَّنة للعلامات في دبي. عقارات، تجميل، ضيافة. تحسين التحويل مدمج. مراجعة قمع مجانية.',
     changefreq: 'monthly', priority: 0.85,
     breadcrumbs: [
@@ -85,9 +85,9 @@ export const ROUTES = [
   },
   {
     path: '/dubai-marketing-agency',
-    title: 'Best Marketing Agency in Dubai | Ignite Scale',
+    title: 'Best Marketing Agency in Dubai | ignite-scale',
     description: 'Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.',
-    title_ar: 'أفضل وكالة تسويق في دبي | Ignite Scale',
+    title_ar: 'أفضل وكالة تسويق في دبي | ignite-scale',
     description_ar: 'تبحث عن وكالة تسويق في دبي؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات الإماراتية الطموحة. احجز جلسة استراتيجية مجانية.',
     changefreq: 'monthly', priority: 0.9,
     breadcrumbs: [
@@ -115,9 +115,9 @@ export const ROUTES = [
   },
   {
     path: '/tiktok-ads-dubai',
-    title: 'TikTok Ads Agency Dubai | Ignite Scale',
+    title: 'TikTok Ads Agency Dubai | ignite-scale',
     description: 'TikTok advertising in Dubai. High-performing campaigns targeting Gen Z and millennial audiences with lower CPMs than Meta. Free audit available.',
-    title_ar: 'وكالة إعلانات تيك توك في دبي | Ignite Scale',
+    title_ar: 'وكالة إعلانات تيك توك في دبي | ignite-scale',
     description_ar: 'إعلانات تيك توك في دبي. حملات عالية الأداء تستهدف جيل Z والألفية بتكلفة عرض أقل من ميتا. مراجعة مجانية متاحة.',
     changefreq: 'monthly', priority: 0.85,
     breadcrumbs: [
@@ -151,9 +151,9 @@ export const ROUTES = [
   },
   {
     path: '/results',
-    title: 'Client Results & Case Studies | Ignite Scale Dubai',
+    title: 'Client Results & Case Studies | ignite-scale Dubai',
     description: 'Real results from Dubai brands: +247% qualified leads in 90 days, 4.2× lower cost per reservation, 61% CPL reduction in luxury auto. No vanity metrics.',
-    title_ar: 'نتائج العملاء ودراسات الحالة | Ignite Scale دبي',
+    title_ar: 'نتائج العملاء ودراسات الحالة | ignite-scale دبي',
     description_ar: 'نتائج حقيقية من علامات دبي: +٢٤٧٪ عملاء مؤهلون في ٩٠ يوماً، ٤٫٢× خفض في تكلفة الحجز، ٦١٪ خفض في تكلفة العميل في السيارات الفاخرة. لا مقاييس مظهرية.',
     changefreq: 'monthly', priority: 0.8,
     breadcrumbs: [
@@ -163,9 +163,9 @@ export const ROUTES = [
   },
   {
     path: '/process',
-    title: 'Our Growth Process for Dubai Brands | Ignite Scale',
+    title: 'Our Growth Process for Dubai Brands | ignite-scale',
     description: 'Our 4-step growth process: strategy discovery, content and campaign build, launch and optimise, then scale. Transparent and data-driven.',
-    title_ar: 'عمليتنا للنمو في علامات دبي | Ignite Scale',
+    title_ar: 'عمليتنا للنمو في علامات دبي | ignite-scale',
     description_ar: 'عمليتنا للنمو في ٤ خطوات: استكشاف الاستراتيجية، بناء المحتوى والحملات، الإطلاق والتحسين، ثم التوسّع. شفّافة ومدفوعة بالبيانات.',
     changefreq: 'monthly', priority: 0.7,
     breadcrumbs: [
@@ -175,9 +175,9 @@ export const ROUTES = [
   },
   {
     path: '/book',
-    title: 'Book a Free Strategy Call | Ignite Scale Dubai',
+    title: 'Book a Free Strategy Call | ignite-scale Dubai',
     description: 'Book a free 45-minute strategy call with Ignite Scale. We audit your social presence, analyse competitors, and build a 90-day growth roadmap. No obligation.',
-    title_ar: 'احجز مكالمة استراتيجية مجانية | Ignite Scale دبي',
+    title_ar: 'احجز مكالمة استراتيجية مجانية | ignite-scale دبي',
     description_ar: 'احجز مكالمة استراتيجية مجانية مدتها ٤٥ دقيقة مع Ignite Scale. نراجع حضورك الاجتماعي، نحلّل المنافسين، ونبني خارطة نمو لـ٩٠ يوماً. دون التزام.',
     changefreq: 'monthly', priority: 0.9,
     breadcrumbs: [
@@ -187,9 +187,9 @@ export const ROUTES = [
   },
   {
     path: '/faq',
-    title: 'Social Media Marketing FAQ | Ignite Scale Dubai',
+    title: 'Social Media Marketing FAQ | ignite-scale Dubai',
     description: 'Answers to the most common questions Dubai businesses ask before working with Ignite Scale: timelines, platforms, budgets, content creation, Arabic content, ROI.',
-    title_ar: 'أسئلة شائعة حول التسويق على وسائل التواصل | Ignite Scale دبي',
+    title_ar: 'أسئلة شائعة حول التسويق على وسائل التواصل | ignite-scale دبي',
     description_ar: 'إجابات لأكثر الأسئلة التي تطرحها شركات دبي قبل التعاون مع Ignite Scale: الجداول الزمنية، المنصّات، الميزانيات، إنتاج المحتوى، المحتوى العربي، العائد على الاستثمار.',
     changefreq: 'monthly', priority: 0.6,
     breadcrumbs: [
@@ -235,9 +235,9 @@ export const ROUTES = [
   },
   {
     path: '/blog/reduce-cost-per-lead',
-    title: 'How to Cut Ad Cost Per Lead by 60% | Ignite Scale',
+    title: 'How to Cut Ad Cost Per Lead by 60% | ignite-scale',
     description: 'Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns.',
-    title_ar: 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | Ignite Scale',
+    title_ar: 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | ignite-scale',
     description_ar: 'إطار خطوة بخطوة لخفض تكلفة العميل المحتمل بنسبة ٦٠–٨٠٪: تحسين صفحات الهبوط، استهداف الجمهور، تصميم القمعات، كتابة النصوص. مُختبَر على أكثر من ٥٠ حملة في دبي.',
     changefreq: 'monthly', priority: 0.7,
     breadcrumbs: [

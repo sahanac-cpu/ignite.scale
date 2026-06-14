@@ -30,7 +30,8 @@ function organizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${SITE}#org`,
-    name: 'Ignite Scale',
+    name: 'ignite-scale',
+    alternateName: ['Ignite Scale', 'ignite-scale.com', 'IgniteScale'],
     description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE.',
     url: SITE,
     logo: `${SITE}/logo.svg`,
@@ -49,6 +50,25 @@ function organizationJsonLd() {
   }
 }
 
+/* Dedicated WebSite schema strengthens Google's brand-extraction algorithm — improves
+   the bolded title that appears in SERP. Also enables sitelinks search box. */
+function websiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE}#website`,
+    name: 'ignite-scale',
+    alternateName: ['Ignite Scale', 'ignite-scale.com'],
+    url: SITE,
+    publisher: { '@id': `${SITE}#org` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
 function webpageJsonLd(route, canonical, locale) {
   return {
     '@context': 'https://schema.org',
@@ -58,7 +78,7 @@ function webpageJsonLd(route, canonical, locale) {
     url: canonical,
     image: `${SITE}/og-image.jpg`,
     inLanguage: locale === 'ar' ? 'ar-AE' : 'en-AE',
-    isPartOf: { '@type': 'WebSite', name: 'Ignite Scale', url: SITE },
+    isPartOf: { '@type': 'WebSite', name: 'ignite-scale', alternateName: 'Ignite Scale', url: SITE },
   }
 }
 
@@ -84,10 +104,10 @@ function articleJsonLd(route, canonical, locale) {
     description: route.description,
     image: `${SITE}/og-image.jpg`,
     inLanguage: locale === 'ar' ? 'ar-AE' : 'en-AE',
-    author: { '@type': 'Organization', name: 'Ignite Scale', url: SITE },
+    author: { '@type': 'Organization', name: 'ignite-scale', url: SITE },
     publisher: {
       '@type': 'Organization',
-      name: 'Ignite Scale',
+      name: 'ignite-scale',
       logo: { '@type': 'ImageObject', url: `${SITE}/logo.svg` },
     },
     datePublished: a.datePublished,
@@ -105,7 +125,7 @@ function serviceJsonLd(route, canonical) {
     serviceType: s.serviceType,
     description: s.description,
     url: canonical,
-    provider: { '@type': 'Organization', name: 'Ignite Scale', url: SITE, '@id': `${SITE}#org` },
+    provider: { '@type': 'Organization', name: 'ignite-scale', url: SITE, '@id': `${SITE}#org` },
     areaServed: [
       { '@type': 'Country', name: 'United Arab Emirates' },
       { '@type': 'Country', name: 'Saudi Arabia' },
@@ -141,6 +161,7 @@ function renderHead(route) {
 
   const scripts = []
   scripts.push(jsonScript('organization', organizationJsonLd()))
+  scripts.push(jsonScript('website', websiteJsonLd()))
   scripts.push(jsonScript('webpage', webpageJsonLd(route, canonical, locale)))
   if (route.breadcrumbs && route.breadcrumbs.length > 1) {
     scripts.push(jsonScript('breadcrumb', breadcrumbJsonLd(route.breadcrumbs)))
@@ -159,7 +180,7 @@ function renderHead(route) {
     `<title>${escapeHtml(route.title)}</title>`,
     `<meta name="description" content="${escapeHtml(route.description)}" />`,
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
-    `<meta name="author" content="Ignite Scale" />`,
+    `<meta name="author" content="ignite-scale" />`,
     `<link rel="canonical" href="${canonical}" />`,
     `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
     `<link rel="alternate" hreflang="en-AE" href="${enUrl}" />`,
@@ -168,14 +189,14 @@ function renderHead(route) {
     `<meta name="geo.region" content="AE-DU" />`,
     `<meta name="geo.placename" content="Dubai" />`,
     `<meta property="og:type" content="${ogType}" />`,
-    `<meta property="og:site_name" content="Ignite Scale" />`,
+    `<meta property="og:site_name" content="ignite-scale" />`,
     `<meta property="og:url" content="${canonical}" />`,
     `<meta property="og:title" content="${escapeHtml(route.title)}" />`,
     `<meta property="og:description" content="${escapeHtml(route.description)}" />`,
     `<meta property="og:image" content="${SITE}/og-image.jpg" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="Ignite Scale, Dubai growth agency" />`,
+    `<meta property="og:image:alt" content="ignite-scale, Dubai growth agency" />`,
     `<meta property="og:locale" content="${ogLocale}" />`,
     `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,

@@ -49,7 +49,7 @@ export default function ContentCreativePage() {
   return (
     <>
       <SEOMeta
-        title={t('UGC Video & Creative Ads Dubai | Ignite Scale', 'فيديو المستخدم وإعلانات إبداعية في دبي | Ignite Scale')}
+        title={t('UGC Video & Creative Ads Dubai | ignite-scale', 'فيديو المستخدم وإعلانات إبداعية في دبي | ignite-scale')}
         description={t('UGC video, ad creative and copywriting for Dubai brands. In-house production, 48-hour turnaround, conversion-focused. Typical 3–5× engagement lift.', 'فيديو المستخدم والمحتوى الإبداعي للإعلانات وكتابة النصوص لعلامات دبي. إنتاج داخلي، تسليم خلال ٤٨ ساعة، تركيز على التحويل. ارتفاع تفاعل ٣–٥× في المعتاد.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services/creative' : 'https://ignite-scale.com/services/creative'}
         locale={locale}
