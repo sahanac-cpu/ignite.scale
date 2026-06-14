@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
@@ -7,27 +8,29 @@ import Navbar from './components/Navbar'
 import Chatbot from './components/Chatbot'
 import ArBetaBanner from './components/ArBetaBanner'
 
-import HomePage    from './pages/HomePage'
-import ServicesPage from './pages/ServicesPage'
-import PaidSocialPage from './pages/PaidSocialPage'
-import ContentCreativePage from './pages/ContentCreativePage'
-import FunnelDesignPage from './pages/FunnelDesignPage'
-import DubaiMarketingAgencyPage from './pages/DubaiMarketingAgencyPage'
-import MetaAdsPage from './pages/MetaAdsPage'
-import TikTokAdsPage from './pages/TikTokAdsPage'
-import WebDesignPage from './pages/WebDesignPage'
-import BlogMetaAdsMistakesPage from './pages/BlogMetaAdsMistakesPage'
-import BlogTikTokVsInstagramPage from './pages/BlogTikTokVsInstagramPage'
-import BlogCPLReductionPage from './pages/BlogCPLReductionPage'
-import CaseStudyRealEstateDAEPage from './pages/CaseStudyRealEstateDAEPage'
-import CaseStudyCosmeticsPage from './pages/CaseStudyCosmeticsPage'
-import ResultsPage  from './pages/ResultsPage'
-import ProcessPage  from './pages/ProcessPage'
-import BookingPage  from './pages/BookingPage'
-import FAQPage      from './pages/FAQPage'
-import NotFoundPage from './pages/NotFoundPage'
+/* Homepage stays eager: it's the LCP entry point for the most-visited route.
+   Every other page is lazy-loaded — Vite will emit a separate chunk per file. */
+import HomePage from './pages/HomePage'
 
-/* Page-to-route map — generates BOTH /<route> and /ar/<route> entries. */
+const ServicesPage              = lazy(() => import('./pages/ServicesPage'))
+const PaidSocialPage            = lazy(() => import('./pages/PaidSocialPage'))
+const ContentCreativePage       = lazy(() => import('./pages/ContentCreativePage'))
+const FunnelDesignPage          = lazy(() => import('./pages/FunnelDesignPage'))
+const DubaiMarketingAgencyPage  = lazy(() => import('./pages/DubaiMarketingAgencyPage'))
+const MetaAdsPage               = lazy(() => import('./pages/MetaAdsPage'))
+const TikTokAdsPage             = lazy(() => import('./pages/TikTokAdsPage'))
+const WebDesignPage             = lazy(() => import('./pages/WebDesignPage'))
+const BlogMetaAdsMistakesPage   = lazy(() => import('./pages/BlogMetaAdsMistakesPage'))
+const BlogTikTokVsInstagramPage = lazy(() => import('./pages/BlogTikTokVsInstagramPage'))
+const BlogCPLReductionPage      = lazy(() => import('./pages/BlogCPLReductionPage'))
+const CaseStudyRealEstateDAEPage = lazy(() => import('./pages/CaseStudyRealEstateDAEPage'))
+const CaseStudyCosmeticsPage    = lazy(() => import('./pages/CaseStudyCosmeticsPage'))
+const ResultsPage               = lazy(() => import('./pages/ResultsPage'))
+const ProcessPage               = lazy(() => import('./pages/ProcessPage'))
+const BookingPage               = lazy(() => import('./pages/BookingPage'))
+const FAQPage                   = lazy(() => import('./pages/FAQPage'))
+const NotFoundPage              = lazy(() => import('./pages/NotFoundPage'))
+
 const ROUTE_DEFS = [
   ['/services', ServicesPage],
   ['/services/paid-social', PaidSocialPage],
@@ -48,6 +51,35 @@ const ROUTE_DEFS = [
   ['/faq', FAQPage],
 ]
 
+/* Minimal loading state matched to the brand. Avoids layout shift while a chunk loads. */
+function RouteLoader() {
+  return (
+    <div
+      style={{
+        minHeight: '60vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#03050F',
+      }}
+      aria-busy="true"
+      aria-live="polite"
+    >
+      <div
+        style={{
+          width: 28,
+          height: 28,
+          borderRadius: '50%',
+          border: '2px solid rgba(255,255,255,0.08)',
+          borderTopColor: '#FF6B35',
+          animation: 'spin 0.8s linear infinite',
+        }}
+      />
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -56,19 +88,21 @@ export default function App() {
       <ArBetaBanner />
 
       <div className="min-h-screen" style={{ background: '#03050F' }}>
-        <Routes>
-          <Route path="/" element={<><Navbar /><HomePage /></>} />
-          <Route path="/ar" element={<><Navbar /><HomePage /></>} />
+        <Suspense fallback={<RouteLoader />}>
+          <Routes>
+            <Route path="/" element={<><Navbar /><HomePage /></>} />
+            <Route path="/ar" element={<><Navbar /><HomePage /></>} />
 
-          {ROUTE_DEFS.map(([path, Comp]) => (
-            <Route key={path} path={path} element={<Comp />} />
-          ))}
-          {ROUTE_DEFS.map(([path, Comp]) => (
-            <Route key={`ar${path}`} path={`/ar${path}`} element={<Comp />} />
-          ))}
+            {ROUTE_DEFS.map(([path, Comp]) => (
+              <Route key={path} path={path} element={<Comp />} />
+            ))}
+            {ROUTE_DEFS.map(([path, Comp]) => (
+              <Route key={`ar${path}`} path={`/ar${path}`} element={<Comp />} />
+            ))}
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
 
         <Chatbot />
       </div>
