@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -44,12 +45,14 @@ function SectionHeading({ title, subtitle }) {
 }
 
 export default function ContentCreativePage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="UGC Video & Creative Ads Dubai | Ignite Scale"
-        description="UGC video, ad creative and copywriting for Dubai brands. In-house production, 48-hour turnaround, conversion-focused. Typical 3–5× engagement lift."
-        canonical="https://ignite-scale.com/services/creative"
+        title={t('UGC Video & Creative Ads Dubai | Ignite Scale', 'فيديو المستخدم وإعلانات إبداعية في دبي | Ignite Scale')}
+        description={t('UGC video, ad creative and copywriting for Dubai brands. In-house production, 48-hour turnaround, conversion-focused. Typical 3–5× engagement lift.', 'فيديو المستخدم والمحتوى الإبداعي للإعلانات وكتابة النصوص لعلامات دبي. إنتاج داخلي، تسليم خلال ٤٨ ساعة، تركيز على التحويل. ارتفاع تفاعل ٣–٥× في المعتاد.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services/creative' : 'https://ignite-scale.com/services/creative'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: 'Content & Creative', url: '/services/creative' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

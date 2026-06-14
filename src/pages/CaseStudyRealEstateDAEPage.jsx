@@ -1,16 +1,19 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
 import { motion } from 'framer-motion'
 
 export default function CaseStudyRealEstateDAEPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Real Estate: 4.8× ROAS in 90 Days | Case Study"
-        description="How we lifted a Dubai property developer's ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown."
-        canonical="https://ignite-scale.com/case-study/dubai-real-estate-4-8x-roas"
+        title={t('Real Estate: 4.8× ROAS in 90 Days | Case Study', 'عقارات: عائد ٤٫٨× على الإنفاق في ٩٠ يوماً | دراسة حالة')}
+        description={t('How we lifted a Dubai property developer\'s ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown.', 'كيف رفعنا العائد على الإنفاق لمطوّر عقاري في دبي من ١٫٢× إلى ٤٫٨× في ٩٠ يوماً، مع خفض تكلفة العميل ٦٨٪. تفصيل كامل للاستراتيجية.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/case-study/dubai-real-estate-4-8x-roas' : 'https://ignite-scale.com/case-study/dubai-real-estate-4-8x-roas'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Real Estate', url: '/case-study/dubai-real-estate-4-8x-roas' }]}
         article={{ datePublished: '2026-01-28', headline: 'Real Estate Case Study: 4.8× ROAS in 90 Days' }}
       />

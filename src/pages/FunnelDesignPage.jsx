@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -44,12 +45,14 @@ function SectionHeading({ title, subtitle }) {
 }
 
 export default function FunnelDesignPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Landing Pages & Lead Funnels Dubai | Ignite Scale"
-        description="Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit."
-        canonical="https://ignite-scale.com/services/funnels"
+        title={t('Landing Pages & Lead Funnels Dubai | Ignite Scale', 'صفحات الهبوط وقمعات التحويل في دبي | Ignite Scale')}
+        description={t('Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit.', 'صفحات هبوط وقمعات تحويل مُحسَّنة للعلامات في دبي. عقارات، تجميل، ضيافة. تحسين التحويل مدمج. مراجعة قمع مجانية.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services/funnels' : 'https://ignite-scale.com/services/funnels'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: 'Funnels', url: '/services/funnels' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

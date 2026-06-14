@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useT } from '../i18n/locale'
 
 function MagneticBtn({ children, className, style, href }) {
   const ref = useRef(null)
@@ -76,6 +77,7 @@ function StatPill({ val, label }) {
 
 export default function Hero() {
   const [ready, setReady] = useState(false)
+  const [locale, t] = useT()
 
   useEffect(() => {
     setTimeout(() => setReady(true), 80)
@@ -229,7 +231,7 @@ export default function Hero() {
                   fontWeight: 500,
                 }}
               >
-                Dubai's Premier Growth Agency
+                {t("Dubai's Premier Growth Agency", "وكالة دبي الرائدة للنمو")}
               </span>
             </motion.div>
 
@@ -306,9 +308,10 @@ export default function Hero() {
                 marginBottom: 24,
               }}
             >
-              We engineer paid social, content and funnels for Dubai's most
-              competitive niches — turning every dirham of ad spend into
-              qualified pipeline.
+              {t(
+                "We engineer paid social, content and funnels for Dubai's most competitive niches, turning every dirham of ad spend into qualified pipeline.",
+                'نهندس الإعلانات الممولة على وسائل التواصل والمحتوى وقمعات التحويل لأكثر قطاعات دبي تنافسيةً، فنحوّل كل درهم من ميزانية الإعلانات إلى عملاء محتملين مؤهلين.'
+              )}
             </motion.p>
 
             {/* CTA Button */}
@@ -325,7 +328,7 @@ export default function Hero() {
                   letterSpacing: '0.05em',
                 }}
               >
-                Book a Call
+                {t('Book a Call', 'احجز مكالمة')}
               </MagneticBtn>
             </motion.div>
           </div>
@@ -353,9 +356,10 @@ export default function Hero() {
                 margin: 0,
               }}
             >
-              We engineer paid social, content and funnels for Dubai's most
-              competitive niches — turning every dirham of ad spend into
-              qualified pipeline.
+              {t(
+                "We engineer paid social, content and funnels for Dubai's most competitive niches, turning every dirham of ad spend into qualified pipeline.",
+                'نهندس الإعلانات الممولة على وسائل التواصل والمحتوى وقمعات التحويل لأكثر قطاعات دبي تنافسيةً، فنحوّل كل درهم من ميزانية الإعلانات إلى عملاء محتملين مؤهلين.'
+              )}
             </motion.p>
             <motion.div {...fadeUp(1.0)} style={{ display: 'flex', gap: 12 }}>
               <MagneticBtn
@@ -368,7 +372,7 @@ export default function Hero() {
                   display: 'inline-block',
                 }}
               >
-                Book a Call
+                {t('Book a Call', 'احجز مكالمة')}
               </MagneticBtn>
               <MagneticBtn
                 href="#results"
@@ -387,7 +391,7 @@ export default function Hero() {
                   backdropFilter: 'blur(8px)',
                 }}
               >
-                Our Work →
+                {t('Our Work →', 'أعمالنا ←')}
               </MagneticBtn>
             </motion.div>
           </div>
@@ -439,10 +443,10 @@ export default function Hero() {
               },
             }}
           >
-            <StatPill val="2–5×" label="Average ROAS" />
-            <StatPill val="60%+" label="CPL Reduction" />
-            <StatPill val="50+" label="Active Campaigns" />
-            <StatPill val="4.6/5" label="Client Rating" />
+            <StatPill val="2–5×" label={t('Average ROAS', 'متوسط العائد')} />
+            <StatPill val="60%+" label={t('CPL Reduction', 'خفض تكلفة العميل')} />
+            <StatPill val="50+" label={t('Active Campaigns', 'حملات نشطة')} />
+            <StatPill val="4.6/5" label={t('Client Rating', 'تقييم العملاء')} />
 
             {/* Mobile CTA */}
             <div style={{ flex: 1 }} />
@@ -461,7 +465,7 @@ export default function Hero() {
                   display: 'inline-block',
                 }}
               >
-                Book a Call
+                {t('Book a Call', 'احجز مكالمة')}
               </MagneticBtn>
             </motion.div>
 
@@ -482,7 +486,7 @@ export default function Hero() {
                   color: 'rgba(240,210,180,0.28)',
                 }}
               >
-                Scroll
+                {t('Scroll', 'مرّر')}
               </span>
               <motion.div
                 style={{

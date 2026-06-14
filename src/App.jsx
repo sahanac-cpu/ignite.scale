@@ -5,6 +5,7 @@ import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
 import Chatbot from './components/Chatbot'
+import ArBetaBanner from './components/ArBetaBanner'
 
 import HomePage    from './pages/HomePage'
 import ServicesPage from './pages/ServicesPage'
@@ -24,40 +25,49 @@ import ResultsPage  from './pages/ResultsPage'
 import ProcessPage  from './pages/ProcessPage'
 import BookingPage  from './pages/BookingPage'
 import FAQPage      from './pages/FAQPage'
+import NotFoundPage from './pages/NotFoundPage'
+
+/* Page-to-route map — generates BOTH /<route> and /ar/<route> entries. */
+const ROUTE_DEFS = [
+  ['/services', ServicesPage],
+  ['/services/paid-social', PaidSocialPage],
+  ['/services/creative', ContentCreativePage],
+  ['/services/funnels', FunnelDesignPage],
+  ['/dubai-marketing-agency', DubaiMarketingAgencyPage],
+  ['/meta-ads-dubai', MetaAdsPage],
+  ['/tiktok-ads-dubai', TikTokAdsPage],
+  ['/web-design-dubai', WebDesignPage],
+  ['/blog/meta-ads-mistakes', BlogMetaAdsMistakesPage],
+  ['/blog/tiktok-vs-instagram-ads', BlogTikTokVsInstagramPage],
+  ['/blog/reduce-cost-per-lead', BlogCPLReductionPage],
+  ['/case-study/dubai-real-estate-4-8x-roas', CaseStudyRealEstateDAEPage],
+  ['/case-study/dubai-cosmetics-320-leads', CaseStudyCosmeticsPage],
+  ['/results', ResultsPage],
+  ['/process', ProcessPage],
+  ['/book', BookingPage],
+  ['/faq', FAQPage],
+]
 
 export default function App() {
   return (
     <BrowserRouter>
-      {/* Preloader + global UI always mounted */}
       <Preloader />
       <Cursor />
+      <ArBetaBanner />
 
       <div className="min-h-screen" style={{ background: '#03050F' }}>
-        {/* Navbar on homepage; individual pages render their own Navbar */}
         <Routes>
-          <Route path="/" element={
-            <>
-              <Navbar />
-              <HomePage />
-            </>
-          } />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/paid-social" element={<PaidSocialPage />} />
-          <Route path="/services/creative" element={<ContentCreativePage />} />
-          <Route path="/services/funnels" element={<FunnelDesignPage />} />
-          <Route path="/dubai-marketing-agency" element={<DubaiMarketingAgencyPage />} />
-          <Route path="/meta-ads-dubai" element={<MetaAdsPage />} />
-          <Route path="/tiktok-ads-dubai" element={<TikTokAdsPage />} />
-          <Route path="/web-design-dubai" element={<WebDesignPage />} />
-          <Route path="/blog/meta-ads-mistakes" element={<BlogMetaAdsMistakesPage />} />
-          <Route path="/blog/tiktok-vs-instagram-ads" element={<BlogTikTokVsInstagramPage />} />
-          <Route path="/blog/reduce-cost-per-lead" element={<BlogCPLReductionPage />} />
-          <Route path="/case-study/dubai-real-estate-4-8x-roas" element={<CaseStudyRealEstateDAEPage />} />
-          <Route path="/case-study/dubai-cosmetics-320-leads" element={<CaseStudyCosmeticsPage />} />
-          <Route path="/results"  element={<ResultsPage />} />
-          <Route path="/process"  element={<ProcessPage />} />
-          <Route path="/book"     element={<BookingPage />} />
-          <Route path="/faq"      element={<FAQPage />} />
+          <Route path="/" element={<><Navbar /><HomePage /></>} />
+          <Route path="/ar" element={<><Navbar /><HomePage /></>} />
+
+          {ROUTE_DEFS.map(([path, Comp]) => (
+            <Route key={path} path={path} element={<Comp />} />
+          ))}
+          {ROUTE_DEFS.map(([path, Comp]) => (
+            <Route key={`ar${path}`} path={`/ar${path}`} element={<Comp />} />
+          ))}
+
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
         <Chatbot />

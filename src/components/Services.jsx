@@ -1,41 +1,56 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import AuroraLayer from './AuroraLayer'
+import { useT } from '../i18n/locale'
 
-const services = [
-  {
-    num: '01',
-    title: 'Paid Social & Performance Ads',
-    tagline: 'Meta · TikTok · Snapchat · Google',
-    body: 'Full-funnel paid campaigns engineered around your CPL and ROAS targets. We architect the audience, the creative, and the bidding strategy — then optimise daily until every dirham works harder.',
-    metric: '2–5× avg ROAS',
-    tags: ['Meta Ads', 'TikTok Ads', 'A/B Testing', 'Retargeting'],
-  },
-  {
-    num: '02',
-    title: 'Content Creation & Creative Strategy',
-    tagline: 'Video · Photography · Copy',
-    body: "Scroll-stopping content built for Dubai's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
-    metric: '3–5× engagement lift',
-    tags: ['UGC Video', 'Reels', 'Ad Creatives', 'Copywriting'],
-  },
-  {
-    num: '03',
-    title: 'Community Growth & Management',
-    tagline: 'Instagram · LinkedIn · TikTok',
-    body: "Daily channel management, proactive community building, and influencer co-ordination. We turn your brand's social presence into a trust-building engine that warms leads before they ever reach your inbox.",
-    metric: '+180% qualified reach',
-    tags: ['Channel Management', 'Influencer Outreach', 'Posting Strategy'],
-  },
-  {
-    num: '04',
-    title: 'Funnel Design & Landing Pages',
-    tagline: 'Conversion-Optimised Web Experiences',
-    body: "High-converting landing pages and lead funnels designed for Dubai's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
-    metric: '60%+ CPL reduction',
-    tags: ['Landing Pages', 'CRO', 'Lead Funnels', 'Analytics'],
-  },
-]
+function getServices(t) {
+  return [
+    {
+      num: '01',
+      title: t('Paid Social & Performance Ads', 'الإعلانات الممولة والأداء'),
+      tagline: 'Meta · TikTok · Snapchat · Google',
+      body: t(
+        'Full-funnel paid campaigns engineered around your CPL and ROAS targets. We architect the audience, the creative, and the bidding strategy, then optimise daily until every dirham works harder.',
+        'حملات إعلانية مدفوعة شاملة، مصممة بدقة حول أهداف تكلفة العميل والعائد على الإنفاق. نبني الجمهور والمحتوى الإبداعي واستراتيجية المزايدة، ثم نحسّن يومياً حتى يعمل كل درهم بكفاءة أكبر.'
+      ),
+      metric: t('2–5× avg ROAS', '٢–٥× متوسط العائد'),
+      tags: [t('Meta Ads', 'إعلانات ميتا'), t('TikTok Ads', 'إعلانات تيك توك'), t('A/B Testing', 'اختبار أ/ب'), t('Retargeting', 'إعادة الاستهداف')],
+    },
+    {
+      num: '02',
+      title: t('Content Creation & Creative Strategy', 'إنتاج المحتوى والاستراتيجية الإبداعية'),
+      tagline: t('Video · Photography · Copy', 'فيديو · تصوير · نصوص'),
+      body: t(
+        "Scroll-stopping content built for Dubai's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
+        'محتوى يوقف التمرير، مصمَّم لجمهور دبي عالي النية. يُنتج فريقنا الإبداعي الداخلي فيديوهات على نمط محتوى المستخدم، وتصويراً تحريرياً فاخراً، ونصوصاً مدعومة بالبيانات تحوّل المشاهدات إلى عملاء.'
+      ),
+      metric: t('3–5× engagement lift', '٣–٥× ارتفاع التفاعل'),
+      tags: [t('UGC Video', 'فيديو المستخدم'), t('Reels', 'ريلز'), t('Ad Creatives', 'محتوى إعلاني'), t('Copywriting', 'كتابة المحتوى')],
+    },
+    {
+      num: '03',
+      title: t('Community Growth & Management', 'إدارة المجتمعات ونموّها'),
+      tagline: 'Instagram · LinkedIn · TikTok',
+      body: t(
+        "Daily channel management, proactive community building, and influencer co-ordination. We turn your brand's social presence into a trust-building engine that warms leads before they ever reach your inbox.",
+        'إدارة يومية للقنوات، وبناء استباقي للمجتمع، وتنسيق مع المؤثرين. نحوّل حضور علامتك التجارية على المنصات الاجتماعية إلى محرك بناء ثقة يهيّئ العملاء المحتملين قبل وصولهم إلى بريدك.'
+      ),
+      metric: t('+180% qualified reach', '+١٨٠٪ وصول مؤهَّل'),
+      tags: [t('Channel Management', 'إدارة القنوات'), t('Influencer Outreach', 'التواصل مع المؤثرين'), t('Posting Strategy', 'استراتيجية النشر')],
+    },
+    {
+      num: '04',
+      title: t('Funnel Design & Landing Pages', 'تصميم القمعات وصفحات الهبوط'),
+      tagline: t('Conversion-Optimised Web Experiences', 'تجارب ويب مُحسَّنة للتحويل'),
+      body: t(
+        "High-converting landing pages and lead funnels designed for Dubai's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
+        'صفحات هبوط وقمعات تحويل عالية الأداء، مصممة لأكثر قطاعات دبي تنافسية: العقارات، الضيافة، التجزئة الفاخرة، والخدمات المهنية. تحسين التحويل مدمج من اليوم الأول.'
+      ),
+      metric: t('60%+ CPL reduction', '+٦٠٪ خفض تكلفة العميل'),
+      tags: [t('Landing Pages', 'صفحات هبوط'), t('CRO', 'تحسين التحويل'), t('Lead Funnels', 'قمعات تحويل'), t('Analytics', 'تحليلات')],
+    },
+  ]
+}
 
 function AccordionRow({ svc, index, isOpen, onToggle }) {
   const ref = useRef(null)
@@ -201,6 +216,8 @@ export default function Services() {
   const [open, setOpen] = useState(0)
   const headRef = useRef(null)
   const headInView = useInView(headRef, { once: true, margin: '-80px' })
+  const [locale, t] = useT()
+  const services = getServices(t)
 
   return (
     <section
@@ -231,7 +248,7 @@ export default function Services() {
             fontFamily: '"DM Sans", sans-serif',
             marginBottom: 16,
           }}>
-            What We Do
+            {t('What We Do', 'ماذا نفعل')}
           </div>
           <h2 style={{
             fontSize: 'clamp(32px, 5vw, 58px)',
@@ -242,12 +259,12 @@ export default function Services() {
             lineHeight: 1.1,
             margin: 0,
           }}>
-            Services built for<br />
+            {t('Services built for', 'خدمات مصمَّمة لـ')}<br />
             <span style={{
               background: 'linear-gradient(135deg, #E83000 0%, #FF8040 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-            }}>measurable growth</span>
+            }}>{t('measurable growth', 'نمو قابل للقياس')}</span>
           </h2>
         </motion.div>
 

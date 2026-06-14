@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -30,12 +31,14 @@ function Section({ title, subtitle, children }) {
 }
 
 export default function MetaAdsPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Meta Ads Agency Dubai | Facebook & Instagram Experts"
-        description="Meta Ads management in Dubai. We run Facebook and Instagram campaigns targeting 2–5× ROAS for real estate, cosmetics and B2B. Free ad audit."
-        canonical="https://ignite-scale.com/meta-ads-dubai"
+        title={t('Meta Ads Agency Dubai | Facebook & Instagram Experts', 'وكالة إعلانات ميتا في دبي | خبراء فيسبوك وإنستغرام')}
+        description={t('Meta Ads management in Dubai. We run Facebook and Instagram campaigns targeting 2–5× ROAS for real estate, cosmetics and B2B. Free ad audit.', 'إدارة إعلانات ميتا في دبي. ندير حملات فيسبوك وإنستغرام نستهدف فيها عائداً ٢–٥× على الإنفاق للعقارات والتجميل والشركات. مراجعة إعلانية مجانية.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/meta-ads-dubai' : 'https://ignite-scale.com/meta-ads-dubai'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Meta Ads Dubai', url: '/meta-ads-dubai' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

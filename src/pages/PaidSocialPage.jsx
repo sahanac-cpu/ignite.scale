@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -44,12 +45,14 @@ function SectionHeading({ title, subtitle }) {
 }
 
 export default function PaidSocialPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Paid Social Agency Dubai | Meta, TikTok & Google"
-        description="Paid social advertising in Dubai across Meta, TikTok, Snapchat and Google. Targeting 2–5× ROAS and meaningful CPL reduction. Free campaign audit."
-        canonical="https://ignite-scale.com/services/paid-social"
+        title={t('Paid Social Agency Dubai | Meta, TikTok & Google', 'وكالة إعلانات ممولة في دبي | ميتا، تيك توك، قوقل')}
+        description={t('Paid social advertising in Dubai across Meta, TikTok, Snapchat and Google. Targeting 2–5× ROAS and meaningful CPL reduction. Free campaign audit.', 'إعلانات ممولة في دبي عبر ميتا وتيك توك وسناب شات وقوقل. نستهدف عائداً ٢–٥× على الإنفاق وخفضاً ملموساً في تكلفة العميل. مراجعة حملة مجانية.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services/paid-social' : 'https://ignite-scale.com/services/paid-social'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: 'Paid Social', url: '/services/paid-social' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

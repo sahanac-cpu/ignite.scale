@@ -1,19 +1,25 @@
-const items = [
-  'Luxury Real Estate',
-  'Fine Dining & Hospitality',
-  'Fashion & Retail',
-  'Luxury Automotive',
-  'Wealth Management',
-  'Healthcare & Wellness',
-  'E-Commerce Brands',
-  'Professional Services',
-  'Five-Star Hotels',
-  'Tech Startups',
-  'Beauty & Lifestyle',
-  'Legal & Consulting',
-]
+import { useT } from '../i18n/locale'
+
+function getItems(t) {
+  return [
+    t('Luxury Real Estate', 'عقارات فاخرة'),
+    t('Fine Dining & Hospitality', 'مطاعم راقية وضيافة'),
+    t('Fashion & Retail', 'أزياء وتجزئة'),
+    t('Luxury Automotive', 'سيارات فاخرة'),
+    t('Wealth Management', 'إدارة الثروات'),
+    t('Healthcare & Wellness', 'رعاية صحية وعافية'),
+    t('E-Commerce Brands', 'علامات التجارة الإلكترونية'),
+    t('Professional Services', 'خدمات مهنية'),
+    t('Five-Star Hotels', 'فنادق خمس نجوم'),
+    t('Tech Startups', 'شركات تقنية ناشئة'),
+    t('Beauty & Lifestyle', 'تجميل وأسلوب حياة'),
+    t('Legal & Consulting', 'قانون واستشارات'),
+  ]
+}
 
 export default function Marquee() {
+  const [locale, t] = useT()
+  const items = getItems(t)
   const doubled = [...items, ...items]
 
   return (

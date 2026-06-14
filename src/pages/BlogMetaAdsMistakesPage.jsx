@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
@@ -16,9 +17,10 @@ export default function BlogMetaAdsMistakesPage() {
   return (
     <>
       <SEOMeta
-        title="5 Meta Ads Mistakes Costing You Money | Dubai Guide"
-        description="The 5 biggest Meta Ads mistakes Dubai businesses make, with actionable fixes that typically lift ROAS 50–100%."
-        canonical="https://ignite-scale.com/blog/meta-ads-mistakes"
+        title={t('5 Meta Ads Mistakes Costing You Money | Dubai Guide', '٥ أخطاء في إعلانات ميتا تكلّفك المال | دليل دبي')}
+        description={t('The 5 biggest Meta Ads mistakes Dubai businesses make, with actionable fixes that typically lift ROAS 50–100%.', 'أكبر ٥ أخطاء في إعلانات ميتا ترتكبها شركات دبي، مع حلول عملية ترفع العائد على الإنفاق ٥٠–١٠٠٪ في المعتاد.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/meta-ads-mistakes' : 'https://ignite-scale.com/blog/meta-ads-mistakes'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: '5 Meta Ads Mistakes', url: '/blog/meta-ads-mistakes' }]}
         article={{ datePublished: '2026-03-20', headline: '5 Meta Ads Mistakes Costing You Money' }}
       />

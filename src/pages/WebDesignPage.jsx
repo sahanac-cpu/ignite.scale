@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -6,12 +7,14 @@ import Footer from '../components/Footer'
 import { motion } from 'framer-motion'
 
 export default function WebDesignPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Web Design Dubai | Conversion-Optimised Websites"
-        description="Professional website design in Dubai. Conversion-optimised landing pages for real estate, cosmetics, hospitality and B2B. Mobile-first, fast-loading, SEO-ready."
-        canonical="https://ignite-scale.com/web-design-dubai"
+        title={t('Web Design Dubai | Conversion-Optimised Websites', 'تصميم المواقع في دبي | مواقع مُحسَّنة للتحويل')}
+        description={t('Professional website design in Dubai. Conversion-optimised landing pages for real estate, cosmetics, hospitality and B2B. Mobile-first, fast-loading, SEO-ready.', 'تصميم احترافي للمواقع في دبي. صفحات هبوط مُحسَّنة للتحويل للعقارات والتجميل والضيافة والشركات. تصميم متجاوب مع الجوال، سريع التحميل، جاهز لتحسين البحث.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/web-design-dubai' : 'https://ignite-scale.com/web-design-dubai'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Web Design Dubai', url: '/web-design-dubai' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

@@ -1,15 +1,18 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
 
 export default function BlogCPLReductionPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="How to Cut Ad Cost Per Lead by 60% | Ignite Scale"
-        description="Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns."
-        canonical="https://ignite-scale.com/blog/reduce-cost-per-lead"
+        title={t('How to Cut Ad Cost Per Lead by 60% | Ignite Scale', 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | Ignite Scale')}
+        description={t('Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns.', 'إطار خطوة بخطوة لخفض تكلفة العميل المحتمل بنسبة ٦٠–٨٠٪: تحسين صفحات الهبوط، استهداف الجمهور، تصميم القمعات، كتابة النصوص. مُختبَر على أكثر من ٥٠ حملة في دبي.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/reduce-cost-per-lead' : 'https://ignite-scale.com/blog/reduce-cost-per-lead'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Cut CPL by 60%', url: '/blog/reduce-cost-per-lead' }]}
         article={{ datePublished: '2026-04-12', headline: 'How to Cut Your Ad Cost Per Lead by 60%' }}
       />

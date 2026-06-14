@@ -2,27 +2,48 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import AuroraLayer from './AuroraLayer'
+import { useT } from '../i18n/locale'
 
-const INDUSTRIES = [
-  'Luxury Real Estate', 'Hospitality & Hotels', 'Restaurants & F&B',
-  'Fashion & Retail', 'Luxury Automotive', 'Financial Services',
-  'Healthcare & Wellness', 'E-Commerce', 'Legal & Consulting', 'Other',
-]
-
-const BUDGETS = [
-  'Under AED 5,000/month', 'AED 5,000 – 10,000/month',
-  'AED 10,000 – 25,000/month', 'AED 25,000 – 50,000/month', 'AED 50,000+/month',
-]
-
-const SERVICES = [
-  'Social Media Management', 'Paid Advertising (Meta/TikTok/Google)',
-  'Content Production', 'Website Design & Funnels', 'Full Package',
-]
-
-const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const TIMES = ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM']
-
-const STEP_LABELS = ['Your Details', 'Your Business', 'Schedule']
+function getOptions(t) {
+  return {
+    INDUSTRIES: [
+      t('Luxury Real Estate', 'عقارات فاخرة'),
+      t('Hospitality & Hotels', 'ضيافة وفنادق'),
+      t('Restaurants & F&B', 'مطاعم وأغذية'),
+      t('Fashion & Retail', 'أزياء وتجزئة'),
+      t('Luxury Automotive', 'سيارات فاخرة'),
+      t('Financial Services', 'خدمات مالية'),
+      t('Healthcare & Wellness', 'رعاية صحية'),
+      t('E-Commerce', 'تجارة إلكترونية'),
+      t('Legal & Consulting', 'قانون واستشارات'),
+      t('Other', 'أخرى'),
+    ],
+    BUDGETS: [
+      t('Under AED 5,000/month', 'أقل من ٥٬٠٠٠ درهم شهرياً'),
+      t('AED 5,000 – 10,000/month', '٥٬٠٠٠ – ١٠٬٠٠٠ درهم شهرياً'),
+      t('AED 10,000 – 25,000/month', '١٠٬٠٠٠ – ٢٥٬٠٠٠ درهم شهرياً'),
+      t('AED 25,000 – 50,000/month', '٢٥٬٠٠٠ – ٥٠٬٠٠٠ درهم شهرياً'),
+      t('AED 50,000+/month', '+٥٠٬٠٠٠ درهم شهرياً'),
+    ],
+    SERVICES: [
+      t('Social Media Management', 'إدارة وسائل التواصل'),
+      t('Paid Advertising (Meta/TikTok/Google)', 'إعلانات ممولة (ميتا/تيك توك/قوقل)'),
+      t('Content Production', 'إنتاج المحتوى'),
+      t('Website Design & Funnels', 'تصميم المواقع والقمعات'),
+      t('Full Package', 'الباقة الكاملة'),
+    ],
+    DAYS: [
+      t('Monday', 'الإثنين'), t('Tuesday', 'الثلاثاء'), t('Wednesday', 'الأربعاء'),
+      t('Thursday', 'الخميس'), t('Friday', 'الجمعة'), t('Saturday', 'السبت'),
+    ],
+    TIMES: ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM'],
+    STEP_LABELS: [
+      t('Your Details', 'بياناتك'),
+      t('Your Business', 'مشروعك'),
+      t('Schedule', 'الموعد'),
+    ],
+  }
+}
 
 const initial = {
   name: '', company: '', email: '', phone: '',
@@ -45,6 +66,8 @@ const inputCls =
   'bg-white/[0.03] border border-white/[0.08] text-white text-sm px-4 py-3 outline-none focus:border-accent/50 transition-colors placeholder:text-white/20 w-full'
 
 export default function Booking() {
+  const [locale, t] = useT()
+  const { INDUSTRIES, BUDGETS, SERVICES, DAYS, TIMES, STEP_LABELS } = getOptions(t)
   const [step, setStep] = useState(0)
   const [form, setForm] = useState(initial)
   const [sending, setSending] = useState(false)
@@ -93,7 +116,7 @@ export default function Booking() {
       )
       setSent(true)
     } catch {
-      setError('Something went wrong. Email us directly at admin@ignite-scale.com')
+      setError(t('Something went wrong. Email us directly at admin@ignite-scale.com', 'حدث خطأ. راسلنا مباشرةً على admin@ignite-scale.com'))
     } finally {
       setSending(false)
     }
@@ -112,19 +135,19 @@ export default function Booking() {
       >
         <div className="flex items-center gap-4 mb-5">
           <span className="w-8 h-px bg-accent" />
-          <span className="text-accent text-[10px] font-medium tracking-[0.4em] uppercase">Free Strategy Call</span>
+          <span className="text-accent text-[10px] font-medium tracking-[0.4em] uppercase">{t('Free Strategy Call', 'مكالمة استراتيجية مجانية')}</span>
         </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <h2
             className="font-display text-white leading-none tracking-tight"
             style={{ fontSize: 'clamp(44px, 7vw, 90px)' }}
           >
-            BOOK YOUR
+            {t('BOOK YOUR', 'احجز')}
             <br />
-            <span className="gradient-text">FREE CALL</span>
+            <span className="gradient-text">{t('FREE CALL', 'مكالمتك المجانية')}</span>
           </h2>
           <p className="text-white/35 text-sm leading-relaxed max-w-sm md:text-right">
-            45 minutes. No obligation. We'll audit your current presence and show you exactly what's leaving money on the table.
+            {t("45 minutes. No obligation. We'll audit your current presence and show you exactly what's leaving money on the table.", '٤٥ دقيقة. دون التزام. نراجع حضورك الحالي ونوضح بدقة أين تترك الإيرادات على الطاولة.')}
           </p>
         </div>
       </motion.div>
@@ -139,14 +162,14 @@ export default function Booking() {
           className="lg:col-span-2 flex flex-col gap-6"
         >
           <div className="glass gradient-border rounded-sm p-7">
-            <h3 className="text-white font-semibold mb-4">What You'll Get</h3>
+            <h3 className="text-white font-semibold mb-4">{t("What You'll Get", 'ماذا ستحصل عليه')}</h3>
             <ul className="space-y-3">
               {[
-                'Full social media audit',
-                'Competitor gap analysis',
-                'Custom 90-day growth roadmap',
-                'Paid ads opportunity breakdown',
-                'Honest pricing — no upsell pressure',
+                t('Full social media audit', 'مراجعة شاملة لوسائل التواصل'),
+                t('Competitor gap analysis', 'تحليل فجوات المنافسين'),
+                t('Custom 90-day growth roadmap', 'خارطة طريق نمو مخصصة لـ٩٠ يوماً'),
+                t('Paid ads opportunity breakdown', 'تفصيل فرص الإعلانات الممولة'),
+                t('Honest pricing, no upsell pressure', 'تسعير صريح دون ضغط بيعي'),
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-white/50">
                   <span className="text-accent mt-0.5 shrink-0">→</span>
@@ -158,18 +181,18 @@ export default function Booking() {
 
           <div className="glass gradient-border rounded-sm p-7">
             <div className="font-display text-4xl gradient-text tracking-wider">48hrs</div>
-            <div className="text-white/30 text-[11px] uppercase tracking-[0.25em] mt-1">Typical Response Time</div>
+            <div className="text-white/30 text-[11px] uppercase tracking-[0.25em] mt-1">{t('Typical Response Time', 'متوسط وقت الردّ')}</div>
             <p className="text-white/40 text-xs mt-4 leading-relaxed">
-              We review every submission personally. Expect a confirmation within 48 hours with your confirmed time slot.
+              {t('We review every submission personally. Expect a confirmation within 48 hours with your confirmed time slot.', 'نراجع كل طلب شخصياً. توقّع تأكيداً خلال ٤٨ ساعة مع موعدك المؤكَّد.')}
             </p>
           </div>
 
           <div className="glass gradient-border rounded-sm p-7 space-y-3">
-            <div className="text-white/30 text-[10px] uppercase tracking-[0.3em]">Contact Directly</div>
+            <div className="text-white/30 text-[10px] uppercase tracking-[0.3em]">{t('Contact Directly', 'تواصل مباشرةً')}</div>
             <a href="mailto:admin@ignite-scale.com" className="text-white/60 text-sm hover:text-white transition-colors block">
               admin@ignite-scale.com
             </a>
-            <div className="text-white/25 text-xs">Dubai, UAE — DIFC</div>
+            <div className="text-white/25 text-xs">{t('Dubai, UAE', 'دبي، الإمارات')}</div>
           </div>
         </motion.div>
 
@@ -195,13 +218,13 @@ export default function Booking() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Booking Received</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">{t('Booking Received', 'تم استلام الحجز')}</h3>
                   <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-                    We'll review your details and confirm your strategy call within 48 hours. Check your inbox — including spam.
+                    {t("We'll review your details and confirm your strategy call within 48 hours. Check your inbox, including spam.", 'سنراجع بياناتك ونؤكّد مكالمتك الاستراتيجية خلال ٤٨ ساعة. تحقّق من بريدك بما في ذلك مجلد الرسائل غير المرغوبة.')}
                   </p>
                 </div>
                 <div className="text-[10px] text-white/20 uppercase tracking-[0.3em]">
-                  A confirmation will be sent to {form.email}
+                  {t("A confirmation will be sent to", "سيُرسَل التأكيد إلى")} {form.email}
                 </div>
               </motion.div>
             ) : (
@@ -248,17 +271,17 @@ export default function Booking() {
                       transition={{ duration: 0.25 }}
                       className="space-y-5"
                     >
-                      <Field label="Full Name" required>
-                        <input className={inputCls} placeholder="Your full name" value={form.name} onChange={set('name')} />
+                      <Field label={t('Full Name', 'الاسم الكامل')} required>
+                        <input className={inputCls} placeholder={t('Your full name', 'اسمك الكامل')} value={form.name} onChange={set('name')} />
                       </Field>
-                      <Field label="Company / Business Name">
-                        <input className={inputCls} placeholder="Your business name" value={form.company} onChange={set('company')} />
+                      <Field label={t('Company / Business Name', 'اسم الشركة')}>
+                        <input className={inputCls} placeholder={t('Your business name', 'اسم شركتك')} value={form.company} onChange={set('company')} />
                       </Field>
-                      <Field label="Email Address" required>
+                      <Field label={t('Email Address', 'البريد الإلكتروني')} required>
                         <input className={inputCls} type="email" placeholder="your@email.com" value={form.email} onChange={set('email')} />
                       </Field>
-                      <Field label="Phone Number (UAE)" required>
-                        <input className={inputCls} placeholder="+971 50 000 0000" value={form.phone} onChange={set('phone')} />
+                      <Field label={t('Phone Number (UAE)', 'رقم الهاتف (الإمارات)')} required>
+                        <input className={inputCls} placeholder="+971 55 511 6465" value={form.phone} onChange={set('phone')} />
                       </Field>
                     </motion.div>
                   )}
@@ -273,19 +296,19 @@ export default function Booking() {
                       transition={{ duration: 0.25 }}
                       className="space-y-5"
                     >
-                      <Field label="Industry" required>
+                      <Field label={t('Industry', 'القطاع')} required>
                         <select className={inputCls} value={form.industry} onChange={set('industry')}>
-                          <option value="">Select your industry</option>
+                          <option value="">{t('Select your industry', 'اختر قطاعك')}</option>
                           {INDUSTRIES.map((i) => <option key={i}>{i}</option>)}
                         </select>
                       </Field>
-                      <Field label="Monthly Marketing Budget" required>
+                      <Field label={t('Monthly Marketing Budget', 'الميزانية الشهرية للتسويق')} required>
                         <select className={inputCls} value={form.budget} onChange={set('budget')}>
-                          <option value="">Select your budget range</option>
+                          <option value="">{t('Select your budget range', 'اختر نطاق ميزانيتك')}</option>
                           {BUDGETS.map((b) => <option key={b}>{b}</option>)}
                         </select>
                       </Field>
-                      <Field label="Services Interested In">
+                      <Field label={t('Services Interested In', 'الخدمات المهتم بها')}>
                         <div className="flex flex-wrap gap-2">
                           {SERVICES.map((s) => (
                             <button
@@ -303,11 +326,11 @@ export default function Booking() {
                           ))}
                         </div>
                       </Field>
-                      <Field label="Biggest Current Challenge">
+                      <Field label={t('Biggest Current Challenge', 'أكبر تحدٍّ تواجهه حالياً')}>
                         <textarea
                           className={`${inputCls} resize-none`}
                           rows={3}
-                          placeholder="What's the #1 thing holding your brand back right now?"
+                          placeholder={t("What's the #1 thing holding your brand back right now?", 'ما الشيء الأول الذي يعيق علامتك التجارية الآن؟')}
                           value={form.challenge}
                           onChange={set('challenge')}
                         />
@@ -325,7 +348,7 @@ export default function Booking() {
                       transition={{ duration: 0.25 }}
                       className="space-y-5"
                     >
-                      <Field label="Preferred Day" required>
+                      <Field label={t('Preferred Day', 'اليوم المفضّل')} required>
                         <div className="grid grid-cols-3 gap-2">
                           {DAYS.map((d) => (
                             <button
@@ -343,7 +366,7 @@ export default function Booking() {
                           ))}
                         </div>
                       </Field>
-                      <Field label="Preferred Time (Dubai, GST UTC+4)" required>
+                      <Field label={t('Preferred Time (Dubai, GST UTC+4)', 'الوقت المفضّل (دبي، GST UTC+4)')} required>
                         <div className="grid grid-cols-3 gap-2">
                           {TIMES.map((t) => (
                             <button
@@ -361,11 +384,11 @@ export default function Booking() {
                           ))}
                         </div>
                       </Field>
-                      <Field label="Additional Notes">
+                      <Field label={t('Additional Notes', 'ملاحظات إضافية')}>
                         <textarea
                           className={`${inputCls} resize-none`}
                           rows={3}
-                          placeholder="Anything else we should know before the call?"
+                          placeholder={t('Anything else we should know before the call?', 'هل من شيء آخر ينبغي أن نعرفه قبل المكالمة؟')}
                           value={form.notes}
                           onChange={set('notes')}
                         />
@@ -385,7 +408,7 @@ export default function Booking() {
                     onClick={() => setStep((s) => s - 1)}
                     className={`text-[11px] tracking-[0.25em] uppercase text-white/30 hover:text-white transition-colors ${step === 0 ? 'invisible' : ''}`}
                   >
-                    ← Back
+                    {t('← Back', '→ رجوع')}
                   </button>
 
                   {step < 2 ? (
@@ -394,7 +417,7 @@ export default function Booking() {
                       disabled={!canNext()}
                       className={`btn-primary transition-opacity ${canNext() ? 'opacity-100' : 'opacity-30'}`}
                     >
-                      Continue →
+                      {t('Continue →', 'متابعة ←')}
                     </button>
                   ) : (
                     <button
@@ -402,7 +425,7 @@ export default function Booking() {
                       disabled={!canNext() || sending}
                       className={`btn-primary min-w-[160px] text-center transition-opacity ${canNext() && !sending ? 'opacity-100' : 'opacity-40'}`}
                     >
-                      {sending ? 'Sending...' : 'Book My Call'}
+                      {sending ? t('Sending…', 'جاري الإرسال…') : t('Book My Call', 'احجز مكالمتي')}
                     </button>
                   )}
                 </div>

@@ -1,13 +1,11 @@
-/* Per-route head-templating prerender.
-   After vite build, this script:
-   1. Reads dist/index.html (the homepage SPA shell)
-   2. For each route, generates dist/<route>/index.html with route-specific <head>
-   3. Body stays the same (empty <div id="root">) — React hydrates on load
-   This gives crawlers + social previewers proper unique meta per route. */
+/* Per-route head-templating prerender (EN + AR).
+   For each route, generates dist/<route>/index.html AND dist/ar/<route>/index.html
+   with locale-specific <head>: title, description, canonical, JSON-LD, dir, lang.
+   Body stays the same SPA bundle that hydrates and reads locale from URL. */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
-import { dirname, resolve, join } from 'node:path'
-import { SITE, ROUTES } from './seo-routes.mjs'
+import { resolve, join } from 'node:path'
+import { SITE, allLocaleRoutes } from './seo-routes.mjs'
 
 const DIST = resolve('dist')
 const SHELL_PATH = join(DIST, 'index.html')
@@ -51,7 +49,7 @@ function organizationJsonLd() {
   }
 }
 
-function webpageJsonLd(route, canonical) {
+function webpageJsonLd(route, canonical, locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -59,7 +57,7 @@ function webpageJsonLd(route, canonical) {
     description: route.description,
     url: canonical,
     image: `${SITE}/og-image.jpg`,
-    inLanguage: 'en-AE',
+    inLanguage: locale === 'ar' ? 'ar-AE' : 'en-AE',
     isPartOf: { '@type': 'WebSite', name: 'Ignite Scale', url: SITE },
   }
 }
@@ -77,7 +75,7 @@ function breadcrumbJsonLd(crumbs) {
   }
 }
 
-function articleJsonLd(route, canonical) {
+function articleJsonLd(route, canonical, locale) {
   const a = route.article
   return {
     '@context': 'https://schema.org',
@@ -85,6 +83,7 @@ function articleJsonLd(route, canonical) {
     headline: a.headline || route.title,
     description: route.description,
     image: `${SITE}/og-image.jpg`,
+    inLanguage: locale === 'ar' ? 'ar-AE' : 'en-AE',
     author: { '@type': 'Organization', name: 'Ignite Scale', url: SITE },
     publisher: {
       '@type': 'Organization',
@@ -97,19 +96,63 @@ function articleJsonLd(route, canonical) {
   }
 }
 
+function serviceJsonLd(route, canonical) {
+  const s = route.service
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.name,
+    serviceType: s.serviceType,
+    description: s.description,
+    url: canonical,
+    provider: { '@type': 'Organization', name: 'Ignite Scale', url: SITE, '@id': `${SITE}#org` },
+    areaServed: [
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Saudi Arabia' },
+      { '@type': 'City', name: 'Dubai' },
+    ],
+  }
+}
+
+function howToJsonLd(route) {
+  const h = route.howTo
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: h.name,
+    totalTime: h.totalTime,
+    step: h.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  }
+}
+
 function renderHead(route) {
-  const canonical = route.path === '/' ? `${SITE}/` : `${SITE}${route.path}`
-  const arCanonical = route.path === '/' ? `${SITE}/ar/` : `${SITE}/ar${route.path}`
+  const locale = route.locale
+  const enUrl = route.path === '/' ? `${SITE}/` : `${SITE}${route.path}`
+  const arUrl = route.path === '/' ? `${SITE}/ar` : `${SITE}/ar${route.path}`
+  const canonical = locale === 'ar' ? arUrl : enUrl
   const ogType = route.article ? 'article' : 'website'
+  const ogLocale = locale === 'ar' ? 'ar_AE' : 'en_US'
+  const ogLocaleAlt = locale === 'ar' ? 'en_US' : 'ar_AE'
 
   const scripts = []
   scripts.push(jsonScript('organization', organizationJsonLd()))
-  scripts.push(jsonScript('webpage', webpageJsonLd(route, canonical)))
+  scripts.push(jsonScript('webpage', webpageJsonLd(route, canonical, locale)))
   if (route.breadcrumbs && route.breadcrumbs.length > 1) {
     scripts.push(jsonScript('breadcrumb', breadcrumbJsonLd(route.breadcrumbs)))
   }
   if (route.article) {
-    scripts.push(jsonScript('article', articleJsonLd(route, canonical)))
+    scripts.push(jsonScript('article', articleJsonLd(route, canonical, locale)))
+  }
+  if (route.service) {
+    scripts.push(jsonScript('service', serviceJsonLd(route, canonical)))
+  }
+  if (route.howTo) {
+    scripts.push(jsonScript('howto', howToJsonLd(route)))
   }
 
   return [
@@ -118,9 +161,10 @@ function renderHead(route) {
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
     `<meta name="author" content="Ignite Scale" />`,
     `<link rel="canonical" href="${canonical}" />`,
-    `<link rel="alternate" hreflang="en" href="${canonical}" />`,
-    `<link rel="alternate" hreflang="en-AE" href="${canonical}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${canonical}" />`,
+    `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
+    `<link rel="alternate" hreflang="en-AE" href="${enUrl}" />`,
+    `<link rel="alternate" hreflang="ar-AE" href="${arUrl}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${enUrl}" />`,
     `<meta name="geo.region" content="AE-DU" />`,
     `<meta name="geo.placename" content="Dubai" />`,
     `<meta property="og:type" content="${ogType}" />`,
@@ -132,7 +176,8 @@ function renderHead(route) {
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="Ignite Scale, Dubai growth agency" />`,
-    `<meta property="og:locale" content="en_US" />`,
+    `<meta property="og:locale" content="${ogLocale}" />`,
+    `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:site" content="@ignitescale" />`,
     `<meta name="twitter:creator" content="@ignitescale" />`,
@@ -143,18 +188,17 @@ function renderHead(route) {
   ].join('\n    ')
 }
 
-/* Replace head meta in a copy of the shell, write to dist/<route>/index.html. */
 function generate(route) {
   const newHead = renderHead(route)
-
-  // Strip the homepage SEO block (everything from <title> to closing JSON-LD scripts that were generated for homepage) — we just replace the head meta block in place.
-  // Strategy: replace from <title> up to the </script> right before fonts preconnect, OR if simpler, replace from <title> up through closing JSON-LD.
-  // Simpler: target the block from `<title>` to the closing JSON-LD `</script>` that ends with `}\n    </script>`.
+  const locale = route.locale
 
   let html = shell
 
-  // Pull out and replace the meta block. Find <title>...</title> ... </script>(.|\n)*?<link rel="preconnect"
-  // Replace the existing <title> + meta + JSON-LD up to (but not including) the preconnect link.
+  /* Swap the <html lang=...> and add dir if Arabic. */
+  if (locale === 'ar') {
+    html = html.replace(/<html lang="en">/, '<html lang="ar" dir="rtl">')
+  }
+
   const preconnectIdx = html.indexOf('<link rel="preconnect"')
   const titleIdx = html.indexOf('<title>')
   if (titleIdx < 0 || preconnectIdx < 0 || preconnectIdx < titleIdx) {
@@ -162,12 +206,18 @@ function generate(route) {
   }
   html = html.slice(0, titleIdx) + newHead + '\n\n    ' + html.slice(preconnectIdx)
 
-  const outDir = route.path === '/' ? DIST : join(DIST, route.path.replace(/^\//, ''))
+  /* Output path:
+     EN  /                                  → dist/index.html
+     EN  /services                          → dist/services/index.html
+     AR  /ar                                → dist/ar/index.html
+     AR  /ar/services                       → dist/ar/services/index.html */
+  const outDir = route.urlPath === '/' ? DIST : join(DIST, route.urlPath.replace(/^\//, ''))
   mkdirSync(outDir, { recursive: true })
   writeFileSync(join(outDir, 'index.html'), html)
-  console.log(`✓ ${route.path}  →  ${outDir.replace(DIST + '/', '')}/index.html`)
+  console.log(`✓ ${route.urlPath}  →  ${outDir.replace(DIST + '/', '')}/index.html`)
 }
 
-console.log(`Prerendering ${ROUTES.length} routes…`)
-for (const route of ROUTES) generate(route)
+const routes = allLocaleRoutes()
+console.log(`Prerendering ${routes.length} routes (EN + AR)…`)
+for (const r of routes) generate(r)
 console.log(`✓ Done`)

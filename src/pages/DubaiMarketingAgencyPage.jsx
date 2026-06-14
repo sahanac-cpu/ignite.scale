@@ -1,4 +1,5 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import FAQ from '../components/FAQ'
@@ -44,12 +45,14 @@ function SectionHeading({ title, subtitle }) {
 }
 
 export default function DubaiMarketingAgencyPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Best Marketing Agency in Dubai | Ignite Scale"
-        description="Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session."
-        canonical="https://ignite-scale.com/dubai-marketing-agency"
+        title={t('Best Marketing Agency in Dubai | Ignite Scale', 'أفضل وكالة تسويق في دبي | Ignite Scale')}
+        description={t('Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في دبي؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات الإماراتية الطموحة. احجز جلسة استراتيجية مجانية.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/dubai-marketing-agency' : 'https://ignite-scale.com/dubai-marketing-agency'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Dubai Marketing Agency', url: '/dubai-marketing-agency' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

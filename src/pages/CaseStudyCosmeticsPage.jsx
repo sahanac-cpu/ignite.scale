@@ -1,15 +1,18 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
 
 export default function CaseStudyCosmeticsPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Cosmetic Clinic: 320 Leads in 60 Days | Case Study"
-        description="How a Dubai cosmetic clinic went from 0 to 320 qualified leads in 60 days. Lead generation strategy, conversion optimisation, ads management."
-        canonical="https://ignite-scale.com/case-study/dubai-cosmetics-320-leads"
+        title={t('Cosmetic Clinic: 320 Leads in 60 Days | Case Study', 'عيادة تجميل: ٣٢٠ عميلاً محتملاً في ٦٠ يوماً | دراسة حالة')}
+        description={t('How a Dubai cosmetic clinic went from 0 to 320 qualified leads in 60 days. Lead generation strategy, conversion optimisation, ads management.', 'كيف انتقلت عيادة تجميل في دبي من صفر إلى ٣٢٠ عميلاً محتملاً مؤهلاً في ٦٠ يوماً. استراتيجية توليد العملاء، تحسين التحويل، إدارة الإعلانات.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/case-study/dubai-cosmetics-320-leads' : 'https://ignite-scale.com/case-study/dubai-cosmetics-320-leads'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Cosmetics', url: '/case-study/dubai-cosmetics-320-leads' }]}
         article={{ datePublished: '2026-02-15', headline: 'Cosmetic Clinic Case Study: 320 Qualified Leads in 60 Days' }}
       />

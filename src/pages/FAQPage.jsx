@@ -1,16 +1,19 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import FAQ from '../components/FAQ'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
 
 export default function FAQPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="Social Media Marketing FAQ | Ignite Scale Dubai"
-        description="Answers to the most common questions Dubai businesses ask before working with Ignite Scale: timelines, platforms, budgets, content creation, Arabic content, ROI."
-        canonical="https://ignite-scale.com/faq"
+        title={t('Social Media Marketing FAQ | Ignite Scale Dubai', 'أسئلة شائعة حول التسويق على وسائل التواصل | Ignite Scale دبي')}
+        description={t('Answers to the most common questions Dubai businesses ask before working with Ignite Scale: timelines, platforms, budgets, content creation, Arabic content, ROI.', 'إجابات لأكثر الأسئلة التي تطرحها شركات دبي قبل التعاون مع Ignite Scale: الجداول الزمنية، المنصّات، الميزانيات، إنتاج المحتوى، المحتوى العربي، العائد على الاستثمار.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/faq' : 'https://ignite-scale.com/faq'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'FAQ', url: '/faq' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>

@@ -1,16 +1,19 @@
 import SEOMeta from '../components/SEOMeta'
+import { useT } from '../i18n/locale'
 import Navbar from '../components/Navbar'
 import Booking from '../components/Booking'
 import Footer from '../components/Footer'
 import { motion } from 'framer-motion'
 
 export default function BlogTikTokVsInstagramPage() {
+  const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title="TikTok vs Instagram Ads 2026 | Dubai Comparison"
-        description="TikTok vs Instagram Ads 2026: cost, audience demographics, conversion rates and best industries for each. When to use which platform in Dubai."
-        canonical="https://ignite-scale.com/blog/tiktok-vs-instagram-ads"
+        title={t('TikTok vs Instagram Ads 2026 | Dubai Comparison', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦ | مقارنة دبي')}
+        description={t('TikTok vs Instagram Ads 2026: cost, audience demographics, conversion rates and best industries for each. When to use which platform in Dubai.', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦: التكلفة، التركيبة السكانية، معدلات التحويل، وأفضل القطاعات لكل منهما. متى تستخدم أي منصّة في دبي.')}
+        canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/tiktok-vs-instagram-ads' : 'https://ignite-scale.com/blog/tiktok-vs-instagram-ads'}
+        locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'TikTok vs Instagram', url: '/blog/tiktok-vs-instagram-ads' }]}
         article={{ datePublished: '2026-05-04', headline: 'TikTok vs Instagram Ads 2026: Which Platform to Choose for Dubai' }}
       />

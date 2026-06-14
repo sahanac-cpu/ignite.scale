@@ -1,63 +1,80 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import AuroraLayer from './AuroraLayer'
+import { useT } from '../i18n/locale'
 
-const steps = [
-  {
-    num: '01',
-    title: 'Free Strategy Discovery',
-    desc: "A 45-minute deep-dive into your brand, audience, and goals. We audit your current social presence, analyse your top competitors, and map a custom growth strategy — no obligation.",
-    detail: 'Competitor audit · Brand analysis · Growth roadmap',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <circle cx="9" cy="9" r="6" stroke="#FF3300" strokeWidth="1.5"/>
-        <path d="M13.5 13.5L19 19" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    num: '02',
-    title: 'Content & Campaign Build',
-    desc: "We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for Dubai search discovery — all before we go live.",
-    detail: 'Content calendar · Ad setup · Profile optimisation',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <rect x="3" y="3" width="16" height="16" rx="2" stroke="#FF3300" strokeWidth="1.5"/>
-        <path d="M7 11h8M7 7h4M7 15h6" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    num: '03',
-    title: 'Launch & Optimise',
-    desc: "We go live and immediately begin split-testing creatives, audiences, and copy. Every week we optimise what's working and cut what isn't — pure data, no guesswork.",
-    detail: 'A/B testing · Weekly optimisation · Real-time reporting',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M3 17l5-7 4 3 3-5 4 9" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <circle cx="18" cy="5" r="2.5" stroke="#FF6B35" strokeWidth="1.5"/>
-      </svg>
-    ),
-  },
-  {
-    num: '04',
-    title: 'Scale & Report',
-    desc: "Monthly performance reviews with full ROI breakdowns, attributed revenue, and a clear plan for the next 30 days. We scale winning campaigns and reinvest into growth.",
-    detail: 'Monthly reports · ROI tracking · Scale strategy',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="11" cy="11" r="4" stroke="#FF6B35" strokeWidth="1.5"/>
-      </svg>
-    ),
-  },
-]
+function getSteps(t) {
+  return [
+    {
+      num: '01',
+      title: t('Free Strategy Discovery', 'استكشاف استراتيجي مجاني'),
+      desc: t(
+        'A 45-minute deep-dive into your brand, audience, and goals. We audit your current social presence, analyse your top competitors, and map a custom growth strategy. No obligation.',
+        'جلسة معمَّقة مدتها ٤٥ دقيقة في علامتك التجارية وجمهورك وأهدافك. نراجع حضورك الحالي على المنصات الاجتماعية، ونحلّل أقوى منافسيك، ونرسم استراتيجية نمو مخصَّصة. دون أي التزام.'
+      ),
+      detail: t('Competitor audit · Brand analysis · Growth roadmap', 'مراجعة المنافسين · تحليل العلامة · خارطة طريق النمو'),
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="#FF3300" strokeWidth="1.5"/>
+          <path d="M13.5 13.5L19 19" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      ),
+    },
+    {
+      num: '02',
+      title: t('Content & Campaign Build', 'بناء المحتوى والحملات'),
+      desc: t(
+        'We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for Dubai search discovery, all before we go live.',
+        'نضع خارطة المحتوى الشاملة، ونصمّم المواد الإبداعية، ونجهّز الحملات الإعلانية، ونحسّن ملفاتك لاكتشاف البحث في دبي، كل ذلك قبل الإطلاق.'
+      ),
+      detail: t('Content calendar · Ad setup · Profile optimisation', 'تقويم المحتوى · إعداد الإعلانات · تحسين الملفات'),
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="3" y="3" width="16" height="16" rx="2" stroke="#FF3300" strokeWidth="1.5"/>
+          <path d="M7 11h8M7 7h4M7 15h6" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      ),
+    },
+    {
+      num: '03',
+      title: t('Launch & Optimise', 'الإطلاق والتحسين'),
+      desc: t(
+        "We go live and immediately begin split-testing creatives, audiences, and copy. Every week we optimise what's working and cut what isn't. Pure data, no guesswork.",
+        'ننطلق فوراً ونبدأ باختبار المحتوى الإبداعي والجماهير والنصوص. كل أسبوع نعزّز ما ينجح ونوقف ما لا يجدي. قرارات قائمة على البيانات لا على التخمين.'
+      ),
+      detail: t('A/B testing · Weekly optimisation · Real-time reporting', 'اختبار أ/ب · تحسين أسبوعي · تقارير فورية'),
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M3 17l5-7 4 3 3-5 4 9" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="18" cy="5" r="2.5" stroke="#FF6B35" strokeWidth="1.5"/>
+        </svg>
+      ),
+    },
+    {
+      num: '04',
+      title: t('Scale & Report', 'التوسّع والتقارير'),
+      desc: t(
+        'Monthly performance reviews with full ROI breakdowns, attributed revenue, and a clear plan for the next 30 days. We scale winning campaigns and reinvest into growth.',
+        'مراجعات شهرية للأداء، مع تفصيل كامل للعائد على الاستثمار، والإيرادات المنسوبة، وخطة واضحة لـ ٣٠ يوماً قادمة. نوسّع الحملات الناجحة ونعيد الاستثمار في النمو.'
+      ),
+      detail: t('Monthly reports · ROI tracking · Scale strategy', 'تقارير شهرية · تتبّع العائد · استراتيجية التوسّع'),
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="11" cy="11" r="4" stroke="#FF6B35" strokeWidth="1.5"/>
+        </svg>
+      ),
+    },
+  ]
+}
 
 export default function Process() {
   const headRef = useRef(null)
   const inView  = useInView(headRef, { once: true, margin: '-60px' })
   const lineRef = useRef(null)
   const lineInView = useInView(lineRef, { once: true, margin: '-80px' })
+  const [locale, t] = useT()
+  const steps = getSteps(t)
 
   return (
     <section id="process" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
@@ -72,15 +89,15 @@ export default function Process() {
       >
         <div className="flex items-center gap-4 mb-5">
           <span className="w-8 h-px bg-accent" />
-          <span className="text-accent text-[10px] font-medium tracking-[0.4em] uppercase">How We Work</span>
+          <span className="text-accent text-[10px] font-medium tracking-[0.4em] uppercase">{t('How We Work', 'كيف نعمل')}</span>
         </div>
         <h2
           className="font-display text-white leading-none tracking-tight"
           style={{ fontSize: 'clamp(44px, 7vw, 90px)' }}
         >
-          FROM ZERO TO
+          {t('FROM ZERO TO', 'من الصفر إلى')}
           <br />
-          <span className="gradient-text">DOMINANT</span>
+          <span className="gradient-text">{t('DOMINANT', 'الهيمنة')}</span>
         </h2>
       </motion.div>
 
@@ -147,7 +164,7 @@ export default function Process() {
         className="mt-16 text-center"
       >
         <a href="#booking" className="btn-primary inline-block">
-          Start Your Strategy Call — It's Free
+          {t("Start Your Strategy Call · It's Free", 'ابدأ مكالمتك الاستراتيجية · مجاناً')}
         </a>
       </motion.div>
       </div>
