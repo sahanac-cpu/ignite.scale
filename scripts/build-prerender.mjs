@@ -25,27 +25,62 @@ function jsonScript(id, payload) {
   return `<script type="application/ld+json" data-schema="${id}">${JSON.stringify(payload)}</script>`
 }
 
+/* ProfessionalService is the right schema for a remote/service-area agency without
+   a customer-visitable physical location. It still teaches Google "this is a Dubai
+   business" without claiming a specific street address that we can't back up. */
 function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'ProfessionalService',
     '@id': `${SITE}#org`,
     name: 'ignite-scale',
     alternateName: ['Ignite Scale', 'ignite-scale.com', 'IgniteScale'],
-    description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE.',
+    description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
     url: SITE,
     logo: `${SITE}/logo.svg`,
     image: `${SITE}/og-image.jpg`,
     telephone: '+971555116465',
     email: 'admin@ignite-scale.com',
+    /* No street address — accurate reflection of remote operation.
+       We keep the city + country as the operating locale. */
     address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
-    areaServed: ['AE', 'SA', 'QA', 'KW', 'BH', 'OM'],
+    /* Explicit areaServed with GeoCircle around Dubai so Google understands the
+       service radius even without a physical pin. */
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'United Arab Emirates' },
+      { '@type': 'AdministrativeArea', name: 'Saudi Arabia' },
+      { '@type': 'AdministrativeArea', name: 'Qatar' },
+      { '@type': 'AdministrativeArea', name: 'Kuwait' },
+      { '@type': 'AdministrativeArea', name: 'Bahrain' },
+      { '@type': 'AdministrativeArea', name: 'Oman' },
+      {
+        '@type': 'GeoCircle',
+        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 25.2048, longitude: 55.2708 },
+        geoRadius: '300000',
+      },
+    ],
     priceRange: '$$$',
+    /* Service catalogue tells Google what categories to rank us under. */
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Marketing services',
+      itemListElement: [
+        { '@type': 'OfferCatalogItem', name: 'Paid Social Advertising' },
+        { '@type': 'OfferCatalogItem', name: 'Content Production' },
+        { '@type': 'OfferCatalogItem', name: 'Landing Page & Funnel Design' },
+        { '@type': 'OfferCatalogItem', name: 'Meta Ads Management' },
+        { '@type': 'OfferCatalogItem', name: 'TikTok Ads Management' },
+        { '@type': 'OfferCatalogItem', name: 'Web Design' },
+      ],
+    },
     openingHoursSpecification: [{
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       opens: '09:00', closes: '18:00',
     }],
+    /* sameAs collects every authoritative profile we have. Add Clutch, LinkedIn,
+       Trustpilot, etc. as you create them — Google uses these to confirm the brand
+       is real, even without a Google Business Profile. */
     sameAs: [],
   }
 }

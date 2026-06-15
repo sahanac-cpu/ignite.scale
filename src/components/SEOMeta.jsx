@@ -90,10 +90,11 @@ export default function SEOMeta({
 
     upsertJsonLd('organization', {
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
+      '@type': 'ProfessionalService',
       '@id': `${SITE}#org`,
       name: BRAND,
-      description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE.',
+      alternateName: ['Ignite Scale', 'ignite-scale.com'],
+      description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
       url: SITE,
       logo: `${SITE}/logo.svg`,
       image: `${SITE}/og-image.jpg`,
@@ -104,7 +105,14 @@ export default function SEOMeta({
         addressLocality: 'Dubai',
         addressCountry: 'AE',
       },
-      areaServed: ['AE', 'SA', 'QA', 'KW', 'BH', 'OM'],
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'United Arab Emirates' },
+        { '@type': 'AdministrativeArea', name: 'Saudi Arabia' },
+        { '@type': 'AdministrativeArea', name: 'Qatar' },
+        { '@type': 'AdministrativeArea', name: 'Kuwait' },
+        { '@type': 'AdministrativeArea', name: 'Bahrain' },
+        { '@type': 'AdministrativeArea', name: 'Oman' },
+      ],
       priceRange: '$$$',
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
