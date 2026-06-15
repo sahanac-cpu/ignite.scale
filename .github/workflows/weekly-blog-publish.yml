@@ -40,6 +40,10 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Generate matching LinkedIn draft
+        if: steps.publish.outputs.skip != 'true'
+        run: node scripts/agents/draft-linkedin-post.mjs
+
       - name: Commit + push
         if: steps.publish.outputs.skip != 'true'
         env:
@@ -47,8 +51,9 @@ jobs:
         run: |
           git config user.name "sahanac-cpu"
           git config user.email "sahanac@andrew.cmu.edu"
-          git add content/
+          git add content/ social/
           git commit -m "Auto-publish blog post: $SLUG
 
+Blog post live + LinkedIn draft ready in social/linkedin/.
 Automated by .github/workflows/weekly-blog-publish.yml"
           git push origin main
