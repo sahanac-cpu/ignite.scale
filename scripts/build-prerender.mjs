@@ -34,7 +34,7 @@ function organizationJsonLd() {
     '@type': 'ProfessionalService',
     '@id': `${SITE}#org`,
     name: 'ignite-scale',
-    alternateName: ['Ignite Scale', 'ignite-scale.com', 'IgniteScale'],
+    alternateName: ['Ignite Scale', 'ignite.scale', 'ignite-scale.com', 'IgniteScale'],
     description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
     url: SITE,
     logo: `${SITE}/logo.svg`,
@@ -78,10 +78,12 @@ function organizationJsonLd() {
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       opens: '09:00', closes: '18:00',
     }],
-    /* sameAs collects every authoritative profile we have. Add Clutch, LinkedIn,
-       Trustpilot, etc. as you create them — Google uses these to confirm the brand
-       is real, even without a Google Business Profile. */
-    sameAs: [],
+    /* sameAs collects every authoritative profile we have. Google uses these to
+       confirm the brand is real and consolidate identity across platforms. */
+    sameAs: [
+      'https://www.linkedin.com/company/119244218',
+      'https://www.trustpilot.com/review/ignite-scale.com',
+    ],
   }
 }
 

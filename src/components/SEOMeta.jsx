@@ -93,7 +93,7 @@ export default function SEOMeta({
       '@type': 'ProfessionalService',
       '@id': `${SITE}#org`,
       name: BRAND,
-      alternateName: ['Ignite Scale', 'ignite-scale.com'],
+      alternateName: ['Ignite Scale', 'ignite.scale', 'ignite-scale.com'],
       description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
       url: SITE,
       logo: `${SITE}/logo.svg`,
@@ -120,7 +120,10 @@ export default function SEOMeta({
         opens: '09:00',
         closes: '18:00',
       }],
-      sameAs: [],
+      sameAs: [
+        'https://www.linkedin.com/company/119244218',
+        'https://www.trustpilot.com/review/ignite-scale.com',
+      ],
     })
 
     upsertJsonLd('webpage', {
