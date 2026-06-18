@@ -67,7 +67,7 @@ export default function BlogPostPage() {
   return (
     <>
       <SEOMeta
-        title={`${m.title} | ignite-scale`}
+        title={`${m.title} | Ignite Scale`}
         description={m.description}
         canonical={canonical}
         locale={locale}

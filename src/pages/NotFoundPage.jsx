@@ -10,7 +10,7 @@ export default function NotFoundPage() {
   return (
     <>
       <SEOMeta
-        title={t('Page not found | ignite-scale', 'الصفحة غير موجودة | ignite-scale')}
+        title={t('Page not found | Ignite Scale', 'الصفحة غير موجودة | Ignite Scale')}
         description={t(
           "We couldn't find that page. Head back to the homepage or get in touch.",
           'لم نتمكن من العثور على هذه الصفحة. عُد إلى الصفحة الرئيسية أو تواصل معنا.'

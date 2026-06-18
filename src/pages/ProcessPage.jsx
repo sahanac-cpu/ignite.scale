@@ -10,7 +10,7 @@ export default function ProcessPage() {
   return (
     <>
       <SEOMeta
-        title={t('Our Growth Process for Dubai Brands | ignite-scale', 'عمليتنا للنمو في علامات دبي | ignite-scale')}
+        title={t('Our Growth Process for Dubai Brands | Ignite Scale', 'عمليتنا للنمو في علامات دبي | Ignite Scale')}
         description={t('Our 4-step growth process: strategy discovery, content and campaign build, launch and optimise, then scale. Transparent and data-driven.', 'عمليتنا للنمو في ٤ خطوات: استكشاف الاستراتيجية، بناء المحتوى والحملات، الإطلاق والتحسين، ثم التوسّع. شفّافة ومدفوعة بالبيانات.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/process' : 'https://ignite-scale.com/process'}
         locale={locale}

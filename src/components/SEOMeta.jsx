@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const SITE = 'https://ignite-scale.com'
-const BRAND = 'ignite-scale'
+const BRAND = 'Ignite Scale'
 const PHONE = '+971555116465'
 const EMAIL = 'admin@ignite-scale.com'
 
@@ -93,7 +93,7 @@ export default function SEOMeta({
       '@type': 'ProfessionalService',
       '@id': `${SITE}#org`,
       name: BRAND,
-      alternateName: ['Ignite Scale', 'ignite.scale', 'ignite-scale.com'],
+      alternateName: ['ignite-scale', 'ignite.scale', 'ignite-scale.com', 'IgniteScale'],
       description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
       url: SITE,
       logo: `${SITE}/logo.svg`,

@@ -1,0 +1,42 @@
+name: Weekly email deliverability monitor
+
+# Runs every Monday at 08:00 Dubai time (UTC+4 → 04:00 UTC).
+# Checks SPF, DKIM, DMARC, MX records + scans common DNS blacklists.
+# Writes a report to reports/email/<date>.md.
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run deliverability check
+        run: node scripts/agents/email-deliverability-check.mjs
+
+      - name: Commit + push report
+        run: |
+          git config user.name "sahanac-cpu"
+          git config user.email "sahanac@andrew.cmu.edu"
+          if [ -n "$(git status --porcelain reports/)" ]; then
+            git add reports/
+            git commit -m "Email deliverability snapshot: $(date +%Y-%m-%d)
+
+Automated by .github/workflows/weekly-email-deliverability.yml"
+            git push origin main
+          else
+            echo "No report changes to commit."
+          fi

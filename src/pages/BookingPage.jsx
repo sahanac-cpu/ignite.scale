@@ -9,7 +9,7 @@ export default function BookingPage() {
   return (
     <>
       <SEOMeta
-        title={t('Book a Free Strategy Call | ignite-scale Dubai', 'احجز مكالمة استراتيجية مجانية | ignite-scale دبي')}
+        title={t('Book a Free Strategy Call | Ignite Scale Dubai', 'احجز مكالمة استراتيجية مجانية | Ignite Scale دبي')}
         description={t('Book a free 45-minute strategy call with Ignite Scale. We audit your social presence, analyse competitors, and build a 90-day growth roadmap. No obligation.', 'احجز مكالمة استراتيجية مجانية مدتها ٤٥ دقيقة مع Ignite Scale. نراجع حضورك الاجتماعي، نحلّل المنافسين، ونبني خارطة نمو لـ٩٠ يوماً. دون التزام.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/book' : 'https://ignite-scale.com/book'}
         locale={locale}

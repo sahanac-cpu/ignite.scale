@@ -9,7 +9,7 @@ export default function BlogCPLReductionPage() {
   return (
     <>
       <SEOMeta
-        title={t('How to Cut Ad Cost Per Lead by 60% | ignite-scale', 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | ignite-scale')}
+        title={t('How to Cut Ad Cost Per Lead by 60% | Ignite Scale', 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | Ignite Scale')}
         description={t('Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ Dubai campaigns.', 'إطار خطوة بخطوة لخفض تكلفة العميل المحتمل بنسبة ٦٠–٨٠٪: تحسين صفحات الهبوط، استهداف الجمهور، تصميم القمعات، كتابة النصوص. مُختبَر على أكثر من ٥٠ حملة في دبي.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/reduce-cost-per-lead' : 'https://ignite-scale.com/blog/reduce-cost-per-lead'}
         locale={locale}
