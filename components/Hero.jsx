@@ -2,110 +2,223 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import ParticleField from './ParticleField'
-import MagneticButton from './MagneticButton'
+import Link from 'next/link'
 import { stats } from '@/lib/site'
 
 const ease = [0.16, 1, 0.3, 1]
 
+/* Circular "SCROLL TO EXPLORE" text indicator */
+function ScrollIndicator() {
+  const text = 'SCROLL TO EXPLORE · SCROLL TO EXPLORE · '
+  const r = 36
+  const circumference = 2 * Math.PI * r
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        bottom: 'clamp(24px, 4vw, 40px)',
+        left: 'clamp(20px, 5vw, 64px)',
+        width: 84,
+        height: 84,
+        animation: 'spin-text 14s linear infinite',
+      }}
+    >
+      <svg viewBox="0 0 84 84" width="84" height="84" style={{ overflow: 'visible' }}>
+        <defs>
+          <path id="circle-path" d={`M 42,42 m -${r},0 a ${r},${r} 0 1,1 ${r * 2},0 a ${r},${r} 0 1,1 -${r * 2},0`} />
+        </defs>
+        <text
+          style={{
+            fontSize: 7.5,
+            fontFamily: 'var(--font-roobert, Inter, ui-sans-serif)',
+            fontWeight: 400,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            fill: 'rgba(255,255,255,0.55)',
+          }}
+        >
+          <textPath href="#circle-path">{text}</textPath>
+        </text>
+        {/* center dot */}
+        <circle cx="42" cy="42" r="2.5" fill="rgba(255,255,255,0.6)" />
+      </svg>
+
+      <style>{`
+        @keyframes spin-text {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [style*="spin-text"] { animation: none !important; }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 export default function Hero() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const orbY = useTransform(scrollYProgress, [0, 1], [0, 220])
-  const orbScale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 120])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const goldY = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0])
 
   return (
-    <section ref={ref} style={{ position: 'relative', minHeight: '100svh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      {/* Atmospheric layers */}
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: `
-        radial-gradient(100% 80% at 50% 100%, rgba(10,5,6,0.55) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(10,5,6,0.35) 0%, transparent 30%)
-      ` }} />
-      {/* Aura — wine core wrapped in a gold halo */}
-      <motion.div aria-hidden="true"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease, delay: 0.2 }}
+    <section
+      ref={ref}
+      style={{
+        position: 'relative',
+        minHeight: '100svh',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        background: 'var(--color-slate-veil)',
+      }}
+    >
+      {/* Hero video background */}
+      <video
+        aria-hidden="true"
+        autoPlay
+        muted
+        loop
+        playsInline
         style={{
-          position: 'absolute', top: '2%', right: '0%',
-          width: 'clamp(300px, 46vw, 640px)', height: 'clamp(300px, 46vw, 640px)',
-          borderRadius: '50%', filter: 'blur(26px)',
-          background: 'radial-gradient(circle at 40% 36%, rgba(231,206,146,0.55) 0%, rgba(192,69,76,0.42) 22%, rgba(150,30,36,0.30) 42%, transparent 68%)',
-          pointerEvents: 'none', y: orbY, scale: orbScale,
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover', pointerEvents: 'none',
         }}
+        src="/hero.mp4"
       />
-      {/* Soft gold aura, lower-left, slow counter-drift */}
-      <motion.div aria-hidden="true"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ duration: 2.4, ease, delay: 0.5 }}
-        style={{
-          position: 'absolute', bottom: '-8%', left: '-6%',
-          width: 'clamp(240px, 36vw, 460px)', height: 'clamp(240px, 36vw, 460px)',
-          borderRadius: '50%', filter: 'blur(34px)',
-          background: 'radial-gradient(circle, rgba(203,164,90,0.26) 0%, rgba(156,122,58,0.10) 40%, transparent 70%)',
-          pointerEvents: 'none', y: goldY,
-        }}
-      />
-      <ParticleField />
+
+      {/* dark scrim so text stays legible over video */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'linear-gradient(to bottom, rgba(12,12,12,0.55) 0%, rgba(12,12,12,0.38) 60%, rgba(12,12,12,0.72) 100%)',
+      }} />
 
       {/* Content */}
-      <motion.div className="shell" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: 120, paddingBottom: 48, y: contentY, opacity: contentOpacity }}>
-        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.15 }}
-          style={{ marginBottom: 'clamp(28px, 5vh, 52px)' }}>
-          <span className="pill">Growth studio · Dubai, UAE</span>
+      <motion.div
+        style={{
+          position: 'relative', zIndex: 2, flex: 1,
+          display: 'flex', flexDirection: 'column',
+          justifyContent: 'center', alignItems: 'center',
+          textAlign: 'center',
+          padding: 'clamp(100px, 14vh, 160px) clamp(20px, 8vw, 120px) clamp(60px, 8vh, 100px)',
+          y: contentY, opacity: contentOpacity,
+        }}
+      >
+        {/* micro-label */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease, delay: 0.1 }}
+          style={{ marginBottom: 'clamp(32px, 5vh, 56px)' }}
+        >
+          <span
+            style={{
+              display: 'inline-flex',
+              padding: '8px 14px',
+              borderRadius: 0,
+              border: '1px solid var(--line-accent)',
+              fontSize: 13,
+              fontWeight: 400,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--color-gunmetal-blue)',
+            }}
+          >
+            Growth studio · Dubai, UAE
+          </span>
         </motion.div>
 
-        <h1 style={{ fontSize: 'clamp(42px, 8vw, 96px)', maxWidth: '15ch', letterSpacing: '-0.01em', lineHeight: 1.04 }}>
-          {['We turn', 'attention', 'into revenue'].map((line, i) => (
-            <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
+        {/* display headline — pressed against the canvas (Vivid+Co signature) */}
+        <h1
+          style={{
+            fontSize: 'clamp(58px, 13vw, 168px)',
+            fontWeight: 400,
+            lineHeight: 0.92,
+            letterSpacing: '-0.02em',
+            color: 'var(--color-bone-white)',
+            maxWidth: '14ch',
+          }}
+        >
+          {['We turn', 'attention', 'into revenue.'].map((line, i) => (
+            <span key={i} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.06em' }}>
               <motion.span
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
-                transition={{ duration: 1, ease, delay: 0.3 + i * 0.12 }}
-                style={{ display: 'block' }}
+                transition={{ duration: 1.1, ease, delay: 0.25 + i * 0.11 }}
+                style={{ display: 'block', fontWeight: i === 1 ? 700 : 400 }}
               >
-                {i === 1 ? <em className="accent-word">attention</em> : line}
+                {line}
               </motion.span>
             </span>
           ))}
         </h1>
 
-        <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.7 }}
-          style={{ marginTop: 'clamp(24px, 4vh, 40px)', maxWidth: '52ch', fontSize: 'clamp(15px, 1.6vw, 18px)', color: 'var(--ink-dim)', lineHeight: 1.7 }}>
-          A Dubai growth studio for real estate, hospitality and luxury retail. We build paid social,
-          content and funnels that turn ad spend into qualified pipeline, then prove it in your numbers.
+        {/* sub */}
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease, delay: 0.72 }}
+          style={{
+            marginTop: 'clamp(28px, 4vh, 44px)',
+            maxWidth: '46ch',
+            fontSize: '18px',
+            fontWeight: 400,
+            lineHeight: 1.5,
+            color: 'rgba(255,255,255,0.55)',
+          }}
+        >
+          A Dubai growth studio for real estate, hospitality and luxury retail.
+          Paid social, content and funnels that turn ad spend into qualified pipeline.
         </motion.p>
 
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease, delay: 0.85 }}
-          style={{ marginTop: 'clamp(32px, 5vh, 48px)', display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-          <MagneticButton href="/contact" className="btn btn-primary">
-            <span className="btn-label">Book a strategy call</span><span className="btn-ico" aria-hidden="true">→</span>
-          </MagneticButton>
-          <MagneticButton href="/work" className="btn btn-ghost">
-            <span className="btn-label">See the work</span><span className="btn-ico" aria-hidden="true">→</span>
-          </MagneticButton>
+        {/* actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease, delay: 0.9 }}
+          style={{ marginTop: 'clamp(32px, 5vh, 52px)', display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
+        >
+          <Link href="/contact" className="btn btn-primary-light" data-cursor="hover">
+            Book a strategy call <span className="btn-ico" aria-hidden="true">→</span>
+          </Link>
+          <Link href="/work" className="btn btn-ghost-light" data-cursor="hover">
+            See the work
+          </Link>
         </motion.div>
       </motion.div>
 
-      {/* Stat strip — inline, restrained (not the big-number-card template) */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.1 }}
-        style={{ position: 'relative', zIndex: 2, borderTop: '1px solid var(--line)' }}>
-        <div className="shell hero-stats" style={{ paddingBlock: 'clamp(18px, 3vh, 28px)' }}>
+      {/* stat strip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.1 }}
+        style={{ position: 'relative', zIndex: 2, borderTop: '1px solid rgba(255,255,255,0.08)' }}
+      >
+        <div
+          className="shell hero-stats"
+          style={{ paddingBlock: 'clamp(18px, 3vh, 28px)' }}
+        >
           {stats.map((s) => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(18px, 2.2vw, 24px)', color: 'var(--ink)' }}>{s.value}</span>
-              <span className="meta" style={{ fontSize: 10.5 }}>{s.label}</span>
+              <span style={{ fontFamily: 'var(--font-roobert)', fontWeight: 400, fontSize: 'clamp(18px, 2.2vw, 24px)', color: 'var(--color-paper-white)', letterSpacing: '-0.02em' }}>
+                {s.value}
+              </span>
+              <span style={{ fontSize: 10.5, fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>
+                {s.label}
+              </span>
             </div>
           ))}
         </div>
       </motion.div>
 
+      <ScrollIndicator />
+
       <style>{`
         .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
-        @media (min-width: 760px) { .hero-stats { display: flex; justify-content: space-between; gap: 24px; } }
+        @media (min-width: 720px) { .hero-stats { display: flex; justify-content: space-between; gap: 24px; } }
       `}</style>
     </section>
   )
