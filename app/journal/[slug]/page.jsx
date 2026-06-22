@@ -55,7 +55,7 @@ export default async function ArticlePage({ params }) {
       </header>
 
       <div className="shell" style={{ marginTop: 'clamp(32px, 5vw, 56px)' }}>
-        <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: 18, overflow: 'hidden', border: '1px solid var(--line)' }}>
+        <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: 0, overflow: 'hidden', border: '1px solid var(--line)' }}>
           <Image src={a.image} alt={a.alt} fill sizes="100vw" priority style={{ objectFit: 'cover' }} />
         </div>
       </div>

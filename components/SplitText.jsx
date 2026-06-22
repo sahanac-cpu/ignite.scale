@@ -24,7 +24,7 @@ export default function SplitText({ text, as = 'h2', className, style, accent = 
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: delay + i * 0.055 }}
-              style={{ display: 'inline-block', color: isAccent ? 'var(--accent-soft)' : undefined, fontStyle: isAccent ? 'italic' : undefined }}
+              style={{ display: 'inline-block', fontWeight: isAccent ? 600 : undefined }}
             >
               {w}
             </motion.span>

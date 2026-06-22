@@ -1,28 +1,28 @@
 import './globals.css'
-import { Bodoni_Moda, Hanken_Grotesk } from 'next/font/google'
+import { Inter, Cormorant_Garamond } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { site } from '@/lib/site'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Cursor from '@/components/Cursor'
-import Aurora from '@/components/Aurora'
 import SmoothScroll from '@/components/SmoothScroll'
 import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
 
-const display = Bodoni_Moda({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-})
-
-const sans = Hanken_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-neue',
   display: 'swap',
   weight: ['300', '400', '500', '600'],
+})
+
+/* Cormorant Garamond — high-contrast editorial serif. Gold on black. */
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-editorial',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 })
 
 export const metadata = {
@@ -54,7 +54,7 @@ export const metadata = {
 }
 
 export const viewport = {
-  themeColor: '#06110E',
+  themeColor: '#000000',
   width: 'device-width',
   initialScale: 1,
 }
@@ -72,14 +72,13 @@ const orgJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <SmoothScroll />
-        <Aurora />
         <Cursor />
         <ScrollProgress />
         <Navbar />

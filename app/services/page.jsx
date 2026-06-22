@@ -50,7 +50,7 @@ export default function ServicesPage() {
         </div>
 
         <Reveal delay={0.1}>
-          <div style={{ marginTop: 'clamp(48px, 7vw, 80px)', display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(28px, 4vw, 44px)', border: '1px solid var(--line)', borderRadius: 18, background: 'var(--bg-1)' }}>
+          <div style={{ marginTop: 'clamp(48px, 7vw, 80px)', display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between', padding: 'clamp(28px, 4vw, 44px)', border: '1px solid var(--line)', borderRadius: 0, background: 'var(--bg-1)' }}>
             <h2 style={{ fontSize: 'clamp(22px, 3vw, 32px)', maxWidth: '20ch' }}>Not sure which mix you need? That’s the first call.</h2>
             <Link href="/contact" className="btn btn-primary" data-cursor="hover">Book a strategy call →</Link>
           </div>
@@ -58,7 +58,7 @@ export default function ServicesPage() {
       </section>
 
       <style>{`
-        .svc-row { display: grid; gap: 24px; padding: clamp(26px, 3.5vw, 44px); border: 1px solid var(--line); border-radius: 18px; background: var(--bg-1); }
+        .svc-row { display: grid; gap: 24px; padding: clamp(26px, 3.5vw, 44px); border: 1px solid var(--line); border-radius: 0; background: var(--bg-1); }
         @media (min-width: 820px) { .svc-row { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; } }
       `}</style>
     </>

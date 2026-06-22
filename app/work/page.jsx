@@ -53,7 +53,7 @@ export default function WorkPage() {
       </section>
 
       <style>{`
-        .case { display: grid; gap: 24px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--bg-1); }
+        .case { display: grid; gap: 24px; border: 1px solid var(--line); border-radius: 0; overflow: hidden; background: var(--bg-1); }
         .case-media { position: relative; aspect-ratio: 16/10; }
         .case-body { padding: clamp(24px, 3.5vw, 44px); }
         .case-metrics { display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 48px); margin-top: clamp(24px, 3vw, 36px); }

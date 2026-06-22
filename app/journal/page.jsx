@@ -52,7 +52,7 @@ export default function JournalPage() {
         @media (min-width: 640px) { .journal-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 1000px) { .journal-grid { grid-template-columns: repeat(3, 1fr); } }
         .jcard { display: block; }
-        .jcard-media { position: relative; aspect-ratio: 3/2; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+        .jcard-media { position: relative; aspect-ratio: 3/2; border-radius: 0; overflow: hidden; border: 1px solid var(--line); }
         .jcard-media :global(img) { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
         .jcard:hover .jcard-media :global(img) { transform: scale(1.05); }
         .jcard h2 { transition: color .3s ease; }
