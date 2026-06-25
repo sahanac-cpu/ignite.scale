@@ -50,7 +50,7 @@ export default function Preloader() {
     <motion.div
       className="fixed inset-0 flex items-center justify-center"
       style={{
-        background:    '#080304',
+        background:    '#050507',
         zIndex:        9999,
         pointerEvents: done ? 'none' : 'all',
       }}
@@ -62,9 +62,9 @@ export default function Preloader() {
         className="absolute inset-0 pointer-events-none"
         animate={{
           background: [
-            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(180,30,0,0.12) 0%, transparent 70%)',
-            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(220,50,0,0.20) 0%, transparent 70%)',
-            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(180,30,0,0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(138,110,60,0.22) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%)',
           ],
         }}
         transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -80,7 +80,7 @@ export default function Preloader() {
             fontVariantNumeric:   'tabular-nums',
             minWidth:             '14ch',
             color:                revealed ? 'transparent' : 'rgba(255,255,255,0.88)',
-            background:           revealed ? 'linear-gradient(135deg, #E83000 0%, #FF6B35 55%, #FFAA60 100%)' : undefined,
+            background:           revealed ? 'linear-gradient(135deg, #A8895A 0%, #D8BD8A 55%, #E0C79A 100%)' : undefined,
             WebkitBackgroundClip: revealed ? 'text' : undefined,
             WebkitTextFillColor:  revealed ? 'transparent' : undefined,
             transition:           'color 0.25s',
@@ -94,7 +94,7 @@ export default function Preloader() {
           className="mx-auto mt-5"
           style={{
             height:     1,
-            background: 'linear-gradient(90deg, transparent, rgba(220,80,0,0.55), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(150,120,68,0.55), transparent)',
           }}
           initial={{ width: 0 }}
           animate={{ width: '100%' }}

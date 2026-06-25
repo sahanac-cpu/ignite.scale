@@ -5,8 +5,9 @@ import './index.css'
 import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
+import LeftNav from './components/LeftNav'
 import Chatbot from './components/Chatbot'
-import ArBetaBanner from './components/ArBetaBanner'
+import CookieConsent from './components/CookieConsent'
 
 /* Homepage stays eager: it's the LCP entry point for the most-visited route.
    Every other page is lazy-loaded — Vite will emit a separate chunk per file. */
@@ -31,8 +32,14 @@ const ProcessPage               = lazy(() => import('./pages/ProcessPage'))
 const BookingPage               = lazy(() => import('./pages/BookingPage'))
 const FAQPage                   = lazy(() => import('./pages/FAQPage'))
 const NotFoundPage              = lazy(() => import('./pages/NotFoundPage'))
+const PrivacyPage               = lazy(() => import('./pages/PrivacyPage'))
+const TermsPage                 = lazy(() => import('./pages/TermsPage'))
+const CookiesPage               = lazy(() => import('./pages/CookiesPage'))
 
 const ROUTE_DEFS = [
+  ['/privacy', PrivacyPage],
+  ['/terms', TermsPage],
+  ['/cookies', CookiesPage],
   ['/services', ServicesPage],
   ['/services/paid-social', PaidSocialPage],
   ['/services/creative', ContentCreativePage],
@@ -72,7 +79,7 @@ function RouteLoader() {
           height: 28,
           borderRadius: '50%',
           border: '2px solid rgba(255,255,255,0.08)',
-          borderTopColor: '#FF6B35',
+          borderTopColor: '#D8BD8A',
           animation: 'spin 0.8s linear infinite',
         }}
       />
@@ -86,7 +93,7 @@ export default function App() {
     <BrowserRouter>
       <Preloader />
       <Cursor />
-      <ArBetaBanner />
+      <LeftNav />
 
       <div className="min-h-screen" style={{ background: '#03050F' }}>
         <Suspense fallback={<RouteLoader />}>
@@ -111,6 +118,7 @@ export default function App() {
         </Suspense>
 
         <Chatbot />
+        <CookieConsent />
       </div>
       <Analytics />
     </BrowserRouter>

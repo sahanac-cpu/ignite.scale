@@ -15,8 +15,8 @@ function getSteps(t) {
       detail: t('Competitor audit · Brand analysis · Growth roadmap', 'مراجعة المنافسين · تحليل العلامة · خارطة طريق النمو'),
       icon: (
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <circle cx="9" cy="9" r="6" stroke="#FF3300" strokeWidth="1.5"/>
-          <path d="M13.5 13.5L19 19" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="9" cy="9" r="6" stroke="#C9A96E" strokeWidth="1.5"/>
+          <path d="M13.5 13.5L19 19" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
     },
@@ -24,14 +24,14 @@ function getSteps(t) {
       num: '02',
       title: t('Content & Campaign Build', 'بناء المحتوى والحملات'),
       desc: t(
-        'We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for Dubai search discovery, all before we go live.',
-        'نضع خارطة المحتوى الشاملة، ونصمّم المواد الإبداعية، ونجهّز الحملات الإعلانية، ونحسّن ملفاتك لاكتشاف البحث في دبي، كل ذلك قبل الإطلاق.'
+        'We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for London search discovery, all before we go live.',
+        'نضع خارطة المحتوى الشاملة، ونصمّم المواد الإبداعية، ونجهّز الحملات الإعلانية، ونحسّن ملفاتك لاكتشاف البحث في لندن، كل ذلك قبل الإطلاق.'
       ),
       detail: t('Content calendar · Ad setup · Profile optimisation', 'تقويم المحتوى · إعداد الإعلانات · تحسين الملفات'),
       icon: (
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <rect x="3" y="3" width="16" height="16" rx="2" stroke="#FF3300" strokeWidth="1.5"/>
-          <path d="M7 11h8M7 7h4M7 15h6" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
+          <rect x="3" y="3" width="16" height="16" rx="2" stroke="#C9A96E" strokeWidth="1.5"/>
+          <path d="M7 11h8M7 7h4M7 15h6" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       ),
     },
@@ -45,8 +45,8 @@ function getSteps(t) {
       detail: t('A/B testing · Weekly optimisation · Real-time reporting', 'اختبار أ/ب · تحسين أسبوعي · تقارير فورية'),
       icon: (
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path d="M3 17l5-7 4 3 3-5 4 9" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="18" cy="5" r="2.5" stroke="#FF6B35" strokeWidth="1.5"/>
+          <path d="M3 17l5-7 4 3 3-5 4 9" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="18" cy="5" r="2.5" stroke="#D8BD8A" strokeWidth="1.5"/>
         </svg>
       ),
     },
@@ -60,8 +60,8 @@ function getSteps(t) {
       detail: t('Monthly reports · ROI tracking · Scale strategy', 'تقارير شهرية · تتبّع العائد · استراتيجية التوسّع'),
       icon: (
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#FF3300" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="11" cy="11" r="4" stroke="#FF6B35" strokeWidth="1.5"/>
+          <path d="M11 3v4M11 15v4M3 11h4M15 11h4" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="11" cy="11" r="4" stroke="#D8BD8A" strokeWidth="1.5"/>
         </svg>
       ),
     },
@@ -107,7 +107,7 @@ export default function Process() {
         <motion.div
           className="absolute left-[23px] top-8 bottom-8 w-px hidden md:block"
           style={{
-            background: 'linear-gradient(to bottom, rgba(232,69,0,0.7) 0%, rgba(232,69,0,0.2) 70%, transparent 100%)',
+            background: 'linear-gradient(to bottom, rgba(160,130,80,0.7) 0%, rgba(160,130,80,0.2) 70%, transparent 100%)',
             transformOrigin: 'top',
           }}
           initial={{ scaleY: 0 }}

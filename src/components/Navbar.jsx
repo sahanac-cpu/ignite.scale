@@ -1,21 +1,36 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useT, swapLocale } from '../i18n/locale'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [hovered, setHovered] = useState(null)
   const [locale, t] = useT()
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const base = locale === 'ar' ? '/ar' : ''
+  const isHome = pathname === '/' || pathname === '/ar' || pathname === '/ar/'
 
+  // mobile menu items (desktop nav lives in the left rail)
   const links = [
-    { label: t('Services', 'الخدمات'), href: '#services' },
-    { label: t('Results', 'النتائج'), href: '#results' },
-    { label: t('Process', 'العملية'), href: '#process' },
-    { label: t('FAQ', 'الأسئلة الشائعة'), href: '#faq' },
+    { label: t('Home', 'الرئيسية'), id: 'hero', kind: 'section' },
+    { label: t('Services', 'الخدمات'), id: 'services', kind: 'section' },
+    { label: t('Results', 'النتائج'), id: 'results', kind: 'section' },
+    { label: t('FAQ', 'الأسئلة'), to: `${base}/faq`, kind: 'route' },
   ]
+
+  const goItem = (l) => {
+    setOpen(false)
+    if (l.kind === 'route') { navigate(l.to); return }
+    if (isHome) {
+      document.getElementById(l.id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      sessionStorage.setItem('ig_scroll', l.id)
+      navigate(base + '/')
+    }
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -23,132 +38,113 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => { setOpen(false) }, [pathname])
+
   const altHref = swapLocale(pathname, locale === 'ar' ? 'en' : 'ar')
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'py-3 bg-black/80 backdrop-blur-2xl border-b border-white/[0.04]'
-          : 'py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-
-        {/* Logo (stays LTR even in RTL) */}
-        <Link
-          to={locale === 'ar' ? '/ar' : '/'}
-          className="flex items-baseline gap-1 select-none"
-          style={{ direction: 'ltr' }}
-        >
-          <span className="text-white font-body font-light tracking-[0.12em] text-[15px] uppercase">
-            ignite
-          </span>
-          <span className="text-accent font-body font-light text-[15px]">.</span>
-          <span className="text-white/60 font-body font-light tracking-[0.12em] text-[15px] uppercase">
-            scale
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              onMouseEnter={() => setHovered(l.label)}
-              onMouseLeave={() => setHovered(null)}
-              className="relative text-[11px] font-body font-medium tracking-[0.3em] uppercase text-white/35 hover:text-white/80 transition-colors duration-200"
-            >
-              {l.label}
-              <motion.span
-                className="absolute -bottom-1 left-0 h-px bg-accent"
-                animate={{ width: hovered === l.label ? '100%' : '0%' }}
-                transition={{ duration: 0.2 }}
-              />
-            </a>
-          ))}
-        </nav>
-
-        {/* Right */}
-        <div className="hidden md:flex items-center gap-5">
-          <Link
-            to={altHref}
-            className="text-[11px] font-body font-medium tracking-[0.3em] uppercase text-white/40 hover:text-white/80 transition-colors px-2 py-1 border border-white/10 hover:border-accent/40 rounded-sm"
-            style={{ direction: 'ltr' }}
-            aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
-          >
-            {locale === 'ar' ? 'EN' : 'AR'}
+    <>
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-2xl border-b ${
+          scrolled ? 'py-3 bg-black/55 border-white/[0.06]' : 'py-5 bg-black/20 border-white/[0.02]'
+        }`}
+        style={{ WebkitBackdropFilter: 'blur(24px) saturate(140%)', backdropFilter: 'blur(24px) saturate(140%)' }}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+          {/* logo */}
+          <Link to={base + '/'} className="flex items-center select-none" style={{ direction: 'ltr' }}>
+            <Logo height={20} />
           </Link>
-          <span className="label-sm">{t('Dubai, UAE', 'دبي، الإمارات')}</span>
-          <a href="#booking" className="btn-primary text-[10px] px-5 py-2.5">
-            {t('Book a Call', 'احجز مكالمة')}
-          </a>
+
+          {/* right cluster */}
+          <div className="flex items-center gap-4 md:gap-6">
+            {/* EN / AR toggle */}
+            <Link
+              to={altHref}
+              className="text-[11px] font-body font-medium tracking-[0.28em] uppercase text-white/45 hover:text-white/85 transition-colors px-2.5 py-1 border border-white/12 hover:border-accent/45 rounded-full"
+              style={{ direction: 'ltr' }}
+              aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+            >
+              {locale === 'ar' ? 'EN' : 'AR'}
+            </Link>
+
+            {/* Book a free consultation */}
+            <Link to={`${base}/book`} className="hidden sm:inline-flex btn-primary text-[10px] px-6 py-3">
+              {t('Book a Free Consultation', 'احجز استشارة مجانية')}
+            </Link>
+
+            {/* mobile menu trigger */}
+            <button
+              className="md:hidden p-2 flex flex-col gap-[5px]"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.span
+                  key={i}
+                  className="block w-5 h-px bg-white/70"
+                  animate={
+                    i === 0 ? { rotate: open ? 45 : 0, y: open ? 6 : 0 }
+                    : i === 1 ? { opacity: open ? 0 : 1 }
+                    : { rotate: open ? -45 : 0, y: open ? -6 : 0 }
+                  }
+                  transition={{ duration: 0.22 }}
+                />
+              ))}
+            </button>
+          </div>
         </div>
+      </motion.header>
 
-        {/* Hamburger */}
-        <button
-          className="md:hidden p-2 flex flex-col gap-[5px]"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.span
-              key={i}
-              className="block w-5 h-px bg-white/60"
-              animate={
-                i === 0 ? { rotate: open ? 45 : 0, y: open ? 6 : 0 }
-                : i === 1 ? { opacity: open ? 0 : 1 }
-                : { rotate: open ? -45 : 0, y: open ? -6 : 0 }
-              }
-              transition={{ duration: 0.22 }}
-            />
-          ))}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
+      {/* mobile full-screen menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-2xl border-t border-white/[0.04] px-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden flex flex-col justify-center px-8"
+            style={{ background: 'rgba(5,6,9,0.97)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
           >
-            <div className="py-6 flex flex-col gap-5">
+            <nav className="flex flex-col gap-1">
               {links.map((l, i) => (
-                <motion.a
-                  key={l.label}
-                  href={l.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                  className="text-[11px] tracking-[0.3em] uppercase text-white/40 hover:text-white transition-colors font-body"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </motion.a>
+                <div key={l.label} className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: '110%' }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05, duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
+                  >
+                    <button
+                      onClick={() => goItem(l)}
+                      className="block py-2.5 text-left w-full"
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(30px, 8vw, 46px)',
+                        fontWeight: 500,
+                        letterSpacing: '-0.02em',
+                        color: 'rgba(237,224,204,0.55)',
+                        background: 'none', border: 'none', cursor: 'pointer',
+                      }}
+                    >
+                      {l.label}
+                    </button>
+                  </motion.div>
+                </div>
               ))}
-              <Link
-                to={altHref}
-                onClick={() => setOpen(false)}
-                className="text-[11px] tracking-[0.3em] uppercase text-white/40 font-body"
-                style={{ direction: 'ltr' }}
-              >
-                {locale === 'ar' ? 'English' : 'العربية'}
-              </Link>
-              <a href="#booking" className="btn-primary mt-2 text-center" onClick={() => setOpen(false)}>
-                {t('Book a Call', 'احجز مكالمة')}
-              </a>
-            </div>
+            </nav>
+            <Link
+              to={`${base}/book`}
+              className="btn-primary text-[11px] px-8 py-4 mt-8 self-start"
+            >
+              {t('Book a Free Consultation', 'احجز استشارة مجانية')}
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   )
 }

@@ -27,9 +27,9 @@ export default function Footer() {
     {
       title: t('Legal', 'قانوني'),
       links: [
-        { label: t('Privacy Policy', 'سياسة الخصوصية'), href: '#' },
-        { label: t('Terms of Service', 'شروط الخدمة'), href: '#' },
-        { label: t('Cookie Policy', 'سياسة الكوكيز'), href: '#' },
+        { label: t('Privacy Policy', 'سياسة الخصوصية'), href: `${base}/privacy` },
+        { label: t('Terms of Service', 'شروط الخدمة'), href: `${base}/terms` },
+        { label: t('Cookie Policy', 'سياسة الكوكيز'), href: `${base}/cookies` },
       ],
     },
   ]
@@ -38,7 +38,7 @@ export default function Footer() {
     <footer className="relative border-t border-white/[0.05] overflow-hidden">
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(255,51,0,0.04) 0%, transparent 65%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(201,169,110,0.04) 0%, transparent 65%)' }}
       />
 
       {/* CTA band */}
@@ -55,7 +55,7 @@ export default function Footer() {
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontStyle: 'italic',
                   fontWeight: 300,
-                  background: 'linear-gradient(135deg, #FF3300, #FF6B35)',
+                  background: 'linear-gradient(135deg, #C9A96E, #D8BD8A)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -87,18 +87,18 @@ export default function Footer() {
             </div>
             <p className="text-white/25 text-sm leading-relaxed max-w-xs mb-6 font-body font-light">
               {t(
-                "Dubai's most results-driven social media marketing agency. We build brands that dominate.",
-                'وكالة التسويق على وسائل التواصل الأكثر تركيزاً على النتائج في دبي. نبني علاماتٍ تهيمن.'
+                "London's most results-driven social media marketing agency. We build brands that dominate.",
+                'وكالة التسويق على وسائل التواصل الأكثر تركيزاً على النتائج في لندن. نبني علاماتٍ تهيمن.'
               )}
             </p>
             <div className="space-y-2">
               <div className="label-sm">{t('Headquarters', 'المقرّ الرئيسي')}</div>
-              <div className="text-white/35 text-sm font-body">{t('Dubai, UAE', 'دبي، الإمارات')}</div>
+              <div className="text-white/35 text-sm font-body">{t('London, UK', 'لندن، المملكة المتحدة')}</div>
               <a href="mailto:admin@ignite-scale.com" className="text-white/35 text-sm hover:text-accent transition-colors block font-body" style={{ direction: 'ltr' }}>
                 admin@ignite-scale.com
               </a>
-              <a href="tel:+971555116465" className="text-white/35 text-sm hover:text-accent transition-colors block font-body" style={{ direction: 'ltr' }}>
-                +971 55 511 6465
+              <a href="tel:+442079460958" className="text-white/35 text-sm hover:text-accent transition-colors block font-body" style={{ direction: 'ltr' }}>
+                +44 20 7946 0958
               </a>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="label-sm">
-            {t('© 2026 Ignite Scale. All rights reserved. Dubai, UAE.', '© ٢٠٢٦ Ignite Scale. جميع الحقوق محفوظة. دبي، الإمارات.')}
+            {t('© 2026 Ignite Scale. All rights reserved. London, UK.', '© ٢٠٢٦ Ignite Scale. جميع الحقوق محفوظة. لندن، المملكة المتحدة.')}
           </div>
           <div className="flex items-center gap-5">
             {['Instagram', 'TikTok', 'LinkedIn', 'X'].map((s) => (

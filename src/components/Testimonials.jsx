@@ -4,8 +4,8 @@ import AuroraLayer from './AuroraLayer'
 
 const reviews = [
   {
-    quote: "ignite.scale transformed our brand's online presence. We went from 3–4 leads a month to consistently 40+ qualified inquiries. The ROI is undeniable — this is the only agency I'll recommend in Dubai.",
-    role: 'CEO · Luxury Real Estate · Dubai Marina',
+    quote: "ignite.scale transformed our brand's online presence. We went from 3–4 leads a month to consistently 40+ qualified inquiries. The ROI is undeniable — this is the only agency I'll recommend in London.",
+    role: 'CEO · Luxury Real Estate · Canary Wharf',
     initials: 'A.R.',
     niche: 'Real Estate',
     metric: '40+',
@@ -13,15 +13,15 @@ const reviews = [
   },
   {
     quote: "Our reservations increased 280% in six months. The content they produce is world-class and perfectly captures the fine dining experience we offer. Our TikTok grew from nothing to 180K followers.",
-    role: 'F&B Director · Fine Dining · DIFC',
+    role: 'F&B Director · Fine Dining · the City of London',
     initials: 'S.M.',
     niche: 'Hospitality',
     metric: '280%',
     metricLabel: 'More Reservations',
   },
   {
-    quote: "We were spending AED 50K per month on ads with minimal return. ignite.scale restructured our entire paid strategy from scratch. Now we're generating 8× returns. Game-changing.",
-    role: 'Founder · Fashion E-Commerce · UAE',
+    quote: "We were spending £50K per month on ads with minimal return. ignite.scale restructured our entire paid strategy from scratch. Now we're generating 8× returns. Game-changing.",
+    role: 'Founder · Fashion E-Commerce · UK',
     initials: 'M.C.',
     niche: 'E-Commerce',
     metric: '8×',
@@ -32,7 +32,7 @@ const reviews = [
 const Stars = () => (
   <div style={{ display: 'flex', gap: 4 }}>
     {Array.from({ length: 5 }).map((_, i) => (
-      <svg key={i} width="12" height="12" viewBox="0 0 11 11" fill="#FF5020">
+      <svg key={i} width="12" height="12" viewBox="0 0 11 11" fill="#C9A96E">
         <path d="M5.5 1l1.3 2.6 2.9.4-2.1 2.1.5 2.9-2.6-1.4-2.6 1.4.5-2.9L1.3 4l2.9-.4L5.5 1z"/>
       </svg>
     ))}
@@ -69,13 +69,13 @@ export default function Testimonials() {
           style={{ marginBottom: 'clamp(40px, 7vh, 72px)', textAlign: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 20 }}>
-            <span style={{ width: 32, height: 1, background: 'rgba(232,69,0,0.6)' }} />
+            <span style={{ width: 32, height: 1, background: 'rgba(160,130,80,0.6)' }} />
             <span style={{
               fontFamily: '"DM Sans", sans-serif', fontSize: 10,
               letterSpacing: '0.4em', textTransform: 'uppercase',
               color: 'rgba(240,190,140,0.55)',
             }}>Client Voices</span>
-            <span style={{ width: 32, height: 1, background: 'rgba(232,69,0,0.6)' }} />
+            <span style={{ width: 32, height: 1, background: 'rgba(160,130,80,0.6)' }} />
           </div>
           <h2 style={{
             fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
@@ -83,11 +83,11 @@ export default function Testimonials() {
             color: 'rgba(245,230,210,0.92)',
             letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
           }}>
-            What Dubai's{' '}
+            What London's{' '}
             <em style={{
               fontFamily: '"Cormorant Garamond", Georgia, serif',
               fontStyle: 'italic', fontWeight: 300,
-              background: 'linear-gradient(135deg, #E83000, #FF8040)',
+              background: 'linear-gradient(135deg, #A8895A, #C9A96E)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             }}>Elite Say.</em>
           </h2>
@@ -116,7 +116,7 @@ export default function Testimonials() {
                 fontSize: 'clamp(80px, 16vw, 200px)',
                 lineHeight: 1,
                 letterSpacing: '-0.04em',
-                background: 'linear-gradient(135deg, rgba(232,69,0,0.07) 0%, rgba(255,130,60,0.04) 100%)',
+                background: 'linear-gradient(135deg, rgba(160,130,80,0.07) 0%, rgba(201,169,110,0.04) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 pointerEvents: 'none',
@@ -159,7 +159,7 @@ export default function Testimonials() {
                   fontSize: 'clamp(48px, 10vw, 100px)',
                   lineHeight: 0.6,
                   marginBottom: 'clamp(10px, 2vw, 20px)',
-                  color: 'rgba(232,80,0,0.35)',
+                  color: 'rgba(160,130,80,0.35)',
                   display: 'block',
                 }}>"</div>
 
@@ -183,12 +183,12 @@ export default function Testimonials() {
                     {/* Avatar */}
                     <div style={{
                       width: 44, height: 44, borderRadius: '50%',
-                      border: '1px solid rgba(232,80,0,0.30)',
-                      background: 'radial-gradient(circle at 40% 40%, rgba(232,80,0,0.15), rgba(232,80,0,0.04))',
+                      border: '1px solid rgba(160,130,80,0.30)',
+                      background: 'radial-gradient(circle at 40% 40%, rgba(160,130,80,0.15), rgba(160,130,80,0.04))',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontFamily: '"DM Sans", sans-serif',
                       fontSize: 12, fontWeight: 600,
-                      color: 'rgba(255,140,70,0.85)',
+                      color: 'rgba(208,178,124,0.85)',
                       letterSpacing: '0.05em',
                       flexShrink: 0,
                     }}>
@@ -200,8 +200,8 @@ export default function Testimonials() {
                         <span style={{
                           fontFamily: '"DM Sans", sans-serif', fontSize: 9,
                           letterSpacing: '0.25em', textTransform: 'uppercase',
-                          color: 'rgba(255,160,80,0.5)',
-                          border: '1px solid rgba(255,120,50,0.15)',
+                          color: 'rgba(216,189,138,0.5)',
+                          border: '1px solid rgba(201,169,110,0.15)',
                           borderRadius: 4, padding: '2px 8px',
                         }}>{r.niche}</span>
                       </div>
@@ -216,14 +216,14 @@ export default function Testimonials() {
                   {/* Metric badge */}
                   <div style={{
                     textAlign: 'right',
-                    borderLeft: '1px solid rgba(232,80,0,0.18)',
+                    borderLeft: '1px solid rgba(160,130,80,0.18)',
                     paddingLeft: 16,
                     flexShrink: 0,
                   }}>
                     <div style={{
                       fontFamily: '"DM Sans", sans-serif', fontWeight: 800,
                       fontSize: 'clamp(22px, 3.5vw, 38px)', lineHeight: 1,
-                      background: 'linear-gradient(135deg, #E83000, #FF8040)',
+                      background: 'linear-gradient(135deg, #A8895A, #C9A96E)',
                       WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                     }}>{r.metric}</div>
                     <div style={{
@@ -256,7 +256,7 @@ export default function Testimonials() {
                   animate={{
                     width: i === active ? 28 : 7,
                     background: i === active
-                      ? 'linear-gradient(90deg, #E83000, #FF8040)'
+                      ? 'linear-gradient(90deg, #A8895A, #C9A96E)'
                       : 'rgba(255,255,255,0.15)',
                   }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}

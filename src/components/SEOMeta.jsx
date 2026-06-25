@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const SITE = 'https://ignite-scale.com'
 const BRAND = 'Ignite Scale'
-const PHONE = '+971555116465'
+const PHONE = '+442079460958'
 const EMAIL = 'admin@ignite-scale.com'
 
 function upsertMeta(selector, attrs) {
@@ -94,7 +94,7 @@ export default function SEOMeta({
       '@id': `${SITE}#org`,
       name: BRAND,
       alternateName: ['ignite-scale', 'ignite.scale', 'ignite-scale.com', 'IgniteScale'],
-      description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
+      description: 'London growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the United Kingdom. Remote-first operation serving clients nationwide.',
       url: SITE,
       logo: `${SITE}/logo.svg`,
       image: `${SITE}/og-image.jpg`,
@@ -102,16 +102,15 @@ export default function SEOMeta({
       email: EMAIL,
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Dubai',
-        addressCountry: 'AE',
+        addressLocality: 'London',
+        addressCountry: 'GB',
       },
       areaServed: [
-        { '@type': 'AdministrativeArea', name: 'United Arab Emirates' },
-        { '@type': 'AdministrativeArea', name: 'Saudi Arabia' },
-        { '@type': 'AdministrativeArea', name: 'Qatar' },
-        { '@type': 'AdministrativeArea', name: 'Kuwait' },
-        { '@type': 'AdministrativeArea', name: 'Bahrain' },
-        { '@type': 'AdministrativeArea', name: 'Oman' },
+        { '@type': 'AdministrativeArea', name: 'United Kingdom' },
+        { '@type': 'AdministrativeArea', name: 'England' },
+        { '@type': 'AdministrativeArea', name: 'Scotland' },
+        { '@type': 'AdministrativeArea', name: 'Wales' },
+        { '@type': 'AdministrativeArea', name: 'Northern Ireland' },
       ],
       priceRange: '$$$',
       openingHoursSpecification: [{

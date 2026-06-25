@@ -7,8 +7,8 @@ function getFaqs(t) {
   return [
     {
       q: t(
-        'How long does it take to see results for a Dubai-based business?',
-        'متى تظهر النتائج لعميل في دبي؟'
+        'How long does it take to see results for a London-based business?',
+        'متى تظهر النتائج لعميل في لندن؟'
       ),
       a: t(
         'Most clients see measurable growth within the first 30 days: follower growth, improved engagement, and early ad traction. Significant results, consistent qualified leads and attributable revenue, typically appear between 60 and 90 days as we refine campaigns based on real data. Long-term dominance takes 3 to 6 months of sustained scaling.',
@@ -17,22 +17,22 @@ function getFaqs(t) {
     },
     {
       q: t(
-        'Which niches do you specialise in across the UAE?',
-        'في أي قطاعات تتخصصون داخل الإمارات؟'
+        'Which niches do you specialise in across the UK?',
+        'في أي قطاعات تتخصصون داخل المملكة المتحدة؟'
       ),
       a: t(
-        'Our core specialisms are luxury real estate, five-star hospitality, fine dining and F&B, fashion and e-commerce, luxury automotive, and professional services (legal, finance, healthcare). These are the highest-value niches in Dubai and where our results speak for themselves. We selectively take other niches too. Contact us to discuss your specific industry.',
-        'تتمحور تخصصاتنا حول العقارات الفاخرة، والضيافة الخمس نجوم، والمطاعم الراقية والأغذية والمشروبات، والأزياء والتجارة الإلكترونية، والسيارات الفاخرة، والخدمات المهنية (قانون، مالية، رعاية صحية). هذه أعلى القطاعات قيمةً في دبي، وهي التي تتحدث نتائجنا فيها عن نفسها. ندرس أيضاً قطاعات أخرى بانتقائية. تواصل معنا لمناقشة قطاعك تحديداً.'
+        'Our core specialisms are luxury real estate, five-star hospitality, fine dining and F&B, fashion and e-commerce, luxury automotive, and professional services (legal, finance, healthcare). These are the highest-value niches in London and where our results speak for themselves. We selectively take other niches too. Contact us to discuss your specific industry.',
+        'تتمحور تخصصاتنا حول العقارات الفاخرة، والضيافة الخمس نجوم، والمطاعم الراقية والأغذية والمشروبات، والأزياء والتجارة الإلكترونية، والسيارات الفاخرة، والخدمات المهنية (قانون، مالية، رعاية صحية). هذه أعلى القطاعات قيمةً في لندن، وهي التي تتحدث نتائجنا فيها عن نفسها. ندرس أيضاً قطاعات أخرى بانتقائية. تواصل معنا لمناقشة قطاعك تحديداً.'
       ),
     },
     {
       q: t(
-        'What separates Ignite Scale from other marketing agencies in Dubai?',
-        'ما الذي يميّز Ignite Scale عن باقي وكالات التسويق في دبي؟'
+        'What separates Ignite Scale from other marketing agencies in London?',
+        'ما الذي يميّز Ignite Scale عن باقي وكالات التسويق في لندن؟'
       ),
       a: t(
-        "Three things: we are performance-obsessed, we specialise in Dubai's unique market (local culture, Arabic content, GCC buying behaviour), and we tie everything to revenue, not vanity metrics. We also produce content in-house, so there's no quality loss from outsourced designers or videographers.",
-        'ثلاثة أمور: نحن مهووسون بالأداء، ومتخصصون في سوق دبي الفريد (الثقافة المحلية، المحتوى العربي، سلوك الشراء الخليجي)، ونربط كل شيء بالإيرادات لا بمقاييس المظهر. كما ننتج المحتوى داخلياً، فلا فقدان في الجودة بسبب مصممين أو مصوّرين خارجيين.'
+        "Three things: we are performance-obsessed, we specialise in London's unique market (local culture, Arabic content, UK buying behaviour), and we tie everything to revenue, not vanity metrics. We also produce content in-house, so there's no quality loss from outsourced designers or videographers.",
+        'ثلاثة أمور: نحن مهووسون بالأداء، ومتخصصون في سوق لندن الفريد (الثقافة المحلية، المحتوى العربي، سلوك الشراء البريطاني)، ونربط كل شيء بالإيرادات لا بمقاييس المظهر. كما ننتج المحتوى داخلياً، فلا فقدان في الجودة بسبب مصممين أو مصوّرين خارجيين.'
       ),
     },
     {
@@ -41,18 +41,18 @@ function getFaqs(t) {
         'ما المنصّات التي تديرونها وتديرون عليها الإعلانات؟'
       ),
       a: t(
-        'Instagram, TikTok, LinkedIn, Facebook, X (Twitter), YouTube Shorts, Snapchat (popular in the UAE), and Google. We recommend platforms based on your niche and audience. A luxury real estate brand needs different channels than an e-commerce fashion label.',
-        'إنستغرام، تيك توك، لينكدإن، فيسبوك، إكس (تويتر)، يوتيوب شورتس، سناب شات (المنتشر في الإمارات)، وقوقل. نوصي بالمنصّات وفق قطاعك وجمهورك. علامة عقارية فاخرة تحتاج قنوات مختلفة عن متجر إلكتروني للأزياء.'
+        'Instagram, TikTok, LinkedIn, Facebook, X (Twitter), YouTube Shorts, Snapchat (popular in the UK), and Google. We recommend platforms based on your niche and audience. A luxury real estate brand needs different channels than an e-commerce fashion label.',
+        'إنستغرام، تيك توك، لينكدإن، فيسبوك، إكس (تويتر)، يوتيوب شورتس، سناب شات (المنتشر في المملكة المتحدة)، وجوجل. نوصي بالمنصّات وفق قطاعك وجمهورك. علامة عقارية فاخرة تحتاج قنوات مختلفة عن متجر إلكتروني للأزياء.'
       ),
     },
     {
       q: t(
-        'What is your minimum budget for social media management in Dubai?',
-        'ما الحد الأدنى للميزانية لإدارة وسائل التواصل في دبي؟'
+        'What is your minimum budget for social media management in London?',
+        'ما الحد الأدنى للميزانية لإدارة وسائل التواصل في لندن؟'
       ),
       a: t(
-        'Our management retainers start from AED 7,500 per month. Paid advertising budgets are separate. We recommend a minimum of AED 5,000 per month to see meaningful results from paid campaigns. We have packages from AED 12,500 per month that include both management and ads.',
-        'تبدأ اشتراكات الإدارة لدينا من ٧٬٥٠٠ درهم شهرياً. وميزانيات الإعلانات المدفوعة منفصلة، ونوصي بحدّ أدنى ٥٬٠٠٠ درهم شهرياً للحصول على نتائج معتبرة. لدينا باقات تبدأ من ١٢٬٥٠٠ درهم شهرياً تشمل الإدارة والإعلانات معاً.'
+        'Our management retainers start from £1,500 per month. Paid advertising budgets are separate. We recommend a minimum of £1,000 per month to see meaningful results from paid campaigns. We have packages from £2,500 per month that include both management and ads.',
+        'تبدأ اشتراكات الإدارة لدينا من ١٬٥٠٠ جنيه إسترليني شهرياً، وميزانيات الإعلانات المدفوعة منفصلة عنها. ونوصي بحدٍّ أدنى قدره ١٬٠٠٠ جنيه إسترليني شهرياً للحصول على نتائج ملموسة من الحملات المدفوعة. ولدينا باقات تبدأ من ٢٬٥٠٠ جنيه إسترليني شهرياً تشمل الإدارة والإعلانات معاً.'
       ),
     },
     {
@@ -61,18 +61,18 @@ function getFaqs(t) {
         'هل تنتجون المحتوى بالكامل أم نحتاج توفير المواد؟'
       ),
       a: t(
-        'We handle everything in-house: content strategy, copywriting, graphic design, video editing, reel production, and photography direction. For luxury brands we often coordinate on-location shoots in Dubai, all managed by our creative team. You simply approve and we execute.',
-        'نُدير كل شيء داخلياً: استراتيجية المحتوى، النصوص، التصميم الجرافيكي، المونتاج، إنتاج الريلز، وإخراج التصوير. للعلامات الفاخرة، ننسّق في الغالب جلسات تصوير ميدانية في دبي يديرها فريقنا الإبداعي بالكامل. كلّ ما عليك هو الاعتماد، وننفّذ.'
+        'We handle everything in-house: content strategy, copywriting, graphic design, video editing, reel production, and photography direction. For luxury brands we often coordinate on-location shoots in London, all managed by our creative team. You simply approve and we execute.',
+        'نُدير كل شيء داخلياً: استراتيجية المحتوى، النصوص، التصميم الجرافيكي، المونتاج، إنتاج الريلز، وإخراج التصوير. للعلامات الفاخرة، ننسّق في الغالب جلسات تصوير ميدانية في لندن يديرها فريقنا الإبداعي بالكامل. كلّ ما عليك هو الاعتماد، وننفّذ.'
       ),
     },
     {
       q: t(
-        'Can you help businesses targeting Arabic-speaking audiences in Dubai and the GCC?',
-        'هل تخدمون الشركات التي تستهدف الجمهور الناطق بالعربية في دبي والخليج؟'
+        'Can you help businesses targeting Arabic-speaking audiences in London and the UK?',
+        'هل تخدمون الشركات التي تستهدف الجمهور الناطق بالعربية في لندن وبريطانيا؟'
       ),
       a: t(
-        'Absolutely. We produce bilingual content (English and Arabic) and our team includes native Arabic copywriters who understand local nuance, cultural sensitivities, and what resonates with Emirati, Saudi and wider GCC audiences. Bilingual social strategies typically outperform English-only by 40 to 60% in the UAE market.',
-        'بالتأكيد. ننتج محتوى ثنائي اللغة (عربي وإنجليزي)، ويضم فريقنا كتّاب نصوص عرب يفهمون الفروقات الدقيقة المحلية والحساسيات الثقافية وما يتفاعل معه الجمهور الإماراتي والسعودي والخليجي. الاستراتيجيات الثنائية اللغة تتفوّق عادةً على الإنجليزية فقط بنسبة ٤٠ إلى ٦٠٪ في السوق الإماراتي.'
+        'Absolutely. We produce bilingual content (English and Arabic) and our team includes native Arabic copywriters who understand local nuance, cultural sensitivities, and what resonates with British and wider UK audiences. Bilingual social strategies typically outperform English-only by 40 to 60% in the UK market.',
+        'بالتأكيد. ننتج محتوى ثنائي اللغة (عربي وإنجليزي)، ويضم فريقنا كتّاب نصوص عرب يفهمون الفروقات الدقيقة المحلية والحساسيات الثقافية وما يتفاعل معه الجمهور البريطاني والمتعدّد الثقافات. الاستراتيجيات الثنائية اللغة تتفوّق عادةً على الإنجليزية فقط بنسبة ٤٠ إلى ٦٠٪ في السوق البريطاني.'
       ),
     },
     {
@@ -83,6 +83,20 @@ function getFaqs(t) {
       a: t(
         'We track what actually matters: qualified lead volume, cost per lead, revenue attribution (via UTM tracking and CRM integration), ROAS on paid campaigns, organic reach and follower quality, and engagement rates. You receive a detailed monthly report plus a live dashboard you can access anytime.',
         'نتتبّع ما يهم فعلاً: حجم العملاء المحتملين المؤهلين، وتكلفة العميل المحتمل، ونسب الإيرادات (عبر روابط UTM والتكامل مع نظام إدارة العملاء)، والعائد على الإنفاق في الحملات المدفوعة، والوصول العضوي وجودة المتابعين، ومعدّلات التفاعل. تحصل على تقرير شهري مفصّل وعلى لوحة بيانات حيّة يمكنك الوصول إليها في أي وقت.'
+      ),
+    },
+    {
+      q: t('Do you lock clients into long contracts?', 'هل تربطون العملاء بعقود طويلة؟'),
+      a: t(
+        'No long lock-ins. We work on rolling monthly retainers with a short initial ramp (usually 90 days) so the system has time to prove itself. After that you can stay month-to-month. We’d rather earn your renewal with results than trap you in a 12-month contract.',
+        'لا عقود طويلة. نعمل باشتراكات شهرية متجددة مع فترة انطلاق قصيرة (عادةً ٩٠ يوماً) ليثبت النظام نفسه. بعدها يمكنك الاستمرار شهرياً. نفضّل أن نكسب تجديدك بالنتائج لا أن نحبسك في عقد سنوي.'
+      ),
+    },
+    {
+      q: t('What happens after I book a call?', 'ماذا يحدث بعد حجز المكالمة؟'),
+      a: t(
+        'Within 48 hours we confirm a 30–45 minute call at your chosen slot. Before it, we audit your current presence so the conversation is specific, not generic. On the call we map where spend is leaking and the fastest path to pipeline. If we’re a fit, you get a tailored proposal — no pressure, no upsell theatre.',
+        'خلال ٤٨ ساعة نؤكّد مكالمة من ٣٠ إلى ٤٥ دقيقة في الموعد الذي تختاره. قبلها نراجع حضورك الحالي لتكون المكالمة محددة لا عامة. خلالها نحدّد أين تتسرّب الميزانية وأسرع طريق إلى خط الأنابيب. وإن كنّا مناسبين، تحصل على عرض مخصّص — دون ضغط أو مبالغات.'
       ),
     },
   ]
@@ -103,9 +117,13 @@ function Item({ item, i }) {
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 py-6 text-left group"
+        className="w-full flex items-start justify-between gap-6 py-7 text-left group"
+        data-cursor="hover"
       >
-        <span className="text-white/75 group-hover:text-white text-sm md:text-base font-medium transition-colors leading-snug">
+        <span
+          className="text-white/80 group-hover:text-white transition-colors"
+          style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(20px, 2.1vw, 28px)', letterSpacing: '-0.01em', lineHeight: 1.15 }}
+        >
           {item.q}
         </span>
         <motion.span
@@ -126,7 +144,7 @@ function Item({ item, i }) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="text-white/40 text-sm leading-relaxed pb-6">{item.a}</p>
+            <p className="text-white/45 leading-relaxed pb-7" style={{ fontSize: 15, maxWidth: '62ch' }}>{item.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -138,7 +156,9 @@ export default function FAQ() {
   const headRef = useRef(null)
   const inView = useInView(headRef, { once: true, margin: '-60px' })
   const [locale, t] = useT()
-  const faqs = getFaqs(t)
+  // reduced set — timeline, budget, Arabic, contracts, next step
+  const all = getFaqs(t)
+  const faqs = [all[0], all[4], all[6], all[8], all[9]].filter(Boolean)
 
   /* Output FAQPage JSON-LD so Google can show People-Also-Ask rich results.
      We inject directly into <head> since this component is the source of the data. */
@@ -192,8 +212,8 @@ export default function FAQ() {
           </h2>
           <p className="text-white/35 text-sm leading-relaxed max-w-sm md:text-right">
             {t(
-              "Everything Dubai businesses ask us before signing. If your question isn't here, book a free call.",
-              'كل ما تسألنا عنه الشركات في دبي قبل التعاقد. إن لم تجد سؤالك هنا، احجز مكالمة مجانية.'
+              "Everything London businesses ask us before signing. If your question isn't here, book a free call.",
+              'كل ما تسألنا عنه الشركات في لندن قبل التعاقد. إن لم تجد سؤالك هنا، احجز مكالمة مجانية.'
             )}
           </p>
         </div>

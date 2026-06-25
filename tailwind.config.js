@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: { DEFAULT: '#FF3300', orange: '#FF6B35' },
+        accent: { DEFAULT: '#C9A96E', orange: '#D8BD8A' },
         surface: { DEFAULT: '#0c0c0c', 2: '#111111', 3: '#161616' },
       },
       fontFamily: {

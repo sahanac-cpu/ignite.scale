@@ -10,8 +10,8 @@ export default function ServicesPage() {
   return (
     <>
       <SEOMeta
-        title={t('Digital Marketing Services Dubai | Ignite Scale', 'خدمات التسويق الرقمي في دبي | Ignite Scale')}
-        description={t('Paid social on Meta, TikTok and Google, conversion websites, lead generation and creative production for Dubai brands. Book a free consultation.', 'إعلانات ممولة على ميتا وتيك توك وقوقل، مواقع تحويلية، توليد عملاء محتملين، وإنتاج إبداعي لعلامات دبي. احجز استشارة مجانية.')}
+        title={t('Digital Marketing Services London | Ignite Scale', 'خدمات التسويق الرقمي في لندن | Ignite Scale')}
+        description={t('Paid social on Meta, TikTok and Google, conversion websites, lead generation and creative production for London brands. Book a free consultation.', 'إعلانات ممولة على ميتا وتيك توك وجوجل، مواقع تحويلية، توليد عملاء محتملين، وإنتاج إبداعي لعلامات لندن. احجز استشارة مجانية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/services' : 'https://ignite-scale.com/services'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }]}

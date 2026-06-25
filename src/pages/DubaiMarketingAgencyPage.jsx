@@ -23,7 +23,7 @@ function SectionHeading({ title, subtitle }) {
         fontSize: 11,
         letterSpacing: '0.4em',
         textTransform: 'uppercase',
-        color: 'rgba(255,140,70,0.5)',
+        color: 'rgba(208,178,124,0.5)',
         fontFamily: '"DM Sans", sans-serif',
         marginBottom: 16,
       }}>
@@ -44,16 +44,16 @@ function SectionHeading({ title, subtitle }) {
   )
 }
 
-export default function DubaiMarketingAgencyPage() {
+export default function LondonMarketingAgencyPage() {
   const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title={t('Best Marketing Agency in Dubai | Ignite Scale', 'أفضل وكالة تسويق في دبي | Ignite Scale')}
-        description={t('Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في دبي؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات الإماراتية الطموحة. احجز جلسة استراتيجية مجانية.')}
+        title={t('Best Marketing Agency in London | Ignite Scale', 'أفضل وكالة تسويق في لندن | Ignite Scale')}
+        description={t('Looking for a London marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UK brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في لندن؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات البريطانية الطموحة. احجز جلسة استراتيجية مجانية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/dubai-marketing-agency' : 'https://ignite-scale.com/dubai-marketing-agency'}
         locale={locale}
-        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Dubai Marketing Agency', url: '/dubai-marketing-agency' }]}
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'London Marketing Agency', url: '/dubai-marketing-agency' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />
@@ -66,7 +66,7 @@ export default function DubaiMarketingAgencyPage() {
           }}>
             <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1 }}>
               <SectionHeading
-                title="Dubai's Top-Rated Marketing Agency"
+                title="London's Top-Rated Marketing Agency"
                 subtitle="Why Choose Ignite Scale"
               />
 
@@ -83,7 +83,7 @@ export default function DubaiMarketingAgencyPage() {
                   maxWidth: 700,
                 }}
               >
-                We're not just another marketing agency in Dubai. We're growth partners obsessed with one thing: turning your ad spend into qualified leads and revenue. No fluff, no vanity metrics — just results.
+                We're not just another marketing agency in London. We're growth partners obsessed with one thing: turning your ad spend into qualified leads and revenue. No fluff, no vanity metrics — just results.
               </motion.p>
 
               <div style={{
@@ -95,7 +95,7 @@ export default function DubaiMarketingAgencyPage() {
                 {[
                   {
                     title: '50+ Active Clients',
-                    desc: 'Trusted by Dubai\'s leading real estate, hospitality, and B2B brands'
+                    desc: 'Trusted by London\'s leading real estate, hospitality, and B2B brands'
                   },
                   {
                     title: '$2.4M+ Managed',
@@ -114,8 +114,8 @@ export default function DubaiMarketingAgencyPage() {
                     desc: 'Paid social, creative production, web design, and lead generation — all in-house'
                   },
                   {
-                    title: 'Dubai-Based',
-                    desc: 'Local expertise with global best practices. We understand the UAE market.'
+                    title: 'London-Based',
+                    desc: 'Local expertise with global best practices. We understand the UK market.'
                   },
                 ].map((item, i) => (
                   <motion.div
@@ -126,8 +126,8 @@ export default function DubaiMarketingAgencyPage() {
                     style={{
                       padding: 28,
                       borderRadius: 12,
-                      border: '1px solid rgba(255,110,40,0.12)',
-                      background: 'rgba(255,110,40,0.04)',
+                      border: '1px solid rgba(201,169,110,0.12)',
+                      background: 'rgba(201,169,110,0.04)',
                       backdropFilter: 'blur(12px)',
                     }}
                   >
@@ -158,11 +158,11 @@ export default function DubaiMarketingAgencyPage() {
           <section style={{
             padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)',
             background: 'linear-gradient(180deg, #03050F 0%, #0a0d18 100%)',
-            borderTop: '1px solid rgba(255,110,40,0.08)',
+            borderTop: '1px solid rgba(201,169,110,0.08)',
           }}>
             <div style={{ maxWidth: 1000, margin: '0 auto' }}>
               <SectionHeading
-                title="How We Help Dubai Businesses"
+                title="How We Help London Businesses"
                 subtitle="Our Approach"
               />
 
@@ -178,7 +178,7 @@ export default function DubaiMarketingAgencyPage() {
                   },
                   {
                     title: 'Website Design & Development',
-                    desc: 'High-converting landing pages and websites built for Dubai\'s competitive markets. SEO-optimized, mobile-first, and designed to turn visitors into leads.',
+                    desc: 'High-converting landing pages and websites built for London\'s competitive markets. SEO-optimized, mobile-first, and designed to turn visitors into leads.',
                   },
                   {
                     title: 'Lead Generation & Funnels',
@@ -205,8 +205,8 @@ export default function DubaiMarketingAgencyPage() {
                     style={{
                       padding: 32,
                       borderRadius: 12,
-                      border: '1px solid rgba(255,110,40,0.12)',
-                      background: 'rgba(255,110,40,0.02)',
+                      border: '1px solid rgba(201,169,110,0.12)',
+                      background: 'rgba(201,169,110,0.02)',
                       backdropFilter: 'blur(8px)',
                     }}
                   >

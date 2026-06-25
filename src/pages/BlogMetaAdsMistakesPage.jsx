@@ -17,8 +17,8 @@ export default function BlogMetaAdsMistakesPage() {
   return (
     <>
       <SEOMeta
-        title={t('5 Meta Ads Mistakes Costing You Money | Dubai Guide', '٥ أخطاء في إعلانات ميتا تكلّفك المال | دليل دبي')}
-        description={t('The 5 biggest Meta Ads mistakes Dubai businesses make, with actionable fixes that typically lift ROAS 50–100%.', 'أكبر ٥ أخطاء في إعلانات ميتا ترتكبها شركات دبي، مع حلول عملية ترفع العائد على الإنفاق ٥٠–١٠٠٪ في المعتاد.')}
+        title={t('5 Meta Ads Mistakes Costing You Money | London Guide', '٥ أخطاء في إعلانات ميتا تكلّفك المال | دليل لندن')}
+        description={t('The 5 biggest Meta Ads mistakes London businesses make, with actionable fixes that typically lift ROAS 50–100%.', 'أكبر ٥ أخطاء في إعلانات ميتا ترتكبها شركات لندن، مع حلول عملية ترفع العائد على الإنفاق ٥٠–١٠٠٪ في المعتاد.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/meta-ads-mistakes' : 'https://ignite-scale.com/blog/meta-ads-mistakes'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: '5 Meta Ads Mistakes', url: '/blog/meta-ads-mistakes' }]}
@@ -30,18 +30,18 @@ export default function BlogMetaAdsMistakesPage() {
           <article style={{ padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)', background: '#03050F' }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
               <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <div style={{ fontSize: 12, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,140,70,0.6)', marginBottom: 16, fontWeight: 500 }}>
+                <div style={{ fontSize: 12, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(208,178,124,0.6)', marginBottom: 16, fontWeight: 500 }}>
                   Guide • 8 min read
                 </div>
                 <h1 style={{ fontSize: 'clamp(36px, 6vw, 58px)', fontWeight: 800, color: 'rgba(255,255,255,0.95)', margin: '0 0 24px 0', lineHeight: 1.1 }}>
-                  5 Meta Ads Mistakes Costing Dubai Businesses $50K+ Annually
+                  5 Meta Ads Mistakes Costing London Businesses $50K+ Annually
                 </h1>
                 <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'rgba(240,210,180,0.8)', margin: 0 }}>
-                  Most Dubai brands are throwing money away on Meta Ads without realizing it. These 5 mistakes alone can reduce your ROAS by 50-70%. Here's how to fix them.
+                  Most London brands are throwing money away on Meta Ads without realizing it. These 5 mistakes alone can reduce your ROAS by 50-70%. Here's how to fix them.
                 </p>
               </motion.div>
 
-              <div style={{ marginTop: 48, marginBottom: 48, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,110,40,0.3), transparent)' }} />
+              <div style={{ marginTop: 48, marginBottom: 48, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent)' }} />
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 48 }}>
                 {mistakes.map((mistake, i) => (
@@ -55,7 +55,7 @@ export default function BlogMetaAdsMistakesPage() {
                     <div style={{
                       fontSize: 48,
                       fontWeight: 700,
-                      background: 'linear-gradient(135deg, #FF8040, #FFBB80)',
+                      background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       lineHeight: 1,
@@ -75,7 +75,7 @@ export default function BlogMetaAdsMistakesPage() {
                 ))}
               </div>
 
-              <div style={{ marginTop: 64, padding: 40, borderRadius: 12, border: '1px solid rgba(255,110,40,0.15)', background: 'rgba(255,110,40,0.05)' }}>
+              <div style={{ marginTop: 64, padding: 40, borderRadius: 12, border: '1px solid rgba(201,169,110,0.15)', background: 'rgba(201,169,110,0.05)' }}>
                 <h3 style={{ fontSize: 20, fontWeight: 700, color: 'rgba(255,255,255,0.9)', margin: '0 0 16px 0' }}>
                   The Bottom Line
                 </h3>

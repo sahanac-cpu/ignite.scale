@@ -10,8 +10,8 @@ function getServices(t) {
       title: t('Paid Social & Performance Ads', 'الإعلانات الممولة والأداء'),
       tagline: 'Meta · TikTok · Snapchat · Google',
       body: t(
-        'Full-funnel paid campaigns engineered around your CPL and ROAS targets. We architect the audience, the creative, and the bidding strategy, then optimise daily until every dirham works harder.',
-        'حملات إعلانية مدفوعة شاملة، مصممة بدقة حول أهداف تكلفة العميل والعائد على الإنفاق. نبني الجمهور والمحتوى الإبداعي واستراتيجية المزايدة، ثم نحسّن يومياً حتى يعمل كل درهم بكفاءة أكبر.'
+        'Full-funnel paid campaigns engineered around your CPL and ROAS targets. We architect the audience, the creative, and the bidding strategy, then optimise daily until every pound works harder.',
+        'حملات إعلانية مدفوعة شاملة، مصممة بدقة حول أهداف تكلفة العميل والعائد على الإنفاق. نبني الجمهور والمحتوى الإبداعي واستراتيجية المزايدة، ثم نحسّن يومياً حتى يعمل كل جنيه بكفاءة أكبر.'
       ),
       metric: t('2–5× avg ROAS', '٢–٥× متوسط العائد'),
       tags: [t('Meta Ads', 'إعلانات ميتا'), t('TikTok Ads', 'إعلانات تيك توك'), t('A/B Testing', 'اختبار أ/ب'), t('Retargeting', 'إعادة الاستهداف')],
@@ -21,8 +21,8 @@ function getServices(t) {
       title: t('Content Creation & Creative Strategy', 'إنتاج المحتوى والاستراتيجية الإبداعية'),
       tagline: t('Video · Photography · Copy', 'فيديو · تصوير · نصوص'),
       body: t(
-        "Scroll-stopping content built for Dubai's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
-        'محتوى يوقف التمرير، مصمَّم لجمهور دبي عالي النية. يُنتج فريقنا الإبداعي الداخلي فيديوهات على نمط محتوى المستخدم، وتصويراً تحريرياً فاخراً، ونصوصاً مدعومة بالبيانات تحوّل المشاهدات إلى عملاء.'
+        "Scroll-stopping content built for London's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
+        'محتوى يوقف التمرير، مصمَّم لجمهور لندن عالي النية. يُنتج فريقنا الإبداعي الداخلي فيديوهات على نمط محتوى المستخدم، وتصويراً تحريرياً فاخراً، ونصوصاً مدعومة بالبيانات تحوّل المشاهدات إلى عملاء.'
       ),
       metric: t('3–5× engagement lift', '٣–٥× ارتفاع التفاعل'),
       tags: [t('UGC Video', 'فيديو المستخدم'), t('Reels', 'ريلز'), t('Ad Creatives', 'محتوى إعلاني'), t('Copywriting', 'كتابة المحتوى')],
@@ -43,8 +43,8 @@ function getServices(t) {
       title: t('Funnel Design & Landing Pages', 'تصميم القمعات وصفحات الهبوط'),
       tagline: t('Conversion-Optimised Web Experiences', 'تجارب ويب مُحسَّنة للتحويل'),
       body: t(
-        "High-converting landing pages and lead funnels designed for Dubai's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
-        'صفحات هبوط وقمعات تحويل عالية الأداء، مصممة لأكثر قطاعات دبي تنافسية: العقارات، الضيافة، التجزئة الفاخرة، والخدمات المهنية. تحسين التحويل مدمج من اليوم الأول.'
+        "High-converting landing pages and lead funnels designed for London's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
+        'صفحات هبوط وقمعات تحويل عالية الأداء، مصممة لأكثر قطاعات لندن تنافسية: العقارات، الضيافة، التجزئة الفاخرة، والخدمات المهنية. تحسين التحويل مدمج من اليوم الأول.'
       ),
       metric: t('60%+ CPL reduction', '+٦٠٪ خفض تكلفة العميل'),
       tags: [t('Landing Pages', 'صفحات هبوط'), t('CRO', 'تحسين التحويل'), t('Lead Funnels', 'قمعات تحويل'), t('Analytics', 'تحليلات')],
@@ -63,7 +63,7 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: index * 0.1 }}
       style={{
-        borderBottom: '1px solid rgba(255,110,40,0.08)',
+        borderBottom: '1px solid rgba(201,169,110,0.08)',
       }}
     >
       {/* Row header */}
@@ -86,7 +86,7 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
         <span style={{
           fontSize: 11,
           letterSpacing: '0.2em',
-          color: isOpen ? 'rgba(255,130,60,0.8)' : 'rgba(255,130,60,0.3)',
+          color: isOpen ? 'rgba(201,169,110,0.8)' : 'rgba(201,169,110,0.3)',
           fontFamily: '"DM Sans", sans-serif',
           fontWeight: 500,
           minWidth: 32,
@@ -112,9 +112,9 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
         <span style={{
           fontSize: 11,
           letterSpacing: '0.15em',
-          color: 'rgba(255,160,80,0.6)',
+          color: 'rgba(216,189,138,0.6)',
           fontFamily: '"DM Sans", sans-serif',
-          border: '1px solid rgba(255,130,50,0.15)',
+          border: '1px solid rgba(201,169,110,0.15)',
           borderRadius: 999,
           padding: '5px 14px',
           display: 'none',
@@ -136,8 +136,8 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
             width: 32,
             height: 32,
             borderRadius: '50%',
-            border: `1px solid ${isOpen ? 'rgba(255,120,50,0.4)' : 'rgba(255,255,255,0.1)'}`,
-            color: isOpen ? 'rgba(255,120,50,0.9)' : 'rgba(255,255,255,0.35)',
+            border: `1px solid ${isOpen ? 'rgba(201,169,110,0.4)' : 'rgba(255,255,255,0.1)'}`,
+            color: isOpen ? 'rgba(201,169,110,0.9)' : 'rgba(255,255,255,0.35)',
             fontSize: 18,
             lineHeight: 1,
             fontWeight: 300,
@@ -179,7 +179,7 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
                 </p>
                 <span style={{
                   fontSize: 11,
-                  color: 'rgba(255,170,110,0.5)',
+                  color: 'rgba(224,199,154,0.5)',
                   fontFamily: '"DM Sans", sans-serif',
                   letterSpacing: '0.1em',
                 }}>
@@ -192,12 +192,12 @@ function AccordionRow({ svc, index, isOpen, onToggle }) {
                     fontSize: 11,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: 'rgba(255,160,90,0.55)',
-                    border: '1px solid rgba(255,130,50,0.12)',
+                    color: 'rgba(216,189,138,0.55)',
+                    border: '1px solid rgba(201,169,110,0.12)',
                     borderRadius: 6,
                     padding: '6px 12px',
                     fontFamily: '"DM Sans", sans-serif',
-                    background: 'rgba(255,80,20,0.04)',
+                    background: 'rgba(201,169,110,0.04)',
                     backdropFilter: 'blur(8px)',
                   }}>
                     {tag}
@@ -244,7 +244,7 @@ export default function Services() {
             fontSize: 11,
             letterSpacing: '0.4em',
             textTransform: 'uppercase',
-            color: 'rgba(255,140,70,0.5)',
+            color: 'rgba(208,178,124,0.5)',
             fontFamily: '"DM Sans", sans-serif',
             marginBottom: 16,
           }}>
@@ -261,7 +261,7 @@ export default function Services() {
           }}>
             {t('Services built for', 'خدمات مصمَّمة لـ')}<br />
             <span style={{
-              background: 'linear-gradient(135deg, #E83000 0%, #FF8040 100%)',
+              background: 'linear-gradient(135deg, #A8895A 0%, #C9A96E 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>{t('measurable growth', 'نمو قابل للقياس')}</span>
@@ -269,7 +269,7 @@ export default function Services() {
         </motion.div>
 
         {/* Accordion */}
-        <div style={{ borderTop: '1px solid rgba(255,110,40,0.08)' }}>
+        <div style={{ borderTop: '1px solid rgba(201,169,110,0.08)' }}>
           {services.map((svc, i) => (
             <AccordionRow
               key={svc.num}

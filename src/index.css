@@ -4,6 +4,39 @@
 @tailwind utilities;
 
 @layer base {
+  /* ─── Design tokens — dark cinematic / quiet-luxury bronze ─── */
+  :root {
+    --bg:            #03050F;  /* deep ink ground */
+    --bg-2:          #080A14;
+    --ink:           #EDE0CC;  /* warm bone text */
+    --ink-dim:       rgba(237, 224, 204, 0.62);
+    --ink-mute:      rgba(237, 224, 204, 0.40);
+
+    /* bronze/amber accent ramp */
+    --accent-deep:   #6B5A38;
+    --accent:        #C9A96E;  /* primary */
+    --accent-soft:   #D8BD8A;
+    --accent-light:  #E0C79A;
+
+    --line:          rgba(201, 169, 110, 0.14);
+    --line-soft:     rgba(201, 169, 110, 0.07);
+    --line-strong:   rgba(201, 169, 110, 0.28);
+
+    --grad-accent:   linear-gradient(135deg, #A8895A 0%, #D8BD8A 55%, #E0C79A 100%);
+
+    /* fonts — curvy display serif (Cormorant) everywhere; sans for utility */
+    --font-display:  'Cormorant Garamond', Georgia, serif;
+    --font-serif:    'Cormorant Garamond', Georgia, serif;
+    --font-grotesk:  'DM Sans', system-ui, sans-serif;
+    --font-body:     'DM Sans', system-ui, sans-serif;
+
+    /* per-section grounds — clean, consistent dark ink */
+    --sec-hero:      #06080B;
+    --sec-services:  #06080B;
+    --sec-results:   #08090C;
+    --sec-booking:   #06080B;
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -22,10 +55,10 @@
   textarea, input { cursor: text !important; }
   select { cursor: pointer !important; }
 
-  ::selection { background-color: #C43000; color: white; }
+  ::selection { background-color: #8A6E3C; color: white; }
   ::-webkit-scrollbar { width: 2px; height: 2px; }
   ::-webkit-scrollbar-track { background: #03050F; }
-  ::-webkit-scrollbar-thumb { background: linear-gradient(#3050CC, #C43000); }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(#6B5A38, #8A6E3C); }
 }
 
 @layer components {
@@ -35,7 +68,7 @@
     background: rgba(255, 255, 255, 0.048);
     backdrop-filter: blur(28px) saturate(180%);
     -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1px solid rgba(180, 200, 255, 0.14);
+    border: 1px solid rgba(201, 169, 110, 0.14);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.12),
       inset 0 -1px 0 rgba(0, 0, 0, 0.18),
@@ -61,7 +94,7 @@
     background: rgba(255, 255, 255, 0.038);
     backdrop-filter: blur(40px) saturate(200%);
     -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border: 1px solid rgba(200, 180, 255, 0.12);
+    border: 1px solid rgba(201, 169, 110, 0.12);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.10),
       0 8px 40px rgba(0, 0, 0, 0.28);
@@ -76,7 +109,7 @@
     );
     backdrop-filter: blur(32px) saturate(200%);
     -webkit-backdrop-filter: blur(32px) saturate(200%);
-    border: 1px solid rgba(200, 220, 255, 0.13);
+    border: 1px solid rgba(201, 169, 110, 0.13);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.14),
       inset 0 -1px 0 rgba(0, 0, 0, 0.22),
@@ -87,7 +120,7 @@
 
   /* ─── Gradient text ─── */
   .gradient-text {
-    background: linear-gradient(135deg, #E83000 0%, #FF6B35 60%, #FF9550 100%);
+    background: linear-gradient(135deg, #A8895A 0%, #D8BD8A 60%, #E0C79A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -102,9 +135,9 @@
     padding: 1px;
     background: linear-gradient(
       135deg,
-      rgba(120, 170, 255, 0.40) 0%,
-      rgba(240, 100, 30, 0.30) 50%,
-      rgba(80, 120, 255, 0.18) 100%
+      rgba(201, 169, 110, 0.42) 0%,
+      rgba(216, 189, 138, 0.26) 50%,
+      rgba(107, 90, 56, 0.18) 100%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -117,11 +150,11 @@
   .aurora-bg {
     background-color: #03050F;
     background-image:
-      radial-gradient(ellipse 100% 80% at -10% 50%,  rgba(120, 15,  0, 0.30) 0%, transparent 55%),
-      radial-gradient(ellipse 80%  70% at 110% 20%,  rgba(20,  45, 180, 0.28) 0%, transparent 55%),
-      radial-gradient(ellipse 70%  60% at 55%  105%, rgba(60,   0, 120, 0.22) 0%, transparent 55%),
-      radial-gradient(ellipse 50%  45% at 80%  60%,  rgba(10,  80, 200, 0.16) 0%, transparent 50%),
-      radial-gradient(ellipse 40%  40% at 20%  80%,  rgba(80,  10,  0, 0.18) 0%, transparent 50%);
+      radial-gradient(ellipse 100% 80% at -10% 50%,  rgba(86,  74, 44, 0.32) 0%, transparent 55%),
+      radial-gradient(ellipse 80%  70% at 110% 20%,  rgba(44,  66, 50, 0.26) 0%, transparent 55%),
+      radial-gradient(ellipse 70%  60% at 55%  105%, rgba(120, 96, 54, 0.20) 0%, transparent 55%),
+      radial-gradient(ellipse 50%  45% at 80%  60%,  rgba(60,  72, 52, 0.16) 0%, transparent 50%),
+      radial-gradient(ellipse 40%  40% at 20%  80%,  rgba(96,  78, 44, 0.18) 0%, transparent 50%);
   }
 
   /* ─── Noise grain ─── */
@@ -136,9 +169,10 @@
 
   /* ─── Buttons ─── */
   .btn-primary {
-    @apply relative overflow-hidden text-white text-[11px] font-medium tracking-[0.22em] uppercase px-8 py-4 transition-all duration-300;
-    background: linear-gradient(135deg, #D42B00 0%, #E84500 100%);
-    box-shadow: 0 0 28px rgba(200, 40, 0, 0.22), 0 4px 20px rgba(0,0,0,0.4);
+    @apply relative overflow-hidden text-[11px] font-medium tracking-[0.22em] uppercase px-8 py-4 transition-all duration-300;
+    color: #1A150B;
+    background: linear-gradient(135deg, #C9A96E 0%, #E0C79A 100%);
+    box-shadow: 0 0 28px rgba(201, 169, 110, 0.20), 0 4px 20px rgba(0,0,0,0.4);
     border-radius: 999px;
     text-decoration: none;
     display: inline-block;
@@ -147,11 +181,11 @@
   .btn-primary::after {
     content: '';
     position: absolute; inset: 0;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.18);
     transform: translateX(-100%);
     transition: transform 0.35s ease;
   }
-  .btn-primary:hover { box-shadow: 0 0 50px rgba(200, 40, 0, 0.38), 0 4px 30px rgba(0,0,0,0.5); }
+  .btn-primary:hover { box-shadow: 0 0 50px rgba(201, 169, 110, 0.34), 0 4px 30px rgba(0,0,0,0.5); }
   .btn-primary:hover::after { transform: translateX(0); }
 
   .btn-ghost {
@@ -171,7 +205,7 @@
   /* ─── Typography ─── */
   .label-sm {
     @apply text-[10px] font-medium tracking-[0.4em] uppercase;
-    color: rgba(200, 210, 255, 0.35);
+    color: var(--ink-mute);
   }
 
   /* ─── Hero responsive layout (explicit media query, no framework ambiguity) ─── */

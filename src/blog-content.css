@@ -29,17 +29,17 @@
   margin-bottom: 10px;
 }
 .blog-content ul li::marker {
-  color: #FF6B35;
+  color: #D8BD8A;
 }
 .blog-content a {
-  color: #FFAA60;
+  color: #E0C79A;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
   transition: color 0.2s;
 }
 .blog-content a:hover {
-  color: #FF6B35;
+  color: #D8BD8A;
 }
 .blog-content strong {
   color: rgba(255, 255, 255, 0.92);
@@ -51,7 +51,7 @@
   color: rgba(255, 200, 170, 0.8);
 }
 .blog-content blockquote {
-  border-inline-start: 2px solid #FF6B35;
+  border-inline-start: 2px solid #D8BD8A;
   padding: 8px 0 8px 24px;
   margin: 32px 0;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -60,7 +60,7 @@
   color: rgba(255, 220, 190, 0.85);
 }
 .blog-content code {
-  background: rgba(255, 110, 40, 0.08);
+  background: rgba(201,169,110, 0.08);
   color: rgba(255, 200, 170, 0.95);
   padding: 2px 6px;
   border-radius: 3px;

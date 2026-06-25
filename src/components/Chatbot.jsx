@@ -13,11 +13,11 @@ const OPTIONS = [
 
 const RESPONSES = {
   pricing: {
-    text: "Our retainers start from AED 7,500/month for social media management. Ad budgets are separate — we recommend AED 5,000+ minimum for paid campaigns. Full packages (management + ads + content) start from AED 12,500/month. Every package is custom-scoped to your business.",
+    text: "Our retainers start from £1,500/month for social media management. Ad budgets are separate — we recommend £1,000+ minimum for paid campaigns. Full packages (management + ads + content) start from £2,500/month. Every package is custom-scoped to your business.",
     opts: ['Book a strategy call', 'What services do you offer?'],
   },
   services: {
-    text: "We offer four core services:\n\n📱 Social Media Management (Instagram, TikTok, LinkedIn, X)\n🎯 Paid Advertising (Meta, TikTok, Google, Snapchat)\n🎬 Content Production (video, photography, copywriting)\n💻 Website Design & Funnels\n\nWe also offer bilingual (English/Arabic) content for the GCC market. Which interests you most?",
+    text: "We offer four core services:\n\n📱 Social Media Management (Instagram, TikTok, LinkedIn, X)\n🎯 Paid Advertising (Meta, TikTok, Google, Snapchat)\n🎬 Content Production (video, photography, copywriting)\n💻 Website Design & Funnels\n\nWe also offer bilingual (English/Arabic) content for the UK market. Which interests you most?",
     opts: ['How much does it cost?', 'Book a strategy call'],
   },
   book: {
@@ -26,11 +26,11 @@ const RESPONSES = {
     opts: [],
   },
   location: {
-    text: "We're headquartered in DIFC, Dubai. We work with businesses across Dubai, Abu Dhabi, Sharjah, and the wider GCC (Saudi Arabia, Kuwait, Qatar). We offer both in-person meetings in Dubai and virtual calls for clients across the region.",
+    text: "We're headquartered in the City of London. We work with businesses across London, Manchester, Birmingham and the rest of the UK. We offer both in-person meetings in London and virtual calls for clients nationwide.",
     opts: ['Book a strategy call', 'See your results'],
   },
   results: {
-    text: "Some highlights:\n\n🏢 Dubai Marina Properties: AED 12.4M in 90 days, +1,863% followers\n🍽️ SALT & EMBER DIFC: +280% reservations, 8.4% engagement rate\n🚗 Premier Auto Dubai: 12 → 147 leads/month, 68% cheaper\n👗 Maison Blanc: AED 180K → AED 1.4M revenue, 8.45x ROAS\n\nTotal: AED 50M+ in client revenue attributed to our work.",
+    text: "Some highlights:\n\n🏢 Canary Wharf Properties: £12.4M in 90 days, +1,863% followers\n🍽️ SALT & EMBER the City of London: +280% reservations, 8.4% engagement rate\n🚗 Premier Auto London: 12 → 147 leads/month, 68% cheaper\n👗 Maison Blanc: £180K → £1.4M revenue, 8.45x ROAS\n\nTotal: £50M+ in client revenue attributed to our work.",
     action: { label: 'View All Case Studies', href: '#results' },
     opts: ['Book a strategy call', 'How much does it cost?'],
   },
@@ -107,7 +107,7 @@ export default function Chatbot() {
             style={{
               background: '#0d0d0d',
               border: '1px solid rgba(255,255,255,0.07)',
-              boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 40px rgba(255,51,0,0.06)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 40px rgba(201,169,110,0.06)',
             }}
           >
             {/* Header */}
@@ -184,7 +184,7 @@ export default function Chatbot() {
 
             {/* Footer */}
             <div className="px-4 py-3 border-t border-white/[0.05] flex items-center justify-between">
-              <span className="text-[10px] text-white/15 uppercase tracking-[0.2em]">ignite.scale · Dubai</span>
+              <span className="text-[10px] text-white/15 uppercase tracking-[0.2em]">ignite.scale · London</span>
               <a
                 href="#booking"
                 onClick={() => setOpen(false)}

@@ -11,7 +11,7 @@ export default function CaseStudyRealEstateDAEPage() {
     <>
       <SEOMeta
         title={t('Real Estate: 4.8× ROAS in 90 Days | Case Study', 'عقارات: عائد ٤٫٨× على الإنفاق في ٩٠ يوماً | دراسة حالة')}
-        description={t('How we lifted a Dubai property developer\'s ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown.', 'كيف رفعنا العائد على الإنفاق لمطوّر عقاري في دبي من ١٫٢× إلى ٤٫٨× في ٩٠ يوماً، مع خفض تكلفة العميل ٦٨٪. تفصيل كامل للاستراتيجية.')}
+        description={t('How we lifted a London property developer\'s ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown.', 'كيف رفعنا العائد على الإنفاق لمطوّر عقاري في لندن من ١٫٢× إلى ٤٫٨× في ٩٠ يوماً، مع خفض تكلفة العميل ٦٨٪. تفصيل كامل للاستراتيجية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/case-study/dubai-real-estate-4-8x-roas' : 'https://ignite-scale.com/case-study/dubai-real-estate-4-8x-roas'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Real Estate', url: '/case-study/dubai-real-estate-4-8x-roas' }]}
@@ -22,11 +22,11 @@ export default function CaseStudyRealEstateDAEPage() {
         <main style={{ paddingTop: 80 }}>
           <article style={{ padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)' }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
-              <div style={{ fontSize: 12, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,140,70,0.6)', marginBottom: 16 }}>
+              <div style={{ fontSize: 12, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(208,178,124,0.6)', marginBottom: 16 }}>
                 Case Study • Real Estate
               </div>
               <h1 style={{ fontSize: 'clamp(36px, 6vw, 58px)', fontWeight: 800, color: 'rgba(255,255,255,0.95)', margin: '0 0 24px 0' }}>
-                Dubai Real Estate: 4.8× ROAS in 90 Days
+                London Real Estate: 4.8× ROAS in 90 Days
               </h1>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24, marginBottom: 48 }}>
@@ -36,9 +36,9 @@ export default function CaseStudyRealEstateDAEPage() {
                   { label: 'Timeline', value: '90 days' },
                   { label: 'Lead Volume', value: '+240%' },
                 ].map((metric, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} style={{ padding: 24, borderRadius: 12, border: '1px solid rgba(255,110,40,0.12)', background: 'rgba(255,110,40,0.04)' }}>
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} style={{ padding: 24, borderRadius: 12, border: '1px solid rgba(201,169,110,0.12)', background: 'rgba(201,169,110,0.04)' }}>
                     <div style={{ fontSize: 12, color: 'rgba(240,200,160,0.5)', marginBottom: 8 }}>{metric.label}</div>
-                    <div style={{ fontSize: 24, fontWeight: 700, background: 'linear-gradient(135deg, #FF8040, #FFBB80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    <div style={{ fontSize: 24, fontWeight: 700, background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                       {metric.value}
                     </div>
                   </motion.div>
@@ -50,7 +50,7 @@ export default function CaseStudyRealEstateDAEPage() {
                   The Challenge
                 </h2>
                 <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(240,210,180,0.75)', margin: 0 }}>
-                  A 10-year-old Dubai real estate developer was spending 150k AED/month on ads but getting weak returns (1.2× ROAS). Their landing pages weren't optimized, audiences were too broad, and they weren't retargeting warm leads. They needed immediate improvement.
+                  A 10-year-old London real estate developer was spending 150k £/month on ads but getting weak returns (1.2× ROAS). Their landing pages weren't optimized, audiences were too broad, and they weren't retargeting warm leads. They needed immediate improvement.
                 </p>
               </div>
 
@@ -65,7 +65,7 @@ export default function CaseStudyRealEstateDAEPage() {
                     { title: 'Aggressive Retargeting', desc: 'Implemented 7-touch retargeting sequence for warm leads. 34% of sales came from retargeted users.' },
                     { title: 'Video Ads', desc: 'Created property walkthroughs and testimonial videos. Video ads had 6.2× ROAS vs static (2.1×).' },
                   ].map((item, i) => (
-                    <div key={i} style={{ paddingLeft: 24, borderLeft: '3px solid rgba(255,110,40,0.3)' }}>
+                    <div key={i} style={{ paddingLeft: 24, borderLeft: '3px solid rgba(201,169,110,0.3)' }}>
                       <h3 style={{ fontSize: 16, fontWeight: 600, color: 'rgba(255,200,150,0.9)', margin: '0 0 8px 0' }}>
                         {item.title}
                       </h3>
@@ -83,14 +83,14 @@ export default function CaseStudyRealEstateDAEPage() {
                 </h2>
                 <ul style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(240,210,180,0.75)', margin: 0, paddingLeft: 20 }}>
                   <li style={{ marginBottom: 12 }}>✓ ROAS: 1.2× → 4.8× (+300% improvement)</li>
-                  <li style={{ marginBottom: 12 }}>✓ CPL: 485 AED → 155 AED (68% reduction)</li>
+                  <li style={{ marginBottom: 12 }}>✓ CPL: 485 £→ 155 £(68% reduction)</li>
                   <li style={{ marginBottom: 12 }}>✓ Lead Volume: 120/month → 408/month</li>
                   <li style={{ marginBottom: 12 }}>✓ Monthly Ad Spend: 150k maintained, but 4× more leads</li>
                   <li>✓ Conversion Rate: 2% → 5.2% (landing page optimization)</li>
                 </ul>
               </div>
 
-              <div style={{ padding: 32, borderRadius: 12, background: 'rgba(255,110,40,0.08)', border: '1px solid rgba(255,110,40,0.15)' }}>
+              <div style={{ padding: 32, borderRadius: 12, background: 'rgba(201,169,110,0.08)', border: '1px solid rgba(201,169,110,0.15)' }}>
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: 'rgba(255,255,255,0.9)', margin: '0 0 12px 0' }}>
                   Key Takeaway
                 </h3>

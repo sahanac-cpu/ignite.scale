@@ -4,15 +4,15 @@ import { useRef } from 'react'
 const testimonials = [
   {
     name: 'Real Estate Developer',
-    role: 'Dubai',
+    role: 'London',
     company: 'Property Development',
-    quote: 'Within 3 months, we went from 12 AED/lead to 4 AED/lead. Their creative strategy completely transformed our funnel.',
+    quote: 'Within 3 months, we went from 12 £/lead to 4 £/lead. Their creative strategy completely transformed our funnel.',
     result: '68% CPL reduction',
     image: '🏢',
   },
   {
     name: 'Cosmetic Clinic Director',
-    role: 'Dubai Marina',
+    role: 'Canary Wharf',
     company: 'Aesthetic Services',
     quote: 'They manage our full ad stack. ROAS jumped from 1.2x to 4.8x in the first 2 months. Best decision we made.',
     result: '4.8× ROAS',
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     name: 'Business Setup Consultant',
-    role: 'Downtown Dubai',
+    role: 'Downtown London',
     company: 'B2B Consulting',
     quote: 'Not just ads—they built our entire funnel from scratch. Lead quality doubled, cost per lead down 55%.',
     result: '55% CPL reduction',
@@ -53,8 +53,8 @@ function TestimonialCard({ testimonial, index }) {
       animate={inView ? 'visible' : 'hidden'}
       style={{
         borderRadius: 16,
-        border: '1px solid rgba(255,110,40,0.12)',
-        background: 'linear-gradient(135deg, rgba(255,110,40,0.04) 0%, rgba(255,60,10,0.02) 100%)',
+        border: '1px solid rgba(201,169,110,0.12)',
+        background: 'linear-gradient(135deg, rgba(201,169,110,0.04) 0%, rgba(201,169,110,0.02) 100%)',
         backdropFilter: 'blur(12px)',
         padding: 32,
         display: 'flex',
@@ -82,14 +82,14 @@ function TestimonialCard({ testimonial, index }) {
         gap: 8,
         padding: '8px 14px',
         borderRadius: 8,
-        background: 'rgba(255,110,40,0.08)',
-        border: '1px solid rgba(255,110,40,0.15)',
+        background: 'rgba(201,169,110,0.08)',
+        border: '1px solid rgba(201,169,110,0.15)',
         width: 'fit-content',
       }}>
         <span style={{
           fontSize: 11,
           fontWeight: 600,
-          color: 'rgba(255,160,90,0.8)',
+          color: 'rgba(216,189,138,0.8)',
           fontFamily: '"DM Sans", sans-serif',
           letterSpacing: '0.05em',
           textTransform: 'uppercase',
@@ -173,7 +173,7 @@ export default function SocialProof() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255,110,40,0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,169,110,0.08) 0%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 0,
       }} />
@@ -191,11 +191,11 @@ export default function SocialProof() {
             fontSize: 11,
             letterSpacing: '0.4em',
             textTransform: 'uppercase',
-            color: 'rgba(255,140,70,0.5)',
+            color: 'rgba(208,178,124,0.5)',
             fontFamily: '"DM Sans", sans-serif',
             marginBottom: 16,
           }}>
-            Trusted by Dubai's Top Brands
+            Trusted by London's Top Brands
           </div>
           <h2 style={{
             fontSize: 'clamp(32px, 5vw, 58px)',
@@ -211,7 +211,7 @@ export default function SocialProof() {
           }}>
             Real results from<br />
             <span style={{
-              background: 'linear-gradient(135deg, #FF8040 0%, #FFAA60 100%)',
+              background: 'linear-gradient(135deg, #C9A96E 0%, #E0C79A 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>real clients</span>
@@ -229,15 +229,15 @@ export default function SocialProof() {
             gap: 28,
             marginBottom: 64,
             padding: '48px 0',
-            borderTop: '1px solid rgba(255,110,40,0.08)',
-            borderBottom: '1px solid rgba(255,110,40,0.08)',
+            borderTop: '1px solid rgba(201,169,110,0.08)',
+            borderBottom: '1px solid rgba(201,169,110,0.08)',
           }}
         >
           <motion.div variants={statItemVariants} style={{ textAlign: 'center' }}>
             <div style={{
               fontSize: 'clamp(28px, 5vw, 48px)',
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #FF8040, #FFBB80)',
+              background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1,
@@ -260,7 +260,7 @@ export default function SocialProof() {
             <div style={{
               fontSize: 'clamp(28px, 5vw, 48px)',
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #FF8040, #FFBB80)',
+              background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1,
@@ -283,7 +283,7 @@ export default function SocialProof() {
             <div style={{
               fontSize: 'clamp(28px, 5vw, 48px)',
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #FF8040, #FFBB80)',
+              background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1,
@@ -306,7 +306,7 @@ export default function SocialProof() {
             <div style={{
               fontSize: 'clamp(28px, 5vw, 48px)',
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #FF8040, #FFBB80)',
+              background: 'linear-gradient(135deg, #C9A96E, #E6D2AE)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1,

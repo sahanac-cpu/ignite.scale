@@ -19,15 +19,15 @@ function getOptions(t) {
       t('Other', 'أخرى'),
     ],
     BUDGETS: [
-      t('Under AED 5,000/month', 'أقل من ٥٬٠٠٠ درهم شهرياً'),
-      t('AED 5,000 – 10,000/month', '٥٬٠٠٠ – ١٠٬٠٠٠ درهم شهرياً'),
-      t('AED 10,000 – 25,000/month', '١٠٬٠٠٠ – ٢٥٬٠٠٠ درهم شهرياً'),
-      t('AED 25,000 – 50,000/month', '٢٥٬٠٠٠ – ٥٠٬٠٠٠ درهم شهرياً'),
-      t('AED 50,000+/month', '+٥٠٬٠٠٠ درهم شهرياً'),
+      t('Under £1,000/month', 'أقل من ١٬٠٠٠ جنيه إسترليني شهرياً'),
+      t('£1,000 – 2,500/month', '١٬٠٠٠ – ٢٬٥٠٠ جنيه إسترليني شهرياً'),
+      t('£2,500 – 5,000/month', '٢٬٥٠٠ – ٥٬٠٠٠ جنيه إسترليني شهرياً'),
+      t('£5,000 – 10,000/month', '٥٬٠٠٠ – ١٠٬٠٠٠ جنيه إسترليني شهرياً'),
+      t('£10,000+/month', 'أكثر من ١٠٬٠٠٠ جنيه إسترليني شهرياً'),
     ],
     SERVICES: [
       t('Social Media Management', 'إدارة وسائل التواصل'),
-      t('Paid Advertising (Meta/TikTok/Google)', 'إعلانات ممولة (ميتا/تيك توك/قوقل)'),
+      t('Paid Advertising (Meta/TikTok/Google)', 'إعلانات ممولة (ميتا/تيك توك/جوجل)'),
       t('Content Production', 'إنتاج المحتوى'),
       t('Website Design & Funnels', 'تصميم المواقع والقمعات'),
       t('Full Package', 'الباقة الكاملة'),
@@ -116,14 +116,14 @@ export default function Booking() {
       )
       setSent(true)
     } catch {
-      setError(t('Something went wrong. Email us directly at admin@ignite-scale.com', 'حدث خطأ. راسلنا مباشرةً على admin@ignite-scale.com'))
+      setError(t('Something went wrong. Please try again in a moment.', 'حدث خطأ. يُرجى المحاولة مرة أخرى بعد قليل.'))
     } finally {
       setSending(false)
     }
   }
 
   return (
-    <section id="booking" style={{ position: 'relative', overflow: 'hidden', background: '#03050F' }}>
+    <section id="booking" style={{ position: 'relative', overflow: 'hidden', background: 'var(--sec-booking)' }}>
       <AuroraLayer variant="booking" />
       <div className="section-pad max-w-7xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
       <motion.div
@@ -192,7 +192,7 @@ export default function Booking() {
             <a href="mailto:admin@ignite-scale.com" className="text-white/60 text-sm hover:text-white transition-colors block">
               admin@ignite-scale.com
             </a>
-            <div className="text-white/25 text-xs">{t('Dubai, UAE', 'دبي، الإمارات')}</div>
+            <div className="text-white/25 text-xs">{t('London, UK', 'لندن، المملكة المتحدة')}</div>
           </div>
         </motion.div>
 
@@ -214,7 +214,7 @@ export default function Booking() {
               >
                 <div className="w-16 h-16 rounded-full border border-accent/30 bg-accent/10 flex items-center justify-center">
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <path d="M5 14l6 6L23 8" stroke="#FF3300" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5 14l6 6L23 8" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <div>
@@ -280,8 +280,8 @@ export default function Booking() {
                       <Field label={t('Email Address', 'البريد الإلكتروني')} required>
                         <input className={inputCls} type="email" placeholder="your@email.com" value={form.email} onChange={set('email')} />
                       </Field>
-                      <Field label={t('Phone Number (UAE)', 'رقم الهاتف (الإمارات)')} required>
-                        <input className={inputCls} placeholder="+971 55 511 6465" value={form.phone} onChange={set('phone')} />
+                      <Field label={t('Phone Number (UK)', 'رقم الهاتف (المملكة المتحدة)')} required>
+                        <input className={inputCls} placeholder="+44 20 7946 0958" value={form.phone} onChange={set('phone')} />
                       </Field>
                     </motion.div>
                   )}
@@ -366,7 +366,7 @@ export default function Booking() {
                           ))}
                         </div>
                       </Field>
-                      <Field label={t('Preferred Time (Dubai, GST UTC+4)', 'الوقت المفضّل (دبي، GST UTC+4)')} required>
+                      <Field label={t('Preferred Time (London, GST UTC+4)', 'الوقت المفضّل (لندن، GST UTC+4)')} required>
                         <div className="grid grid-cols-3 gap-2">
                           {TIMES.map((t) => (
                             <button
