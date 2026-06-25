@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* logo */}
           <Link to={base + '/'} className="flex items-center select-none" style={{ direction: 'ltr' }}>
-            <Logo height={20} />
+            <Logo height={34} />
           </Link>
 
           {/* right cluster */}
