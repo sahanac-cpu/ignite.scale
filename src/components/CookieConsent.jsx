@@ -35,27 +35,29 @@ export default function CookieConsent() {
           dir={locale === 'ar' ? 'rtl' : 'ltr'}
           role="dialog"
           aria-label={t('Cookie notice', 'إشعار الكوكيز')}
+          className="cookie-banner"
           style={{
             position: 'fixed',
-            bottom: 'clamp(16px, 3vw, 28px)',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            bottom: 'calc(clamp(16px, 3vw, 28px) + env(safe-area-inset-bottom, 0px))',
+            left: 0,
+            right: 0,
+            marginInline: 'auto',
             zIndex: 200,
-            width: 'min(620px, calc(100% - 32px))',
-            background: 'rgba(14,16,22,0.82)',
+            width: 'min(620px, calc(100% - 24px))',
+            background: 'rgba(14,16,22,0.9)',
             backdropFilter: 'blur(22px) saturate(140%)',
             WebkitBackdropFilter: 'blur(22px) saturate(140%)',
             border: '1px solid var(--line-strong)',
             borderRadius: 16,
-            padding: 'clamp(18px, 2.4vw, 24px)',
-            boxShadow: '0 30px 80px rgba(0,0,0,0.55)',
+            padding: 'clamp(16px, 2.4vw, 24px)',
+            boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
-            gap: 16,
+            gap: 14,
           }}
         >
-          <p style={{ flex: '1 1 280px', margin: 0, fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-dim)' }}>
+          <p style={{ flex: '1 1 220px', margin: 0, fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-dim)' }}>
             {t(
               'We use a couple of cookies to keep the site working and to measure anonymous traffic.',
               'نستخدم بعض الكوكيز لتشغيل الموقع وقياس الزيارات بشكل مجهول.'
@@ -64,22 +66,32 @@ export default function CookieConsent() {
               {t('Learn more', 'اعرف المزيد')}
             </Link>
           </p>
-          <div style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
+          <div className="cookie-actions" style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
             <button
               onClick={() => choose('declined')}
               data-cursor="hover"
               style={{
                 fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
                 fontWeight: 500, color: 'var(--ink-mute)', background: 'transparent',
-                border: '1px solid var(--line-strong)', borderRadius: 999, padding: '11px 20px', cursor: 'pointer',
+                border: '1px solid var(--line-strong)', borderRadius: 999, padding: '12px 20px', cursor: 'pointer',
+                whiteSpace: 'nowrap',
               }}
             >
               {t('Decline', 'رفض')}
             </button>
-            <button onClick={() => choose('accepted')} className="btn-primary" data-cursor="hover" style={{ fontSize: 11, padding: '11px 22px', border: 'none', cursor: 'pointer' }}>
+            <button onClick={() => choose('accepted')} className="btn-primary" data-cursor="hover" style={{ fontSize: 11, padding: '12px 22px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>
               {t('Accept', 'قبول')}
             </button>
           </div>
+
+          <style>{`
+            @media (max-width: 560px) {
+              .cookie-banner { flex-direction: column; align-items: stretch !important; gap: 14px; }
+              .cookie-banner > p { flex: 0 0 auto !important; }
+              .cookie-actions { width: 100%; }
+              .cookie-actions button { flex: 1; text-align: center; }
+            }
+          `}</style>
         </motion.div>
       )}
     </AnimatePresence>

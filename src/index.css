@@ -55,6 +55,14 @@
   textarea, input { cursor: text !important; }
   select { cursor: pointer !important; }
 
+  /* touch / no-hover devices: use the native cursor, no custom one */
+  @media (hover: none), (pointer: coarse) {
+    body { cursor: auto; }
+    *, a, button { cursor: auto !important; }
+    a, button, [data-cursor="hover"] { cursor: pointer !important; }
+    textarea, input { cursor: text !important; }
+  }
+
   ::selection { background-color: #8A6E3C; color: white; }
   ::-webkit-scrollbar { width: 2px; height: 2px; }
   ::-webkit-scrollbar-track { background: #03050F; }

@@ -5,6 +5,12 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
    expands and glows when hovering interactive elements. The dot uses
    mix-blend-mode so it stays visible on light or dark surfaces. */
 export default function Cursor() {
+  // touch / no-hover devices get the native cursor — no custom one
+  const [touch] = useState(
+    () => typeof window !== 'undefined' &&
+      window.matchMedia('(hover: none), (pointer: coarse)').matches
+  )
+
   const mx = useMotionValue(-200)
   const my = useMotionValue(-200)
   const [hovered, setHovered] = useState(false)
@@ -16,6 +22,7 @@ export default function Cursor() {
   const discY = useSpring(my, { stiffness: 140, damping: 18, mass: 0.6 })
 
   useEffect(() => {
+    if (touch) return
     const move = (e) => { mx.set(e.clientX); my.set(e.clientY) }
     const over = (e) => { if (e.target.closest('a, button, [data-cursor="hover"], input, textarea, select')) setHovered(true) }
     const out  = (e) => { if (e.target.closest('a, button, [data-cursor="hover"], input, textarea, select')) setHovered(false) }
@@ -33,7 +40,9 @@ export default function Cursor() {
       window.removeEventListener('mousedown', down)
       window.removeEventListener('mouseup', up)
     }
-  }, [mx, my])
+  }, [mx, my, touch])
+
+  if (touch) return null
 
   return (
     <>

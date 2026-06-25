@@ -48,10 +48,12 @@ export default function Results() {
   const [locale, t] = useT()
   const rows = getResults(t)
 
-  /* drag-to-scroll gallery */
+  /* drag-to-scroll gallery — MOUSE ONLY. On touch we let the browser do
+     native momentum scrolling (custom pointer handling breaks iOS scroll). */
   const trackRef = useRef(null)
   const drag = useRef({ down: false, startX: 0, startLeft: 0 })
   const onDown = useCallback((e) => {
+    if (e.pointerType !== 'mouse') return
     const el = trackRef.current
     if (!el) return
     drag.current = { down: true, startX: e.clientX, startLeft: el.scrollLeft }
@@ -59,11 +61,13 @@ export default function Results() {
     el.style.cursor = 'grabbing'
   }, [])
   const onMove = useCallback((e) => {
+    if (e.pointerType !== 'mouse') return
     const el = trackRef.current
     if (!el || !drag.current.down) return
     el.scrollLeft = drag.current.startLeft - (e.clientX - drag.current.startX)
   }, [])
   const onUp = useCallback((e) => {
+    if (e.pointerType !== 'mouse') return
     const el = trackRef.current
     drag.current.down = false
     if (el) el.style.cursor = 'grab'
@@ -176,7 +180,11 @@ export default function Results() {
           padding-bottom: 6px;
           scrollbar-width: none;
           -ms-overflow-style: none;
-          scroll-snap-type: x proximity;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-x;
+          overscroll-behavior-x: contain;
+          scroll-padding-left: clamp(24px, 7vw, 110px);
         }
         .res-track::-webkit-scrollbar { display: none; }
         .res-track a, .res-track button { -webkit-user-drag: none; }
