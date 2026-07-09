@@ -6,7 +6,7 @@ export default function PrivacyPage() {
       slug="privacy"
       title="Privacy Policy"
       updated="Last updated June 2026"
-      intro="Ignite Scale (“we”, “us”) is a growth marketing studio based in London, United Kingdom. This policy explains what personal data we collect, why we collect it, and the choices you have. We comply with the UK Personal Data Protection Law (Federal Decree-Law No. 45 of 2021)."
+      intro="Ignite Scale (“we”, “us”) is a growth marketing studio based in London, United Kingdom. This policy explains what personal data we collect, why we collect it, and the choices you have. We comply with UK data protection law (UK GDPR) and, where applicable, the UAE Personal Data Protection Law (Federal Decree-Law No. 45 of 2021)."
       sections={[
         { h: 'Information we collect', body: [
           'When you submit our booking or contact form we collect the details you provide: your name, email address, phone number, company, industry, budget range, the services you’re interested in, and any message you send us.',

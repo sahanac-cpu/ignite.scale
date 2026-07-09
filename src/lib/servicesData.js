@@ -1,86 +1,53 @@
-/* Single source of truth for the four service divisions. Each opens its own
-   "learn more" page via ServiceLayout. No pricing anywhere. */
+/* Single source of truth for the homepage journey rows and legacy service pages. */
 export function getServices(t) {
   return [
     {
-      slug: 'paid-social',
-      to: '/services/paid-social',
+      slug: 'diagnostic-map',
+      to: '/audit',
       num: '01',
-      kicker: t('Demand', 'الطلب'),
-      title: t('Paid Social', 'الإعلانات الممولة'),
-      short: t('Meta, TikTok, Snap & Google campaigns built around your CPL and ROAS.', 'حملات ميتا وتيك توك وسناب وجوجل مبنية حول تكلفة العميل والعائد.'),
-      lede: t(
-        'Full-funnel paid campaigns on Meta, TikTok, Snap and Google — architected around your cost per lead and return on ad spend, then optimised every single day until every pound works harder.',
-        'حملات شاملة على ميتا وتيك توك وسناب وجوجل — مبنية حول تكلفة العميل والعائد على الإنفاق، وتُحسَّن كل يوم حتى يعمل كل جنيه بكفاءة أكبر.'
-      ),
-      points: [
-        t('Account architecture & audience strategy', 'بنية الحساب واستراتيجية الجمهور'),
-        t('Daily bid & budget reallocation', 'إعادة توزيع المزايدة والميزانية يومياً'),
-        t('Creative testing systems', 'أنظمة اختبار المحتوى'),
-        t('Transparent performance reporting', 'تقارير أداء شفافة'),
-      ],
-      metric: '2–5×',
-      metricLabel: t('Average ROAS', 'متوسط العائد'),
+      kicker: t('Stage one', 'المرحلة الأولى'),
+      title: t('Diagnostic Map', 'خريطة التشخيص'),
+      short: t('We identify your industry demand, competitors, funnel leaks, response gaps and fastest route to booked appointments.', 'نحدد طلب القطاع والمنافسين وتسريبات القمع وفجوات الاستجابة وأسرع طريق للمواعيد المحجوزة.'),
+      lede: t('A diagnostic map shows where demand exists, where your website loses it, where follow-up breaks, and what to build first.', 'خريطة التشخيص توضح أين يوجد الطلب وأين يضيع داخل الموقع والمتابعة وما يجب بناؤه أولاً.'),
+      points: [t('Competitor visibility snapshot', 'لقطة حضور المنافسين'), t('Current funnel and CRM review', 'مراجعة القمع ونظام CRM'), t('Industry-specific 90-day roadmap', 'خارطة ٩٠ يوماً حسب القطاع')],
+      metric: '90d',
+      metricLabel: t('Build plan', 'خطة البناء'),
     },
     {
-      slug: 'content-creative',
-      to: '/services/creative',
+      slug: 'demand-capture',
+      to: '/services/seo-uae',
       num: '02',
-      kicker: t('Attention', 'الانتباه'),
-      title: t('Content & Creative', 'المحتوى والإبداع'),
-      short: t('Scroll-stopping UGC video, editorial photography and copy — made in-house.', 'فيديو يوقف التمرير وتصوير تحريري ونصوص — تُنتج داخلياً.'),
-      lede: t(
-        'Scroll-stopping content built for London’s high-intent audience — UGC-style video, luxury editorial photography and data-backed copy, produced in-house on a schedule your competitors can’t match.',
-        'محتوى يوقف التمرير، مصمَّم لجمهور لندن عالي النية — فيديو على نمط المستخدم، وتصوير تحريري فاخر، ونصوص مدعومة بالبيانات، يُنتج داخلياً وبجدول يصعب على منافسيك مجاراته.'
-      ),
-      points: [
-        t('UGC & in-studio production', 'إنتاج محتوى المستخدم والاستوديو'),
-        t('Hook-led short-form editing', 'مونتاج قصير يقوده الخطّاف'),
-        t('Arabic + English versions', 'نسخ عربية وإنجليزية'),
-        t('Monthly content calendars', 'تقاويم محتوى شهرية'),
-      ],
-      metric: '3–5×',
-      metricLabel: t('Engagement lift', 'ارتفاع التفاعل'),
+      kicker: t('Stage two', 'المرحلة الثانية'),
+      title: t('Demand Capture', 'التقاط الطلب'),
+      short: t('SEO, Google and paid social aimed at the exact searches and comparisons your UAE buyers make.', 'تحسين بحث وجوجل وإعلانات اجتماعية تستهدف بحث ومقارنات المشترين في الإمارات.'),
+      lede: t('Demand capture puts your business in front of high-intent buyers before they choose a competitor.', 'التقاط الطلب يضع نشاطك أمام المشترين ذوي النية العالية قبل اختيار منافس.'),
+      points: [t('Commercial keyword map', 'خريطة كلمات تجارية'), t('Paid acquisition structure', 'هيكلة اكتساب مدفوع'), t('Industry landing routes', 'مسارات هبوط حسب القطاع')],
+      metric: 'Intent',
+      metricLabel: t('First filter', 'الفلتر الأول'),
     },
     {
-      slug: 'funnels',
-      to: '/services/funnels',
+      slug: 'conversion-path',
+      to: '/landing-pages-dubai',
       num: '03',
-      kicker: t('Conversion', 'التحويل'),
-      title: t('Funnels', 'القمعات'),
-      short: t('Landing pages and lead flows wired into your CRM, then A/B tested.', 'صفحات هبوط ومسارات عملاء مربوطة بنظامك، ثم تُختبر.'),
-      lede: t(
-        'Conversion-first landing pages and lead flows wired straight into your CRM — then A/B tested relentlessly until the numbers move in the right direction.',
-        'صفحات هبوط ومسارات عملاء تركّز على التحويل ومربوطة مباشرة بنظامك — ثم تُختبر بلا هوادة حتى تتحرك الأرقام في الاتجاه الصحيح.'
-      ),
-      points: [
-        t('Landing page design & build', 'تصميم وبناء صفحات الهبوط'),
-        t('Lead routing into your CRM', 'توجيه العملاء إلى نظامك'),
-        t('A/B testing roadmap', 'خارطة اختبار أ/ب'),
-        t('Form & checkout optimisation', 'تحسين النماذج والدفع'),
-      ],
-      metric: '−60%',
-      metricLabel: t('Cost per lead', 'تكلفة العميل'),
+      kicker: t('Stage three', 'المرحلة الثالثة'),
+      title: t('Conversion Path', 'مسار التحويل'),
+      short: t('Offer-specific landing pages and forms that turn traffic into calls, WhatsApp enquiries and booked appointments.', 'صفحات ونماذج حسب العرض تحول الزيارات إلى مكالمات وواتساب ومواعيد محجوزة.'),
+      lede: t('Conversion paths keep the prospect moving from problem to proof to enquiry without sending them into a generic website maze.', 'مسارات التحويل تنقل العميل من المشكلة إلى الإثبات ثم الاستفسار دون ضياع داخل موقع عام.'),
+      points: [t('Offer-specific pages', 'صفحات حسب العرض'), t('Fast mobile layouts', 'تخطيطات جوال سريعة'), t('Qualification forms', 'نماذج تأهيل')],
+      metric: 'Booked',
+      metricLabel: t('Core outcome', 'النتيجة الأساسية'),
     },
     {
-      slug: 'web-design',
-      to: '/web-design-dubai',
+      slug: 'follow-up-system',
+      to: '/services/crm-funnels',
       num: '04',
-      kicker: t('Foundation', 'الأساس'),
-      title: t('Web Design', 'تصميم المواقع'),
-      short: t('Mobile-first, fast, SEO-ready websites engineered to convert.', 'مواقع متجاوبة وسريعة وجاهزة للبحث ومصمّمة للتحويل.'),
-      lede: t(
-        'Beautiful is the baseline. We design mobile-first, fast-loading, SEO-ready websites for London brands — every element engineered to turn a visitor into a booked call.',
-        'الجمال هو الحد الأدنى. نصمّم مواقع متجاوبة مع الجوال، سريعة التحميل، جاهزة للبحث، لعلامات لندن — كل عنصر مُهندَس لتحويل الزائر إلى مكالمة محجوزة.'
-      ),
-      points: [
-        t('Mobile-first, sub-2s load times', 'تصميم للجوال أولاً وتحميل أقل من ثانيتين'),
-        t('Conversion-focused layouts', 'تخطيطات تركّز على التحويل'),
-        t('SEO built in from day one', 'تحسين بحث مدمج من اليوم الأول'),
-        t('Easy-to-update content system', 'نظام محتوى سهل التحديث'),
-      ],
-      metric: '2–3×',
-      metricLabel: t('Conversion lift', 'ارتفاع التحويل'),
+      kicker: t('Stage four', 'المرحلة الرابعة'),
+      title: t('Follow-Up System', 'نظام المتابعة'),
+      short: t('CRM, WhatsApp automation, lead routing and reminders so no enquiry depends on someone remembering.', 'CRM وأتمتة واتساب وتوجيه العملاء والتذكير حتى لا يعتمد أي استفسار على الذاكرة.'),
+      lede: t('Follow-up systems protect speed-to-lead, show rate and sales accountability after the form is submitted.', 'أنظمة المتابعة تحمي سرعة الاستجابة ومعدل الحضور ومساءلة المبيعات بعد إرسال النموذج.'),
+      points: [t('Lead routing and stages', 'توجيه ومراحل العملاء'), t('WhatsApp sequences', 'تسلسلات واتساب'), t('Attribution reporting', 'تقارير النسب')],
+      metric: 'SLA',
+      metricLabel: t('Response rhythm', 'إيقاع الاستجابة'),
     },
   ]
 }

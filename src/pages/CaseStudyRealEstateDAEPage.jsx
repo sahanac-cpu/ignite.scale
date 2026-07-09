@@ -11,7 +11,7 @@ export default function CaseStudyRealEstateDAEPage() {
     <>
       <SEOMeta
         title={t('Real Estate: 4.8× ROAS in 90 Days | Case Study', 'عقارات: عائد ٤٫٨× على الإنفاق في ٩٠ يوماً | دراسة حالة')}
-        description={t('How we lifted a London property developer\'s ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown.', 'كيف رفعنا العائد على الإنفاق لمطوّر عقاري في لندن من ١٫٢× إلى ٤٫٨× في ٩٠ يوماً، مع خفض تكلفة العميل ٦٨٪. تفصيل كامل للاستراتيجية.')}
+        description={t('How we lifted a Dubai property developer\'s ROAS from 1.2× to 4.8× in 90 days, with CPL down 68%. Complete strategy breakdown.', 'كيف رفعنا العائد على الإنفاق لمطوّر عقاري في دبي من ١٫٢× إلى ٤٫٨× في ٩٠ يوماً، مع خفض تكلفة العميل ٦٨٪. تفصيل كامل للاستراتيجية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/case-study/dubai-real-estate-4-8x-roas' : 'https://ignite-scale.com/case-study/dubai-real-estate-4-8x-roas'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Real Estate', url: '/case-study/dubai-real-estate-4-8x-roas' }]}
@@ -26,7 +26,7 @@ export default function CaseStudyRealEstateDAEPage() {
                 Case Study • Real Estate
               </div>
               <h1 style={{ fontSize: 'clamp(36px, 6vw, 58px)', fontWeight: 800, color: 'rgba(255,255,255,0.95)', margin: '0 0 24px 0' }}>
-                London Real Estate: 4.8× ROAS in 90 Days
+                Dubai Real Estate: 4.8× ROAS in 90 Days
               </h1>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24, marginBottom: 48 }}>
@@ -50,7 +50,7 @@ export default function CaseStudyRealEstateDAEPage() {
                   The Challenge
                 </h2>
                 <p style={{ fontSize: 15, lineHeight: 1.8, color: 'rgba(240,210,180,0.75)', margin: 0 }}>
-                  A 10-year-old London real estate developer was spending 150k £/month on ads but getting weak returns (1.2× ROAS). Their landing pages weren't optimized, audiences were too broad, and they weren't retargeting warm leads. They needed immediate improvement.
+                  A 10-year-old Dubai real estate developer was spending 150k £/month on ads but getting weak returns (1.2× ROAS). Their landing pages weren't optimized, audiences were too broad, and they weren't retargeting warm leads. They needed immediate improvement.
                 </p>
               </div>
 

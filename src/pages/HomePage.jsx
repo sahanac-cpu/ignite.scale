@@ -1,5 +1,6 @@
 import SEOMeta from '../components/SEOMeta'
 import Hero from '../components/Hero'
+import AcquisitionSystem from '../components/AcquisitionSystem'
 import ServicesSummary from '../components/ServicesSummary'
 import Results from '../components/Results'
 import Booking from '../components/Booking'
@@ -34,12 +35,12 @@ export default function HomePage() {
     <>
       <SEOMeta
         title={t(
-          'Ignite Scale | London Paid Social, Web & Lead Funnels',
-          'Ignite Scale | إعلانات ممولة ومواقع وقمعات في لندن'
+          'Client Acquisition Systems for UAE Businesses | Ignite Scale',
+          'أنظمة اكتساب العملاء لأنشطة الإمارات | Ignite Scale'
         )}
         description={t(
-          'London growth agency engineering paid social, content and funnels for luxury real estate, cosmetic clinics and B2B brands. Targeting 2–5× ROAS. Book a free strategy call.',
-          'وكالة نموّ في لندن تهندس الإعلانات الممولة والمحتوى وقمعات التحويل للعقارات الفاخرة وعيادات التجميل والشركات. نستهدف عائداً ٢–٥× على الإنفاق الإعلاني. احجز مكالمة استراتيجية مجانية.'
+          'Ignite Scale builds industry-specific SEO, paid acquisition, landing pages, CRM funnels and WhatsApp follow-up systems that turn UAE demand into booked appointments and tracked revenue.',
+          'تبني Ignite Scale أنظمة تحسين البحث والإعلانات وقمعات CRM ومتابعة واتساب التي تحوّل الطلب في الإمارات إلى مواعيد محجوزة وإيرادات قابلة للتتبّع. معايير بريطانية وتسعير بالجنيه الإسترليني.'
         )}
         canonical={canonical}
         locale={locale}
@@ -47,6 +48,7 @@ export default function HomePage() {
       />
       <main>
         <Hero />
+        <AcquisitionSystem />
         <ServicesSummary />
         <Results />
         <Booking />

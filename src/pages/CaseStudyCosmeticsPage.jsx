@@ -10,7 +10,7 @@ export default function CaseStudyCosmeticsPage() {
     <>
       <SEOMeta
         title={t('Cosmetic Clinic: 320 Leads in 60 Days | Case Study', 'عيادة تجميل: ٣٢٠ عميلاً محتملاً في ٦٠ يوماً | دراسة حالة')}
-        description={t('How a London cosmetic clinic went from 0 to 320 qualified leads in 60 days. Lead generation strategy, conversion optimisation, ads management.', 'كيف انتقلت عيادة تجميل في لندن من صفر إلى ٣٢٠ عميلاً محتملاً مؤهلاً في ٦٠ يوماً. استراتيجية توليد العملاء، تحسين التحويل، إدارة الإعلانات.')}
+        description={t('How a Dubai cosmetic clinic went from 0 to 320 qualified leads in 60 days. Lead generation strategy, conversion optimisation, ads management.', 'كيف انتقلت عيادة تجميل في دبي من صفر إلى ٣٢٠ عميلاً محتملاً مؤهلاً في ٦٠ يوماً. استراتيجية توليد العملاء، تحسين التحويل، إدارة الإعلانات.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/case-study/dubai-cosmetics-320-leads' : 'https://ignite-scale.com/case-study/dubai-cosmetics-320-leads'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Case Studies', url: '/results' }, { name: 'Cosmetics', url: '/case-study/dubai-cosmetics-320-leads' }]}
@@ -55,7 +55,7 @@ export default function CaseStudyCosmeticsPage() {
                   Strategy
                 </h2>
                 <ul style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(240,210,180,0.75)', margin: 0, paddingLeft: 20 }}>
-                  <li style={{ marginBottom: 12 }}>✓ Instagram + TikTok ads targeting women 25-45 in London</li>
+                  <li style={{ marginBottom: 12 }}>✓ Instagram + TikTok ads targeting women 25-45 in Dubai</li>
                   <li style={{ marginBottom: 12 }}>✓ Before/after content showing real results</li>
                   <li style={{ marginBottom: 12 }}>✓ Lead magnet: "Free consultation + skin analysis"</li>
                   <li style={{ marginBottom: 12 }}>✓ Landing page with booking calendar + testimonials</li>

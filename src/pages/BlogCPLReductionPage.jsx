@@ -10,7 +10,7 @@ export default function BlogCPLReductionPage() {
     <>
       <SEOMeta
         title={t('How to Cut Ad Cost Per Lead by 60% | Ignite Scale', 'كيف تخفض تكلفة العميل المحتمل بنسبة ٦٠٪ | Ignite Scale')}
-        description={t('Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ London campaigns.', 'إطار خطوة بخطوة لخفض تكلفة العميل المحتمل بنسبة ٦٠–٨٠٪: تحسين صفحات الهبوط، استهداف الجمهور، تصميم القمعات، كتابة النصوص. مُختبَر على أكثر من ٥٠ حملة في لندن.')}
+        description={t('Step-by-step framework for reducing CPL 60–80%: landing page optimisation, audience targeting, funnel design, copywriting. Tested on 50+ UAE campaigns.', 'إطار خطوة بخطوة لخفض تكلفة العميل المحتمل بنسبة ٦٠–٨٠٪: تحسين صفحات الهبوط، استهداف الجمهور، تصميم القمعات، كتابة النصوص. مُختبَر على أكثر من ٥٠ حملة في الإمارات.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/reduce-cost-per-lead' : 'https://ignite-scale.com/blog/reduce-cost-per-lead'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Cut CPL by 60%', url: '/blog/reduce-cost-per-lead' }]}
@@ -25,7 +25,7 @@ export default function BlogCPLReductionPage() {
                 How to Reduce Your Cost Per Lead by 60-80%
               </h1>
               <p style={{ fontSize: 16, lineHeight: 1.8, color: 'rgba(240,210,180,0.75)', margin: '0 0 48px 0' }}>
-                Most London brands overpay for leads because they don't optimize the complete funnel. Here's the exact framework we use to cut CPL by 60-80% within 30 days.
+                Most UAE brands overpay for leads because they don't optimize the complete funnel. Here's the exact framework we use to cut CPL by 60-80% within 30 days.
               </p>
 
               {[

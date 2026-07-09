@@ -4,35 +4,35 @@ import { motion, AnimatePresence } from 'framer-motion'
 const BOT_NAME = 'Zara'
 
 const OPTIONS = [
-  { label: 'How much does it cost?', key: 'pricing' },
-  { label: 'What services do you offer?', key: 'services' },
-  { label: 'Book a strategy call', key: 'book' },
+  { label: 'How are engagements staged?', key: 'pricing' },
+  { label: 'What do you actually build?', key: 'services' },
+  { label: 'Book a Client Acquisition Audit', key: 'book' },
   { label: 'Where are you based?', key: 'location' },
-  { label: 'See your results', key: 'results' },
+  { label: 'Why GBP pricing?', key: 'gbp' },
 ]
 
 const RESPONSES = {
   pricing: {
-    text: "Our retainers start from £1,500/month for social media management. Ad budgets are separate — we recommend £1,000+ minimum for paid campaigns. Full packages (management + ads + content) start from £2,500/month. Every package is custom-scoped to your business.",
-    opts: ['Book a strategy call', 'What services do you offer?'],
+    text: "We scope after the Client Acquisition Audit rather than publishing fixed packages. Most builds move through four stages: diagnostic map, foundation install, launch and validate, then optimise and scale. Ad spend stays separate and is billed directly to your own accounts.",
+    action: { label: 'View Build Stages', href: '/investment' },
+    opts: ['Book a Client Acquisition Audit', 'What do you actually build?'],
   },
   services: {
-    text: "We offer four core services:\n\n📱 Social Media Management (Instagram, TikTok, LinkedIn, X)\n🎯 Paid Advertising (Meta, TikTok, Google, Snapchat)\n🎬 Content Production (video, photography, copywriting)\n💻 Website Design & Funnels\n\nWe also offer bilingual (English/Arabic) content for the UK market. Which interests you most?",
-    opts: ['How much does it cost?', 'Book a strategy call'],
+    text: "We install client acquisition systems for UAE service businesses — five connected layers:\n\n🔍 SEO built for UAE commercial searches\n🎯 Paid acquisition (Google + Meta)\n📄 Landing pages engineered per offer\n📇 CRM funnels holding every lead\n💬 WhatsApp follow-up that answers in under 60 seconds\n\nEverything is measured in booked appointments and attributed revenue.",
+    opts: ['How are engagements staged?', 'Book a Client Acquisition Audit'],
   },
   book: {
-    text: "Perfect — book your free 45-minute strategy call using the form on this page. We'll audit your current presence, analyse your competitors, and give you a custom growth roadmap. No obligation, no hard sell.",
-    action: { label: 'Open Booking Form', href: '#booking' },
+    text: "Good move. The Client Acquisition Audit is a 45-minute diagnostic: we map your funnel, show you where leads are being lost, and give you a prioritised 90-day roadmap — yours to keep whether or not we work together. Limited to six per month.",
+    action: { label: 'Request an Audit', href: '/audit' },
     opts: [],
   },
   location: {
-    text: "We're headquartered in the City of London. We work with businesses across London, Manchester, Birmingham and the rest of the UK. We offer both in-person meetings in London and virtual calls for clients nationwide.",
-    opts: ['Book a strategy call', 'See your results'],
+    text: "Ignite Scale is UK-founded and registered in London — and our market focus is entirely the UAE. We build acquisition systems for businesses in Dubai, Abu Dhabi and Sharjah, working remotely with structured onboarding and live reporting.",
+    opts: ['Book a Client Acquisition Audit', 'Why GBP pricing?'],
   },
-  results: {
-    text: "Some highlights:\n\n🏢 Canary Wharf Properties: £12.4M in 90 days, +1,863% followers\n🍽️ SALT & EMBER the City of London: +280% reservations, 8.4% engagement rate\n🚗 Premier Auto London: 12 → 147 leads/month, 68% cheaper\n👗 Maison Blanc: £180K → £1.4M revenue, 8.45x ROAS\n\nTotal: £50M+ in client revenue attributed to our work.",
-    action: { label: 'View All Case Studies', href: '#results' },
-    opts: ['Book a strategy call', 'How much does it cost?'],
+  gbp: {
+    text: "We contract and invoice in pounds sterling because Ignite Scale is UK-founded, but the build is scoped only after the audit. Clients judge the engagement on booked appointments, pipeline visibility and revenue attribution, not a public package table.",
+    opts: ['How are engagements staged?', 'Book a Client Acquisition Audit'],
   },
 }
 
@@ -184,7 +184,7 @@ export default function Chatbot() {
 
             {/* Footer */}
             <div className="px-4 py-3 border-t border-white/[0.05] flex items-center justify-between">
-              <span className="text-[10px] text-white/15 uppercase tracking-[0.2em]">ignite.scale · London</span>
+              <span className="text-[10px] text-white/15 uppercase tracking-[0.2em]">ignite.scale · UK-founded · UAE-focused</span>
               <a
                 href="#booking"
                 onClick={() => setOpen(false)}

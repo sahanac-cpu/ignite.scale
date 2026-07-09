@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { GROWTH_PAGES } from './lib/growthPages'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import Preloader from './components/Preloader'
@@ -8,18 +9,19 @@ import Navbar from './components/Navbar'
 import LeftNav from './components/LeftNav'
 import Chatbot from './components/Chatbot'
 import CookieConsent from './components/CookieConsent'
+import ScrollToTop from './components/ScrollToTop'
 
 /* Homepage stays eager: it's the LCP entry point for the most-visited route.
    Every other page is lazy-loaded — Vite will emit a separate chunk per file. */
 import HomePage from './pages/HomePage'
 
+const GrowthPage                = lazy(() => import('./pages/GrowthPage'))
+const InvestmentPage            = lazy(() => import('./pages/InvestmentPage'))
+const AboutPage                 = lazy(() => import('./pages/AboutPage'))
 const ServicesPage              = lazy(() => import('./pages/ServicesPage'))
 const PaidSocialPage            = lazy(() => import('./pages/PaidSocialPage'))
 const ContentCreativePage       = lazy(() => import('./pages/ContentCreativePage'))
-const FunnelDesignPage          = lazy(() => import('./pages/FunnelDesignPage'))
 const DubaiMarketingAgencyPage  = lazy(() => import('./pages/DubaiMarketingAgencyPage'))
-const MetaAdsPage               = lazy(() => import('./pages/MetaAdsPage'))
-const TikTokAdsPage             = lazy(() => import('./pages/TikTokAdsPage'))
 const WebDesignPage             = lazy(() => import('./pages/WebDesignPage'))
 const BlogMetaAdsMistakesPage   = lazy(() => import('./pages/BlogMetaAdsMistakesPage'))
 const BlogTikTokVsInstagramPage = lazy(() => import('./pages/BlogTikTokVsInstagramPage'))
@@ -43,11 +45,10 @@ const ROUTE_DEFS = [
   ['/services', ServicesPage],
   ['/services/paid-social', PaidSocialPage],
   ['/services/creative', ContentCreativePage],
-  ['/services/funnels', FunnelDesignPage],
   ['/dubai-marketing-agency', DubaiMarketingAgencyPage],
-  ['/meta-ads-dubai', MetaAdsPage],
-  ['/tiktok-ads-dubai', TikTokAdsPage],
   ['/web-design-dubai', WebDesignPage],
+  ['/investment', InvestmentPage],
+  ['/about', AboutPage],
   ['/blog/meta-ads-mistakes', BlogMetaAdsMistakesPage],
   ['/blog/tiktok-vs-instagram-ads', BlogTikTokVsInstagramPage],
   ['/blog/reduce-cost-per-lead', BlogCPLReductionPage],
@@ -55,8 +56,20 @@ const ROUTE_DEFS = [
   ['/case-study/dubai-cosmetics-320-leads', CaseStudyCosmeticsPage],
   ['/results', ResultsPage],
   ['/process', ProcessPage],
-  ['/book', BookingPage],
+  ['/audit', BookingPage],
   ['/faq', FAQPage],
+]
+
+/* Retired URLs → new canonical destinations (mirrors the 301s in vercel.json for client-side nav). */
+const REDIRECTS = [
+  ['/book', '/audit'],
+  ['/services/funnels', '/services/crm-funnels'],
+  ['/tiktok-ads-dubai', '/services/paid-social'],
+  ['/meta-ads-dubai', '/meta-ads-agency-dubai'],
+  ['/clinic-marketing-dubai', '/industries/medical-clinics'],
+  ['/aesthetic-clinic-marketing-dubai', '/industries/aesthetic-clinics'],
+  ['/dental-clinic-marketing-dubai', '/industries/dental-clinics'],
+  ['/seo-for-clinics-dubai', '/industries/medical-clinics'],
 ]
 
 /* Minimal loading state matched to the brand. Avoids layout shift while a chunk loads. */
@@ -91,6 +104,7 @@ function RouteLoader() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Preloader />
       <Cursor />
       <LeftNav />
@@ -106,6 +120,22 @@ export default function App() {
             ))}
             {ROUTE_DEFS.map(([path, Comp]) => (
               <Route key={`ar${path}`} path={`/ar${path}`} element={<Comp />} />
+            ))}
+
+            {/* UAE growth architecture: service hubs, Dubai keyword pages, industry pages (data-driven). */}
+            {GROWTH_PAGES.map((p) => (
+              <Route key={p.path} path={p.path} element={<GrowthPage path={p.path} />} />
+            ))}
+            {GROWTH_PAGES.map((p) => (
+              <Route key={`ar${p.path}`} path={`/ar${p.path}`} element={<GrowthPage path={p.path} />} />
+            ))}
+
+            {/* Retired URLs */}
+            {REDIRECTS.map(([from, to]) => (
+              <Route key={from} path={from} element={<Navigate to={to} replace />} />
+            ))}
+            {REDIRECTS.map(([from, to]) => (
+              <Route key={`ar${from}`} path={`/ar${from}`} element={<Navigate to={`/ar${to}`} replace />} />
             ))}
 
             {/* Dynamic markdown-driven blog posts: /blog/<slug> + /ar/blog/<slug>.

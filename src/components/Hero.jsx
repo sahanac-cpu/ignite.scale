@@ -179,7 +179,7 @@ export default function Hero() {
                 fontWeight: 500,
               }}
             >
-              {t('London · Growth Studio', 'لندن · استوديو النمو')}
+              {t('UK-founded · UAE-focused · Built by industry', 'تأسست في المملكة المتحدة · تخدم الإمارات')}
             </span>
           </motion.div>
 
@@ -204,15 +204,15 @@ export default function Hero() {
               <AnimatedTextCycle
                 words={
                   locale === 'ar'
-                    ? ['الانتباه', 'النقرات', 'التصفّح', 'الاهتمام', 'الجمهور', 'الفضول']
-                    : ['attention', 'clicks', 'scrolls', 'interest', 'audiences', 'curiosity']
+                    ? ['نتائج البحث', 'الإعلانات', 'الاستفسارات', 'واتساب', 'الاهتمام']
+                    : ['search demand', 'ad spend', 'enquiries', 'WhatsApp leads', 'attention']
                 }
                 interval={2200}
                 className="hero-cycle-word"
               />
             </motion.span>
             <motion.span {...wipe(0.65)} style={{ display: 'block', overflow: 'hidden' }}>
-              <span style={{ display: 'block' }}>{t('into revenue.', 'إلى إيرادات.')}</span>
+              <span style={{ display: 'block' }}>{t('into booked revenue.', 'إلى إيرادات محجوزة.')}</span>
             </motion.span>
           </h1>
 
@@ -231,14 +231,14 @@ export default function Hero() {
               }}
             >
               {t(
-                "Paid social, content and funnels for London's most competitive niches — every pound of spend engineered into qualified pipeline.",
-                'الإعلانات الممولة والمحتوى وقمعات التحويل لأكثر قطاعات لندن تنافسيةً — كل جنيه إنفاق مُهندَس ليصبح عملاء محتملين مؤهلين.'
+                'Client acquisition systems for UAE businesses that need booked appointments — not just leads. SEO, paid ads, landing pages, CRM funnels and WhatsApp follow-up, engineered as one measurable machine.',
+                'أنظمة اكتساب عملاء لأنشطة الإمارات التي تريد مواعيد محجوزة — لا مجرد عملاء محتملين. تحسين محركات البحث والإعلانات وصفحات الهبوط وقمعات CRM ومتابعة واتساب، كمنظومة واحدة قابلة للقياس.'
               )}
             </motion.p>
 
             <motion.div {...fadeUp(1.0)} style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <MagneticBtn
-                href="#booking"
+                href="/audit"
                 className="btn-primary"
                 style={{
                   fontSize: 12,
@@ -249,7 +249,7 @@ export default function Hero() {
                   letterSpacing: '0.05em',
                 }}
               >
-                {t('Book a Call', 'احجز مكالمة')}
+                {t('Book a Client Acquisition Audit', 'احجز تدقيق اكتساب العملاء')}
               </MagneticBtn>
               <MagneticBtn
                 href="#results"
@@ -308,10 +308,10 @@ export default function Hero() {
               visible: { transition: { staggerChildren: 0.08, delayChildren: 1.2 } },
             }}
           >
-            <StatPill val="2–5×" label={t('Average ROAS', 'متوسط العائد')} />
-            <StatPill val="60%+" label={t('CPL Reduction', 'خفض تكلفة العميل')} />
-            <StatPill val="50+" label={t('Active Campaigns', 'حملات نشطة')} />
-            <StatPill val="4.6/5" label={t('Client Rating', 'تقييم العملاء')} />
+            <StatPill val="<60s" label={t('First Response to Every Lead', 'أول استجابة لكل عميل')} />
+            <StatPill val="90 days" label={t('Full System Install', 'تركيب النظام الكامل')} />
+            <StatPill val="100%" label={t('Client-Owned Accounts & Data', 'حسابات وبيانات مملوكة للعميل')} />
+            <StatPill val="CPBA" label={t('The Metric We Report On', 'المقياس الذي نُقاس به')} />
 
             <div style={{ flex: 1 }} />
 

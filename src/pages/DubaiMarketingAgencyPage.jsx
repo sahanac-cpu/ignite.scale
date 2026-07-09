@@ -44,16 +44,16 @@ function SectionHeading({ title, subtitle }) {
   )
 }
 
-export default function LondonMarketingAgencyPage() {
+export default function DubaiMarketingAgencyPage() {
   const [locale, t] = useT()
   return (
     <>
       <SEOMeta
-        title={t('Best Marketing Agency in London | Ignite Scale', 'أفضل وكالة تسويق في لندن | Ignite Scale')}
-        description={t('Looking for a London marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UK brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في لندن؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات البريطانية الطموحة. احجز جلسة استراتيجية مجانية.')}
+        title={t('Best Marketing Agency in the UAE | Ignite Scale', 'أفضل وكالة تسويق في دبي | Ignite Scale')}
+        description={t('Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.', 'تبحث عن وكالة تسويق في دبي؟ Ignite Scale تبني الإعلانات الممولة والمواقع وقمعات التحويل للعلامات الإماراتية الطموحة. احجز جلسة استراتيجية مجانية.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/dubai-marketing-agency' : 'https://ignite-scale.com/dubai-marketing-agency'}
         locale={locale}
-        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'London Marketing Agency', url: '/dubai-marketing-agency' }]}
+        breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Dubai Marketing Agency', url: '/dubai-marketing-agency' }]}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />
@@ -66,7 +66,7 @@ export default function LondonMarketingAgencyPage() {
           }}>
             <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1 }}>
               <SectionHeading
-                title="London's Top-Rated Marketing Agency"
+                title="Dubai's Top-Rated Marketing Agency"
                 subtitle="Why Choose Ignite Scale"
               />
 
@@ -83,7 +83,7 @@ export default function LondonMarketingAgencyPage() {
                   maxWidth: 700,
                 }}
               >
-                We're not just another marketing agency in London. We're growth partners obsessed with one thing: turning your ad spend into qualified leads and revenue. No fluff, no vanity metrics — just results.
+                We're not just another marketing agency in Dubai. We're growth partners obsessed with one thing: turning your ad spend into qualified leads and revenue. No fluff, no vanity metrics — just results.
               </motion.p>
 
               <div style={{
@@ -95,7 +95,7 @@ export default function LondonMarketingAgencyPage() {
                 {[
                   {
                     title: '50+ Active Clients',
-                    desc: 'Trusted by London\'s leading real estate, hospitality, and B2B brands'
+                    desc: 'Trusted by Dubai\'s leading real estate, hospitality, and B2B brands'
                   },
                   {
                     title: '$2.4M+ Managed',
@@ -114,7 +114,7 @@ export default function LondonMarketingAgencyPage() {
                     desc: 'Paid social, creative production, web design, and lead generation — all in-house'
                   },
                   {
-                    title: 'London-Based',
+                    title: 'UK-Founded, UAE-Focused',
                     desc: 'Local expertise with global best practices. We understand the UK market.'
                   },
                 ].map((item, i) => (
@@ -162,7 +162,7 @@ export default function LondonMarketingAgencyPage() {
           }}>
             <div style={{ maxWidth: 1000, margin: '0 auto' }}>
               <SectionHeading
-                title="How We Help London Businesses"
+                title="How We Help Dubai Businesses"
                 subtitle="Our Approach"
               />
 
@@ -178,7 +178,7 @@ export default function LondonMarketingAgencyPage() {
                   },
                   {
                     title: 'Website Design & Development',
-                    desc: 'High-converting landing pages and websites built for London\'s competitive markets. SEO-optimized, mobile-first, and designed to turn visitors into leads.',
+                    desc: 'High-converting landing pages and websites built for Dubai\'s competitive markets. SEO-optimized, mobile-first, and designed to turn visitors into leads.',
                   },
                   {
                     title: 'Lead Generation & Funnels',

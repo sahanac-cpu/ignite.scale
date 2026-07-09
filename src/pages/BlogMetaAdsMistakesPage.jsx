@@ -17,8 +17,8 @@ export default function BlogMetaAdsMistakesPage() {
   return (
     <>
       <SEOMeta
-        title={t('5 Meta Ads Mistakes Costing You Money | London Guide', '٥ أخطاء في إعلانات ميتا تكلّفك المال | دليل لندن')}
-        description={t('The 5 biggest Meta Ads mistakes London businesses make, with actionable fixes that typically lift ROAS 50–100%.', 'أكبر ٥ أخطاء في إعلانات ميتا ترتكبها شركات لندن، مع حلول عملية ترفع العائد على الإنفاق ٥٠–١٠٠٪ في المعتاد.')}
+        title={t('5 Meta Ads Mistakes Costing You Money | Dubai Guide', '٥ أخطاء في إعلانات ميتا تكلّفك المال | دليل دبي')}
+        description={t('The 5 biggest Meta Ads mistakes UAE businesses make, with actionable fixes that typically lift ROAS 50–100%.', 'أكبر ٥ أخطاء في إعلانات ميتا ترتكبها شركات الإمارات، مع حلول عملية ترفع العائد على الإنفاق ٥٠–١٠٠٪ في المعتاد.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/meta-ads-mistakes' : 'https://ignite-scale.com/blog/meta-ads-mistakes'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: '5 Meta Ads Mistakes', url: '/blog/meta-ads-mistakes' }]}
@@ -34,10 +34,10 @@ export default function BlogMetaAdsMistakesPage() {
                   Guide • 8 min read
                 </div>
                 <h1 style={{ fontSize: 'clamp(36px, 6vw, 58px)', fontWeight: 800, color: 'rgba(255,255,255,0.95)', margin: '0 0 24px 0', lineHeight: 1.1 }}>
-                  5 Meta Ads Mistakes Costing London Businesses $50K+ Annually
+                  5 Meta Ads Mistakes Costing Dubai Businesses $50K+ Annually
                 </h1>
                 <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'rgba(240,210,180,0.8)', margin: 0 }}>
-                  Most London brands are throwing money away on Meta Ads without realizing it. These 5 mistakes alone can reduce your ROAS by 50-70%. Here's how to fix them.
+                  Most UAE brands are throwing money away on Meta Ads without realizing it. These 5 mistakes alone can reduce your ROAS by 50-70%. Here's how to fix them.
                 </p>
               </motion.div>
 

@@ -21,7 +21,7 @@ function getServices(t) {
       title: t('Content Creation & Creative Strategy', 'إنتاج المحتوى والاستراتيجية الإبداعية'),
       tagline: t('Video · Photography · Copy', 'فيديو · تصوير · نصوص'),
       body: t(
-        "Scroll-stopping content built for London's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
+        "Scroll-stopping content built for the UAE's high-intent audience. Our in-house creative team produces UGC-style video, luxury editorial photography, and data-backed copy that converts.",
         'محتوى يوقف التمرير، مصمَّم لجمهور لندن عالي النية. يُنتج فريقنا الإبداعي الداخلي فيديوهات على نمط محتوى المستخدم، وتصويراً تحريرياً فاخراً، ونصوصاً مدعومة بالبيانات تحوّل المشاهدات إلى عملاء.'
       ),
       metric: t('3–5× engagement lift', '٣–٥× ارتفاع التفاعل'),
@@ -43,7 +43,7 @@ function getServices(t) {
       title: t('Funnel Design & Landing Pages', 'تصميم القمعات وصفحات الهبوط'),
       tagline: t('Conversion-Optimised Web Experiences', 'تجارب ويب مُحسَّنة للتحويل'),
       body: t(
-        "High-converting landing pages and lead funnels designed for London's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
+        "High-converting landing pages and lead funnels designed for the UAE's most competitive niches — real estate, hospitality, luxury retail, and professional services. CRO baked in from day one.",
         'صفحات هبوط وقمعات تحويل عالية الأداء، مصممة لأكثر قطاعات لندن تنافسية: العقارات، الضيافة، التجزئة الفاخرة، والخدمات المهنية. تحسين التحويل مدمج من اليوم الأول.'
       ),
       metric: t('60%+ CPL reduction', '+٦٠٪ خفض تكلفة العميل'),

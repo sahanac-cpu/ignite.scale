@@ -7,21 +7,35 @@ export default function Footer() {
 
   const footerLinks = [
     {
-      title: t('Services', 'الخدمات'),
+      title: t('The System', 'النظام'),
       links: [
+        { label: t('Client Acquisition Systems', 'أنظمة اكتساب العملاء'), href: `${base}/services/client-acquisition-systems` },
+        { label: t('SEO for UAE Businesses', 'تحسين محركات البحث'), href: `${base}/services/seo-uae` },
+        { label: t('CRM Funnels', 'قمعات CRM'), href: `${base}/services/crm-funnels` },
+        { label: t('WhatsApp Automation', 'أتمتة واتساب'), href: `${base}/services/whatsapp-automation` },
+        { label: t('Google Ads', 'إعلانات قوقل'), href: `${base}/services/google-ads` },
         { label: t('Paid Social', 'إعلانات ممولة'), href: `${base}/services/paid-social` },
-        { label: t('Content & Creative', 'المحتوى الإبداعي'), href: `${base}/services/creative` },
-        { label: t('Funnels', 'القمعات'), href: `${base}/services/funnels` },
-        { label: t('Web Design', 'تصميم المواقع'), href: `${base}/web-design-dubai` },
+      ],
+    },
+    {
+      title: t('UAE Markets', 'أسواق الإمارات'),
+      links: [
+        { label: t('Clinic Marketing Dubai', 'تسويق العيادات دبي'), href: `${base}/clinic-marketing-dubai` },
+        { label: t('SEO Agency Dubai', 'وكالة SEO دبي'), href: `${base}/seo-agency-dubai` },
+        { label: t('Lead Generation Dubai', 'توليد العملاء دبي'), href: `${base}/lead-generation-agency-dubai` },
+        { label: t('Real Estate Leads Dubai', 'عملاء العقارات دبي'), href: `${base}/real-estate-lead-generation-dubai` },
+        { label: t('Business Setup Leads', 'عملاء تأسيس الشركات'), href: `${base}/business-setup-lead-generation-dubai` },
       ],
     },
     {
       title: t('Company', 'الشركة'),
       links: [
+        { label: t('About', 'من نحن'), href: `${base}/about` },
         { label: t('Process', 'العملية'), href: `${base}/process` },
         { label: t('Results', 'النتائج'), href: `${base}/results` },
+        { label: t('Build Stages', 'مراحل البناء'), href: `${base}/investment` },
         { label: t('FAQ', 'الأسئلة الشائعة'), href: `${base}/faq` },
-        { label: t('Book a Call', 'احجز مكالمة'), href: `${base}/book` },
+        { label: t('Book an Audit', 'احجز تدقيقاً'), href: `${base}/audit` },
       ],
     },
     {
@@ -65,20 +79,20 @@ export default function Footer() {
             </h3>
             <p className="text-white/25 text-sm mt-4 max-w-xs font-body font-light leading-relaxed">
               {t(
-                'Your competitors are scaling. Every week you wait is revenue left on the table.',
-                'منافسوك يتوسّعون. كل أسبوع تنتظر فيه هو إيرادات تفقدها.'
+                'You already know something in your funnel is leaking. Find out exactly where — and what it’s costing you.',
+                'أنت تعلم أن شيئاً ما في قمعك يتسرّب. اكتشف أين بالضبط — وكم يكلّفك.'
               )}
             </p>
           </div>
-          <a href="#booking" className="btn-primary text-[11px] px-10 py-5 shrink-0">
-            {t('Book Free Strategy Call', 'احجز مكالمة استراتيجية مجانية')}
-          </a>
+          <Link to={`${base}/audit`} className="btn-primary text-[11px] px-10 py-5 shrink-0">
+            {t('Book a Client Acquisition Audit', 'احجز تدقيق اكتساب العملاء')}
+          </Link>
         </div>
       </div>
 
       {/* Main footer */}
       <div className="px-6 md:px-12 lg:px-24 py-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-12 mb-16">
           <div className="md:col-span-2">
             <div className="flex items-baseline gap-1 mb-5" style={{ direction: 'ltr' }}>
               <span className="text-white font-body font-light tracking-[0.12em] text-[14px] uppercase">ignite</span>
@@ -87,13 +101,13 @@ export default function Footer() {
             </div>
             <p className="text-white/25 text-sm leading-relaxed max-w-xs mb-6 font-body font-light">
               {t(
-                "London's most results-driven social media marketing agency. We build brands that dominate.",
-                'وكالة التسويق على وسائل التواصل الأكثر تركيزاً على النتائج في لندن. نبني علاماتٍ تهيمن.'
+                'A UK-founded client acquisition systems company serving high-value service businesses across the UAE — Dubai, Abu Dhabi and Sharjah. We build industry-specific SEO, advertising, landing page, CRM and follow-up infrastructure that turns demand into booked appointments and reportable revenue.',
+                'شركة أنظمة اكتساب عملاء تأسست في المملكة المتحدة وتخدم الأنشطة الخدمية عالية القيمة في الإمارات — دبي وأبوظبي والشارقة. نبني بنية تحسين البحث والإعلانات وصفحات الهبوط وCRM والمتابعة التي تحوّل الطلب إلى مواعيد محجوزة وإيرادات قابلة للقياس.'
               )}
             </p>
             <div className="space-y-2">
-              <div className="label-sm">{t('Headquarters', 'المقرّ الرئيسي')}</div>
-              <div className="text-white/35 text-sm font-body">{t('London, UK', 'لندن، المملكة المتحدة')}</div>
+              <div className="label-sm">{t('UK-founded · Serving the UAE', 'تأسست في المملكة المتحدة · تخدم الإمارات')}</div>
+              <div className="text-white/35 text-sm font-body">{t('Registered in London, UK', 'مسجّلة في لندن، المملكة المتحدة')}</div>
               <a href="mailto:admin@ignite-scale.com" className="text-white/35 text-sm hover:text-accent transition-colors block font-body" style={{ direction: 'ltr' }}>
                 admin@ignite-scale.com
               </a>
@@ -121,7 +135,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="label-sm">
-            {t('© 2026 Ignite Scale. All rights reserved. London, UK.', '© ٢٠٢٦ Ignite Scale. جميع الحقوق محفوظة. لندن، المملكة المتحدة.')}
+            {t('© 2026 Ignite Scale. All rights reserved. UK-founded, serving the UAE.', '© ٢٠٢٦ Ignite Scale. جميع الحقوق محفوظة. تأسست في المملكة المتحدة وتخدم الإمارات.')}
           </div>
           <div className="flex items-center gap-5">
             {['Instagram', 'TikTok', 'LinkedIn', 'X'].map((s) => (

@@ -9,7 +9,7 @@ export default function TermsPage() {
       intro="These terms govern your use of the Ignite Scale website and any enquiry you submit through it. By using this site you agree to them. They are governed by the laws of the United Kingdom."
       sections={[
         { h: 'About this site', body: [
-          'This website is an informational and marketing site for Ignite Scale, a London-based growth marketing studio. Content describes our services and representative results and does not constitute a binding offer.',
+          'This website is an informational and marketing site for Ignite Scale, a UK-registered growth company serving UAE businesses. Content describes our services and representative results and does not constitute a binding offer.',
         ] },
         { h: 'Enquiries & consultations', body: [
           'Submitting the booking form requests a consultation; it does not create a contract for services. Any engagement is governed by a separate written agreement signed by both parties.',

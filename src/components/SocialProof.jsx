@@ -4,7 +4,7 @@ import { useRef } from 'react'
 const testimonials = [
   {
     name: 'Real Estate Developer',
-    role: 'London',
+    role: 'Dubai',
     company: 'Property Development',
     quote: 'Within 3 months, we went from 12 £/lead to 4 £/lead. Their creative strategy completely transformed our funnel.',
     result: '68% CPL reduction',
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     name: 'Business Setup Consultant',
-    role: 'Downtown London',
+    role: 'Downtown Dubai',
     company: 'B2B Consulting',
     quote: 'Not just ads—they built our entire funnel from scratch. Lead quality doubled, cost per lead down 55%.',
     result: '55% CPL reduction',
@@ -195,7 +195,7 @@ export default function SocialProof() {
             fontFamily: '"DM Sans", sans-serif',
             marginBottom: 16,
           }}>
-            Trusted by London's Top Brands
+            Trusted by Ambitious UAE Businesses
           </div>
           <h2 style={{
             fontSize: 'clamp(32px, 5vw, 58px)',

@@ -4,7 +4,7 @@ import AuroraLayer from './AuroraLayer'
 
 const reviews = [
   {
-    quote: "ignite.scale transformed our brand's online presence. We went from 3–4 leads a month to consistently 40+ qualified inquiries. The ROI is undeniable — this is the only agency I'll recommend in London.",
+    quote: "ignite.scale transformed our brand's online presence. We went from 3–4 leads a month to consistently 40+ qualified inquiries. The ROI is undeniable — this is the only agency I'll recommend in Dubai.",
     role: 'CEO · Luxury Real Estate · Canary Wharf',
     initials: 'A.R.',
     niche: 'Real Estate',
@@ -13,7 +13,7 @@ const reviews = [
   },
   {
     quote: "Our reservations increased 280% in six months. The content they produce is world-class and perfectly captures the fine dining experience we offer. Our TikTok grew from nothing to 180K followers.",
-    role: 'F&B Director · Fine Dining · the City of London',
+    role: 'F&B Director · Fine Dining · Dubai',
     initials: 'S.M.',
     niche: 'Hospitality',
     metric: '280%',
@@ -83,7 +83,7 @@ export default function Testimonials() {
             color: 'rgba(245,230,210,0.92)',
             letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
           }}>
-            What London's{' '}
+            What the UAE's{' '}
             <em style={{
               fontFamily: '"Cormorant Garamond", Georgia, serif',
               fontStyle: 'italic', fontWeight: 300,

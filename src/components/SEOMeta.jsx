@@ -51,13 +51,14 @@ export default function SEOMeta({
   locale = 'en',
   breadcrumbs,
   article,
+  service,
+  faqs,
 }) {
   useEffect(() => {
     const absCanonical = canonical || SITE
-    const arCanonical = absCanonical.includes('/ar/')
-      ? absCanonical
-      : absCanonical.replace(SITE, `${SITE}/ar`).replace(`${SITE}/ar/`, `${SITE}/ar/`)
-    const enCanonical = absCanonical.replace('/ar/', '/')
+    const isAr = absCanonical === `${SITE}/ar` || absCanonical.startsWith(`${SITE}/ar/`)
+    const enCanonical = isAr ? (absCanonical.replace(`${SITE}/ar`, SITE) || SITE) : absCanonical
+    const arCanonical = isAr ? absCanonical : (enCanonical === SITE ? `${SITE}/ar` : enCanonical.replace(SITE, `${SITE}/ar`))
 
     document.title = title
 
@@ -70,7 +71,7 @@ export default function SEOMeta({
 
     upsertLink('canonical', absCanonical)
     upsertLink('alternate', enCanonical, { hreflang: 'en' })
-    upsertLink('alternate', enCanonical, { hreflang: 'en-AE' })
+    upsertLink('alternate', arCanonical, { hreflang: 'ar' })
     upsertLink('alternate', enCanonical, { hreflang: 'x-default' })
 
     upsertMeta('meta[property="og:type"]', { create: { property: 'og:type' }, value: article ? 'article' : 'website' })
@@ -94,7 +95,7 @@ export default function SEOMeta({
       '@id': `${SITE}#org`,
       name: BRAND,
       alternateName: ['ignite-scale', 'ignite.scale', 'ignite-scale.com', 'IgniteScale'],
-      description: 'London growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the United Kingdom. Remote-first operation serving clients nationwide.',
+      description: 'UK-founded client acquisition systems company serving UAE service businesses. We build industry-specific SEO, paid acquisition, landing page, CRM funnel and WhatsApp follow-up infrastructure that turns demand into booked appointments and reportable revenue.',
       url: SITE,
       logo: `${SITE}/logo.svg`,
       image: `${SITE}/og-image.jpg`,
@@ -106,13 +107,23 @@ export default function SEOMeta({
         addressCountry: 'GB',
       },
       areaServed: [
-        { '@type': 'AdministrativeArea', name: 'United Kingdom' },
-        { '@type': 'AdministrativeArea', name: 'England' },
-        { '@type': 'AdministrativeArea', name: 'Scotland' },
-        { '@type': 'AdministrativeArea', name: 'Wales' },
-        { '@type': 'AdministrativeArea', name: 'Northern Ireland' },
+        { '@type': 'Country', name: 'United Arab Emirates' },
+        { '@type': 'City', name: 'Dubai' },
+        { '@type': 'City', name: 'Abu Dhabi' },
+        { '@type': 'City', name: 'Sharjah' },
       ],
-      priceRange: '$$$',
+      knowsAbout: [
+        'Client acquisition systems',
+        'SEO',
+        'CRM funnels',
+        'WhatsApp follow-up automation',
+        'Google Ads',
+        'Meta Ads',
+        'Landing page conversion optimisation',
+        'Revenue attribution',
+      ],
+      priceRange: '££££',
+      currenciesAccepted: 'GBP',
       openingHoursSpecification: [{
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -171,7 +182,41 @@ export default function SEOMeta({
     } else {
       removeJsonLd('article')
     }
-  }, [title, description, canonical, ogImage, author, locale, JSON.stringify(breadcrumbs), JSON.stringify(article)])
+
+    if (service) {
+      upsertJsonLd('service', {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: service.name,
+        serviceType: service.serviceType || service.name,
+        description: service.description || description,
+        provider: { '@id': `${SITE}#org` },
+        areaServed: [
+          { '@type': 'Country', name: 'United Arab Emirates' },
+          { '@type': 'City', name: 'Dubai' },
+          { '@type': 'City', name: 'Abu Dhabi' },
+          { '@type': 'City', name: 'Sharjah' },
+        ],
+        url: absCanonical,
+      })
+    } else {
+      removeJsonLd('service')
+    }
+
+    if (faqs && faqs.length) {
+      upsertJsonLd('faq', {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      })
+    } else {
+      removeJsonLd('faq')
+    }
+  }, [title, description, canonical, ogImage, author, locale, JSON.stringify(breadcrumbs), JSON.stringify(article), JSON.stringify(service), JSON.stringify(faqs)])
 
   return null
 }

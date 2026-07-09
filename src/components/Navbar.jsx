@@ -71,9 +71,9 @@ export default function Navbar() {
               {locale === 'ar' ? 'EN' : 'AR'}
             </Link>
 
-            {/* Book a free consultation */}
-            <Link to={`${base}/book`} className="hidden sm:inline-flex btn-primary text-[10px] px-6 py-3">
-              {t('Book a Free Consultation', 'احجز استشارة مجانية')}
+            {/* Book a Client Acquisition Audit */}
+            <Link to={`${base}/audit`} className="hidden sm:inline-flex btn-primary text-[10px] px-6 py-3">
+              {t('Book an Audit', 'احجز تدقيقاً')}
             </Link>
 
             {/* mobile menu trigger */}
@@ -137,10 +137,10 @@ export default function Navbar() {
               ))}
             </nav>
             <Link
-              to={`${base}/book`}
+              to={`${base}/audit`}
               className="btn-primary text-[11px] px-8 py-4 mt-8 self-start"
             >
-              {t('Book a Free Consultation', 'احجز استشارة مجانية')}
+              {t('Book an Audit', 'احجز تدقيقاً')}
             </Link>
           </motion.div>
         )}

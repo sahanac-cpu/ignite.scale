@@ -1,6 +1,16 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/book", "destination": "/audit", "permanent": true },
+    { "source": "/ar/book", "destination": "/ar/audit", "permanent": true },
+    { "source": "/services/funnels", "destination": "/services/crm-funnels", "permanent": true },
+    { "source": "/ar/services/funnels", "destination": "/ar/services/crm-funnels", "permanent": true },
+    { "source": "/tiktok-ads-dubai", "destination": "/services/paid-social", "permanent": true },
+    { "source": "/ar/tiktok-ads-dubai", "destination": "/ar/services/paid-social", "permanent": true },
+    { "source": "/meta-ads-dubai", "destination": "/meta-ads-agency-dubai", "permanent": true },
+    { "source": "/ar/meta-ads-dubai", "destination": "/ar/meta-ads-agency-dubai", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

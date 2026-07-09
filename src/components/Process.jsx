@@ -24,8 +24,8 @@ function getSteps(t) {
       num: '02',
       title: t('Content & Campaign Build', 'بناء المحتوى والحملات'),
       desc: t(
-        'We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for London search discovery, all before we go live.',
-        'نضع خارطة المحتوى الشاملة، ونصمّم المواد الإبداعية، ونجهّز الحملات الإعلانية، ونحسّن ملفاتك لاكتشاف البحث في لندن، كل ذلك قبل الإطلاق.'
+        'We build your full content calendar, design creatives, set up ad campaigns, and optimise your profile for UAE search discovery, all before we go live.',
+        'نضع خارطة المحتوى الشاملة، ونصمّم المواد الإبداعية، ونجهّز الحملات الإعلانية، ونحسّن ملفاتك لاكتشاف البحث في الإمارات، كل ذلك قبل الإطلاق.'
       ),
       detail: t('Content calendar · Ad setup · Profile optimisation', 'تقويم المحتوى · إعداد الإعلانات · تحسين الملفات'),
       icon: (

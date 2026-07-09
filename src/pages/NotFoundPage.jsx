@@ -45,7 +45,7 @@ export default function NotFoundPage() {
               {t('Services', 'الخدمات')}
             </Link>
             <Link
-              to={`${locale === 'ar' ? '/ar' : ''}/book`}
+              to={`${locale === 'ar' ? '/ar' : ''}/audit`}
               className="text-[11px] uppercase tracking-[0.3em] text-white/55 hover:text-white px-5 py-3 border border-white/15 hover:border-accent/40 rounded-sm transition-colors"
             >
               {t('Book a Call', 'احجز مكالمة')}

@@ -35,7 +35,7 @@ export default function ServicesSummary() {
         >
           <span aria-hidden="true" style={{ width: 6, height: 6, background: 'var(--accent)', display: 'inline-block' }} />
           <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--ink-dim)', fontWeight: 500 }}>
-            {t('Services', 'الخدمات')}
+            {t('Build stages', 'مراحل البناء')}
           </span>
         </motion.div>
 
@@ -51,9 +51,9 @@ export default function ServicesSummary() {
             maxWidth: '16ch',
           }}
         >
-          {t('Everything you need to ', 'كل ما تحتاجه لكي ')}
-          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{t('scale', 'تنمو')}</span>
-          {t('.', '.')}
+          {t('A clearer journey from ', 'رحلة أوضح من ')}
+          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{t('click', 'النقرة')}</span>
+          {t(' to booked call.', ' إلى المكالمة المحجوزة.')}
         </motion.h2>
 
         {/* division rows — each links to its own learn-more page */}

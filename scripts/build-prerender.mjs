@@ -25,9 +25,9 @@ function jsonScript(id, payload) {
   return `<script type="application/ld+json" data-schema="${id}">${JSON.stringify(payload)}</script>`
 }
 
-/* ProfessionalService is the right schema for a remote/service-area agency without
-   a customer-visitable physical location. It still teaches Google "this is a Dubai
-   business" without claiming a specific street address that we can't back up. */
+/* Canonical entity: UK-registered ProfessionalService whose areaServed is the UAE.
+   One identity everywhere — UK-founded company, UAE market focus, GBP pricing.
+   Must stay in sync with src/components/SEOMeta.jsx. */
 function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -35,42 +35,45 @@ function organizationJsonLd() {
     '@id': `${SITE}#org`,
     name: 'Ignite Scale',
     alternateName: ['ignite-scale', 'ignite.scale', 'ignite-scale.com', 'IgniteScale'],
-    description: 'Dubai growth agency engineering paid social, content and funnels for luxury, real estate, hospitality and B2B brands across the UAE and GCC. Remote-first operation serving clients across the region.',
+    description: 'UK-founded client acquisition systems company serving UAE service businesses. We build the SEO, paid acquisition, landing page, CRM funnel and WhatsApp follow-up infrastructure that turns demand into booked appointments and reportable revenue. Priced in GBP.',
     url: SITE,
     logo: `${SITE}/logo.svg`,
     image: `${SITE}/og-image.jpg`,
-    telephone: '+971555116465',
+    telephone: '+442079460958',
     email: 'admin@ignite-scale.com',
-    /* No street address — accurate reflection of remote operation.
-       We keep the city + country as the operating locale. */
-    address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
-    /* Explicit areaServed with GeoCircle around Dubai so Google understands the
-       service radius even without a physical pin. */
+    address: { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
     areaServed: [
-      { '@type': 'AdministrativeArea', name: 'United Arab Emirates' },
-      { '@type': 'AdministrativeArea', name: 'Saudi Arabia' },
-      { '@type': 'AdministrativeArea', name: 'Qatar' },
-      { '@type': 'AdministrativeArea', name: 'Kuwait' },
-      { '@type': 'AdministrativeArea', name: 'Bahrain' },
-      { '@type': 'AdministrativeArea', name: 'Oman' },
-      {
-        '@type': 'GeoCircle',
-        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 25.2048, longitude: 55.2708 },
-        geoRadius: '300000',
-      },
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'City', name: 'Dubai' },
+      { '@type': 'City', name: 'Abu Dhabi' },
+      { '@type': 'City', name: 'Sharjah' },
     ],
-    priceRange: '$$$',
+    knowsAbout: [
+      'Client acquisition systems',
+      'SEO',
+      'CRM funnels',
+      'WhatsApp follow-up automation',
+      'Google Ads',
+      'Meta Ads',
+      'Landing page conversion optimisation',
+      'Revenue attribution',
+    ],
+    priceRange: '££££',
+    currenciesAccepted: 'GBP',
     /* Service catalogue tells Google what categories to rank us under. */
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Marketing services',
+      name: 'Client acquisition services',
       itemListElement: [
-        { '@type': 'OfferCatalogItem', name: 'Paid Social Advertising' },
-        { '@type': 'OfferCatalogItem', name: 'Content Production' },
-        { '@type': 'OfferCatalogItem', name: 'Landing Page & Funnel Design' },
+        { '@type': 'OfferCatalogItem', name: 'Client Acquisition Systems' },
+        { '@type': 'OfferCatalogItem', name: 'SEO for UAE Businesses' },
+        { '@type': 'OfferCatalogItem', name: 'CRM Funnel Systems' },
+        { '@type': 'OfferCatalogItem', name: 'WhatsApp Follow-Up Automation' },
+        { '@type': 'OfferCatalogItem', name: 'Google Ads Management' },
         { '@type': 'OfferCatalogItem', name: 'Meta Ads Management' },
-        { '@type': 'OfferCatalogItem', name: 'TikTok Ads Management' },
-        { '@type': 'OfferCatalogItem', name: 'Web Design' },
+        { '@type': 'OfferCatalogItem', name: 'Landing Pages & Conversion Funnels' },
+        { '@type': 'OfferCatalogItem', name: 'Reporting & Revenue Attribution' },
+        { '@type': 'OfferCatalogItem', name: 'Website Design for Lead Generation' },
       ],
     },
     openingHoursSpecification: [{
@@ -165,9 +168,22 @@ function serviceJsonLd(route, canonical) {
     provider: { '@type': 'Organization', name: 'Ignite Scale', url: SITE, '@id': `${SITE}#org` },
     areaServed: [
       { '@type': 'Country', name: 'United Arab Emirates' },
-      { '@type': 'Country', name: 'Saudi Arabia' },
       { '@type': 'City', name: 'Dubai' },
+      { '@type': 'City', name: 'Abu Dhabi' },
+      { '@type': 'City', name: 'Sharjah' },
     ],
+  }
+}
+
+function faqJsonLd(route) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: route.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   }
 }
 
@@ -212,6 +228,9 @@ function renderHead(route) {
   if (route.howTo) {
     scripts.push(jsonScript('howto', howToJsonLd(route)))
   }
+  if (route.faqs && route.faqs.length) {
+    scripts.push(jsonScript('faq', faqJsonLd(route)))
+  }
 
   return [
     `<title>${escapeHtml(route.title)}</title>`,
@@ -220,11 +239,8 @@ function renderHead(route) {
     `<meta name="author" content="Ignite Scale" />`,
     `<link rel="canonical" href="${canonical}" />`,
     `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
-    `<link rel="alternate" hreflang="en-AE" href="${enUrl}" />`,
-    `<link rel="alternate" hreflang="ar-AE" href="${arUrl}" />`,
+    `<link rel="alternate" hreflang="ar" href="${arUrl}" />`,
     `<link rel="alternate" hreflang="x-default" href="${enUrl}" />`,
-    `<meta name="geo.region" content="AE-DU" />`,
-    `<meta name="geo.placename" content="Dubai" />`,
     `<meta property="og:type" content="${ogType}" />`,
     `<meta property="og:site_name" content="Ignite Scale" />`,
     `<meta property="og:url" content="${canonical}" />`,
@@ -233,7 +249,7 @@ function renderHead(route) {
     `<meta property="og:image" content="${SITE}/og-image.jpg" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="Ignite Scale, Dubai growth agency" />`,
+    `<meta property="og:image:alt" content="Ignite Scale, UK-founded client acquisition systems company for UAE businesses" />`,
     `<meta property="og:locale" content="${ogLocale}" />`,
     `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,

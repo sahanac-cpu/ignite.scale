@@ -10,12 +10,12 @@ export default function BlogTikTokVsInstagramPage() {
   return (
     <>
       <SEOMeta
-        title={t('TikTok vs Instagram Ads 2026 | London Comparison', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦ | مقارنة لندن')}
-        description={t('TikTok vs Instagram Ads 2026: cost, audience demographics, conversion rates and best industries for each. When to use which platform in London.', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦: التكلفة، التركيبة السكانية، معدلات التحويل، وأفضل القطاعات لكل منهما. متى تستخدم أي منصّة في لندن.')}
+        title={t('TikTok vs Instagram Ads 2026 | Dubai Comparison', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦ | مقارنة لندن')}
+        description={t('TikTok vs Instagram Ads 2026: cost, audience demographics, conversion rates and best industries for each. When to use which platform in Dubai.', 'إعلانات تيك توك مقابل إنستغرام ٢٠٢٦: التكلفة، التركيبة السكانية، معدلات التحويل، وأفضل القطاعات لكل منهما. متى تستخدم أي منصّة في الإمارات.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/blog/tiktok-vs-instagram-ads' : 'https://ignite-scale.com/blog/tiktok-vs-instagram-ads'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'TikTok vs Instagram', url: '/blog/tiktok-vs-instagram-ads' }]}
-        article={{ datePublished: '2026-05-04', headline: 'TikTok vs Instagram Ads 2026: Which Platform to Choose for London' }}
+        article={{ datePublished: '2026-05-04', headline: 'TikTok vs Instagram Ads 2026: Which Platform to Choose for Dubai' }}
       />
       <div style={{ background: '#03050F', minHeight: '100vh' }}>
         <Navbar />
@@ -23,7 +23,7 @@ export default function BlogTikTokVsInstagramPage() {
           <article style={{ padding: 'clamp(80px, 12vh, 140px) clamp(20px, 8vw, 120px)' }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
               <h1 style={{ fontSize: 'clamp(36px, 6vw, 58px)', fontWeight: 800, color: 'rgba(255,255,255,0.95)', margin: '0 0 24px 0', lineHeight: 1.1 }}>
-                TikTok vs Instagram Ads: Which Platform for London Brands?
+                TikTok vs Instagram Ads: Which Platform for Dubai Brands?
               </h1>
               <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'rgba(240,210,180,0.8)', margin: '0 0 48px 0' }}>
                 Should you advertise on TikTok or Instagram? Here's a detailed breakdown to help you decide where to invest your ad budget in 2026.

@@ -10,8 +10,8 @@ export default function FAQPage() {
   return (
     <>
       <SEOMeta
-        title={t('Social Media Marketing FAQ | Ignite Scale London', 'أسئلة شائعة حول التسويق على وسائل التواصل | Ignite Scale لندن')}
-        description={t('Answers to the most common questions London businesses ask before working with Ignite Scale: timelines, platforms, budgets, content creation, Arabic content, ROI.', 'إجابات لأكثر الأسئلة التي تطرحها شركات لندن قبل التعاون مع Ignite Scale: الجداول الزمنية، المنصّات، الميزانيات، إنتاج المحتوى، المحتوى العربي، العائد على الاستثمار.')}
+        title={t('Client Acquisition FAQ | Ignite Scale', 'أسئلة شائعة حول اكتساب العملاء | Ignite Scale')}
+        description={t('Answers to the most common questions UAE businesses ask before building a client acquisition system with Ignite Scale: industries, stages, ownership, scope, CRM and follow-up.', 'إجابات لأكثر الأسئلة التي تطرحها شركات الإمارات قبل بناء نظام اكتساب عملاء مع Ignite Scale: القطاعات والمراحل والملكية والنطاق وCRM والمتابعة.')}
         canonical={locale === 'ar' ? 'https://ignite-scale.com/ar/faq' : 'https://ignite-scale.com/faq'}
         locale={locale}
         breadcrumbs={[{ name: 'Home', url: '/' }, { name: 'FAQ', url: '/faq' }]}

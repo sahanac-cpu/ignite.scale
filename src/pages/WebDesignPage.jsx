@@ -6,8 +6,8 @@ export default function WebDesignPage() {
   return (
     <ServiceLayout
       slug="web-design"
-      seoTitle={t('Web Design London | Conversion-Optimised Websites | Ignite Scale', 'تصميم المواقع في لندن | مواقع مُحسَّنة للتحويل | Ignite Scale')}
-      seoDescription={t('Mobile-first, fast-loading, SEO-ready websites for London brands — engineered to convert.', 'مواقع متجاوبة وسريعة وجاهزة للبحث لعلامات لندن — مصمّمة للتحويل.')}
+      seoTitle={t('Web Design Dubai | Conversion-Optimised Websites | Ignite Scale', 'تصميم المواقع في الإمارات | مواقع مُحسَّنة للتحويل | Ignite Scale')}
+      seoDescription={t('Mobile-first, fast-loading, SEO-ready websites for UAE businesses — engineered to convert.', 'مواقع متجاوبة وسريعة وجاهزة للبحث لعلامات الإمارات — مصمّمة للتحويل.')}
     />
   )
 }

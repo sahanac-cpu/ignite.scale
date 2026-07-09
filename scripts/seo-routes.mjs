@@ -7,10 +7,10 @@ export const SITE = 'https://ignite-scale.com'
 export const ROUTES = [
   {
     path: '/',
-    title: 'Ignite Scale | Dubai paid social, web & lead funnels',
-    description: "Dubai growth agency engineering paid social, content and funnels for luxury real estate, cosmetic clinics and B2B brands. Targeting 2–5× ROAS. Book a free strategy call.",
-    title_ar: 'Ignite Scale | إعلانات ممولة ومواقع وقمعات في دبي',
-    description_ar: 'وكالة نموّ في دبي تهندس الإعلانات الممولة والمحتوى وقمعات التحويل للعقارات الفاخرة وعيادات التجميل والشركات. نستهدف عائداً ٢–٥× على الإنفاق الإعلاني. احجز مكالمة استراتيجية مجانية.',
+    title: 'Client Acquisition Systems for UAE Businesses | Ignite Scale',
+    description: 'Ignite Scale builds SEO, paid ads, CRM funnels and WhatsApp follow-up systems that turn UAE search demand into booked appointments and tracked revenue. UK-standard. GBP-priced.',
+    title_ar: 'أنظمة اكتساب العملاء لأنشطة الإمارات | Ignite Scale',
+    description_ar: 'تبني Ignite Scale أنظمة تحسين البحث والإعلانات وقمعات CRM ومتابعة واتساب التي تحوّل الطلب في الإمارات إلى مواعيد محجوزة وإيرادات قابلة للتتبّع. معايير بريطانية وتسعير بالجنيه الإسترليني.',
     changefreq: 'weekly', priority: 1.0,
     breadcrumbs: [{ name: 'Home', name_ar: 'الرئيسية', url: '/' }],
   },
@@ -65,25 +65,6 @@ export const ROUTES = [
     },
   },
   {
-    path: '/services/funnels',
-    title: 'Landing Pages & Lead Funnels Dubai | Ignite Scale',
-    description: 'Conversion-optimised landing pages and lead funnels for Dubai brands. Real estate, cosmetics, hospitality. CRO built in. Free funnel audit.',
-    title_ar: 'صفحات الهبوط وقمعات التحويل في دبي | Ignite Scale',
-    description_ar: 'صفحات هبوط وقمعات تحويل مُحسَّنة للعلامات في دبي. عقارات، تجميل، ضيافة. تحسين التحويل مدمج. مراجعة قمع مجانية.',
-    changefreq: 'monthly', priority: 0.85,
-    breadcrumbs: [
-      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
-      { name: 'Services', name_ar: 'الخدمات', url: '/services' },
-      { name: 'Funnels', name_ar: 'القمعات', url: '/services/funnels' },
-    ],
-    service: {
-      name: 'Landing Page & Funnel Design',
-      name_ar: 'تصميم صفحات الهبوط والقمعات',
-      serviceType: 'Web Design',
-      description: 'Conversion-optimised landing pages and multi-step lead funnels.',
-    },
-  },
-  {
     path: '/dubai-marketing-agency',
     title: 'Best Marketing Agency in Dubai | Ignite Scale',
     description: 'Looking for a Dubai marketing agency? Ignite Scale builds paid social, websites and lead funnels for ambitious UAE brands. Book a free strategy session.',
@@ -94,42 +75,6 @@ export const ROUTES = [
       { name: 'Home', name_ar: 'الرئيسية', url: '/' },
       { name: 'Dubai Marketing Agency', name_ar: 'وكالة تسويق دبي', url: '/dubai-marketing-agency' },
     ],
-  },
-  {
-    path: '/meta-ads-dubai',
-    title: 'Meta Ads Agency Dubai | Facebook & Instagram Experts',
-    description: 'Meta Ads management in Dubai. We run Facebook and Instagram campaigns targeting 2–5× ROAS for real estate, cosmetics and B2B. Free ad audit.',
-    title_ar: 'وكالة إعلانات ميتا في دبي | خبراء فيسبوك وإنستغرام',
-    description_ar: 'إدارة إعلانات ميتا في دبي. ندير حملات فيسبوك وإنستغرام نستهدف فيها عائداً ٢–٥× على الإنفاق للعقارات والتجميل والشركات. مراجعة إعلانية مجانية.',
-    changefreq: 'monthly', priority: 0.85,
-    breadcrumbs: [
-      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
-      { name: 'Meta Ads Dubai', name_ar: 'إعلانات ميتا دبي', url: '/meta-ads-dubai' },
-    ],
-    service: {
-      name: 'Meta Ads Management',
-      name_ar: 'إدارة إعلانات ميتا',
-      serviceType: 'Facebook and Instagram Advertising',
-      description: 'Full Facebook and Instagram campaign setup, creative, and ongoing optimisation.',
-    },
-  },
-  {
-    path: '/tiktok-ads-dubai',
-    title: 'TikTok Ads Agency Dubai | Ignite Scale',
-    description: 'TikTok advertising in Dubai. High-performing campaigns targeting Gen Z and millennial audiences with lower CPMs than Meta. Free audit available.',
-    title_ar: 'وكالة إعلانات تيك توك في دبي | Ignite Scale',
-    description_ar: 'إعلانات تيك توك في دبي. حملات عالية الأداء تستهدف جيل Z والألفية بتكلفة عرض أقل من ميتا. مراجعة مجانية متاحة.',
-    changefreq: 'monthly', priority: 0.85,
-    breadcrumbs: [
-      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
-      { name: 'TikTok Ads Dubai', name_ar: 'إعلانات تيك توك دبي', url: '/tiktok-ads-dubai' },
-    ],
-    service: {
-      name: 'TikTok Ads Management',
-      name_ar: 'إدارة إعلانات تيك توك',
-      serviceType: 'TikTok Advertising',
-      description: 'TikTok ad strategy, creative, and ongoing campaign optimisation.',
-    },
   },
   {
     path: '/web-design-dubai',
@@ -174,15 +119,15 @@ export const ROUTES = [
     ],
   },
   {
-    path: '/book',
-    title: 'Book a Free Strategy Call | Ignite Scale Dubai',
-    description: 'Book a free 45-minute strategy call with Ignite Scale. We audit your social presence, analyse competitors, and build a 90-day growth roadmap. No obligation.',
-    title_ar: 'احجز مكالمة استراتيجية مجانية | Ignite Scale دبي',
-    description_ar: 'احجز مكالمة استراتيجية مجانية مدتها ٤٥ دقيقة مع Ignite Scale. نراجع حضورك الاجتماعي، نحلّل المنافسين، ونبني خارطة نمو لـ٩٠ يوماً. دون التزام.',
-    changefreq: 'monthly', priority: 0.9,
+    path: '/audit',
+    title: 'Book a Client Acquisition Audit | Ignite Scale',
+    description: 'A 45-minute diagnostic of your UAE acquisition funnel: where leads come from, where they die, and the prioritised 90-day plan to fix it. Six audits per month.',
+    title_ar: 'احجز تدقيق اكتساب العملاء | Ignite Scale',
+    description_ar: 'تشخيص لمدة ٤٥ دقيقة لقمع اكتساب العملاء في نشاطك الإماراتي: من أين يأتي العملاء، وأين يضيعون، وخطة ٩٠ يوماً لإصلاح ذلك. ستة تدقيقات شهرياً.',
+    changefreq: 'monthly', priority: 0.95,
     breadcrumbs: [
       { name: 'Home', name_ar: 'الرئيسية', url: '/' },
-      { name: 'Book', name_ar: 'احجز', url: '/book' },
+      { name: 'Client Acquisition Audit', name_ar: 'تدقيق اكتساب العملاء', url: '/audit' },
     ],
   },
   {
@@ -299,6 +244,54 @@ export const ROUTES = [
     },
   },
 ]
+
+/* UAE growth architecture — service hubs, Dubai keyword pages and industry pages are
+   data-driven from src/lib/growthPages.js (same data renders the React pages), plus
+   the new static pages. Registered here so prerender + sitemap cover them. */
+import { GROWTH_PAGES } from '../src/lib/growthPages.js'
+
+const GROUP_CRUMB = {
+  service: { name: 'Services', name_ar: 'الخدمات', url: '/services' },
+  keyword: { name: 'UAE Growth', name_ar: 'النمو في الإمارات', url: '/client-acquisition-system-uae' },
+  industry: { name: 'Industries', name_ar: 'القطاعات', url: '/industries/aesthetic-clinics' },
+}
+
+ROUTES.push(
+  ...GROWTH_PAGES.map((p) => ({
+    path: p.path,
+    title: p.title,
+    description: p.description,
+    changefreq: 'monthly',
+    priority: p.group === 'keyword' ? 0.9 : 0.85,
+    breadcrumbs: [
+      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
+      GROUP_CRUMB[p.group],
+      { name: p.h1, name_ar: p.h1, url: p.path },
+    ],
+    service: p.service,
+    faqs: p.faqs,
+  })),
+  {
+    path: '/investment',
+    title: 'Engagement Stages — How We Build Acquisition Systems | Ignite Scale',
+    description: 'How Ignite Scale scopes UAE client acquisition systems by stage: diagnostic map, foundation install, launch and validate, optimise and scale. Every build is scoped after the audit.',
+    changefreq: 'monthly', priority: 0.85,
+    breadcrumbs: [
+      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
+      { name: 'Engagement Stages', name_ar: 'مراحل العمل', url: '/investment' },
+    ],
+  },
+  {
+    path: '/about',
+    title: 'About Ignite Scale — UK-Founded, Built for the UAE Market',
+    description: 'Ignite Scale is a UK-founded client acquisition systems company serving UAE service businesses: clinics, real estate, consultants and premium services. UK standards, UAE focus, GBP pricing.',
+    changefreq: 'monthly', priority: 0.7,
+    breadcrumbs: [
+      { name: 'Home', name_ar: 'الرئيسية', url: '/' },
+      { name: 'About', name_ar: 'من نحن', url: '/about' },
+    ],
+  },
+)
 
 /* Auto-discover Markdown blog posts in content/blog/ — each one becomes a route at /blog/<slug>.
    This means publishing a new post = drop a .md file in content/blog/. No code touching. */

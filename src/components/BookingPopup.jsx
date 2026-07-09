@@ -91,7 +91,7 @@ export default function BookingPopup() {
                 fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.34em',
                 textTransform: 'uppercase', color: 'var(--ink-dim)', fontWeight: 500,
               }}>
-                {t('Free strategy call', 'مكالمة استراتيجية مجانية')}
+                {t('Client Acquisition Audit · 6 per month', 'تدقيق اكتساب العملاء · ٦ شهرياً')}
               </span>
             </div>
 
@@ -100,9 +100,9 @@ export default function BookingPopup() {
               fontSize: 'clamp(30px, 5vw, 44px)', letterSpacing: '-0.02em',
               lineHeight: 1.0, color: 'var(--ink)', margin: '0 0 14px',
             }}>
-              {t('Let’s map your ', 'لنرسم ')}
+              {t('Find your ', 'اكتشف ')}
               <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: 500, color: 'var(--accent)' }}>
-                {t('pipeline', 'مسارك')}
+                {t('revenue leak', 'تسرّب إيراداتك')}
               </span>
               .
             </h3>
@@ -112,14 +112,14 @@ export default function BookingPopup() {
               color: 'var(--ink-dim)', margin: '0 0 26px', maxWidth: '40ch',
             }}>
               {t(
-                'Book a free 30-minute call and we’ll show you exactly where your ad spend is leaking — and how to fix it.',
-                'احجز مكالمة مجانية لمدة ٣٠ دقيقة وسنُريك أين تتسرّب ميزانيتك الإعلانية وكيف تُصلح ذلك.'
+                'A 45-minute diagnostic of your acquisition funnel: where leads are lost, what it costs you, and the 90-day plan to fix it — yours to keep either way.',
+                'تشخيص لمدة ٤٥ دقيقة لقمع اكتساب العملاء لديك: أين يضيع العملاء، وكم يكلّفك ذلك، وخطة ٩٠ يوماً للإصلاح — تحتفظ بها في كل الأحوال.'
               )}
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
               <button onClick={goBook} className="btn-primary" style={{ fontSize: 12, padding: '13px 28px', border: 'none', cursor: 'pointer' }}>
-                {t('Book my call', 'احجز مكالمتي')}
+                {t('Book my audit', 'احجز تدقيقي')}
               </button>
               <button
                 onClick={() => setOpen(false)}

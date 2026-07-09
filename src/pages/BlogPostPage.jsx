@@ -130,7 +130,7 @@ export default function BlogPostPage() {
               </div>
             </div>
             <Link
-              to={locale === 'ar' ? '/ar/book' : '/book'}
+              to={locale === 'ar' ? '/ar/audit' : '/audit'}
               className="btn-primary text-[11px] px-6 py-3"
             >
               {t('Book a Call', 'احجز مكالمة')}
