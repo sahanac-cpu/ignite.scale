@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { GROWTH_PAGES } from './lib/growthPages'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
@@ -151,6 +152,7 @@ export default function App() {
         <CookieConsent />
       </div>
       <Analytics />
+      <SpeedInsights />
     </BrowserRouter>
   )
 }
